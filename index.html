@@ -168,19 +168,98 @@
 
 
   <script>
+const video = document.getElementById("camera");
+const canvas = document.getElementById("canvas");
+const photo = document.getElementById("photo");
+const download = document.getElementById("download");
+const timer = document.getElementById("timer");
 
-    const video = document.getElementById("camera");
-    const canvas = document.getElementById("canvas");
-    const photo = document.getElementById("photo");
-    const download = document.getElementById("download");
-    const timer = document.getElementById("timer");
+let stream = null;
 
-    let stream;
+async function startCamera() {
+  try {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      alert("Browser tidak mendukung akses kamera di halaman ini.");
+      return;
+    }
 
+    stream = await navigator.mediaDevices.getUserMedia({
+      video: {
+        facingMode: "user"
+      },
+      audio: false
+    });
 
-    async function startCamera() {
+    video.srcObject = stream;
+    await video.play();
 
-      try {
+    alert("Kamera berhasil terhubung!");
 
-        stream = await navigator.mediaDevices.getUserMedia({
-          video:
+  } catch (error) {
+    alert("Kamera gagal dibuka: " + error.name + " - " + error.message);
+    console.error(error);
+  }
+}
+
+function takePhoto() {
+
+  if (!stream) {
+    alert("Nyalakan kamera dulu dengan tombol Start Camera.");
+    return;
+  }
+
+  let count = 3;
+
+  timer.innerText = count;
+
+  const countdown = setInterval(() => {
+
+    count--;
+
+    if (count > 0) {
+      timer.innerText = count;
+    } else {
+
+      clearInterval(countdown);
+
+      timer.innerText = "📸";
+
+      setTimeout(() => {
+
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        const context = canvas.getContext("2d");
+
+        context.save();
+        context.translate(canvas.width, 0);
+        context.scale(-1, 1);
+
+        context.drawImage(
+          video,
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+
+        context.restore();
+
+        const image = canvas.toDataURL("image/jpeg", 0.95);
+
+        photo.src = image;
+        photo.style.display = "block";
+
+        download.href = image;
+        download.style.display = "inline-block";
+
+        timer.innerText = "";
+
+      }, 500);
+    }
+
+  }, 1000);
+}
+</script>
+</body>
+</html>

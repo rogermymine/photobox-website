@@ -152,6 +152,20 @@
 
       <div id="photoGrid"></div>
 
+      <div id="photostrip"></div>
+
+<button onclick="createPhotostrip()" id="createStripButton"
+style="display:none;">
+  ✨ Create Photostrip
+</button>
+
+<a id="downloadStrip"
+class="download"
+download="photostrip.jpg"
+style="display:none;">
+  💾 Download Photostrip
+</a>
+
       <button onclick="retakeAll()" id="retakeAllButton"
     style="display:none;">
            Retake All
@@ -280,16 +294,11 @@ function takeBoothPhoto() {
 
         } else {
 
-          document.getElementById("retakeAllButton").style.display = "inline-block";
+  document.getElementById("retakeAllButton").style.display = "inline-block";
 
-        }
+  document.getElementById("createStripButton").style.display = "inline-block";
 
-      }, 500);
-    }
-
-  }, 1000);
 }
-
 
 function showPhoto(index, image) {
 
@@ -405,6 +414,132 @@ function retakeAll() {
   document.getElementById("retakeAllButton").style.display = "none";
 
   startPhotobooth();
+}
+
+    function createPhotostrip() {
+
+  if (photos.length < 4) {
+    alert("Selesaikan 4 foto dulu.");
+    return;
+  }
+
+  const stripCanvas = document.createElement("canvas");
+  const ctx = stripCanvas.getContext("2d");
+
+  const width = 700;
+  const photoHeight = 500;
+  const gap = 20;
+  const padding = 30;
+  const footerHeight = 100;
+
+  stripCanvas.width = width;
+  stripCanvas.height =
+    padding +
+    (photoHeight * 4) +
+    (gap * 3) +
+    footerHeight +
+    padding;
+
+  // Background putih
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(
+    0,
+    0,
+    stripCanvas.width,
+    stripCanvas.height
+  );
+
+  let loaded = 0;
+
+  photos.forEach((image, index) => {
+
+    const img = new Image();
+
+    img.onload = function() {
+
+      const y =
+        padding +
+        (index * (photoHeight + gap));
+
+      // Foto
+      ctx.drawImage(
+        img,
+        padding,
+        y,
+        width - (padding * 2),
+        photoHeight
+      );
+
+      loaded++;
+
+      if (loaded === 4) {
+
+        // Footer
+        const footerY =
+          padding +
+          (photoHeight * 4) +
+          (gap * 3);
+
+        ctx.fillStyle = "#ffffff";
+
+        ctx.fillRect(
+          0,
+          footerY,
+          width,
+          footerHeight
+        );
+
+        ctx.fillStyle = "#222222";
+        ctx.font = "bold 28px Arial";
+        ctx.textAlign = "center";
+
+        ctx.fillText(
+          "YOUR PHOTOBOX ✦",
+          width / 2,
+          footerY + 60
+        );
+
+        const finalImage =
+          stripCanvas.toDataURL(
+            "image/jpeg",
+            0.95
+          );
+
+        const strip =
+          document.getElementById("photostrip");
+
+        strip.innerHTML = `
+          <h2 style="margin:30px 0 15px;">
+            Your Photostrip ✨
+          </h2>
+
+          <img
+            src="${finalImage}"
+            style="
+              width:100%;
+              max-width:380px;
+              border-radius:10px;
+              box-shadow:0 10px 30px rgba(0,0,0,0.15);
+            "
+          >
+        `;
+
+        const downloadStrip =
+          document.getElementById("downloadStrip");
+
+        downloadStrip.href = finalImage;
+        downloadStrip.style.display =
+          "inline-block";
+
+        downloadStrip.style.margin =
+          "20px 0";
+
+      }
+    };
+
+    img.src = image;
+
+  });
 }
 </script>
 </body>

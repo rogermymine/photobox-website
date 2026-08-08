@@ -294,12 +294,19 @@ function takeBoothPhoto() {
 
         } else {
 
-  document.getElementById("retakeAllButton").style.display = "inline-block";
+          document.getElementById("retakeAllButton").style.display = "inline-block";
 
-  document.getElementById("createStripButton").style.display = "inline-block";
+          document.getElementById("createStripButton").style.display = "inline-block";
+
+        }
+
+      }, 500);
+
+    }
+
+  }, 1000);
 
 }
-
 function showPhoto(index, image) {
 
   const grid = document.getElementById("photoGrid");

@@ -138,8 +138,8 @@
         📸 Start Camera
       </button>
 
-      <button onclick="takePhoto()">
-        Take Photo
+      <button onclick="startPhotobooth()" id="boothButton">
+        Start Photobooth
       </button>
 
     </div>
@@ -148,15 +148,14 @@
 
     <div id="result">
 
-      <h2>Your Photo</h2>
+      <h2>Your Photos</h2>
 
-      <img id="photo">
+      <div id="photoGrid"></div>
 
-      <br>
-
-      <a id="download" class="download" download="photobox.jpg">
-        Download Photo
-      </a>
+      <button onclick="retakeAll()" id="retakeAllButton"
+    style="display:none;">
+           Retake All
+      </button>
 
     </div>
 
@@ -201,12 +200,29 @@ async function startCamera() {
   }
 }
 
-function takePhoto() {
+let photos = [];
+let currentPhoto = 0;
+
+function startPhotobooth() {
 
   if (!stream) {
     alert("Nyalakan kamera dulu dengan tombol Start Camera.");
     return;
   }
+
+  photos = [];
+  currentPhoto = 0;
+
+  document.getElementById("photoGrid").innerHTML = "";
+  document.getElementById("retakeAllButton").style.display = "none";
+
+  takeBoothPhoto();
+}
+
+
+function takeBoothPhoto() {
+
+  currentPhoto++;
 
   let count = 3;
 
@@ -217,7 +233,9 @@ function takePhoto() {
     count--;
 
     if (count > 0) {
+
       timer.innerText = count;
+
     } else {
 
       clearInterval(countdown);
@@ -232,6 +250,7 @@ function takePhoto() {
         const context = canvas.getContext("2d");
 
         context.save();
+
         context.translate(canvas.width, 0);
         context.scale(-1, 1);
 
@@ -247,11 +266,125 @@ function takePhoto() {
 
         const image = canvas.toDataURL("image/jpeg", 0.95);
 
-        photo.src = image;
-        photo.style.display = "block";
+        photos[currentPhoto - 1] = image;
 
-        download.href = image;
-        download.style.display = "inline-block";
+        showPhoto(currentPhoto - 1, image);
+
+        timer.innerText = "";
+
+        if (currentPhoto < 4) {
+
+          setTimeout(() => {
+            takeBoothPhoto();
+          }, 1000);
+
+        } else {
+
+          document.getElementById("retakeAllButton").style.display = "inline-block";
+
+        }
+
+      }, 500);
+    }
+
+  }, 1000);
+}
+
+
+function showPhoto(index, image) {
+
+  const grid = document.getElementById("photoGrid");
+
+  let oldPhoto = document.getElementById("photo-" + index);
+
+  if (oldPhoto) {
+    oldPhoto.remove();
+  }
+
+  const box = document.createElement("div");
+
+  box.id = "photo-" + index;
+
+  box.style.margin = "20px";
+  box.style.display = "inline-block";
+  box.style.verticalAlign = "top";
+
+  box.innerHTML = `
+    <h3>Foto ${index + 1}</h3>
+
+    <img
+      src="${image}"
+      style="
+        width:220px;
+        border-radius:15px;
+        display:block;
+        margin:10px auto;
+      "
+    >
+
+    <button onclick="retakePhoto(${index})">
+      ↻ Retake Foto ${index + 1}
+    </button>
+  `;
+
+  grid.appendChild(box);
+}
+
+
+function retakePhoto(index) {
+
+  if (!stream) {
+    alert("Nyalakan kamera dulu.");
+    return;
+  }
+
+  currentPhoto = index + 1;
+
+  timer.innerText = "3";
+
+  let count = 3;
+
+  const countdown = setInterval(() => {
+
+    count--;
+
+    if (count > 0) {
+
+      timer.innerText = count;
+
+    } else {
+
+      clearInterval(countdown);
+
+      timer.innerText = "📸";
+
+      setTimeout(() => {
+
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        const context = canvas.getContext("2d");
+
+        context.save();
+
+        context.translate(canvas.width, 0);
+        context.scale(-1, 1);
+
+        context.drawImage(
+          video,
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+
+        context.restore();
+
+        const image = canvas.toDataURL("image/jpeg", 0.95);
+
+        photos[index] = image;
+
+        showPhoto(index, image);
 
         timer.innerText = "";
 
@@ -259,6 +392,19 @@ function takePhoto() {
     }
 
   }, 1000);
+}
+
+
+function retakeAll() {
+
+  photos = [];
+  currentPhoto = 0;
+
+  document.getElementById("photoGrid").innerHTML = "";
+
+  document.getElementById("retakeAllButton").style.display = "none";
+
+  startPhotobooth();
 }
 </script>
 </body>

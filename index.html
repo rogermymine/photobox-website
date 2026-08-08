@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Photobox</title>
+  <title>Your Photobox</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -68,11 +69,19 @@
       color: white;
       font-size: 17px;
       cursor: pointer;
+      margin: 5px;
     }
 
     button:hover {
       opacity: 0.8;
     }
+
+    button:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    /* FOTO COUNTDOWN */
 
     #timer {
       font-size: 60px;
@@ -81,15 +90,66 @@
       min-height: 70px;
     }
 
+    /* SESSION TIMER */
+
+    .session-box {
+      width: 220px;
+      margin: 20px auto;
+      padding: 15px 20px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .session-label {
+      font-size: 13px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      color: #888;
+      margin-bottom: 5px;
+    }
+
+    #sessionTimer {
+      font-size: 38px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #222;
+    }
+
+    /* RESULT */
+
     #result {
       margin-top: 40px;
     }
 
-    #photo {
-      max-width: 90%;
+    #photoGrid {
+      margin-top: 20px;
+    }
+
+    .photo-box {
+      margin: 20px;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .photo-box img {
+      width: 220px;
       border-radius: 15px;
-      display: none;
-      margin: 20px auto;
+      display: block;
+      margin: 10px auto;
+    }
+
+    /* PHOTO STRIP */
+
+    #photostrip {
+      margin-top: 30px;
+    }
+
+    #photostrip img {
+      width: 100%;
+      max-width: 380px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
 
     .download {
@@ -99,6 +159,7 @@
       color: white;
       padding: 14px 30px;
       border-radius: 30px;
+      margin: 20px 0;
     }
 
     footer {
@@ -107,8 +168,11 @@
       background: #222;
       color: white;
     }
+
   </style>
+
 </head>
+
 
 <body>
 
@@ -116,330 +180,764 @@
     YOUR PHOTOBOX
   </header>
 
+
   <section class="camera-section">
 
-    <h1>Capture Your Moment ✦</h1>
+    <h1>
+      Capture Your Moment ✦
+    </h1>
 
     <p class="subtitle">
       Take your photo directly from our photobox.
     </p>
 
+
+    <!-- CAMERA -->
+
     <div class="camera-box">
 
-      <video id="camera" autoplay playsinline></video>
+      <video
+        id="camera"
+        autoplay
+        playsinline>
+      </video>
 
     </div>
+
+
+    <!-- FOTO COUNTDOWN -->
 
     <div id="timer"></div>
 
+
+    <!-- SESSION TIMER -->
+
+    <div class="session-box">
+
+      <div class="session-label">
+        ⏱️ TIME LEFT
+      </div>
+
+      <div id="sessionTimer">
+        05:00
+      </div>
+
+    </div>
+
+
+    <!-- BUTTONS -->
+
     <div class="controls">
 
-      <button onclick="startCamera()">
+      <button
+        onclick="startCamera()"
+        id="cameraButton">
+
         📸 Start Camera
+
       </button>
 
-      <button onclick="startPhotobooth()" id="boothButton">
+
+      <button
+        onclick="startPhotobooth()"
+        id="boothButton">
+
         Start Photobooth
+
       </button>
 
     </div>
 
-    <canvas id="canvas" style="display:none;"></canvas>
+
+    <canvas
+      id="canvas"
+      style="display:none;">
+    </canvas>
+
+
+    <!-- RESULT -->
 
     <div id="result">
 
-      <h2>Your Photos</h2>
+      <h2>
+        Your Photos
+      </h2>
+
 
       <div id="photoGrid"></div>
 
+
+      <!-- PHOTO STRIP -->
+
       <div id="photostrip"></div>
 
-<button onclick="createPhotostrip()" id="createStripButton"
-style="display:none;">
-  ✨ Create Photostrip
-</button>
 
-<a id="downloadStrip"
-class="download"
-download="photostrip.jpg"
-style="display:none;">
-  💾 Download Photostrip
-</a>
+      <button
+        onclick="createPhotostrip()"
+        id="createStripButton"
+        style="display:none;">
 
-      <button onclick="retakeAll()" id="retakeAllButton"
-    style="display:none;">
-           Retake All
+        ✨ Create Photostrip
+
+      </button>
+
+
+      <br>
+
+
+      <a
+        id="downloadStrip"
+        class="download"
+        download="photostrip.jpg">
+
+        💾 Download Photostrip
+
+      </a>
+
+
+      <br>
+
+
+      <button
+        onclick="retakeAll()"
+        id="retakeAllButton"
+        style="display:none;">
+
+        🔄 Retake All
+
       </button>
 
     </div>
 
   </section>
 
+
   <footer>
+
     © 2026 Your Photobox
+
   </footer>
 
 
-  <script>
-const video = document.getElementById("camera");
-const canvas = document.getElementById("canvas");
-const photo = document.getElementById("photo");
-const download = document.getElementById("download");
-const timer = document.getElementById("timer");
+<script>
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const video =
+  document.getElementById("camera");
+
+const canvas =
+  document.getElementById("canvas");
+
+const timer =
+  document.getElementById("timer");
+
+
+/* =========================
+   VARIABLES
+========================= */
 
 let stream = null;
 
+let photos = [];
+
+let currentPhoto = 0;
+
+
+/* SESSION 5 MENIT */
+
+let sessionTime = 300;
+
+let sessionInterval = null;
+
+let sessionActive = false;
+
+
+/* =========================
+   START CAMERA
+========================= */
+
 async function startCamera() {
+
   try {
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      alert("Browser tidak mendukung akses kamera di halaman ini.");
+
+    if (
+      !navigator.mediaDevices ||
+      !navigator.mediaDevices.getUserMedia
+    ) {
+
+      alert(
+        "Browser tidak mendukung akses kamera."
+      );
+
       return;
+
     }
 
-    stream = await navigator.mediaDevices.getUserMedia({
-      video: {
-        facingMode: "user"
-      },
-      audio: false
-    });
 
-    video.srcObject = stream;
+    stream =
+      await navigator.mediaDevices.getUserMedia({
+
+        video: {
+          facingMode: "user"
+        },
+
+        audio: false
+
+      });
+
+
+    video.srcObject =
+      stream;
+
+
     await video.play();
 
-    alert("Kamera berhasil terhubung!");
 
-  } catch (error) {
-    alert("Kamera gagal dibuka: " + error.name + " - " + error.message);
-    console.error(error);
+    alert(
+      "Kamera berhasil terhubung!"
+    );
+
   }
+
+  catch (error) {
+
+    alert(
+      "Kamera gagal dibuka: " +
+      error.name +
+      " - " +
+      error.message
+    );
+
+    console.error(error);
+
+  }
+
 }
 
-let photos = [];
-let currentPhoto = 0;
+
+/* =========================
+   START PHOTO SESSION
+========================= */
 
 function startPhotobooth() {
 
   if (!stream) {
-    alert("Nyalakan kamera dulu dengan tombol Start Camera.");
+
+    alert(
+      "Nyalakan kamera dulu dengan tombol Start Camera."
+    );
+
     return;
+
   }
 
+
+  if (!sessionActive) {
+
+    startSessionTimer();
+
+  }
+
+
   photos = [];
+
   currentPhoto = 0;
 
-  document.getElementById("photoGrid").innerHTML = "";
-  document.getElementById("retakeAllButton").style.display = "none";
+
+  document.getElementById(
+    "photoGrid"
+  ).innerHTML = "";
+
+
+  document.getElementById(
+    "photostrip"
+  ).innerHTML = "";
+
+
+  document.getElementById(
+    "downloadStrip"
+  ).style.display = "none";
+
+
+  document.getElementById(
+    "createStripButton"
+  ).style.display = "none";
+
+
+  document.getElementById(
+    "retakeAllButton"
+  ).style.display = "none";
+
 
   takeBoothPhoto();
+
 }
 
 
+/* =========================
+   TAKE 4 PHOTOS
+========================= */
+
 function takeBoothPhoto() {
 
+  if (!sessionActive) {
+
+    alert(
+      "Waktu photobox sudah habis."
+    );
+
+    return;
+
+  }
+
+
   currentPhoto++;
+
 
   let count = 5;
 
   timer.innerText = count;
 
-  const countdown = setInterval(() => {
 
-    count--;
+  const countdown =
+    setInterval(() => {
 
-    if (count > 0) {
+      count--;
 
-      timer.innerText = count;
 
-    } else {
+      if (count > 0) {
 
-      clearInterval(countdown);
+        timer.innerText =
+          count;
 
-      timer.innerText = "📸";
+      }
 
-      setTimeout(() => {
+      else {
 
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-
-        const context = canvas.getContext("2d");
-
-        context.save();
-
-        context.translate(canvas.width, 0);
-        context.scale(-1, 1);
-
-        context.drawImage(
-          video,
-          0,
-          0,
-          canvas.width,
-          canvas.height
+        clearInterval(
+          countdown
         );
 
-        context.restore();
 
-        const image = canvas.toDataURL("image/jpeg", 0.95);
+        timer.innerText =
+          "📸";
 
-        photos[currentPhoto - 1] = image;
 
-        showPhoto(currentPhoto - 1, image);
+        setTimeout(() => {
 
-        timer.innerText = "";
 
-        if (currentPhoto < 4) {
+          canvas.width =
+            video.videoWidth;
 
-          setTimeout(() => {
-            takeBoothPhoto();
-          }, 1000);
 
-        } else {
+          canvas.height =
+            video.videoHeight;
 
-          document.getElementById("retakeAllButton").style.display = "inline-block";
 
-          document.getElementById("createStripButton").style.display = "inline-block";
+          const context =
+            canvas.getContext(
+              "2d"
+            );
 
-        }
 
-      }, 500);
+          context.save();
 
-    }
 
-  }, 1000);
+          context.translate(
+            canvas.width,
+            0
+          );
+
+
+          context.scale(
+            -1,
+            1
+          );
+
+
+          context.drawImage(
+            video,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+          );
+
+
+          context.restore();
+
+
+          const image =
+            canvas.toDataURL(
+              "image/jpeg",
+              0.95
+            );
+
+
+          photos[
+            currentPhoto - 1
+          ] = image;
+
+
+          showPhoto(
+            currentPhoto - 1,
+            image
+          );
+
+
+          timer.innerText =
+            "";
+
+
+          if (
+            currentPhoto < 4 &&
+            sessionActive
+          ) {
+
+            setTimeout(() => {
+
+              takeBoothPhoto();
+
+            }, 1000);
+
+          }
+
+          else {
+
+            document.getElementById(
+              "retakeAllButton"
+            ).style.display =
+              "inline-block";
+
+
+            document.getElementById(
+              "createStripButton"
+            ).style.display =
+              "inline-block";
+
+          }
+
+
+        }, 500);
+
+      }
+
+
+    }, 1000);
 
 }
-function showPhoto(index, image) {
 
-  const grid = document.getElementById("photoGrid");
 
-  let oldPhoto = document.getElementById("photo-" + index);
+/* =========================
+   SHOW PHOTO
+========================= */
+
+function showPhoto(
+  index,
+  image
+) {
+
+  const grid =
+    document.getElementById(
+      "photoGrid"
+    );
+
+
+  let oldPhoto =
+    document.getElementById(
+      "photo-" + index
+    );
+
 
   if (oldPhoto) {
+
     oldPhoto.remove();
+
   }
 
-  const box = document.createElement("div");
 
-  box.id = "photo-" + index;
+  const box =
+    document.createElement(
+      "div"
+    );
 
-  box.style.margin = "20px";
-  box.style.display = "inline-block";
-  box.style.verticalAlign = "top";
+
+  box.id =
+    "photo-" + index;
+
+
+  box.className =
+    "photo-box";
+
 
   box.innerHTML = `
-    <h3>Foto ${index + 1}</h3>
+
+    <h3>
+      Foto ${index + 1}
+    </h3>
 
     <img
       src="${image}"
-      style="
-        width:220px;
-        border-radius:15px;
-        display:block;
-        margin:10px auto;
-      "
     >
 
-    <button onclick="retakePhoto(${index})">
+    <button
+      onclick="retakePhoto(${index})">
+
       ↻ Retake Foto ${index + 1}
+
     </button>
+
   `;
 
-  grid.appendChild(box);
+
+  grid.appendChild(
+    box
+  );
+
 }
 
 
-function retakePhoto(index) {
+/* =========================
+   RETAKE ONE PHOTO
+========================= */
 
-  if (!stream) {
-    alert("Nyalakan kamera dulu.");
+function retakePhoto(
+  index
+) {
+
+  if (!sessionActive) {
+
+    alert(
+      "Waktu photobox sudah habis."
+    );
+
     return;
+
   }
 
-  currentPhoto = index + 1;
 
-  timer.innerText = "5";
+  if (!stream) {
+
+    alert(
+      "Nyalakan kamera dulu."
+    );
+
+    return;
+
+  }
+
+
+  currentPhoto =
+    index + 1;
+
 
   let count = 5;
 
-  const countdown = setInterval(() => {
+  timer.innerText =
+    count;
 
-    count--;
 
-    if (count > 0) {
+  const countdown =
+    setInterval(() => {
 
-      timer.innerText = count;
+      count--;
 
-    } else {
 
-      clearInterval(countdown);
+      if (count > 0) {
 
-      timer.innerText = "📸";
+        timer.innerText =
+          count;
 
-      setTimeout(() => {
+      }
 
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
+      else {
 
-        const context = canvas.getContext("2d");
-
-        context.save();
-
-        context.translate(canvas.width, 0);
-        context.scale(-1, 1);
-
-        context.drawImage(
-          video,
-          0,
-          0,
-          canvas.width,
-          canvas.height
+        clearInterval(
+          countdown
         );
 
-        context.restore();
 
-        const image = canvas.toDataURL("image/jpeg", 0.95);
+        timer.innerText =
+          "📸";
 
-        photos[index] = image;
 
-        showPhoto(index, image);
+        setTimeout(() => {
 
-        timer.innerText = "";
 
-      }, 500);
-    }
+          canvas.width =
+            video.videoWidth;
 
-  }, 1000);
+
+          canvas.height =
+            video.videoHeight;
+
+
+          const context =
+            canvas.getContext(
+              "2d"
+            );
+
+
+          context.save();
+
+
+          context.translate(
+            canvas.width,
+            0
+          );
+
+
+          context.scale(
+            -1,
+            1
+          );
+
+
+          context.drawImage(
+            video,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+          );
+
+
+          context.restore();
+
+
+          const image =
+            canvas.toDataURL(
+              "image/jpeg",
+              0.95
+            );
+
+
+          photos[index] =
+            image;
+
+
+          showPhoto(
+            index,
+            image
+          );
+
+
+          timer.innerText =
+            "";
+
+
+        }, 500);
+
+      }
+
+    }, 1000);
+
 }
 
+
+/* =========================
+   RETAKE ALL
+========================= */
 
 function retakeAll() {
 
-  photos = [];
-  currentPhoto = 0;
+  if (!sessionActive) {
 
-  document.getElementById("photoGrid").innerHTML = "";
+    alert(
+      "Waktu photobox sudah habis."
+    );
 
-  document.getElementById("retakeAllButton").style.display = "none";
-
-  startPhotobooth();
-}
-
-    function createPhotostrip() {
-
-  if (photos.length < 4) {
-    alert("Selesaikan 4 foto dulu.");
     return;
+
   }
 
-  const stripCanvas = document.createElement("canvas");
-  const ctx = stripCanvas.getContext("2d");
+
+  photos = [];
+
+  currentPhoto = 0;
+
+
+  document.getElementById(
+    "photoGrid"
+  ).innerHTML = "";
+
+
+  document.getElementById(
+    "photostrip"
+  ).innerHTML = "";
+
+
+  document.getElementById(
+    "downloadStrip"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "createStripButton"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "retakeAllButton"
+  ).style.display =
+    "none";
+
+
+  startPhotobooth();
+
+}
+
+
+/* =========================
+   CREATE PHOTO STRIP
+========================= */
+
+function createPhotostrip() {
+
+  if (photos.length < 4) {
+
+    alert(
+      "Selesaikan 4 foto dulu."
+    );
+
+    return;
+
+  }
+
+
+  const stripCanvas =
+    document.createElement(
+      "canvas"
+    );
+
+
+  const ctx =
+    stripCanvas.getContext(
+      "2d"
+    );
+
 
   const width = 700;
+
   const photoHeight = 500;
+
   const gap = 20;
+
   const padding = 30;
+
   const footerHeight = 100;
 
-  stripCanvas.width = width;
+
+  stripCanvas.width =
+    width;
+
+
   stripCanvas.height =
     padding +
     (photoHeight * 4) +
@@ -447,8 +945,11 @@ function retakeAll() {
     footerHeight +
     padding;
 
-  // Background putih
-  ctx.fillStyle = "#ffffff";
+
+  ctx.fillStyle =
+    "#ffffff";
+
+
   ctx.fillRect(
     0,
     0,
@@ -456,98 +957,260 @@ function retakeAll() {
     stripCanvas.height
   );
 
+
   let loaded = 0;
 
-  photos.forEach((image, index) => {
 
-    const img = new Image();
+  photos.forEach(
+    (image, index) => {
 
-    img.onload = function() {
 
-      const y =
-        padding +
-        (index * (photoHeight + gap));
+      const img =
+        new Image();
 
-      // Foto
-      ctx.drawImage(
-        img,
-        padding,
-        y,
-        width - (padding * 2),
-        photoHeight
-      );
 
-      loaded++;
+      img.onload =
+        function() {
 
-      if (loaded === 4) {
 
-        // Footer
-        const footerY =
-          padding +
-          (photoHeight * 4) +
-          (gap * 3);
+          const y =
+            padding +
+            (
+              index *
+              (
+                photoHeight +
+                gap
+              )
+            );
 
-        ctx.fillStyle = "#ffffff";
 
-        ctx.fillRect(
-          0,
-          footerY,
-          width,
-          footerHeight
-        );
-
-        ctx.fillStyle = "#222222";
-        ctx.font = "bold 28px Arial";
-        ctx.textAlign = "center";
-
-        ctx.fillText(
-          "YOUR PHOTOBOX ✦",
-          width / 2,
-          footerY + 60
-        );
-
-        const finalImage =
-          stripCanvas.toDataURL(
-            "image/jpeg",
-            0.95
+          ctx.drawImage(
+            img,
+            padding,
+            y,
+            width -
+              (padding * 2),
+            photoHeight
           );
 
-        const strip =
-          document.getElementById("photostrip");
 
-        strip.innerHTML = `
-          <h2 style="margin:30px 0 15px;">
-            Your Photostrip ✨
-          </h2>
+          loaded++;
 
-          <img
-            src="${finalImage}"
-            style="
-              width:100%;
-              max-width:380px;
-              border-radius:10px;
-              box-shadow:0 10px 30px rgba(0,0,0,0.15);
-            "
-          >
-        `;
 
-        const downloadStrip =
-          document.getElementById("downloadStrip");
+          if (loaded === 4) {
 
-        downloadStrip.href = finalImage;
-        downloadStrip.style.display =
-          "inline-block";
 
-        downloadStrip.style.margin =
-          "20px 0";
+            const footerY =
+              padding +
+              (photoHeight * 4) +
+              (gap * 3);
+
+
+            ctx.fillStyle =
+              "#ffffff";
+
+
+            ctx.fillRect(
+              0,
+              footerY,
+              width,
+              footerHeight
+            );
+
+
+            ctx.fillStyle =
+              "#222222";
+
+
+            ctx.font =
+              "bold 28px Arial";
+
+
+            ctx.textAlign =
+              "center";
+
+
+            ctx.fillText(
+              "YOUR PHOTOBOX ✦",
+              width / 2,
+              footerY + 60
+            );
+
+
+            const finalImage =
+              stripCanvas.toDataURL(
+                "image/jpeg",
+                0.95
+              );
+
+
+            const strip =
+              document.getElementById(
+                "photostrip"
+              );
+
+
+            strip.innerHTML = `
+
+              <h2
+                style="
+                  margin:30px 0 15px;
+                "
+              >
+                Your Photostrip ✨
+              </h2>
+
+              <img
+                src="${finalImage}"
+              >
+
+            `;
+
+
+            const downloadStrip =
+              document.getElementById(
+                "downloadStrip"
+              );
+
+
+            downloadStrip.href =
+              finalImage;
+
+
+            downloadStrip.style.display =
+              "inline-block";
+
+
+          }
+
+        };
+
+
+      img.src =
+        image;
+
+
+    }
+
+  );
+
+}
+
+
+/* =========================
+   SESSION TIMER
+   5 MINUTES
+========================= */
+
+function startSessionTimer() {
+
+
+  sessionTime =
+    300;
+
+
+  sessionActive =
+    true;
+
+
+  updateSessionTimer();
+
+
+  sessionInterval =
+    setInterval(() => {
+
+
+      sessionTime--;
+
+
+      updateSessionTimer();
+
+
+      if (
+        sessionTime <= 0
+      ) {
+
+
+        clearInterval(
+          sessionInterval
+        );
+
+
+        sessionActive =
+          false;
+
+
+        sessionTime =
+          0;
+
+
+        updateSessionTimer();
+
+
+        document.getElementById(
+          "boothButton"
+        ).disabled =
+          true;
+
+
+        document.getElementById(
+          "retakeAllButton"
+        ).disabled =
+          true;
+
+
+        document.getElementById(
+          "sessionTimer"
+        ).innerText =
+          "00:00";
+
+
+        alert(
+          "⏰ Waktu photobox sudah habis. Foto dan retake sudah dikunci. Kamu masih bisa memilih frame dan download hasil foto."
+        );
+
 
       }
-    };
 
-    img.src = image;
 
-  });
+    }, 1000);
+
 }
+
+
+/* =========================
+   UPDATE SESSION TIMER
+========================= */
+
+function updateSessionTimer() {
+
+
+  const minutes =
+    Math.floor(
+      sessionTime / 60
+    );
+
+
+  const seconds =
+    sessionTime % 60;
+
+
+  document.getElementById(
+    "sessionTimer"
+  ).innerText =
+
+    String(minutes)
+      .padStart(2, "0")
+
+    + ":" +
+
+    String(seconds)
+      .padStart(2, "0");
+
+}
+
+
 </script>
+
 </body>
 </html>

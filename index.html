@@ -16,7 +16,7 @@
 body{
   font-family:Arial,sans-serif;
   background:#faf6f8;
-  color:#66515d;
+  color:#5d4c57;
 }
 
 button{
@@ -46,9 +46,9 @@ button{
 
 .home-card{
   width:min(700px,100%);
-  padding:60px 30px;
-  background:rgba(255,255,255,.85);
-  border-radius:35px;
+  padding:65px 30px;
+  background:rgba(255,255,255,.86);
+  border-radius:40px;
   box-shadow:0 25px 70px rgba(90,65,80,.15);
 }
 
@@ -61,9 +61,10 @@ button{
 
 .home-title{
   font-family:Georgia,serif;
-  font-size:clamp(42px,8vw,72px);
+  font-size:clamp(45px,8vw,75px);
+  line-height:1.05;
   color:#66515d;
-  margin-bottom:15px;
+  margin-bottom:18px;
 }
 
 .home-subtitle{
@@ -118,7 +119,7 @@ button{
 
 .session{
   background:#383139;
-  padding:8px 15px;
+  padding:9px 16px;
   border-radius:20px;
   font-size:13px;
 }
@@ -137,6 +138,7 @@ button{
   background:#111;
   border-radius:25px;
   padding:8px;
+
   position:relative;
   overflow:hidden;
 }
@@ -144,7 +146,6 @@ button{
 video{
   width:100%;
   max-height:72vh;
-
   object-fit:cover;
   display:block;
 
@@ -233,8 +234,18 @@ video{
   padding:30px 20px;
 
   background:
-    radial-gradient(circle at 10% 10%,#f0d8e4,transparent 25%),
-    radial-gradient(circle at 90% 90%,#ddd5ed,transparent 25%),
+    radial-gradient(
+      circle at 10% 10%,
+      #f0d8e4,
+      transparent 25%
+    ),
+
+    radial-gradient(
+      circle at 90% 90%,
+      #ddd5ed,
+      transparent 25%
+    ),
+
     #faf7f8;
 }
 
@@ -247,8 +258,7 @@ video{
 
   color:#66515d;
 
-  margin:
-    20px 0 8px;
+  margin:20px 0 8px;
 }
 
 .review-subtitle{
@@ -325,8 +335,7 @@ video{
 }
 
 .done-btn{
-  padding:
-    17px 35px;
+  padding:17px 35px;
 
   border-radius:35px;
 
@@ -438,8 +447,18 @@ video{
   padding:25px;
 
   background:
-    radial-gradient(circle at 10% 10%,#f0d8e4,transparent 25%),
-    radial-gradient(circle at 90% 90%,#ddd5ed,transparent 25%),
+    radial-gradient(
+      circle at 10% 10%,
+      #f0d8e4,
+      transparent 25%
+    ),
+
+    radial-gradient(
+      circle at 90% 90%,
+      #ddd5ed,
+      transparent 25%
+    ),
+
     #faf7f8;
 }
 
@@ -452,8 +471,7 @@ video{
 
   color:#66515d;
 
-  margin:
-    15px 0 8px;
+  margin:15px 0 8px;
 }
 
 .editor-subtitle{
@@ -461,7 +479,7 @@ video{
 
   color:#9b858f;
 
-  margin-bottom:10px;
+  margin-bottom:25px;
 }
 
 .locked{
@@ -471,7 +489,7 @@ video{
 
   color:#a58f99;
 
-  margin-bottom:25px;
+  margin-bottom:20px;
 }
 
 .editor-layout{
@@ -520,7 +538,7 @@ video{
 
 .controls-card{
   background:
-    rgba(255,255,255,.85);
+    rgba(255,255,255,.88);
 
   border-radius:25px;
 
@@ -684,8 +702,7 @@ video{
 }
 
 .tool-btn{
-  padding:
-    13px 18px;
+  padding:13px 18px;
 
   border-radius:30px;
 
@@ -696,10 +713,14 @@ video{
   font-weight:bold;
 }
 
-.print-btn{
-  width:100%;
+.download-btn{
+  display:block;
 
-  padding:17px;
+  text-align:center;
+
+  text-decoration:none;
+
+  padding:15px;
 
   border-radius:30px;
 
@@ -712,14 +733,12 @@ video{
       #8f7aa5
     );
 
-  font-size:16px;
-
   font-weight:bold;
 
-  margin-top:20px;
+  margin-top:15px;
 }
 
-.home-btn{
+.home-return-btn{
   width:100%;
 
   padding:15px;
@@ -733,59 +752,6 @@ video{
   font-weight:bold;
 
   margin-top:10px;
-}
-
-/* ================= PRINTING ================= */
-
-#printScreen{
-  display:none;
-
-  min-height:100vh;
-
-  align-items:center;
-  justify-content:center;
-
-  text-align:center;
-
-  background:
-    radial-gradient(
-      circle at 30% 30%,
-      #f3d7e3,
-      transparent 30%
-    ),
-    #faf6f8;
-}
-
-.print-card{
-  background:white;
-
-  padding:50px 30px;
-
-  border-radius:30px;
-
-  box-shadow:
-    0 20px 60px
-    rgba(80,60,70,.15);
-
-  max-width:450px;
-}
-
-.print-icon{
-  font-size:65px;
-
-  margin-bottom:20px;
-}
-
-.print-card h1{
-  font-family:Georgia,serif;
-
-  margin-bottom:12px;
-}
-
-.print-card p{
-  color:#927e88;
-
-  line-height:1.6;
 }
 
 /* ================= RESPONSIVE ================= */
@@ -809,11 +775,6 @@ video{
     max-width:420px;
 
     margin:auto;
-  }
-
-  .frame-grid{
-    grid-template-columns:
-      repeat(3,1fr);
   }
 
 }
@@ -887,6 +848,7 @@ video{
 
   </div>
 
+
   <div class="camera-area">
 
     <div class="video-frame">
@@ -919,6 +881,7 @@ video{
 
   </div>
 
+
   <div class="booth-bottom">
 
     <div id="boothStatus">
@@ -939,7 +902,7 @@ video{
   </h1>
 
   <p class="review-subtitle">
-    Retake anything you're not happy with.
+    Make sure you're happy with all four photos.
   </p>
 
   <div
@@ -976,9 +939,6 @@ video{
 
       Once you continue to the editor,
       your four photos will be locked.
-
-      <br><br>
-
       You won't be able to retake them anymore.
 
     </p>
@@ -1024,13 +984,32 @@ video{
     🔒 Photos locked — editing mode
   </div>
 
+
   <div class="editor-layout">
+
 
     <div class="preview-card">
 
       <canvas
         id="previewCanvas">
       </canvas>
+
+      <a
+        id="downloadButton"
+        class="download-btn"
+        download="your-photobox.jpg">
+
+        💾 DOWNLOAD
+
+      </a>
+
+      <button
+        class="home-return-btn"
+        onclick="returnHome()">
+
+        ↩ NEW SESSION
+
+      </button>
 
     </div>
 
@@ -1041,107 +1020,139 @@ video{
         CHOOSE YOUR FRAME
       </div>
 
+
       <div class="frame-grid">
+
 
         <button
           class="frame-btn selected"
           onclick="selectFrame('pink',this)">
 
-          <div class="frame-color pink"></div>
+          <div
+            class="frame-color pink">
+          </div>
 
           Pink
 
         </button>
 
+
         <button
           class="frame-btn"
           onclick="selectFrame('sakura',this)">
 
-          <div class="frame-color sakura"></div>
+          <div
+            class="frame-color sakura">
+          </div>
 
           Sakura
 
         </button>
 
+
         <button
           class="frame-btn"
           onclick="selectFrame('lavender',this)">
 
-          <div class="frame-color lavender"></div>
+          <div
+            class="frame-color lavender">
+          </div>
 
           Lavender
 
         </button>
 
+
         <button
           class="frame-btn"
           onclick="selectFrame('blue',this)">
 
-          <div class="frame-color blue"></div>
+          <div
+            class="frame-color blue">
+          </div>
 
           Baby Blue
 
         </button>
 
+
         <button
           class="frame-btn"
           onclick="selectFrame('star',this)">
 
-          <div class="frame-color star"></div>
+          <div
+            class="frame-color star">
+          </div>
 
           Starry
 
         </button>
 
+
         <button
           class="frame-btn"
           onclick="selectFrame('cloud',this)">
 
-          <div class="frame-color cloud"></div>
+          <div
+            class="frame-color cloud">
+          </div>
 
           Cloud
 
         </button>
 
+
         <button
           class="frame-btn"
           onclick="selectFrame('teddy',this)">
 
-          <div class="frame-color teddy"></div>
+          <div
+            class="frame-color teddy">
+          </div>
 
           Teddy
 
         </button>
 
+
         <button
           class="frame-btn"
           onclick="selectFrame('strawberry',this)">
 
-          <div class="frame-color strawberry"></div>
+          <div
+            class="frame-color strawberry">
+          </div>
 
           Strawberry
 
         </button>
 
+
         <button
           class="frame-btn"
           onclick="selectFrame('flower',this)">
 
-          <div class="frame-color flower"></div>
+          <div
+            class="frame-color flower">
+          </div>
 
           Flower
 
         </button>
 
+
         <button
           class="frame-btn"
           onclick="selectFrame('minimal',this)">
 
-          <div class="frame-color minimal"></div>
+          <div
+            class="frame-color minimal">
+          </div>
 
           Minimal
 
         </button>
+
 
       </div>
 
@@ -1154,12 +1165,12 @@ video{
 
       </div>
 
+
       <input
         id="customText"
         class="text-input"
         placeholder="Tulis sesuatu... ♡"
-        oninput="updateText()"
-      >
+        oninput="updateText()">
 
 
       <div class="editor-buttons">
@@ -1211,6 +1222,7 @@ video{
 
       </div>
 
+
       <div class="editor-buttons">
 
         <button
@@ -1223,50 +1235,7 @@ video{
 
       </div>
 
-
-      <!-- PRINT -->
-
-      <button
-        class="print-btn"
-        onclick="printPhotostrip()">
-
-        🖨️ PRINT PHOTO
-
-      </button>
-
-      <button
-        class="home-btn"
-        onclick="returnHome()">
-
-        ← BACK TO HOME
-
-      </button>
-
     </div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= PRINT SCREEN ================= -->
-
-<section id="printScreen">
-
-  <div class="print-card">
-
-    <div class="print-icon">
-      🖨️
-    </div>
-
-    <h1>
-      Printing...
-    </h1>
-
-    <p>
-      Your memories are being prepared
-      for the thermal printer. ♡
-    </p>
 
   </div>
 
@@ -1275,298 +1244,4 @@ video{
 
 <script>
 
-/* ================= VARIABLES ================= */
-
-const video =
-document.getElementById("camera");
-
-const countdown =
-document.getElementById("countdown");
-
-const getReady =
-document.getElementById("getReady");
-
-const photoNumber =
-document.getElementById("photoNumber");
-
-const boothStatus =
-document.getElementById("boothStatus");
-
-const sessionTimer =
-document.getElementById("sessionTimer");
-
-let stream=null;
-
-let photos=[];
-
-let currentPhoto=0;
-
-let sessionSeconds=300;
-
-let sessionInterval=null;
-
-let sessionActive=false;
-
-let photosLocked=false;
-
-let selectedFrame="pink";
-
-let customText="";
-
-let stickers=[];
-
-let showDate=false;
-
-
-/* ================= ENTER BOOTH ================= */
-
-async function enterBooth(){
-
-  document.getElementById(
-    "homeScreen"
-  ).style.display="none";
-
-  document.getElementById(
-    "boothScreen"
-  ).style.display="block";
-
-  try{
-
-    if(
-      !navigator.mediaDevices ||
-      !navigator.mediaDevices.getUserMedia
-    ){
-
-      alert(
-        "Browser ini tidak mendukung kamera."
-      );
-
-      return;
-
-    }
-
-    stream=
-      await navigator.mediaDevices
-      .getUserMedia({
-
-        video:{
-          facingMode:"user"
-        },
-
-        audio:false
-
-      });
-
-    video.srcObject=stream;
-
-    await video.play();
-
-    startSession();
-
-    boothStatus.innerText=
-      "Get ready... ♡";
-
-    setTimeout(()=>{
-
-      startPhotoSequence();
-
-    },1200);
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    alert(
-      "Kamera tidak bisa digunakan.\n\n"+
-      "Pastikan izin kamera sudah diberikan."
-    );
-
-    return;
-
-  }
-
-}
-
-
-/* ================= SESSION ================= */
-
-function startSession(){
-
-  sessionSeconds=300;
-
-  sessionActive=true;
-
-  updateSessionTimer();
-
-  clearInterval(sessionInterval);
-
-  sessionInterval=
-    setInterval(()=>{
-
-      sessionSeconds--;
-
-      updateSessionTimer();
-
-      if(sessionSeconds<=0){
-
-        sessionSeconds=0;
-
-        sessionActive=false;
-
-        clearInterval(
-          sessionInterval
-        );
-
-        boothStatus.innerText=
-          "Waktu sesi habis.";
-
-        if(currentPhoto<4){
-
-          stopCamera();
-
-          showReview();
-
-        }
-
-      }
-
-    },1000);
-
-}
-
-
-function updateSessionTimer(){
-
-  const min=
-    Math.floor(
-      sessionSeconds/60
-    );
-
-  const sec=
-    sessionSeconds%60;
-
-  sessionTimer.innerText=
-    String(min).padStart(2,"0")+
-    ":"+
-    String(sec).padStart(2,"0");
-
-}
-
-
-/* ================= PHOTO SEQUENCE ================= */
-
-function startPhotoSequence(){
-
-  if(!sessionActive)return;
-
-  photos=[];
-
-  currentPhoto=0;
-
-  nextPhoto();
-
-}
-
-
-function nextPhoto(){
-
-  if(!sessionActive)return;
-
-  if(currentPhoto>=4){
-
-    showReview();
-
-    return;
-
-  }
-
-  currentPhoto++;
-
-  photoNumber.innerText=
-    "PHOTO "+
-    currentPhoto+
-    " / 4";
-
-  getReady.innerText=
-    "GET READY!";
-
-  countdown.innerText="";
-
-  setTimeout(()=>{
-
-    if(!sessionActive)return;
-
-    getReady.innerText="";
-
-    runCountdown();
-
-  },1200);
-
-}
-
-
-/* ================= COUNTDOWN ================= */
-
-function runCountdown(){
-
-  if(!sessionActive)return;
-
-  let number=5;
-
-  countdown.innerText=number;
-
-  const interval=
-    setInterval(()=>{
-
-      if(!sessionActive){
-
-        clearInterval(interval);
-
-        countdown.innerText="";
-
-        return;
-
-      }
-
-      number--;
-
-      if(number>0){
-
-        countdown.innerText=
-          number;
-
-      }
-
-      else{
-
-        clearInterval(interval);
-
-        countdown.innerText="📸";
-
-        takePhoto();
-
-      }
-
-    },1000);
-
-}
-
-
-/* ================= TAKE PHOTO ================= */
-
-function takePhoto(){
-
-  if(!sessionActive)return;
-
-  const canvas=
-    document.createElement(
-      "canvas"
-    );
-
-  const width=
-    video.videoWidth;
-
-  const height=
-    vi
+/* =================

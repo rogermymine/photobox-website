@@ -15,8 +15,8 @@
 
 body{
   font-family:Arial,sans-serif;
-  background:#faf5f7;
-  color:#5d4c57;
+  background:#faf6f8;
+  color:#66515d;
 }
 
 button{
@@ -39,33 +39,31 @@ button{
   padding:30px;
 
   background:
-    radial-gradient(circle at 10% 15%,#f5d6e4,transparent 30%),
-    radial-gradient(circle at 90% 85%,#ddd4f0,transparent 30%),
-    linear-gradient(135deg,#fff9fb,#f5eff7);
+    radial-gradient(circle at 15% 20%,#f3d7e3,transparent 28%),
+    radial-gradient(circle at 85% 80%,#ded5ef,transparent 28%),
+    #faf6f7;
 }
 
 .home-card{
-  width:min(720px,100%);
-  padding:65px 30px;
-  background:rgba(255,255,255,.82);
-  border:1px solid rgba(255,255,255,.8);
-  border-radius:40px;
-  box-shadow:0 30px 80px rgba(90,65,80,.16);
+  width:min(700px,100%);
+  padding:60px 30px;
+  background:rgba(255,255,255,.85);
+  border-radius:35px;
+  box-shadow:0 25px 70px rgba(90,65,80,.15);
 }
 
 .logo{
-  font-size:13px;
-  letter-spacing:6px;
-  color:#ad7f95;
+  font-size:14px;
+  letter-spacing:5px;
+  color:#aa7d91;
   margin-bottom:25px;
 }
 
 .home-title{
   font-family:Georgia,serif;
-  font-size:clamp(45px,8vw,75px);
-  line-height:1.05;
+  font-size:clamp(42px,8vw,72px);
   color:#66515d;
-  margin-bottom:18px;
+  margin-bottom:15px;
 }
 
 .home-subtitle{
@@ -79,18 +77,25 @@ button{
   color:white;
   font-size:18px;
   font-weight:bold;
-  background:linear-gradient(135deg,#c486a2,#8d79a6);
-  box-shadow:0 15px 35px rgba(150,110,140,.3);
-}
 
+  background:
+    linear-gradient(
+      135deg,
+      #bd88a1,
+      #8f7aa5
+    );
+
+  box-shadow:
+    0 15px 30px
+    rgba(150,110,140,.25);
+}
 
 /* ================= BOOTH ================= */
 
 #boothScreen{
   display:none;
   min-height:100vh;
-  background:
-    radial-gradient(circle at 50% 0%,#39303b,#171519 55%);
+  background:#201c21;
   color:white;
   padding:15px;
 }
@@ -98,26 +103,28 @@ button{
 .booth-top{
   max-width:1100px;
   margin:auto;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   padding:10px 5px 15px;
 }
 
 .booth-logo{
-  letter-spacing:5px;
+  letter-spacing:4px;
   font-size:13px;
 }
 
 .session{
-  background:#342d35;
-  padding:9px 16px;
-  border-radius:30px;
+  background:#383139;
+  padding:8px 15px;
+  border-radius:20px;
   font-size:13px;
 }
 
 #sessionTimer{
-  color:#f5bdd3;
+  color:#f5c7d9;
   font-weight:bold;
 }
 
@@ -127,80 +134,104 @@ button{
 }
 
 .video-frame{
-  background:#0d0c0e;
-  border-radius:28px;
+  background:#111;
+  border-radius:25px;
   padding:8px;
   position:relative;
   overflow:hidden;
-  box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
 
 video{
   width:100%;
-  max-height:70vh;
+  max-height:72vh;
+
   object-fit:cover;
   display:block;
-  border-radius:22px;
+
+  border-radius:20px;
+
   transform:scaleX(-1);
 }
 
 .photo-number{
   position:absolute;
+
   top:25px;
   left:25px;
+
   background:rgba(0,0,0,.55);
+
   padding:10px 17px;
+
   border-radius:30px;
+
   font-size:14px;
 }
 
 .get-ready{
   position:absolute;
+
   top:35%;
   left:0;
   right:0;
+
   text-align:center;
-  font-size:clamp(25px,5vw,48px);
+
+  font-size:
+    clamp(
+      25px,
+      5vw,
+      45px
+    );
+
   font-weight:bold;
+
   letter-spacing:3px;
-  text-shadow:0 5px 25px #000;
+
+  text-shadow:
+    0 4px 20px #000;
 }
 
 .countdown{
   position:absolute;
+
   inset:0;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
-  font-size:clamp(90px,18vw,180px);
+
+  font-size:
+    clamp(
+      90px,
+      18vw,
+      180px
+    );
+
   font-weight:bold;
-  text-shadow:0 5px 30px #000;
+
+  text-shadow:
+    0 5px 30px #000;
 }
 
 .booth-bottom{
   text-align:center;
-  padding:20px;
-  color:#d2c2cb;
-}
 
-.start-capture-btn{
-  margin-top:15px;
-  padding:18px 45px;
-  border-radius:50px;
-  color:white;
-  font-size:18px;
-  font-weight:bold;
-  background:linear-gradient(135deg,#c486a2,#8d79a6);
-  box-shadow:0 12px 30px rgba(150,110,140,.3);
-}
+  padding:18px;
 
+  color:#cbbac3;
+}
 
 /* ================= REVIEW ================= */
 
 #reviewScreen{
   display:none;
+
   min-height:100vh;
+
   padding:30px 20px;
+
   background:
     radial-gradient(circle at 10% 10%,#f0d8e4,transparent 25%),
     radial-gradient(circle at 90% 90%,#ddd5ed,transparent 25%),
@@ -209,132 +240,203 @@ video{
 
 .review-title{
   text-align:center;
+
   font-family:Georgia,serif;
+
   font-size:42px;
+
   color:#66515d;
-  margin:20px 0 8px;
+
+  margin:
+    20px 0 8px;
 }
 
 .review-subtitle{
   text-align:center;
+
   color:#9b858f;
+
   margin-bottom:30px;
 }
 
 .review-grid{
   max-width:1000px;
+
   margin:auto;
+
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
+
   gap:18px;
 }
 
 .review-card{
   background:white;
+
   padding:10px;
+
   border-radius:20px;
-  box-shadow:0 10px 30px rgba(80,60,70,.12);
+
+  box-shadow:
+    0 10px 30px
+    rgba(80,60,70,.12);
+
   text-align:center;
 }
 
 .review-card img{
   width:100%;
+
   aspect-ratio:3/4;
+
   object-fit:cover;
+
   border-radius:14px;
+
   display:block;
 }
 
 .review-card h3{
   margin:12px 0;
+
   font-size:14px;
 }
 
 .retake-btn{
   width:100%;
+
   padding:11px;
+
   border-radius:20px;
+
   background:#f2e8ed;
+
   color:#725d68;
+
   font-weight:bold;
 }
 
 .review-actions{
   text-align:center;
+
   margin-top:35px;
 }
 
 .done-btn{
-  padding:17px 35px;
+  padding:
+    17px 35px;
+
   border-radius:35px;
-  background:linear-gradient(135deg,#bd88a1,#8f7aa5);
+
+  background:
+    linear-gradient(
+      135deg,
+      #bd88a1,
+      #8f7aa5
+    );
+
   color:white;
+
   font-size:17px;
+
   font-weight:bold;
 }
-
 
 /* ================= CONFIRM ================= */
 
 #confirmScreen{
   display:none;
+
   min-height:100vh;
+
   align-items:center;
   justify-content:center;
+
   text-align:center;
+
   padding:30px;
+
   background:#faf6f8;
 }
 
 .confirm-card{
   max-width:500px;
+
   background:white;
+
   padding:45px 30px;
+
   border-radius:30px;
-  box-shadow:0 20px 60px rgba(80,60,70,.15);
+
+  box-shadow:
+    0 20px 60px
+    rgba(80,60,70,.15);
 }
 
 .confirm-card h1{
   font-family:Georgia,serif;
+
   margin-bottom:15px;
 }
 
 .confirm-card p{
   color:#927e88;
+
   line-height:1.6;
+
   margin-bottom:30px;
 }
 
 .confirm-buttons{
   display:flex;
+
   gap:12px;
+
   justify-content:center;
+
   flex-wrap:wrap;
 }
 
 .back-btn{
   padding:15px 25px;
+
   border-radius:30px;
+
   background:#eee7eb;
+
   color:#705c67;
+
   font-weight:bold;
 }
 
 .confirm-btn{
   padding:15px 25px;
+
   border-radius:30px;
-  background:linear-gradient(135deg,#bd88a1,#8f7aa5);
+
+  background:
+    linear-gradient(
+      135deg,
+      #bd88a1,
+      #8f7aa5
+    );
+
   color:white;
+
   font-weight:bold;
 }
-
 
 /* ================= EDITOR ================= */
 
 #editorScreen{
   display:none;
+
   min-height:100vh;
+
   padding:25px;
+
   background:
     radial-gradient(circle at 10% 10%,#f0d8e4,transparent 25%),
     radial-gradient(circle at 90% 90%,#ddd5ed,transparent 25%),
@@ -343,140 +445,356 @@ video{
 
 .editor-title{
   text-align:center;
+
   font-family:Georgia,serif;
+
   font-size:38px;
+
   color:#66515d;
-  margin:15px 0 8px;
+
+  margin:
+    15px 0 8px;
 }
 
 .editor-subtitle{
   text-align:center;
+
   color:#9b858f;
+
   margin-bottom:10px;
 }
 
 .locked{
   text-align:center;
+
   font-size:12px;
+
   color:#a58f99;
+
   margin-bottom:25px;
 }
 
 .editor-layout{
   max-width:1150px;
+
   margin:auto;
+
   display:grid;
-  grid-template-columns:minmax(280px,400px) 1fr;
+
+  grid-template-columns:
+    minmax(280px,400px)
+    1fr;
+
   gap:30px;
+
   align-items:start;
 }
 
 .preview-card{
   background:white;
+
   padding:18px;
+
   border-radius:25px;
-  box-shadow:0 20px 50px rgba(90,65,80,.13);
+
+  box-shadow:
+    0 20px 50px
+    rgba(90,65,80,.13);
+
   position:sticky;
+
   top:20px;
 }
 
 #previewCanvas{
   width:100%;
+
+  max-height:72vh;
+
+  object-fit:contain;
+
   display:block;
+
   border-radius:12px;
 }
 
 .controls-card{
-  background:rgba(255,255,255,.9);
+  background:
+    rgba(255,255,255,.85);
+
   border-radius:25px;
+
   padding:22px;
-  box-shadow:0 20px 50px rgba(90,65,80,.1);
+
+  box-shadow:
+    0 20px 50px
+    rgba(90,65,80,.1);
 }
 
 .control-title{
   font-weight:bold;
+
   margin-bottom:15px;
 }
 
 .frame-grid{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
+
+  grid-template-columns:
+    repeat(5,1fr);
+
   gap:10px;
 }
 
 .frame-btn{
   background:white;
-  border:2px solid #eee;
+
+  border:
+    2px solid #eee;
+
   border-radius:15px;
+
   padding:7px;
+
   color:#725d68;
+
   font-size:11px;
 }
 
 .frame-btn.selected{
   border-color:#b985a0;
+
   background:#f9e8ef;
 }
 
 .frame-color{
   height:70px;
+
   border-radius:10px;
+
   margin-bottom:6px;
 }
 
-.pink{background:linear-gradient(135deg,#ffd6e5,#efa8c2)}
-.sakura{background:linear-gradient(135deg,#ffe6ee,#f6b8ce)}
-.lavender{background:linear-gradient(135deg,#e2d6f4,#bba7dc)}
-.blue{background:linear-gradient(135deg,#d5efff,#91c9e9)}
-.star{background:linear-gradient(135deg,#302b49,#8175a8)}
-.cloud{background:linear-gradient(135deg,#eef8ff,#c7e5f8)}
-.teddy{background:linear-gradient(135deg,#ead0b6,#c4976d)}
-.strawberry{background:linear-gradient(135deg,#ffd1d9,#ef8ca1)}
-.flower{background:linear-gradient(135deg,#f7dff0,#d5afd0)}
-.minimal{background:#eeeae7}
+.pink{
+  background:
+    linear-gradient(
+      135deg,
+      #ffd6e5,
+      #efa8c2
+    );
+}
+
+.sakura{
+  background:
+    linear-gradient(
+      135deg,
+      #ffe6ee,
+      #f6b8ce
+    );
+}
+
+.lavender{
+  background:
+    linear-gradient(
+      135deg,
+      #e2d6f4,
+      #bba7dc
+    );
+}
+
+.blue{
+  background:
+    linear-gradient(
+      135deg,
+      #d5efff,
+      #91c9e9
+    );
+}
+
+.star{
+  background:
+    linear-gradient(
+      135deg,
+      #302b49,
+      #8175a8
+    );
+}
+
+.cloud{
+  background:
+    linear-gradient(
+      135deg,
+      #eef8ff,
+      #c7e5f8
+    );
+}
+
+.teddy{
+  background:
+    linear-gradient(
+      135deg,
+      #ead0b6,
+      #c4976d
+    );
+}
+
+.strawberry{
+  background:
+    linear-gradient(
+      135deg,
+      #ffd1d9,
+      #ef8ca1
+    );
+}
+
+.flower{
+  background:
+    linear-gradient(
+      135deg,
+      #f7dff0,
+      #d5afd0
+    );
+}
+
+.minimal{
+  background:#eeeae7;
+}
 
 .text-input{
   width:100%;
+
   padding:14px;
-  border:1px solid #ddd;
+
+  border:
+    1px solid #ddd;
+
   border-radius:15px;
+
   margin-top:10px;
 }
 
 .editor-buttons{
   display:flex;
+
   flex-wrap:wrap;
+
   gap:10px;
+
   margin-top:20px;
 }
 
 .tool-btn{
-  padding:13px 18px;
+  padding:
+    13px 18px;
+
   border-radius:30px;
+
   background:#f1e9ed;
+
   color:#715c67;
+
   font-weight:bold;
 }
 
-.download-btn{
-  display:block;
-  text-align:center;
-  text-decoration:none;
-  padding:15px;
+.print-btn{
+  width:100%;
+
+  padding:17px;
+
   border-radius:30px;
+
   color:white;
-  background:linear-gradient(135deg,#bd88a1,#8f7aa5);
+
+  background:
+    linear-gradient(
+      135deg,
+      #bd88a1,
+      #8f7aa5
+    );
+
+  font-size:16px;
+
   font-weight:bold;
-  margin-top:15px;
+
+  margin-top:20px;
 }
 
+.home-btn{
+  width:100%;
+
+  padding:15px;
+
+  border-radius:30px;
+
+  background:#eee7eb;
+
+  color:#705c67;
+
+  font-weight:bold;
+
+  margin-top:10px;
+}
+
+/* ================= PRINTING ================= */
+
+#printScreen{
+  display:none;
+
+  min-height:100vh;
+
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      #f3d7e3,
+      transparent 30%
+    ),
+    #faf6f8;
+}
+
+.print-card{
+  background:white;
+
+  padding:50px 30px;
+
+  border-radius:30px;
+
+  box-shadow:
+    0 20px 60px
+    rgba(80,60,70,.15);
+
+  max-width:450px;
+}
+
+.print-icon{
+  font-size:65px;
+
+  margin-bottom:20px;
+}
+
+.print-card h1{
+  font-family:Georgia,serif;
+
+  margin-bottom:12px;
+}
+
+.print-card p{
+  color:#927e88;
+
+  line-height:1.6;
+}
 
 /* ================= RESPONSIVE ================= */
 
 @media(max-width:800px){
 
   .review-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
   .editor-layout{
@@ -485,10 +803,19 @@ video{
 
   .preview-card{
     position:relative;
+
     top:0;
+
     max-width:420px;
+
     margin:auto;
   }
+
+  .frame-grid{
+    grid-template-columns:
+      repeat(3,1fr);
+  }
+
 }
 
 @media(max-width:500px){
@@ -498,7 +825,8 @@ video{
   }
 
   .frame-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
 }
@@ -519,15 +847,20 @@ video{
     </div>
 
     <h1 class="home-title">
-      Capture<br>Your Moment
+      Capture<br>
+      Your Moment
     </h1>
 
     <p class="home-subtitle">
       Four photos. One beautiful memory. ♡
     </p>
 
-    <button class="start-btn" onclick="enterBooth()">
+    <button
+      class="start-btn"
+      onclick="enterBooth()">
+
       START PHOTOBOOTH
+
     </button>
 
   </div>
@@ -535,7 +868,7 @@ video{
 </section>
 
 
-<!-- ================= PHOTOBOOTH ================= -->
+<!-- ================= BOOTH ================= -->
 
 <section id="boothScreen" class="screen">
 
@@ -546,7 +879,10 @@ video{
     </div>
 
     <div class="session">
-      SESSION <span id="sessionTimer">05:00</span>
+      SESSION
+      <span id="sessionTimer">
+        05:00
+      </span>
     </div>
 
   </div>
@@ -555,15 +891,29 @@ video{
 
     <div class="video-frame">
 
-      <video id="camera" autoplay playsinline></video>
+      <video
+        id="camera"
+        autoplay
+        playsinline>
+      </video>
 
-      <div class="photo-number" id="photoNumber">
+      <div
+        class="photo-number"
+        id="photoNumber">
+
         READY
+
       </div>
 
-      <div class="get-ready" id="getReady"></div>
+      <div
+        class="get-ready"
+        id="getReady">
+      </div>
 
-      <div class="countdown" id="countdown"></div>
+      <div
+        class="countdown"
+        id="countdown">
+      </div>
 
     </div>
 
@@ -572,15 +922,8 @@ video{
   <div class="booth-bottom">
 
     <div id="boothStatus">
-      Camera ready ♡
+      Get ready... ♡
     </div>
-
-    <button
-      id="startCaptureButton"
-      class="start-capture-btn"
-      onclick="startPhotoSequence()">
-      TAP TO START ✦
-    </button>
 
   </div>
 
@@ -596,16 +939,22 @@ video{
   </h1>
 
   <p class="review-subtitle">
-    Make sure you're happy with all four photos.
+    Retake anything you're not happy with.
   </p>
 
-  <div class="review-grid" id="reviewGrid"></div>
+  <div
+    class="review-grid"
+    id="reviewGrid">
+  </div>
 
   <div class="review-actions">
 
-    <button class="done-btn"
+    <button
+      class="done-btn"
       onclick="openConfirm()">
+
       I'M DONE ♡
+
     </button>
 
   </div>
@@ -624,21 +973,32 @@ video{
     </h1>
 
     <p>
+
       Once you continue to the editor,
       your four photos will be locked.
+
+      <br><br>
+
       You won't be able to retake them anymore.
+
     </p>
 
     <div class="confirm-buttons">
 
-      <button class="back-btn"
+      <button
+        class="back-btn"
         onclick="backToReview()">
+
         ← CHECK AGAIN
+
       </button>
 
-      <button class="confirm-btn"
+      <button
+        class="confirm-btn"
         onclick="lockPhotosAndEdit()">
+
         YES, I'M DONE ✦
+
       </button>
 
     </div>
@@ -668,13 +1028,9 @@ video{
 
     <div class="preview-card">
 
-      <canvas id="previewCanvas"></canvas>
-
-      <a id="downloadButton"
-        class="download-btn"
-        download="your-photobox.jpg">
-        💾 DOWNLOAD
-      </a>
+      <canvas
+        id="previewCanvas">
+      </canvas>
 
     </div>
 
@@ -687,71 +1043,115 @@ video{
 
       <div class="frame-grid">
 
-        <button class="frame-btn selected"
+        <button
+          class="frame-btn selected"
           onclick="selectFrame('pink',this)">
+
           <div class="frame-color pink"></div>
+
           Pink
+
         </button>
 
-        <button class="frame-btn"
+        <button
+          class="frame-btn"
           onclick="selectFrame('sakura',this)">
+
           <div class="frame-color sakura"></div>
+
           Sakura
+
         </button>
 
-        <button class="frame-btn"
+        <button
+          class="frame-btn"
           onclick="selectFrame('lavender',this)">
+
           <div class="frame-color lavender"></div>
+
           Lavender
+
         </button>
 
-        <button class="frame-btn"
+        <button
+          class="frame-btn"
           onclick="selectFrame('blue',this)">
+
           <div class="frame-color blue"></div>
+
           Baby Blue
+
         </button>
 
-        <button class="frame-btn"
+        <button
+          class="frame-btn"
           onclick="selectFrame('star',this)">
+
           <div class="frame-color star"></div>
+
           Starry
+
         </button>
 
-        <button class="frame-btn"
+        <button
+          class="frame-btn"
           onclick="selectFrame('cloud',this)">
+
           <div class="frame-color cloud"></div>
+
           Cloud
+
         </button>
 
-        <button class="frame-btn"
+        <button
+          class="frame-btn"
           onclick="selectFrame('teddy',this)">
+
           <div class="frame-color teddy"></div>
+
           Teddy
+
         </button>
 
-        <button class="frame-btn"
+        <button
+          class="frame-btn"
           onclick="selectFrame('strawberry',this)">
+
           <div class="frame-color strawberry"></div>
+
           Strawberry
+
         </button>
 
-        <button class="frame-btn"
+        <button
+          class="frame-btn"
           onclick="selectFrame('flower',this)">
+
           <div class="frame-color flower"></div>
+
           Flower
+
         </button>
 
-        <button class="frame-btn"
+        <button
+          class="frame-btn"
           onclick="selectFrame('minimal',this)">
+
           <div class="frame-color minimal"></div>
+
           Minimal
+
         </button>
 
       </div>
 
 
-      <div class="control-title" style="margin-top:25px;">
+      <div
+        class="control-title"
+        style="margin-top:25px;">
+
         ADD TEXT
+
       </div>
 
       <input
@@ -764,41 +1164,109 @@ video{
 
       <div class="editor-buttons">
 
-        <button class="tool-btn"
-          onclick="addSticker('♡')">♡</button>
+        <button
+          class="tool-btn"
+          onclick="addSticker('♡')">
+          ♡
+        </button>
 
-        <button class="tool-btn"
-          onclick="addSticker('☆')">☆</button>
+        <button
+          class="tool-btn"
+          onclick="addSticker('☆')">
+          ☆
+        </button>
 
-        <button class="tool-btn"
-          onclick="addSticker('✦')">✦</button>
+        <button
+          class="tool-btn"
+          onclick="addSticker('✦')">
+          ✦
+        </button>
 
-        <button class="tool-btn"
-          onclick="addSticker('🌸')">🌸</button>
+        <button
+          class="tool-btn"
+          onclick="addSticker('🌸')">
+          🌸
+        </button>
 
-        <button class="tool-btn"
-          onclick="addSticker('🎀')">🎀</button>
+        <button
+          class="tool-btn"
+          onclick="addSticker('🎀')">
+          🎀
+        </button>
 
-        <button class="tool-btn"
-          onclick="addSticker('✨')">✨</button>
-
-      </div>
-
-
-      <div class="control-title" style="margin-top:25px;">
-        DATE
-      </div>
-
-      <div class="editor-buttons">
-
-        <button class="tool-btn"
-          onclick="toggleDate()">
-          📅 ADD DATE
+        <button
+          class="tool-btn"
+          onclick="addSticker('✨')">
+          ✨
         </button>
 
       </div>
 
+
+      <div
+        class="control-title"
+        style="margin-top:25px;">
+
+        DATE
+
+      </div>
+
+      <div class="editor-buttons">
+
+        <button
+          class="tool-btn"
+          onclick="toggleDate()">
+
+          📅 ADD DATE
+
+        </button>
+
+      </div>
+
+
+      <!-- PRINT -->
+
+      <button
+        class="print-btn"
+        onclick="printPhotostrip()">
+
+        🖨️ PRINT PHOTO
+
+      </button>
+
+      <button
+        class="home-btn"
+        onclick="returnHome()">
+
+        ← BACK TO HOME
+
+      </button>
+
     </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PRINT SCREEN ================= -->
+
+<section id="printScreen">
+
+  <div class="print-card">
+
+    <div class="print-icon">
+      🖨️
+    </div>
+
+    <h1>
+      Printing...
+    </h1>
+
+    <p>
+      Your memories are being prepared
+      for the thermal printer. ♡
+    </p>
 
   </div>
 
@@ -827,9 +1295,6 @@ document.getElementById("boothStatus");
 const sessionTimer =
 document.getElementById("sessionTimer");
 
-const startCaptureButton =
-document.getElementById("startCaptureButton");
-
 let stream=null;
 
 let photos=[];
@@ -841,8 +1306,6 @@ let sessionSeconds=300;
 let sessionInterval=null;
 
 let sessionActive=false;
-
-let sequenceRunning=false;
 
 let photosLocked=false;
 
@@ -859,28 +1322,39 @@ let showDate=false;
 
 async function enterBooth(){
 
-  document.getElementById("homeScreen").style.display="none";
+  document.getElementById(
+    "homeScreen"
+  ).style.display="none";
 
-  document.getElementById("boothScreen").style.display="block";
+  document.getElementById(
+    "boothScreen"
+  ).style.display="block";
 
   try{
 
-    if(!navigator.mediaDevices ||
-       !navigator.mediaDevices.getUserMedia){
+    if(
+      !navigator.mediaDevices ||
+      !navigator.mediaDevices.getUserMedia
+    ){
 
       alert(
         "Browser ini tidak mendukung kamera."
       );
 
       return;
+
     }
 
     stream=
-      await navigator.mediaDevices.getUserMedia({
+      await navigator.mediaDevices
+      .getUserMedia({
+
         video:{
           facingMode:"user"
         },
+
         audio:false
+
       });
 
     video.srcObject=stream;
@@ -890,19 +1364,26 @@ async function enterBooth(){
     startSession();
 
     boothStatus.innerText=
-      "Camera ready ♡ Tap the button when you're ready.";
+      "Get ready... ♡";
 
-    startCaptureButton.style.display=
-      "inline-block";
+    setTimeout(()=>{
+
+      startPhotoSequence();
+
+    },1200);
 
   }
 
   catch(error){
 
+    console.error(error);
+
     alert(
-      "Kamera tidak bisa digunakan: "+
-      error.message
+      "Kamera tidak bisa digunakan.\n\n"+
+      "Pastikan izin kamera sudah diberikan."
     );
+
+    return;
 
   }
 
@@ -924,8 +1405,6 @@ function startSession(){
   sessionInterval=
     setInterval(()=>{
 
-      if(!sessionActive)return;
-
       sessionSeconds--;
 
       updateSessionTimer();
@@ -936,41 +1415,18 @@ function startSession(){
 
         sessionActive=false;
 
-        sequenceRunning=false;
-
-        clearInterval(sessionInterval);
+        clearInterval(
+          sessionInterval
+        );
 
         boothStatus.innerText=
-          "SESSION TIME IS OVER ♡";
+          "Waktu sesi habis.";
 
-        countdown.innerText="";
+        if(currentPhoto<4){
 
-        getReady.innerText="";
-
-        startCaptureButton.style.display=
-          "none";
-
-        stopCamera();
-
-        if(photos.length===4){
+          stopCamera();
 
           showReview();
-
-        }else{
-
-          alert(
-            "Waktu sesi habis. Foto yang berhasil diambil akan digunakan."
-          );
-
-          if(photos.length>0){
-
-            showReview();
-
-          }else{
-
-            location.reload();
-
-          }
 
         }
 
@@ -984,7 +1440,9 @@ function startSession(){
 function updateSessionTimer(){
 
   const min=
-    Math.floor(sessionSeconds/60);
+    Math.floor(
+      sessionSeconds/60
+    );
 
   const sec=
     sessionSeconds%60;
@@ -997,75 +1455,44 @@ function updateSessionTimer(){
 }
 
 
-/* ================= START PHOTO SEQUENCE ================= */
+/* ================= PHOTO SEQUENCE ================= */
 
 function startPhotoSequence(){
 
-  if(!sessionActive){
-
-    alert("Sesi foto sudah habis.");
-
-    return;
-  }
-
-  if(sequenceRunning)return;
-
-  sequenceRunning=true;
+  if(!sessionActive)return;
 
   photos=[];
 
   currentPhoto=0;
 
-  startCaptureButton.style.display="none";
-
-  boothStatus.innerText=
-    "Get ready... ♡";
-
-  setTimeout(()=>{
-
-    if(sessionActive){
-
-      nextPhoto();
-
-    }
-
-  },800);
+  nextPhoto();
 
 }
 
 
-/* ================= NEXT PHOTO ================= */
-
 function nextPhoto(){
 
-  if(!sessionActive){
-
-    sequenceRunning=false;
-
-    return;
-  }
+  if(!sessionActive)return;
 
   if(currentPhoto>=4){
-
-    sequenceRunning=false;
 
     showReview();
 
     return;
+
   }
 
   currentPhoto++;
 
   photoNumber.innerText=
-    "PHOTO "+currentPhoto+" / 4";
+    "PHOTO "+
+    currentPhoto+
+    " / 4";
 
   getReady.innerText=
     "GET READY!";
 
   countdown.innerText="";
-
-  boothStatus.innerText=
-    "Get ready for photo "+currentPhoto+" ♡";
 
   setTimeout(()=>{
 
@@ -1100,6 +1527,7 @@ function runCountdown(){
         countdown.innerText="";
 
         return;
+
       }
 
       number--;
@@ -1109,7 +1537,9 @@ function runCountdown(){
         countdown.innerText=
           number;
 
-      }else{
+      }
+
+      else{
 
         clearInterval(interval);
 
@@ -1131,110 +1561,12 @@ function takePhoto(){
   if(!sessionActive)return;
 
   const canvas=
-    document.createElement("canvas");
+    document.createElement(
+      "canvas"
+    );
 
   const width=
     video.videoWidth;
 
   const height=
-    video.videoHeight;
-
-  if(!width || !height){
-
-    alert("Kamera belum siap. Coba lagi.");
-
-    sequenceRunning=false;
-
-    return;
-  }
-
-  canvas.width=width;
-
-  canvas.height=height;
-
-  const ctx=
-    canvas.getContext("2d");
-
-  ctx.save();
-
-  ctx.translate(width,0);
-
-  ctx.scale(-1,1);
-
-  ctx.drawImage(
-    video,
-    0,
-    0,
-    width,
-    height
-  );
-
-  ctx.restore();
-
-  photos[currentPhoto-1]=
-    canvas.toDataURL(
-      "image/jpeg",
-      .95
-    );
-
-  boothStatus.innerText=
-    "Photo "+currentPhoto+" captured ✦";
-
-  setTimeout(()=>{
-
-    countdown.innerText="";
-
-    if(!sessionActive)return;
-
-    if(currentPhoto<4){
-
-      nextPhoto();
-
-    }else{
-
-      sequenceRunning=false;
-
-      showReview();
-
-    }
-
-  },1200);
-
-}
-
-
-/* ================= STOP CAMERA ================= */
-
-function stopCamera(){
-
-  if(stream){
-
-    stream.getTracks()
-    .forEach(track=>{
-      track.stop();
-    });
-
-    stream=null;
-
-  }
-
-}
-
-
-/* ================= REVIEW ================= */
-
-function showReview(){
-
-  clearInterval(sessionInterval);
-
-  sessionActive=false;
-
-  sequenceRunning=false;
-
-  stopCamera();
-
-  document.getElementById(
-    "boothScreen"
-  ).style.display="none";
-
-  document.getElementById(
+    vi

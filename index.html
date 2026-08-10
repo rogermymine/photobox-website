@@ -1,47 +1,31 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#f5dce8">
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
-
-<meta
-  name="theme-color"
-  content="#f5dce8"
->
-
-<title>Your Photobox ♡</title>
+<title>Your Photobox</title>
 
 <style>
-
-/* =====================================================
-   RESET
-===================================================== */
-
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
 }
 
-html,
-body{
+html,body{
   width:100%;
   min-height:100%;
 }
 
 body{
   font-family:Arial,sans-serif;
-  background:#faf6f8;
+  background:#faf7f8;
   color:#66515d;
 }
 
-button,
-input{
+button,input{
   font-family:inherit;
 }
 
@@ -54,46 +38,24 @@ button{
   min-height:100vh;
 }
 
-
-/* =====================================================
-   HOME
-===================================================== */
+/* ================= HOME ================= */
 
 #homeScreen{
-
   display:flex;
-
   align-items:center;
   justify-content:center;
-
   text-align:center;
-
   padding:25px;
 
   background:
-    radial-gradient(
-      circle at 10% 15%,
-      #f5d5e4,
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 90% 80%,
-      #ddd4f0,
-      transparent 30%
-    ),
-    linear-gradient(
-      135deg,
-      #fffafa,
-      #f7f1f5
-    );
+    radial-gradient(circle at 10% 15%,#f5d5e4,transparent 28%),
+    radial-gradient(circle at 90% 80%,#ddd4f0,transparent 30%),
+    linear-gradient(135deg,#fffafa,#f7f1f5);
 }
 
 .home-card{
-
   width:min(760px,100%);
-
   padding:65px 30px;
-
   border-radius:38px;
 
   background:rgba(255,255,255,.84);
@@ -105,68 +67,39 @@ button{
 }
 
 .logo{
-
-  font-size:13px;
-
+  font-size:12px;
   letter-spacing:6px;
-
   color:#aa7d91;
-
   margin-bottom:25px;
 }
 
 .home-title{
-
   font-family:Georgia,serif;
-
-  font-size:clamp(
-    45px,
-    9vw,
-    78px
-  );
-
+  font-size:clamp(45px,9vw,78px);
   line-height:1.02;
-
   color:#66515d;
-
   margin-bottom:20px;
 }
 
 .home-subtitle{
-
   color:#9b858f;
-
   font-size:16px;
-
   margin-bottom:40px;
 }
 
 .start-btn{
-
   padding:20px 58px;
-
   border-radius:50px;
 
   color:white;
-
-  font-size:18px;
-
+  font-size:17px;
   font-weight:bold;
 
   background:
-    linear-gradient(
-      135deg,
-      #bd88a1,
-      #8f7aa5
-    );
+    linear-gradient(135deg,#bd88a1,#8f7aa5);
 
   box-shadow:
-    0 15px 35px rgba(
-      150,
-      110,
-      140,
-      .28
-    );
+    0 15px 35px rgba(150,110,140,.28);
 
   transition:.2s;
 }
@@ -176,91 +109,59 @@ button{
 }
 
 
-/* =====================================================
-   BOOTH
-===================================================== */
+/* ================= BOOTH ================= */
 
 #boothScreen{
-
   display:none;
-
   min-height:100vh;
 
   background:
-    radial-gradient(
-      circle at 20% 10%,
-      #382d37,
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 90% 90%,
-      #2d2632,
-      transparent 30%
-    ),
+    radial-gradient(circle at 20% 10%,#382d37,transparent 30%),
+    radial-gradient(circle at 90% 90%,#2d2632,transparent 30%),
     #1d191e;
 
   color:white;
-
   padding:15px;
 }
 
 .booth-top{
-
   max-width:1150px;
-
   margin:auto;
 
   display:flex;
-
   justify-content:space-between;
-
   align-items:center;
 
   padding:8px 5px 15px;
 }
 
 .booth-logo{
-
   letter-spacing:5px;
-
   font-size:13px;
 }
 
 .session{
-
   padding:9px 17px;
-
   border-radius:30px;
-
   background:#383139;
-
   font-size:13px;
 }
 
 #sessionTimer{
-
   color:#f5c7d9;
-
   font-weight:bold;
 }
 
 .camera-area{
-
   max-width:1150px;
-
   margin:auto;
 }
 
 .video-frame{
-
   position:relative;
-
   background:#090909;
-
   border-radius:28px;
-
   padding:8px;
-
   overflow:hidden;
 
   box-shadow:
@@ -268,15 +169,10 @@ button{
 }
 
 video{
-
   width:100%;
-
   max-height:72vh;
-
   object-fit:cover;
-
   display:block;
-
   border-radius:22px;
 
   transform:scaleX(-1);
@@ -285,124 +181,121 @@ video{
 }
 
 .photo-number{
-
   position:absolute;
-
   top:25px;
-
   left:25px;
 
-  padding:10px 17px;
-
+  padding:9px 16px;
   border-radius:30px;
 
   background:rgba(0,0,0,.55);
 
-  font-size:14px;
+  font-size:13px;
+  letter-spacing:1px;
 }
 
 .get-ready{
-
   position:absolute;
-
-  top:38%;
-
-  left:0;
-
-  right:0;
-
-  text-align:center;
-
-  font-size:clamp(
-    25px,
-    5vw,
-    48px
-  );
-
-  font-weight:bold;
-
-  letter-spacing:3px;
-
-  text-shadow:
-    0 5px 30px #000;
-
-  pointer-events:none;
-}
-
-.countdown{
-
-  position:absolute;
-
   inset:0;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
-  font-size:clamp(
-    100px,
-    20vw,
-    200px
-  );
+  text-align:center;
 
+  font-size:clamp(28px,5vw,52px);
+  font-weight:bold;
+  letter-spacing:2px;
+
+  text-shadow:0 5px 30px #000;
+
+  pointer-events:none;
+
+  opacity:0;
+}
+
+.get-ready.show{
+  animation:getReadyAnim 1.8s ease forwards;
+}
+
+@keyframes getReadyAnim{
+  0%{
+    opacity:0;
+    transform:scale(.96);
+  }
+
+  25%{
+    opacity:1;
+    transform:scale(1);
+  }
+
+  75%{
+    opacity:1;
+  }
+
+  100%{
+    opacity:0;
+  }
+}
+
+.countdown{
+  position:absolute;
+  inset:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:clamp(110px,20vw,210px);
   font-weight:bold;
 
-  text-shadow:
-    0 5px 35px #000;
+  text-shadow:0 5px 35px #000;
 
   pointer-events:none;
 }
 
 .booth-bottom{
-
   max-width:1000px;
-
   margin:auto;
 
   text-align:center;
 
-  padding:18px;
+  padding:20px;
 
   color:#d0c0ca;
 }
 
-.start-session-btn{
+.booth-status{
+  min-height:25px;
+}
 
-  margin-top:18px;
+.session-start{
+  margin-top:20px;
 
-  padding:17px 40px;
+  padding:17px 42px;
 
   border-radius:40px;
 
   background:
-    linear-gradient(
-      135deg,
-      #bd88a1,
-      #8f7aa5
-    );
+    linear-gradient(135deg,#bd88a1,#8f7aa5);
 
   color:white;
 
-  font-size:17px;
-
   font-weight:bold;
+  font-size:16px;
 
   box-shadow:
-    0 12px 30px rgba(
-      170,
-      120,
-      150,
-      .25
-    );
+    0 12px 30px rgba(150,110,140,.25);
+}
+
+.session-start:disabled{
+  opacity:.4;
 }
 
 .permission-box{
-
   max-width:500px;
-
-  margin:25px auto 0;
+  margin:20px auto;
 
   padding:20px;
 
@@ -416,7 +309,6 @@ video{
 }
 
 .retry-camera{
-
   margin-top:15px;
 
   padding:12px 25px;
@@ -431,12 +323,9 @@ video{
 }
 
 
-/* =====================================================
-   REVIEW
-===================================================== */
+/* ================= REVIEW ================= */
 
 #reviewScreen{
-
   display:none;
 
   min-height:100vh;
@@ -444,30 +333,17 @@ video{
   padding:30px 20px 50px;
 
   background:
-    radial-gradient(
-      circle at 10% 10%,
-      #f0d8e4,
-      transparent 25%
-    ),
-    radial-gradient(
-      circle at 90% 90%,
-      #ddd5ed,
-      transparent 25%
-    ),
+    radial-gradient(circle at 10% 10%,#f0d8e4,transparent 25%),
+    radial-gradient(circle at 90% 90%,#ddd5ed,transparent 25%),
     #faf7f8;
 }
 
 .review-title{
-
   text-align:center;
 
   font-family:Georgia,serif;
 
-  font-size:clamp(
-    35px,
-    6vw,
-    48px
-  );
+  font-size:clamp(35px,6vw,48px);
 
   color:#66515d;
 
@@ -475,41 +351,32 @@ video{
 }
 
 .review-subtitle{
-
   text-align:center;
-
   color:#9b858f;
-
   margin-bottom:30px;
 }
 
 .review-time{
-
   text-align:center;
-
   margin-bottom:20px;
-
   font-size:13px;
-
   color:#a58f99;
 }
 
 .review-grid{
-
-  max-width:1050px;
+  max-width:900px;
 
   margin:auto;
 
   display:grid;
 
   grid-template-columns:
-    repeat(4,1fr);
+    repeat(3,1fr);
 
   gap:18px;
 }
 
 .review-card{
-
   background:white;
 
   padding:10px;
@@ -517,18 +384,12 @@ video{
   border-radius:22px;
 
   box-shadow:
-    0 12px 35px rgba(
-      80,
-      60,
-      70,
-      .12
-    );
+    0 12px 35px rgba(80,60,70,.12);
 
   text-align:center;
 }
 
 .review-card img{
-
   width:100%;
 
   aspect-ratio:4/5;
@@ -541,7 +402,6 @@ video{
 }
 
 .review-card h3{
-
   margin:12px 0;
 
   font-size:14px;
@@ -550,7 +410,6 @@ video{
 }
 
 .retake-btn{
-
   width:100%;
 
   padding:11px;
@@ -564,32 +423,18 @@ video{
   font-weight:bold;
 }
 
-.retake-btn:disabled{
-
-  opacity:.4;
-
-  cursor:not-allowed;
-}
-
 .review-actions{
-
   text-align:center;
-
   margin-top:35px;
 }
 
 .done-btn{
-
   padding:17px 38px;
 
   border-radius:35px;
 
   background:
-    linear-gradient(
-      135deg,
-      #bd88a1,
-      #8f7aa5
-    );
+    linear-gradient(135deg,#bd88a1,#8f7aa5);
 
   color:white;
 
@@ -599,18 +444,14 @@ video{
 }
 
 
-/* =====================================================
-   CONFIRM
-===================================================== */
+/* ================= CONFIRM ================= */
 
 #confirmScreen{
-
   display:none;
 
   min-height:100vh;
 
   align-items:center;
-
   justify-content:center;
 
   text-align:center;
@@ -618,21 +459,12 @@ video{
   padding:30px;
 
   background:
-    radial-gradient(
-      circle at 10% 10%,
-      #f0d8e4,
-      transparent 25%
-    ),
-    radial-gradient(
-      circle at 90% 90%,
-      #ddd5ed,
-      transparent 25%
-    ),
+    radial-gradient(circle at 10% 10%,#f0d8e4,transparent 25%),
+    radial-gradient(circle at 90% 90%,#ddd5ed,transparent 25%),
     #faf7f8;
 }
 
 .confirm-card{
-
   width:min(520px,100%);
 
   background:white;
@@ -642,77 +474,50 @@ video{
   border-radius:30px;
 
   box-shadow:
-    0 20px 60px rgba(
-      80,
-      60,
-      70,
-      .15
-    );
+    0 20px 60px rgba(80,60,70,.15);
 }
 
 .confirm-card h1{
-
   font-family:Georgia,serif;
-
   margin-bottom:15px;
 }
 
 .confirm-card p{
-
   color:#927e88;
-
   line-height:1.6;
-
   margin-bottom:30px;
 }
 
 .confirm-buttons{
-
   display:flex;
-
   gap:12px;
-
   justify-content:center;
-
   flex-wrap:wrap;
 }
 
 .back-btn,
 .confirm-btn{
-
   padding:15px 25px;
-
   border-radius:30px;
-
   font-weight:bold;
 }
 
 .back-btn{
-
   background:#eee7eb;
-
   color:#705c67;
 }
 
 .confirm-btn{
-
   background:
-    linear-gradient(
-      135deg,
-      #bd88a1,
-      #8f7aa5
-    );
+    linear-gradient(135deg,#bd88a1,#8f7aa5);
 
   color:white;
 }
 
 
-/* =====================================================
-   EDITOR
-===================================================== */
+/* ================= EDITOR ================= */
 
 #editorScreen{
-
   display:none;
 
   min-height:100vh;
@@ -720,30 +525,17 @@ video{
   padding:25px;
 
   background:
-    radial-gradient(
-      circle at 10% 10%,
-      #f0d8e4,
-      transparent 25%
-    ),
-    radial-gradient(
-      circle at 90% 90%,
-      #ddd5ed,
-      transparent 25%
-    ),
+    radial-gradient(circle at 10% 10%,#f0d8e4,transparent 25%),
+    radial-gradient(circle at 90% 90%,#ddd5ed,transparent 25%),
     #faf7f8;
 }
 
 .editor-title{
-
   text-align:center;
 
   font-family:Georgia,serif;
 
-  font-size:clamp(
-    35px,
-    6vw,
-    48px
-  );
+  font-size:clamp(35px,6vw,48px);
 
   color:#66515d;
 
@@ -751,16 +543,24 @@ video{
 }
 
 .editor-subtitle{
-
   text-align:center;
 
   color:#9b858f;
+
+  margin-bottom:8px;
+}
+
+.locked{
+  text-align:center;
+
+  font-size:12px;
+
+  color:#a58f99;
 
   margin-bottom:25px;
 }
 
 .editor-layout{
-
   max-width:1150px;
 
   margin:auto;
@@ -777,7 +577,6 @@ video{
 }
 
 .preview-card{
-
   background:white;
 
   padding:18px;
@@ -785,12 +584,7 @@ video{
   border-radius:25px;
 
   box-shadow:
-    0 20px 50px rgba(
-      90,
-      65,
-      80,
-      .13
-    );
+    0 20px 50px rgba(90,65,80,.13);
 
   position:sticky;
 
@@ -798,40 +592,25 @@ video{
 }
 
 #previewCanvas{
-
   width:100%;
-
   height:auto;
-
   display:block;
-
   border-radius:12px;
-
   background:white;
-
-  cursor:default;
 }
 
 .controls-card{
-
-  background:
-    rgba(255,255,255,.88);
+  background:rgba(255,255,255,.88);
 
   border-radius:25px;
 
   padding:22px;
 
   box-shadow:
-    0 20px 50px rgba(
-      90,
-      65,
-      80,
-      .1
-    );
+    0 20px 50px rgba(90,65,80,.1);
 }
 
 .control-title{
-
   font-weight:bold;
 
   margin-bottom:15px;
@@ -840,7 +619,6 @@ video{
 }
 
 .frame-grid{
-
   display:grid;
 
   grid-template-columns:
@@ -850,7 +628,6 @@ video{
 }
 
 .frame-btn{
-
   background:white;
 
   border:2px solid #eee;
@@ -867,7 +644,6 @@ video{
 }
 
 .frame-btn.selected{
-
   border-color:#b985a0;
 
   background:#f9e8ef;
@@ -876,156 +652,67 @@ video{
 }
 
 .frame-color{
-
   height:70px;
-
   border-radius:10px;
-
   margin-bottom:6px;
 }
 
 .pink{
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffd6e5,
-      #efa8c2
-    );
+  background:linear-gradient(135deg,#ffd6e5,#efa8c2);
 }
 
 .sakura{
-
   background:
-    radial-gradient(
-      circle,
-      #fff 3px,
-      transparent 4px
-    ),
-    linear-gradient(
-      135deg,
-      #ffe6ee,
-      #f6b8ce
-    );
+    radial-gradient(circle,#fff 3px,transparent 4px),
+    linear-gradient(135deg,#ffe6ee,#f6b8ce);
 }
 
 .lavender{
-
-  background:
-    linear-gradient(
-      135deg,
-      #e2d6f4,
-      #bba7dc
-    );
+  background:linear-gradient(135deg,#e2d6f4,#bba7dc);
 }
 
 .blue{
-
-  background:
-    linear-gradient(
-      135deg,
-      #d5efff,
-      #91c9e9
-    );
+  background:linear-gradient(135deg,#d5efff,#91c9e9);
 }
 
 .star{
-
   background:
-    radial-gradient(
-      circle at 25% 25%,
-      #fff 1px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle at 70% 60%,
-      #fff 1px,
-      transparent 2px
-    ),
-    linear-gradient(
-      135deg,
-      #302b49,
-      #8175a8
-    );
+    radial-gradient(circle at 25% 25%,#fff 1px,transparent 2px),
+    radial-gradient(circle at 70% 60%,#fff 1px,transparent 2px),
+    linear-gradient(135deg,#302b49,#8175a8);
 }
 
 .cloud{
-
   background:
-    radial-gradient(
-      circle at 30% 40%,
-      white 15px,
-      transparent 16px
-    ),
-    radial-gradient(
-      circle at 55% 45%,
-      white 20px,
-      transparent 21px
-    ),
-    linear-gradient(
-      135deg,
-      #eef8ff,
-      #c7e5f8
-    );
+    radial-gradient(circle at 30% 40%,white 15px,transparent 16px),
+    radial-gradient(circle at 55% 45%,white 20px,transparent 21px),
+    linear-gradient(135deg,#eef8ff,#c7e5f8);
 }
 
 .teddy{
-
   background:
-    radial-gradient(
-      circle at 30% 30%,
-      #9b704e 10px,
-      transparent 11px
-    ),
-    linear-gradient(
-      135deg,
-      #ead0b6,
-      #c4976d
-    );
+    radial-gradient(circle at 30% 30%,#9b704e 10px,transparent 11px),
+    linear-gradient(135deg,#ead0b6,#c4976d);
 }
 
 .strawberry{
-
   background:
-    radial-gradient(
-      circle,
-      #fff 2px,
-      transparent 3px
-    ),
-    linear-gradient(
-      135deg,
-      #ffd1d9,
-      #ef8ca1
-    );
+    radial-gradient(circle,#fff 2px,transparent 3px),
+    linear-gradient(135deg,#ffd1d9,#ef8ca1);
 }
 
 .flower{
-
   background:
-    radial-gradient(
-      circle at 30% 30%,
-      #fff 7px,
-      transparent 8px
-    ),
-    radial-gradient(
-      circle at 70% 60%,
-      #fff 8px,
-      transparent 9px
-    ),
-    linear-gradient(
-      135deg,
-      #f7dff0,
-      #d5afd0
-    );
+    radial-gradient(circle at 30% 30%,#fff 7px,transparent 8px),
+    radial-gradient(circle at 70% 60%,#fff 8px,transparent 9px),
+    linear-gradient(135deg,#f7dff0,#d5afd0);
 }
 
 .minimal{
-
   background:#eeeae7;
 }
 
 .text-input{
-
   width:100%;
 
   padding:14px;
@@ -1039,13 +726,7 @@ video{
   outline:none;
 }
 
-.text-input:focus{
-
-  border-color:#c28da5;
-}
-
 .editor-buttons{
-
   display:flex;
 
   flex-wrap:wrap;
@@ -1056,7 +737,6 @@ video{
 }
 
 .tool-btn{
-
   padding:13px 18px;
 
   border-radius:30px;
@@ -1066,39 +746,15 @@ video{
   color:#715c67;
 
   font-weight:bold;
-
-  transition:.15s;
-}
-
-.tool-btn:hover{
-
-  transform:translateY(-2px);
 }
 
 .tool-btn.active{
-
   background:#bd88a1;
-
   color:white;
-}
-
-.delete-btn{
-
-  background:#f4d8df;
-
-  color:#9b5268;
-}
-
-.clear-btn{
-
-  background:#eee7eb;
-
-  color:#705c67;
 }
 
 .download-btn,
 .print-btn{
-
   display:block;
 
   width:100%;
@@ -1119,22 +775,15 @@ video{
 }
 
 .download-btn{
-
   background:
-    linear-gradient(
-      135deg,
-      #bd88a1,
-      #8f7aa5
-    );
+    linear-gradient(135deg,#bd88a1,#8f7aa5);
 }
 
 .print-btn{
-
   background:#332c33;
 }
 
 .finish-btn{
-
   display:block;
 
   width:100%;
@@ -1152,81 +801,103 @@ video{
   font-weight:bold;
 }
 
-.editor-hint{
 
-  margin-top:18px;
+/* ================= STICKER ================= */
 
-  padding:14px;
+.sticker-item{
+  position:absolute;
 
-  border-radius:15px;
+  user-select:none;
+  touch-action:none;
 
-  background:#f8edf2;
+  cursor:grab;
 
-  color:#8b737e;
+  font-size:42px;
 
-  font-size:12px;
+  z-index:5;
+}
 
-  line-height:1.5;
+.sticker-item:active{
+  cursor:grabbing;
+}
+
+.sticker-item.selected{
+  outline:2px dashed #bd88a1;
+  outline-offset:5px;
+}
+
+.delete-sticker{
+  position:absolute;
+
+  transform:translate(20px,-20px);
+
+  width:24px;
+  height:24px;
+
+  border-radius:50%;
+
+  background:#66515d;
+
+  color:white;
+
+  font-size:13px;
+
+  display:none;
+}
+
+.sticker-item.selected .delete-sticker{
+  display:block;
+}
+
+.preview-wrapper{
+  position:relative;
 }
 
 
-/* =====================================================
-   PRINT
-===================================================== */
+/* ================= PRINT ================= */
 
 #printArea{
-
   display:none;
 }
 
 @media print{
 
   @page{
-
     size:80mm auto;
-
     margin:0;
   }
 
   html,
   body{
-
     width:80mm;
-
     margin:0;
-
     padding:0;
-
     background:white;
   }
 
   body *{
-
     visibility:hidden !important;
   }
 
   #printArea,
   #printArea *{
-
     visibility:visible !important;
   }
 
   #printArea{
-
     display:block !important;
 
     width:80mm;
 
     margin:0;
 
-    padding:3mm 4mm;
+    padding:2mm;
   }
 
   #printImage{
-
     display:block;
 
-    width:72mm;
+    width:76mm;
 
     height:auto;
 
@@ -1235,31 +906,23 @@ video{
 }
 
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:850px){
 
   .review-grid{
-
     grid-template-columns:
-      repeat(2,1fr);
+      repeat(3,1fr);
   }
 
   .editor-layout{
-
     grid-template-columns:1fr;
   }
 
   .preview-card{
-
     position:relative;
-
     top:0;
-
     max-width:430px;
-
     margin:auto;
   }
 }
@@ -1267,66 +930,28 @@ video{
 @media(max-width:550px){
 
   .frame-grid{
-
     grid-template-columns:
       repeat(2,1fr);
   }
 
   .review-grid{
-
     gap:10px;
   }
 
   .home-card{
-
     padding:50px 20px;
   }
+
 }
-
-
-/* =====================================================
-   ANIMATION
-===================================================== */
-
-@keyframes pop{
-
-  0%{
-
-    transform:scale(.7);
-
-    opacity:0;
-  }
-
-  100%{
-
-    transform:scale(1);
-
-    opacity:1;
-  }
-}
-
-.pop{
-
-  animation:
-    pop .25s ease;
-}
-
 </style>
-
 </head>
-
 
 <body>
 
 
-<!-- =====================================================
-     HOME
-===================================================== -->
+<!-- ================= HOME ================= -->
 
-<section
-  id="homeScreen"
-  class="screen"
->
+<section id="homeScreen" class="screen">
 
   <div class="home-card">
 
@@ -1335,19 +960,19 @@ video{
     </div>
 
     <h1 class="home-title">
-      Capture<br>
-      Your Moment
+      Capture<br>Your Moment
     </h1>
 
     <p class="home-subtitle">
-      Four photos. One beautiful memory. ♡
+      Three photos. One beautiful memory.
     </p>
 
     <button
       class="start-btn"
-      onclick="enterBooth()"
-    >
+      onclick="enterBooth()">
+
       START PHOTOBOOTH
+
     </button>
 
   </div>
@@ -1355,15 +980,9 @@ video{
 </section>
 
 
+<!-- ================= BOOTH ================= -->
 
-<!-- =====================================================
-     BOOTH
-===================================================== -->
-
-<section
-  id="boothScreen"
-  class="screen"
->
+<section id="boothScreen" class="screen">
 
   <div class="booth-top">
 
@@ -1391,25 +1010,29 @@ video{
       <video
         id="camera"
         autoplay
-        playsinline
-      ></video>
+        playsinline>
+      </video>
 
       <div
         class="photo-number"
-        id="photoNumber"
-      >
+        id="photoNumber">
+
         CAMERA READY
+
       </div>
 
       <div
         class="get-ready"
-        id="getReady"
-      ></div>
+        id="getReady">
+
+        GET READY
+
+      </div>
 
       <div
         class="countdown"
-        id="countdown"
-      ></div>
+        id="countdown">
+      </div>
 
     </div>
 
@@ -1418,29 +1041,33 @@ video{
 
   <div class="booth-bottom">
 
-    <div id="boothStatus">
-      Kamera siap ♡
+    <div
+      class="booth-status"
+      id="boothStatus">
+
+      Camera ready.
+
     </div>
 
 
     <button
-      id="startSessionButton"
-      class="start-session-btn"
-      onclick="startPhotoSession()"
-    >
-      START SESSION ✦
+      id="sessionStartButton"
+      class="session-start"
+      onclick="startSession()">
+
+      START SESSION
+
     </button>
 
 
     <div
       id="permissionBox"
       class="permission-box"
-      style="display:none;"
-    >
+      style="display:none;">
 
       Kamera belum mendapatkan izin.
 
-      <br>
+      <br><br>
 
       Tekan tombol di bawah dan pilih
       <b>Allow / Izinkan</b>.
@@ -1449,9 +1076,10 @@ video{
 
       <button
         class="retry-camera"
-        onclick="requestCamera()"
-      >
-        📸 IZINKAN KAMERA
+        onclick="requestCamera()">
+
+        ALLOW CAMERA
+
       </button>
 
     </div>
@@ -1461,38 +1089,36 @@ video{
 </section>
 
 
-
-<!-- =====================================================
-     REVIEW
-===================================================== -->
+<!-- ================= REVIEW ================= -->
 
 <section id="reviewScreen">
 
   <h1 class="review-title">
-    Check Your Photos ✦
+    Check Your Photos
   </h1>
 
   <p class="review-subtitle">
-    Kalau ada yang kurang pas, retake aja.
+    Retake foto yang belum pas.
   </p>
 
   <div
     class="review-time"
-    id="reviewTime"
-  ></div>
+    id="reviewTime">
+  </div>
 
   <div
     class="review-grid"
-    id="reviewGrid"
-  ></div>
+    id="reviewGrid">
+  </div>
 
   <div class="review-actions">
 
     <button
       class="done-btn"
-      onclick="openConfirm()"
-    >
-      I'M DONE ♡
+      onclick="openConfirm()">
+
+      I'M DONE
+
     </button>
 
   </div>
@@ -1500,39 +1126,37 @@ video{
 </section>
 
 
-
-<!-- =====================================================
-     CONFIRM
-===================================================== -->
+<!-- ================= CONFIRM ================= -->
 
 <section id="confirmScreen">
 
   <div class="confirm-card">
 
     <h1>
-      Ready to create? ✨
+      Ready to create?
     </h1>
 
     <p>
-      Kamu akan masuk ke editor photostrip.
-      Foto masih bisa dihias, sticker dan text
-      masih bisa dipindahkan atau dihapus.
+      Setelah masuk editor, ketiga foto
+      tidak bisa di-retake lagi.
     </p>
 
     <div class="confirm-buttons">
 
       <button
         class="back-btn"
-        onclick="backToReview()"
-      >
-        ← CHECK AGAIN
+        onclick="backToReview()">
+
+        CHECK AGAIN
+
       </button>
 
       <button
         class="confirm-btn"
-        onclick="lockPhotosAndEdit()"
-      >
-        YES, I'M DONE ✦
+        onclick="lockPhotosAndEdit()">
+
+        CONTINUE
+
       </button>
 
     </div>
@@ -1542,69 +1166,72 @@ video{
 </section>
 
 
-
-<!-- =====================================================
-     EDITOR
-===================================================== -->
+<!-- ================= EDITOR ================= -->
 
 <section id="editorScreen">
 
   <h1 class="editor-title">
-    Make It Yours ✦
+    Make It Yours
   </h1>
 
   <p class="editor-subtitle">
     Decorate your memories.
   </p>
 
+  <div class="locked">
+    Photos locked — editor mode
+  </div>
+
 
   <div class="editor-layout">
 
 
-    <!-- PREVIEW -->
-
     <div class="preview-card">
 
-      <canvas
-        id="previewCanvas"
-      ></canvas>
+      <div
+        class="preview-wrapper"
+        id="previewWrapper">
+
+        <canvas id="previewCanvas"></canvas>
+
+      </div>
 
 
       <a
         id="downloadButton"
         class="download-btn"
-        download="your-photobox.jpg"
-      >
-        💾 DOWNLOAD
+        download="your-photobox.jpg">
+
+        DOWNLOAD
+
       </a>
 
 
       <button
         class="print-btn"
-        onclick="printPhotostrip()"
-      >
-        🖨️ PRINT PHOTO
+        onclick="printPhotostrip()">
+
+        PRINT PHOTO
+
       </button>
 
 
       <button
         class="finish-btn"
-        onclick="finishSession()"
-      >
-        ✓ SELESAI / KEMBALI KE HOME
+        onclick="finishSession()">
+
+        SELESAI / HOME
+
       </button>
 
     </div>
 
 
-
-    <!-- CONTROLS -->
-
     <div class="controls-card">
 
 
       <div class="control-title">
-        CHOOSE YOUR FRAME
+        FRAME
       </div>
 
 
@@ -1613,142 +1240,130 @@ video{
 
         <button
           class="frame-btn selected"
-          onclick="selectFrame('pink',this)"
-        >
+          onclick="selectFrame('pink',this)">
+
           <div class="frame-color pink"></div>
           Pink
+
         </button>
 
 
         <button
           class="frame-btn"
-          onclick="selectFrame('sakura',this)"
-        >
+          onclick="selectFrame('sakura',this)">
+
           <div class="frame-color sakura"></div>
           Sakura
+
         </button>
 
 
         <button
           class="frame-btn"
-          onclick="selectFrame('lavender',this)"
-        >
+          onclick="selectFrame('lavender',this)">
+
           <div class="frame-color lavender"></div>
           Lavender
+
         </button>
 
 
         <button
           class="frame-btn"
-          onclick="selectFrame('blue',this)"
-        >
+          onclick="selectFrame('blue',this)">
+
           <div class="frame-color blue"></div>
           Baby Blue
+
         </button>
 
 
         <button
           class="frame-btn"
-          onclick="selectFrame('star',this)"
-        >
+          onclick="selectFrame('star',this)">
+
           <div class="frame-color star"></div>
           Starry
+
         </button>
 
 
         <button
           class="frame-btn"
-          onclick="selectFrame('cloud',this)"
-        >
+          onclick="selectFrame('cloud',this)">
+
           <div class="frame-color cloud"></div>
           Cloud
+
         </button>
 
 
         <button
           class="frame-btn"
-          onclick="selectFrame('teddy',this)"
-        >
+          onclick="selectFrame('teddy',this)">
+
           <div class="frame-color teddy"></div>
           Teddy
+
         </button>
 
 
         <button
           class="frame-btn"
-          onclick="selectFrame('strawberry',this)"
-        >
+          onclick="selectFrame('strawberry',this)">
+
           <div class="frame-color strawberry"></div>
           Strawberry
+
         </button>
 
 
         <button
           class="frame-btn"
-          onclick="selectFrame('flower',this)"
-        >
+          onclick="selectFrame('flower',this)">
+
           <div class="frame-color flower"></div>
           Flower
+
         </button>
 
 
         <button
           class="frame-btn"
-          onclick="selectFrame('minimal',this)"
-        >
+          onclick="selectFrame('minimal',this)">
+
           <div class="frame-color minimal"></div>
           Minimal
+
         </button>
 
 
       </div>
 
 
-
-      <!-- TEXT -->
-
       <div
         class="control-title"
-        style="margin-top:25px;"
-      >
-        ADD TEXT
+        style="margin-top:25px;">
+
+        TEXT
+
       </div>
 
 
       <input
         id="customText"
         class="text-input"
-        placeholder="Tulis sesuatu... ♡"
+        placeholder="Tulis sesuatu..."
+        oninput="updateText()"
       >
 
-
-      <div class="editor-buttons">
-
-        <button
-          class="tool-btn"
-          onclick="addText()"
-        >
-          + ADD TEXT
-        </button>
-
-        <button
-          class="tool-btn delete-btn"
-          onclick="deleteSelected()"
-        >
-          🗑 DELETE SELECTED
-        </button>
-
-      </div>
-
-
-
-      <!-- STICKERS -->
 
       <div
         class="control-title"
-        style="margin-top:25px;"
-      >
+        style="margin-top:25px;">
+
         STICKERS
+
       </div>
 
 
@@ -1756,69 +1371,61 @@ video{
 
         <button
           class="tool-btn"
-          onclick="addSticker('♡')"
-        >
+          onclick="addSticker('♡')">
+
           ♡
+
         </button>
 
         <button
           class="tool-btn"
-          onclick="addSticker('☆')"
-        >
+          onclick="addSticker('☆')">
+
           ☆
+
         </button>
 
         <button
           class="tool-btn"
-          onclick="addSticker('✦')"
-        >
+          onclick="addSticker('✦')">
+
           ✦
+
         </button>
 
         <button
           class="tool-btn"
-          onclick="addSticker('🌸')"
-        >
+          onclick="addSticker('🌸')">
+
           🌸
+
         </button>
 
         <button
           class="tool-btn"
-          onclick="addSticker('🎀')"
-        >
+          onclick="addSticker('🎀')">
+
           🎀
+
         </button>
 
         <button
           class="tool-btn"
-          onclick="addSticker('✨')"
-        >
+          onclick="addSticker('✨')">
+
           ✨
+
         </button>
 
       </div>
 
-
-      <div class="editor-buttons">
-
-        <button
-          class="tool-btn clear-btn"
-          onclick="clearDecorations()"
-        >
-          CLEAR DECORATIONS
-        </button>
-
-      </div>
-
-
-
-      <!-- DATE -->
 
       <div
         class="control-title"
-        style="margin-top:25px;"
-      >
+        style="margin-top:25px;">
+
         DATE
+
       </div>
 
 
@@ -1827,21 +1434,33 @@ video{
         <button
           id="dateButton"
           class="tool-btn"
-          onclick="toggleDate()"
-        >
-          📅 ADD DATE
+          onclick="toggleDate()">
+
+          ADD DATE
+
         </button>
 
       </div>
 
 
-      <div class="editor-hint">
+      <div
+        class="control-title"
+        style="margin-top:25px;">
 
-        💡 <b>Cara edit:</b><br>
-        Klik sticker/text untuk memilih.
-        Setelah terpilih, drag langsung di preview
-        untuk memindahkannya.
-        Klik <b>DELETE SELECTED</b> untuk menghapusnya.
+        SELECTED STICKER
+
+      </div>
+
+
+      <div class="editor-buttons">
+
+        <button
+          class="tool-btn"
+          onclick="deleteSelectedSticker()">
+
+          DELETE SELECTED
+
+        </button>
 
       </div>
 
@@ -1853,28 +1472,38 @@ video{
 </section>
 
 
-
-<!-- =====================================================
-     PRINT AREA
-===================================================== -->
+<!-- ================= PRINT ================= -->
 
 <div id="printArea">
 
   <img
     id="printImage"
     src=""
-    alt="Photostrip"
-  >
+    alt="Photostrip">
 
 </div>
-
 
 
 <script>
 
 /* =====================================================
-   ELEMENTS
+   BASIC ELEMENTS
 ===================================================== */
+
+const homeScreen =
+  document.getElementById("homeScreen");
+
+const boothScreen =
+  document.getElementById("boothScreen");
+
+const reviewScreen =
+  document.getElementById("reviewScreen");
+
+const confirmScreen =
+  document.getElementById("confirmScreen");
+
+const editorScreen =
+  document.getElementById("editorScreen");
 
 const video =
   document.getElementById("camera");
@@ -1894,48 +1523,26 @@ const boothStatus =
 const permissionBox =
   document.getElementById("permissionBox");
 
+const sessionStartButton =
+  document.getElementById("sessionStartButton");
+
 const sessionTimer =
   document.getElementById("sessionTimer");
 
-const startSessionButton =
-  document.getElementById(
-    "startSessionButton"
-  );
-
 const reviewGrid =
-  document.getElementById(
-    "reviewGrid"
-  );
-
-const reviewTime =
-  document.getElementById(
-    "reviewTime"
-  );
+  document.getElementById("reviewGrid");
 
 const previewCanvas =
-  document.getElementById(
-    "previewCanvas"
-  );
+  document.getElementById("previewCanvas");
 
-const customText =
-  document.getElementById(
-    "customText"
-  );
+const previewWrapper =
+  document.getElementById("previewWrapper");
 
 const downloadButton =
-  document.getElementById(
-    "downloadButton"
-  );
-
-const dateButton =
-  document.getElementById(
-    "dateButton"
-  );
+  document.getElementById("downloadButton");
 
 const printImage =
-  document.getElementById(
-    "printImage"
-  );
+  document.getElementById("printImage");
 
 
 /* =====================================================
@@ -1948,162 +1555,57 @@ let photos = [];
 
 let currentPhoto = 0;
 
-let retakeIndex = -1;
+let sessionRunning = false;
 
-let sessionStarted = false;
-
-let sessionSeconds = 300;
+let sessionLocked = false;
 
 let sessionInterval = null;
 
+let remainingSeconds = 300;
+
 let selectedFrame = "pink";
+
+let customText = "";
 
 let showDate = false;
 
-let selectedObject = null;
+let stickers = [];
 
-let isDragging = false;
-
-let dragOffsetX = 0;
-
-let dragOffsetY = 0;
-
-
-/*
-  Semua dekorasi disimpan sebagai object.
-*/
-
-let decorations = [];
+let selectedSticker = null;
 
 
 /* =====================================================
-   FRAME COLORS
+   CHANGE SCREEN
 ===================================================== */
 
-const frameColors = {
+function showScreen(screen){
 
-  pink: {
-    top:"#ffd6e5",
-    bottom:"#efa8c2",
-    text:"#7b5264"
-  },
+  homeScreen.style.display = "none";
+  boothScreen.style.display = "none";
+  reviewScreen.style.display = "none";
+  confirmScreen.style.display = "none";
+  editorScreen.style.display = "none";
 
-  sakura: {
-    top:"#ffe6ee",
-    bottom:"#f6b8ce",
-    text:"#7b5264"
-  },
-
-  lavender: {
-    top:"#e2d6f4",
-    bottom:"#bba7dc",
-    text:"#665476"
-  },
-
-  blue: {
-    top:"#d5efff",
-    bottom:"#91c9e9",
-    text:"#526d7b"
-  },
-
-  star: {
-    top:"#302b49",
-    bottom:"#8175a8",
-    text:"#ffffff"
-  },
-
-  cloud: {
-    top:"#eef8ff",
-    bottom:"#c7e5f8",
-    text:"#607889"
-  },
-
-  teddy: {
-    top:"#ead0b6",
-    bottom:"#c4976d",
-    text:"#604536"
-  },
-
-  strawberry: {
-    top:"#ffd1d9",
-    bottom:"#ef8ca1",
-    text:"#7b4050"
-  },
-
-  flower: {
-    top:"#f7dff0",
-    bottom:"#d5afd0",
-    text:"#73556d"
-  },
-
-  minimal: {
-    top:"#f5f1ee",
-    bottom:"#ded8d3",
-    text:"#665f59"
-  }
-
-};
+  screen.style.display = "block";
+}
 
 
 /* =====================================================
-   ENTER BOOTH
+   HOME → BOOTH
 ===================================================== */
 
 async function enterBooth(){
 
-  document.getElementById(
-    "homeScreen"
-  ).style.display = "none";
+  showScreen(boothScreen);
 
-  document.getElementById(
-    "boothScreen"
-  ).style.display = "block";
+  sessionRunning = false;
 
-  document.getElementById(
-    "reviewScreen"
-  ).style.display = "none";
-
-  document.getElementById(
-    "confirmScreen"
-  ).style.display = "none";
-
-  document.getElementById(
-    "editorScreen"
-  ).style.display = "none";
-
-
-  photos = [];
-
-  currentPhoto = 0;
-
-  retakeIndex = -1;
-
-  sessionStarted = false;
-
-  startSessionButton.disabled = false;
-
-  startSessionButton.style.display =
-    "inline-block";
-
-  startSessionButton.textContent =
-    "START SESSION ✦";
+  sessionStartButton.disabled = true;
 
   boothStatus.textContent =
-    "Kamera siap. Kalau sudah siap foto, tekan START SESSION ♡";
+    "Starting camera...";
 
-  photoNumber.textContent =
-    "CAMERA READY";
-
-  countdown.textContent = "";
-
-  getReady.textContent = "";
-
-  resetTimerDisplay();
-
-
-  /*
-    Kamera langsung diminta ketika masuk booth.
-  */
+  permissionBox.style.display = "none";
 
   await requestCamera();
 
@@ -2111,16 +1613,23 @@ async function enterBooth(){
 
 
 /* =====================================================
-   CAMERA
+   CAMERA PERMISSION
 ===================================================== */
 
 async function requestCamera(){
 
-  permissionBox.style.display =
-    "none";
+  if(
+    !navigator.mediaDevices ||
+    !navigator.mediaDevices.getUserMedia
+  ){
 
-  boothStatus.textContent =
-    "Meminta izin kamera...";
+    boothStatus.textContent =
+      "Browser ini tidak mendukung kamera.";
+
+    permissionBox.style.display = "block";
+
+    return false;
+  }
 
 
   try{
@@ -2157,11 +1666,16 @@ async function requestCamera(){
     await video.play();
 
 
-    boothStatus.textContent =
-      "Kamera siap ♡ Tekan START SESSION.";
+    permissionBox.style.display =
+      "none";
 
-    photoNumber.textContent =
-      "CAMERA READY";
+    boothStatus.textContent =
+      "Camera ready. Press START SESSION.";
+
+    sessionStartButton.disabled =
+      false;
+
+    return true;
 
 
   }catch(error){
@@ -2171,8 +1685,13 @@ async function requestCamera(){
     permissionBox.style.display =
       "block";
 
+    sessionStartButton.disabled =
+      true;
+
     boothStatus.textContent =
-      "Kamera belum mendapatkan izin.";
+      "Camera permission required.";
+
+    return false;
 
   }
 
@@ -2180,67 +1699,180 @@ async function requestCamera(){
 
 
 /* =====================================================
-   TIMER
+   AUDIO
 ===================================================== */
 
-function resetTimerDisplay(){
+let audioContext = null;
 
-  sessionSeconds = 300;
+function beep(){
 
-  updateTimerText();
+  try{
 
-}
+    if(!audioContext){
+
+      audioContext =
+        new (
+          window.AudioContext ||
+          window.webkitAudioContext
+        )();
+
+    }
 
 
-function updateTimerText(){
+    const oscillator =
+      audioContext.createOscillator();
 
-  const minutes =
-    Math.floor(
-      sessionSeconds / 60
+    const gain =
+      audioContext.createGain();
+
+
+    oscillator.type =
+      "sine";
+
+    oscillator.frequency.value =
+      880;
+
+
+    gain.gain.setValueAtTime(
+      0.0001,
+      audioContext.currentTime
     );
 
-  const seconds =
-    sessionSeconds % 60;
+    gain.gain.exponentialRampToValueAtTime(
+      0.12,
+      audioContext.currentTime + .01
+    );
 
-  sessionTimer.textContent =
-    String(minutes).padStart(2,"0")
-    + ":"
-    +
-    String(seconds).padStart(2,"0");
+    gain.gain.exponentialRampToValueAtTime(
+      0.0001,
+      audioContext.currentTime + .16
+    );
+
+
+    oscillator.connect(gain);
+
+    gain.connect(
+      audioContext.destination
+    );
+
+
+    oscillator.start();
+
+    oscillator.stop(
+      audioContext.currentTime + .17
+    );
+
+  }catch(e){
+
+    console.log("Audio unavailable");
+
+  }
 
 }
 
+
+/* =====================================================
+   START SESSION
+===================================================== */
+
+async function startSession(){
+
+  if(sessionRunning) return;
+
+
+  if(!stream){
+
+    const success =
+      await requestCamera();
+
+    if(!success) return;
+
+  }
+
+
+  if(
+    video.readyState <
+    HTMLMediaElement.HAVE_CURRENT_DATA
+  ){
+
+    try{
+      await video.play();
+    }catch(e){}
+  }
+
+
+  sessionRunning = true;
+
+  sessionStartButton.disabled = true;
+
+  photos = [];
+
+  currentPhoto = 0;
+
+  remainingSeconds = 300;
+
+  startSessionTimer();
+
+
+  /*
+    GET READY HANYA SEKALI
+  */
+
+  getReady.classList.remove("show");
+
+  void getReady.offsetWidth;
+
+  getReady.classList.add("show");
+
+
+  boothStatus.textContent =
+    "Get ready...";
+
+
+  photoNumber.textContent =
+    "PHOTO 1 / 3";
+
+
+  await wait(1800);
+
+
+  if(!sessionRunning) return;
+
+
+  await takePhoto();
+
+
+}
+
+
+/* =====================================================
+   SESSION TIMER
+===================================================== */
 
 function startSessionTimer(){
 
-  clearInterval(
-    sessionInterval
-  );
+  clearInterval(sessionInterval);
 
-  sessionSeconds = 300;
-
-  updateTimerText();
+  updateTimer();
 
 
   sessionInterval =
-    setInterval(() => {
+    setInterval(()=>{
 
-      sessionSeconds--;
+      remainingSeconds--;
 
-      updateTimerText();
+      updateTimer();
 
 
-      if(sessionSeconds <= 0){
+      if(remainingSeconds <= 0){
 
-        clearInterval(
-          sessionInterval
-        );
+        clearInterval(sessionInterval);
 
-        boothStatus.textContent =
-          "Session selesai.";
+        if(sessionRunning){
 
-        startSessionButton.style.display =
-          "none";
+          finishPhotoSession();
+
+        }
 
       }
 
@@ -2249,161 +1881,112 @@ function startSessionTimer(){
 }
 
 
-/* =====================================================
-   START PHOTO SESSION
-===================================================== */
+function updateTimer(){
 
-async function startPhotoSession(){
+  const minutes =
+    Math.floor(
+      remainingSeconds / 60
+    );
 
-  if(sessionStarted){
-    return;
-  }
-
-
-  if(!stream){
-
-    await requestCamera();
-
-    if(!stream){
-      return;
-    }
-
-  }
+  const seconds =
+    remainingSeconds % 60;
 
 
-  sessionStarted = true;
-
-  startSessionButton.disabled =
-    true;
-
-  startSessionButton.style.display =
-    "none";
-
-
-  startSessionTimer();
-
-
-  photos = [];
-
-  currentPhoto = 0;
-
-  retakeIndex = -1;
-
-
-  boothStatus.textContent =
-    "Get ready... ♡";
-
-
-  await wait(800);
-
-
-  await takeAllPhotos();
+  sessionTimer.textContent =
+    String(minutes).padStart(2,"0")
+    + ":" +
+    String(seconds).padStart(2,"0");
 
 }
 
 
 /* =====================================================
-   TAKE FOUR PHOTOS
+   TAKE PHOTO
 ===================================================== */
 
-async function takeAllPhotos(){
+async function takePhoto(){
 
-  for(let i = 0; i < 4; i++){
-
-    currentPhoto = i;
-
-    photoNumber.textContent =
-      "PHOTO " +
-      (i + 1) +
-      " / 4";
+  if(!sessionRunning) return;
 
 
-    getReady.textContent =
-      "GET READY ♡";
+  if(currentPhoto >= 3){
+
+    finishPhotoSession();
+
+    return;
+
+  }
+
+
+  photoNumber.textContent =
+    "PHOTO " +
+    (currentPhoto + 1) +
+    " / 3";
+
+
+  boothStatus.textContent =
+    "Look at the camera.";
+
+
+  countdown.textContent = "";
+
+
+  /*
+    COUNTDOWN 5 → 4 → 3 → 2 → 1
+  */
+
+  for(
+    let number = 5;
+    number >= 1;
+    number--
+  ){
+
+    if(!sessionRunning) return;
+
+
+    countdown.textContent =
+      number;
+
+
+    beep();
 
 
     await wait(1000);
 
-
-    await countdownPhoto();
-
-
-    const image =
-      capturePhoto();
-
-    photos[i] = image;
+  }
 
 
-    getReady.textContent =
-      "✓ PHOTO TAKEN";
+  if(!sessionRunning) return;
 
 
-    await wait(800);
+  countdown.textContent = "";
+
+
+  captureCurrentPhoto();
+
+
+  currentPhoto++;
+
+
+  if(currentPhoto >= 3){
+
+    await wait(500);
+
+    finishPhotoSession();
+
+    return;
 
   }
 
 
-  getReady.textContent = "";
-
-  countdown.textContent = "";
-
-  stopCamera();
-
-  showReview();
-
-}
+  boothStatus.textContent =
+    "Photo captured.";
 
 
-/* =====================================================
-   COUNTDOWN
-===================================================== */
-
-function countdownPhoto(){
-
-  return new Promise(
-    resolve => {
-
-      let number = 3;
-
-      countdown.textContent =
-        number;
+  await wait(1300);
 
 
-      const timer =
-        setInterval(() => {
-
-          number--;
-
-          if(number <= 0){
-
-            clearInterval(timer);
-
-            countdown.textContent =
-              "📸";
-
-            setTimeout(
-              () => {
-
-                countdown.textContent =
-                  "";
-
-                resolve();
-
-              },
-              450
-            );
-
-          }else{
-
-            countdown.textContent =
-              number;
-
-          }
-
-        },1000);
-
-    }
-  );
+  await takePhoto();
 
 }
 
@@ -2412,17 +1995,20 @@ function countdownPhoto(){
    CAPTURE PHOTO
 ===================================================== */
 
-function capturePhoto(){
+function captureCurrentPhoto(){
 
-  if(!video.videoWidth){
-    return null;
+  if(
+    video.videoWidth === 0 ||
+    video.videoHeight === 0
+  ){
+
+    return;
+
   }
 
 
   const canvas =
-    document.createElement(
-      "canvas"
-    );
+    document.createElement("canvas");
 
 
   canvas.width =
@@ -2437,21 +2023,17 @@ function capturePhoto(){
 
 
   /*
-    Mirror supaya hasil foto
-    sama seperti tampilan kamera.
+    Mirror hasil foto agar sama
+    seperti preview kamera.
   */
-
-  ctx.save();
 
   ctx.translate(
     canvas.width,
     0
   );
 
-  ctx.scale(
-    -1,
-    1
-  );
+  ctx.scale(-1,1);
+
 
   ctx.drawImage(
     video,
@@ -2461,7 +2043,252 @@ function capturePhoto(){
     canvas.height
   );
 
-  ctx.restore();
+
+  photos.push(
+    canvas.toDataURL(
+      "image/jpeg",
+      .92
+    )
+  );
+
+}
+
+
+/* =====================================================
+   FINISH PHOTO SESSION
+===================================================== */
+
+function finishPhotoSession(){
+
+  sessionRunning = false;
+
+  clearInterval(sessionInterval);
+
+  countdown.textContent = "";
+
+  getReady.classList.remove("show");
+
+  boothStatus.textContent =
+    "Session complete.";
+
+
+  setTimeout(()=>{
+
+    buildReview();
+
+    showScreen(reviewScreen);
+
+  },500);
+
+}
+
+
+/* =====================================================
+   WAIT
+===================================================== */
+
+function wait(ms){
+
+  return new Promise(
+    resolve =>
+      setTimeout(resolve,ms)
+  );
+
+}
+
+
+/* =====================================================
+   REVIEW
+===================================================== */
+
+function buildReview(){
+
+  reviewGrid.innerHTML = "";
+
+
+  photos.forEach(
+    (photo,index)=>{
+
+      const card =
+        document.createElement("div");
+
+      card.className =
+        "review-card";
+
+
+      const img =
+        document.createElement("img");
+
+      img.src = photo;
+
+
+      const title =
+        document.createElement("h3");
+
+      title.textContent =
+        "PHOTO " + (index + 1);
+
+
+      const button =
+        document.createElement("button");
+
+      button.className =
+        "retake-btn";
+
+      button.textContent =
+        "RETAKE";
+
+
+      button.onclick =
+        ()=>retakePhoto(index);
+
+
+      card.appendChild(img);
+
+      card.appendChild(title);
+
+      card.appendChild(button);
+
+
+      reviewGrid.appendChild(card);
+
+    }
+  );
+
+
+  document.getElementById(
+    "reviewTime"
+  ).textContent =
+    new Date().toLocaleString(
+      "id-ID"
+    );
+
+}
+
+
+/* =====================================================
+   RETAKE
+===================================================== */
+
+async function retakePhoto(index){
+
+  if(sessionLocked) return;
+
+
+  showScreen(boothScreen);
+
+
+  currentPhoto = index;
+
+
+  sessionRunning = true;
+
+
+  sessionStartButton.disabled =
+    true;
+
+
+  boothStatus.textContent =
+    "Retaking photo " +
+    (index + 1) +
+    "...";
+
+
+  photoNumber.textContent =
+    "RETAKE " +
+    (index + 1);
+
+
+  await wait(500);
+
+
+  for(
+    let number = 5;
+    number >= 1;
+    number--
+  ){
+
+    countdown.textContent =
+      number;
+
+    beep();
+
+    await wait(1000);
+
+  }
+
+
+  countdown.textContent = "";
+
+
+  const oldPhoto =
+    capturePhotoData();
+
+
+  if(oldPhoto){
+
+    photos[index] =
+      oldPhoto;
+
+  }
+
+
+  sessionRunning = false;
+
+
+  buildReview();
+
+  showScreen(reviewScreen);
+
+}
+
+
+/* =====================================================
+   CAPTURE WITHOUT PUSHING
+===================================================== */
+
+function capturePhotoData(){
+
+  if(
+    !video.videoWidth ||
+    !video.videoHeight
+  ){
+
+    return null;
+
+  }
+
+
+  const canvas =
+    document.createElement("canvas");
+
+
+  canvas.width =
+    video.videoWidth;
+
+  canvas.height =
+    video.videoHeight;
+
+
+  const ctx =
+    canvas.getContext("2d");
+
+
+  ctx.translate(
+    canvas.width,
+    0
+  );
+
+  ctx.scale(-1,1);
+
+
+  ctx.drawImage(
+    video,
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
 
 
   return canvas.toDataURL(
@@ -2473,275 +2300,57 @@ function capturePhoto(){
 
 
 /* =====================================================
-   STOP CAMERA
-===================================================== */
-
-function stopCamera(){
-
-  if(!stream){
-    return;
-  }
-
-
-  stream.getTracks().forEach(
-    track => track.stop()
-  );
-
-  stream = null;
-
-}
-
-
-/* =====================================================
-   REVIEW
-===================================================== */
-
-function showReview(){
-
-  clearInterval(
-    sessionInterval
-  );
-
-
-  document.getElementById(
-    "boothScreen"
-  ).style.display = "none";
-
-
-  document.getElementById(
-    "reviewScreen"
-  ).style.display = "block";
-
-
-  reviewTime.textContent =
-    "Review foto kamu sebelum masuk editor ♡";
-
-
-  renderReview();
-
-}
-
-
-function renderReview(){
-
-  reviewGrid.innerHTML = "";
-
-
-  photos.forEach(
-    (photo,index) => {
-
-      const card =
-        document.createElement(
-          "div"
-        );
-
-      card.className =
-        "review-card pop";
-
-
-      const img =
-        document.createElement(
-          "img"
-        );
-
-      img.src = photo;
-
-
-      const title =
-        document.createElement(
-          "h3"
-        );
-
-      title.textContent =
-        "PHOTO " +
-        (index + 1);
-
-
-      const button =
-        document.createElement(
-          "button"
-        );
-
-      button.className =
-        "retake-btn";
-
-      button.textContent =
-        "↻ RETAKE";
-
-
-      button.onclick =
-        () => retakePhoto(index);
-
-
-      card.appendChild(img);
-
-      card.appendChild(title);
-
-      card.appendChild(button);
-
-      reviewGrid.appendChild(card);
-
-    }
-  );
-
-}
-
-
-/* =====================================================
-   RETAKE
-===================================================== */
-
-async function retakePhoto(index){
-
-  retakeIndex = index;
-
-
-  document.getElementById(
-    "reviewScreen"
-  ).style.display = "none";
-
-
-  document.getElementById(
-    "boothScreen"
-  ).style.display = "block";
-
-
-  sessionStarted = true;
-
-
-  startSessionButton.style.display =
-    "none";
-
-
-  photoNumber.textContent =
-    "RETAKE PHOTO " +
-    (index + 1);
-
-
-  boothStatus.textContent =
-    "Kamera dinyalakan lagi...";
-
-
-  await requestCamera();
-
-
-  if(!stream){
-
-    document.getElementById(
-      "boothScreen"
-    ).style.display = "none";
-
-    document.getElementById(
-      "reviewScreen"
-    ).style.display = "block";
-
-    return;
-
-  }
-
-
-  await wait(1000);
-
-  getReady.textContent =
-    "RETAKE ♡";
-
-
-  await wait(800);
-
-  await countdownPhoto();
-
-
-  const newPhoto =
-    capturePhoto();
-
-
-  if(newPhoto){
-
-    photos[index] =
-      newPhoto;
-
-  }
-
-
-  getReady.textContent =
-    "✓ UPDATED";
-
-
-  await wait(700);
-
-
-  getReady.textContent = "";
-
-  stopCamera();
-
-  showReview();
-
-}
-
-
-/* =====================================================
    CONFIRM
 ===================================================== */
 
 function openConfirm(){
 
-  document.getElementById(
-    "reviewScreen"
-  ).style.display = "none";
-
-
-  document.getElementById(
-    "confirmScreen"
-  ).style.display = "flex";
+  showScreen(confirmScreen);
 
 }
 
 
 function backToReview(){
 
-  document.getElementById(
-    "confirmScreen"
-  ).style.display = "none";
-
-
-  document.getElementById(
-    "reviewScreen"
-  ).style.display = "block";
+  showScreen(reviewScreen);
 
 }
 
 
 /* =====================================================
-   OPEN EDITOR
+   LOCK → EDITOR
 ===================================================== */
 
 function lockPhotosAndEdit(){
 
-  document.getElementById(
-    "confirmScreen"
-  ).style.display = "none";
+  if(photos.length !== 3){
+
+    alert(
+      "Belum ada 3 foto."
+    );
+
+    return;
+
+  }
 
 
-  document.getElementById(
-    "editorScreen"
-  ).style.display = "block";
+  sessionLocked = true;
+
+  showScreen(editorScreen);
 
 
-  /*
-    Penting:
-    foto tidak benar-benar dikunci dari dekorasi.
-    Yang "dikunci" hanya foto hasil capture.
-  */
+  stickers = [];
 
-  decorations = [];
+  selectedSticker = null;
 
-  selectedObject = null;
-
-  selectedFrame = "pink";
+  customText = "";
 
   showDate = false;
 
-  customText.value = "";
+
+  document.getElementById(
+    "customText"
+  ).value = "";
 
 
   renderEditor();
@@ -2750,7 +2359,7 @@ function lockPhotosAndEdit(){
 
 
 /* =====================================================
-   SELECT FRAME
+   FRAME
 ===================================================== */
 
 function selectFrame(
@@ -2767,206 +2376,34 @@ function selectFrame(
       ".frame-btn"
     )
     .forEach(
-      btn => {
-
+      btn =>
         btn.classList.remove(
           "selected"
-        );
-
-      }
+        )
     );
 
 
-  if(button){
-
-    button.classList.add(
-      "selected"
-    );
-
-  }
-
-
-  renderEditor();
-
-}
-
-
-/* =====================================================
-   ADD TEXT
-===================================================== */
-
-function addText(){
-
-  const value =
-    customText.value.trim();
-
-
-  if(!value){
-
-    alert(
-      "Tulis text dulu ya ♡"
-    );
-
-    return;
-
-  }
-
-
-  const object = {
-
-    id:
-      Date.now(),
-
-    type:
-      "text",
-
-    text:
-      value,
-
-    x:
-      0.5,
-
-    y:
-      0.94,
-
-    size:
-      34
-
-  };
-
-
-  decorations.push(
-    object
+  button.classList.add(
+    "selected"
   );
 
 
-  selectedObject =
-    object;
-
-
-  customText.value =
-    "";
-
-
   renderEditor();
 
 }
 
 
 /* =====================================================
-   UPDATE TEXT
+   TEXT
 ===================================================== */
 
 function updateText(){
 
-  /*
-    Tidak langsung membuat object.
-    Text baru dibuat ketika tombol ADD TEXT ditekan.
-  */
+  customText =
+    document.getElementById(
+      "customText"
+    ).value;
 
-}
-
-
-/* =====================================================
-   ADD STICKER
-===================================================== */
-
-function addSticker(
-  sticker
-){
-
-  const object = {
-
-    id:
-      Date.now(),
-
-    type:
-      "sticker",
-
-    text:
-      sticker,
-
-    x:
-      0.5,
-
-    y:
-      0.5,
-
-    size:
-      55
-
-  };
-
-
-  decorations.push(
-    object
-  );
-
-
-  selectedObject =
-    object;
-
-
-  renderEditor();
-
-}
-
-
-/* =====================================================
-   DELETE SELECTED
-===================================================== */
-
-function deleteSelected(){
-
-  if(!selectedObject){
-
-    alert(
-      "Pilih sticker atau text dulu ♡"
-    );
-
-    return;
-
-  }
-
-
-  decorations =
-    decorations.filter(
-      object =>
-        object.id !==
-        selectedObject.id
-    );
-
-
-  selectedObject =
-    null;
-
-
-  renderEditor();
-
-}
-
-
-/* =====================================================
-   CLEAR DECORATIONS
-===================================================== */
-
-function clearDecorations(){
-
-  const ok =
-    confirm(
-      "Hapus semua sticker dan text?"
-    );
-
-
-  if(!ok){
-    return;
-  }
-
-
-  decorations = [];
-
-  selectedObject =
-    null;
 
   renderEditor();
 
@@ -2983,9 +2420,63 @@ function toggleDate(){
     !showDate;
 
 
-  dateButton.classList.toggle(
-    "active",
-    showDate
+  const button =
+    document.getElementById(
+      "dateButton"
+    );
+
+
+  if(showDate){
+
+    button.classList.add(
+      "active"
+    );
+
+  }else{
+
+    button.classList.remove(
+      "active"
+    );
+
+  }
+
+
+  renderEditor();
+
+}
+
+
+/* =====================================================
+   STICKER
+===================================================== */
+
+function addSticker(symbol){
+
+  const sticker = {
+
+    id:
+      Date.now(),
+
+    symbol:
+      symbol,
+
+    x:
+      50,
+
+    y:
+      50
+
+  };
+
+
+  stickers.push(sticker);
+
+  createStickerElement(
+    sticker
+  );
+
+  selectSticker(
+    sticker.id
   );
 
 
@@ -2995,64 +2486,791 @@ function toggleDate(){
 
 
 /* =====================================================
-   EDITOR CANVAS
+   CREATE STICKER ELEMENT
+===================================================== */
+
+function createStickerElement(
+  sticker
+){
+
+  const element =
+    document.createElement("div");
+
+
+  element.className =
+    "sticker-item";
+
+
+  element.dataset.id =
+    sticker.id;
+
+
+  element.textContent =
+    sticker.symbol;
+
+
+  const deleteButton =
+    document.createElement("button");
+
+
+  deleteButton.className =
+    "delete-sticker";
+
+
+  deleteButton.textContent =
+    "×";
+
+
+  deleteButton.onclick =
+    event => {
+
+      event.stopPropagation();
+
+      deleteSticker(
+        sticker.id
+      );
+
+    };
+
+
+  element.appendChild(
+    deleteButton
+  );
+
+
+  element.addEventListener(
+    "pointerdown",
+    startDragSticker
+  );
+
+
+  element.addEventListener(
+    "click",
+    event => {
+
+      if(
+        event.target !==
+        deleteButton
+      ){
+
+        selectSticker(
+          sticker.id
+        );
+
+      }
+
+    }
+  );
+
+
+  previewWrapper.appendChild(
+    element
+  );
+
+
+  positionSticker(
+    element,
+    sticker
+  );
+
+}
+
+
+/* =====================================================
+   SELECT STICKER
+===================================================== */
+
+function selectSticker(id){
+
+  selectedSticker =
+    stickers.find(
+      sticker =>
+        sticker.id === id
+    ) || null;
+
+
+  document
+    .querySelectorAll(
+      ".sticker-item"
+    )
+    .forEach(
+      element => {
+
+        element.classList.toggle(
+          "selected",
+          Number(
+            element.dataset.id
+          ) === id
+        );
+
+      }
+    );
+
+}
+
+
+/* =====================================================
+   DELETE STICKER
+===================================================== */
+
+function deleteSticker(id){
+
+  stickers =
+    stickers.filter(
+      sticker =>
+        sticker.id !== id
+    );
+
+
+  const element =
+    previewWrapper.querySelector(
+      `[data-id="${id}"]`
+    );
+
+
+  if(element){
+
+    element.remove();
+
+  }
+
+
+  if(
+    selectedSticker &&
+    selectedSticker.id === id
+  ){
+
+    selectedSticker = null;
+
+  }
+
+
+  renderEditor();
+
+}
+
+
+/* =====================================================
+   DELETE SELECTED
+===================================================== */
+
+function deleteSelectedSticker(){
+
+  if(!selectedSticker){
+
+    return;
+
+  }
+
+
+  deleteSticker(
+    selectedSticker.id
+  );
+
+}
+
+
+/* =====================================================
+   DRAG STICKER
+===================================================== */
+
+let draggingSticker = null;
+
+
+function startDragSticker(event){
+
+  event.preventDefault();
+
+
+  const id =
+    Number(
+      event.currentTarget.dataset.id
+    );
+
+
+  const sticker =
+    stickers.find(
+      item =>
+        item.id === id
+    );
+
+
+  if(!sticker) return;
+
+
+  selectSticker(id);
+
+
+  draggingSticker = {
+
+    sticker:
+      sticker,
+
+    element:
+      event.currentTarget
+
+  };
+
+
+  event.currentTarget.setPointerCapture(
+    event.pointerId
+  );
+
+
+  event.currentTarget.addEventListener(
+    "pointermove",
+    dragSticker
+  );
+
+
+  event.currentTarget.addEventListener(
+    "pointerup",
+    stopDragSticker,
+    {once:true}
+  );
+
+}
+
+
+function dragSticker(event){
+
+  if(!draggingSticker) return;
+
+
+  const rect =
+    previewWrapper.getBoundingClientRect();
+
+
+  let x =
+    (
+      (event.clientX - rect.left)
+      / rect.width
+    ) * 100;
+
+
+  let y =
+    (
+      (event.clientY - rect.top)
+      / rect.height
+    ) * 100;
+
+
+  x =
+    Math.max(
+      3,
+      Math.min(97,x)
+    );
+
+
+  y =
+    Math.max(
+      3,
+      Math.min(97,y)
+    );
+
+
+  draggingSticker.sticker.x =
+    x;
+
+  draggingSticker.sticker.y =
+    y;
+
+
+  positionSticker(
+    draggingSticker.element,
+    draggingSticker.sticker
+  );
+
+}
+
+
+function stopDragSticker(event){
+
+  if(
+    draggingSticker &&
+    draggingSticker.element
+  ){
+
+    draggingSticker.element.removeEventListener(
+      "pointermove",
+      dragSticker
+    );
+
+  }
+
+
+  draggingSticker = null;
+
+  renderEditor();
+
+}
+
+
+/* =====================================================
+   POSITION STICKER
+===================================================== */
+
+function positionSticker(
+  element,
+  sticker
+){
+
+  element.style.left =
+    sticker.x + "%";
+
+  element.style.top =
+    sticker.y + "%";
+
+  element.style.transform =
+    "translate(-50%,-50%)";
+
+}
+
+
+/* =====================================================
+   EDITOR RENDER
 ===================================================== */
 
 function renderEditor(){
 
-  const canvas =
-    previewCanvas;
-
-  const ctx =
-    canvas.getContext("2d");
+  drawPhotostrip();
 
 
-  /*
-    Photostrip:
-    72mm-ish printable width
-    4 photo boxes vertically.
-  */
-
-  const W = 900;
-
-  const H = 1900;
-
-
-  canvas.width =
-    W;
-
-  canvas.height =
-    H;
-
-
-  /*
-    Background
-  */
-
-  const colors =
-    frameColors[
-      selectedFrame
-    ];
-
-
-  const gradient =
-    ctx.createLinearGradient(
-      0,
-      0,
-      W,
-      H
+  downloadButton.href =
+    previewCanvas.toDataURL(
+      "image/jpeg",
+      .95
     );
 
 
-  gradient.addColorStop(
-    0,
-    colors.top
+  syncStickerElements();
+
+}
+
+
+/* =====================================================
+   SYNC STICKERS
+===================================================== */
+
+function syncStickerElements(){
+
+  stickers.forEach(
+    sticker => {
+
+      let element =
+        previewWrapper.querySelector(
+          `[data-id="${sticker.id}"]`
+        );
+
+
+      if(!element){
+
+        createStickerElement(
+          sticker
+        );
+
+        return;
+
+      }
+
+
+      positionSticker(
+        element,
+        sticker
+      );
+
+    }
   );
 
-  gradient.addColorStop(
-    1,
-    colors.bottom
+
+  document
+    .querySelectorAll(
+      ".sticker-item"
+    )
+    .forEach(
+      element => {
+
+        const id =
+          Number(
+            element.dataset.id
+          );
+
+
+        if(
+          !stickers.some(
+            sticker =>
+              sticker.id === id
+          )
+        ){
+
+          element.remove();
+
+        }
+
+      }
+    );
+
+}
+
+
+/* =====================================================
+   DRAW PHOTO STRIP
+===================================================== */
+
+function drawPhotostrip(){
+
+  const width =
+    800;
+
+  const photoWidth =
+    720;
+
+  const side =
+    40;
+
+  const gap =
+    25;
+
+  const photoHeight =
+    520;
+
+  const top =
+    70;
+
+
+  const totalHeight =
+    top
+    + (photoHeight * 3)
+    + (gap * 2)
+    + 160;
+
+
+  previewCanvas.width =
+    width;
+
+  previewCanvas.height =
+    totalHeight;
+
+
+  const ctx =
+    previewCanvas.getContext("2d");
+
+
+  /*
+    BACKGROUND
+  */
+
+  drawFrameBackground(
+    ctx,
+    width,
+    totalHeight
   );
+
+
+  /*
+    PHOTOS
+  */
+
+  photos
+    .slice(0,3)
+    .forEach(
+      (photo,index)=>{
+
+        const image =
+          new Image();
+
+
+        image.onload =
+          ()=>{
+
+            const y =
+              top
+              + index *
+                (photoHeight + gap);
+
+
+            drawCoverImage(
+              ctx,
+              image,
+              side,
+              y,
+              photoWidth,
+              photoHeight
+            );
+
+
+            if(index === 2){
+
+              drawBottomText(
+                ctx,
+                width,
+                totalHeight
+              );
+
+              drawText(
+                ctx,
+                width,
+                totalHeight
+              );
+
+              drawDate(
+                ctx,
+                width,
+                totalHeight
+              );
+
+            }
+
+          };
+
+
+        image.src =
+          photo;
+
+      }
+    );
+
+
+  /*
+    Kalau gambar belum load,
+    tetap render elemen lain.
+  */
+
+  drawBottomText(
+    ctx,
+    width,
+    totalHeight
+  );
+
+}
+
+
+/* =====================================================
+   FRAME BACKGROUND
+===================================================== */
+
+function drawFrameBackground(
+  ctx,
+  width,
+  height
+){
+
+  let gradient;
+
+
+  if(selectedFrame === "pink"){
+
+    gradient =
+      ctx.createLinearGradient(
+        0,
+        0,
+        width,
+        height
+      );
+
+    gradient.addColorStop(
+      0,
+      "#ffd6e5"
+    );
+
+    gradient.addColorStop(
+      1,
+      "#efa8c2"
+    );
+
+  }
+
+
+  else if(selectedFrame === "sakura"){
+
+    gradient =
+      ctx.createLinearGradient(
+        0,
+        0,
+        width,
+        height
+      );
+
+    gradient.addColorStop(
+      0,
+      "#ffe6ee"
+    );
+
+    gradient.addColorStop(
+      1,
+      "#f6b8ce"
+    );
+
+  }
+
+
+  else if(selectedFrame === "lavender"){
+
+    gradient =
+      ctx.createLinearGradient(
+        0,
+        0,
+        width,
+        height
+      );
+
+    gradient.addColorStop(
+      0,
+      "#e2d6f4"
+    );
+
+    gradient.addColorStop(
+      1,
+      "#bba7dc"
+    );
+
+  }
+
+
+  else if(selectedFrame === "blue"){
+
+    gradient =
+      ctx.createLinearGradient(
+        0,
+        0,
+        width,
+        height
+      );
+
+    gradient.addColorStop(
+      0,
+      "#d5efff"
+    );
+
+    gradient.addColorStop(
+      1,
+      "#91c9e9"
+    );
+
+  }
+
+
+  else if(selectedFrame === "star"){
+
+    gradient =
+      ctx.createLinearGradient(
+        0,
+        0,
+        width,
+        height
+      );
+
+    gradient.addColorStop(
+      0,
+      "#302b49"
+    );
+
+    gradient.addColorStop(
+      1,
+      "#8175a8"
+    );
+
+  }
+
+
+  else if(selectedFrame === "cloud"){
+
+    gradient =
+      ctx.createLinearGradient(
+        0,
+        0,
+        width,
+        height
+      );
+
+    gradient.addColorStop(
+      0,
+      "#eef8ff"
+    );
+
+    gradient.addColorStop(
+      1,
+      "#c7e5f8"
+    );
+
+  }
+
+
+  else if(selectedFrame === "teddy"){
+
+    gradient =
+      ctx.createLinearGradient(
+        0,
+        0,
+        width,
+        height
+      );
+
+    gradient.addColorStop(
+      0,
+      "#ead0b6"
+    );
+
+    gradient.addColorStop(
+      1,
+      "#c4976d"
+    );
+
+  }
+
+
+  else if(selectedFrame === "strawberry"){
+
+    gradient =
+      ctx.createLinearGradient(
+        0,
+        0,
+        width,
+        height
+      );
+
+    gradient.addColorStop(
+      0,
+      "#ffd1d9"
+    );
+
+    gradient.addColorStop(
+      1,
+      "#ef8ca1"
+    );
+
+  }
+
+
+  else if(selectedFrame === "flower"){
+
+    gradient =
+      ctx.createLinearGradient(
+        0,
+        0,
+        width,
+        height
+      );
+
+    gradient.addColorStop(
+      0,
+      "#f7dff0"
+    );
+
+    gradient.addColorStop(
+      1,
+      "#d5afd0"
+    );
+
+  }
+
+
+  else{
+
+    gradient =
+      "#eeeae7";
+
+  }
 
 
   ctx.fillStyle =
@@ -3061,436 +3279,145 @@ function renderEditor(){
   ctx.fillRect(
     0,
     0,
-    W,
-    H
+    width,
+    height
   );
 
 
   /*
-    Header
+    Decorative details
   */
 
   ctx.fillStyle =
-    colors.text;
-
-  ctx.textAlign =
-    "center";
-
-  ctx.font =
-    "bold 38px Georgia";
-
-  ctx.fillText(
-    "YOUR PHOTOBOX ♡",
-    W / 2,
-    58
-  );
+    "rgba(255,255,255,.55)";
 
 
-  /*
-    Photo geometry
-  */
-
-  const marginX =
-    65;
-
-  const photoW =
-    W - marginX * 2;
-
-  const photoH =
-    330;
-
-  const gap =
-    18;
-
-  const startY =
-    85;
-
-
-  for(
-    let i = 0;
-    i < 4;
-    i++
+  if(
+    selectedFrame === "star" ||
+    selectedFrame === "sakura" ||
+    selectedFrame === "flower"
   ){
 
-    const x =
-      marginX;
+    for(
+      let i=0;
+      i<45;
+      i++
+    ){
 
-    const y =
-      startY +
-      i *
-      (photoH + gap);
+      const x =
+        Math.random() *
+        width;
 
-
-    /*
-      White photo border
-    */
-
-    ctx.fillStyle =
-      "#ffffff";
-
-    roundRect(
-      ctx,
-      x - 7,
-      y - 7,
-      photoW + 14,
-      photoH + 14,
-      18
-    );
-
-    ctx.fill();
+      const y =
+        Math.random() *
+        height;
 
 
-    /*
-      Photo
-    */
+      ctx.beginPath();
 
-    if(photos[i]){
-
-      drawCoverImage(
-        ctx,
-        photos[i],
+      ctx.arc(
         x,
         y,
-        photoW,
-        photoH
+        selectedFrame === "star"
+          ? 2
+          : 4,
+        0,
+        Math.PI * 2
       );
 
-    }else{
-
-      ctx.fillStyle =
-        "#eeeeee";
-
-      ctx.fillRect(
-        x,
-        y,
-        photoW,
-        photoH
-      );
+      ctx.fill();
 
     }
 
-
-    /*
-      Photo number
-    */
-
-    ctx.fillStyle =
-      "rgba(0,0,0,.35)";
-
-    ctx.font =
-      "bold 22px Arial";
-
-    ctx.textAlign =
-      "left";
-
-    ctx.fillText(
-      String(i + 1),
-      x + 15,
-      y + 30
-    );
-
   }
-
-
-  /*
-    Footer
-  */
-
-  ctx.fillStyle =
-    colors.text;
-
-  ctx.textAlign =
-    "center";
-
-  ctx.font =
-    "bold 27px Arial";
-
-  ctx.fillText(
-    "♡ captured with love ♡",
-    W / 2,
-    H - 45
-  );
-
-
-  /*
-    Date
-  */
-
-  if(showDate){
-
-    const today =
-      new Date();
-
-
-    const dateText =
-      today.toLocaleDateString(
-        "id-ID",
-        {
-          day:"2-digit",
-          month:"2-digit",
-          year:"numeric"
-        }
-      );
-
-
-    ctx.font =
-      "22px Arial";
-
-    ctx.fillText(
-      dateText,
-      W / 2,
-      H - 80
-    );
-
-  }
-
-
-  /*
-    Decorations
-  */
-
-  decorations.forEach(
-    object => {
-
-      drawDecoration(
-        ctx,
-        object,
-        W,
-        H
-      );
-
-    }
-  );
-
-
-  /*
-    Selected indicator
-  */
-
-  if(selectedObject){
-
-    const x =
-      selectedObject.x *
-      W;
-
-    const y =
-      selectedObject.y *
-      H;
-
-
-    ctx.strokeStyle =
-      "#ffffff";
-
-    ctx.lineWidth =
-      3;
-
-    ctx.setLineDash(
-      [8,8]
-    );
-
-
-    ctx.beginPath();
-
-    ctx.arc(
-      x,
-      y,
-      selectedObject.size * .75,
-      0,
-      Math.PI * 2
-    );
-
-    ctx.stroke();
-
-    ctx.setLineDash([]);
-
-  }
-
-
-  /*
-    Download
-  */
-
-  downloadButton.href =
-    canvas.toDataURL(
-      "image/jpeg",
-      .95
-    );
-
 
 }
 
 
 /* =====================================================
-   DRAW IMAGE COVER
+   COVER IMAGE
 ===================================================== */
 
 function drawCoverImage(
   ctx,
-  src,
+  image,
   x,
   y,
-  w,
-  h
+  width,
+  height
 ){
 
-  const img =
-    new Image();
+  const imageRatio =
+    image.width /
+    image.height;
+
+  const boxRatio =
+    width /
+    height;
 
 
-  img.onload =
-    function(){
+  let sourceWidth =
+    image.width;
 
-      const imageRatio =
-        img.width /
-        img.height;
+  let sourceHeight =
+    image.height;
 
-      const boxRatio =
-        w / h;
-
-
-      let drawW;
-      let drawH;
-      let offsetX;
-      let offsetY;
+  let sourceX = 0;
+  let sourceY = 0;
 
 
-      if(
-        imageRatio >
-        boxRatio
-      ){
+  if(imageRatio > boxRatio){
 
-        drawH =
-          h;
+    sourceWidth =
+      image.height *
+      boxRatio;
 
-        drawW =
-          h *
-          imageRatio;
+    sourceX =
+      (image.width -
+       sourceWidth) / 2;
 
-        offsetX =
-          x -
-          (drawW - w) / 2;
+  }else{
 
-        offsetY =
-          y;
+    sourceHeight =
+      image.width /
+      boxRatio;
 
-      }else{
+    sourceY =
+      (image.height -
+       sourceHeight) / 2;
 
-        drawW =
-          w;
-
-        drawH =
-          w /
-          imageRatio;
-
-        offsetX =
-          x;
-
-        offsetY =
-          y -
-          (drawH - h) / 2;
-
-      }
-
-
-      ctx.save();
-
-      ctx.beginPath();
-
-      roundRect(
-        ctx,
-        x,
-        y,
-        w,
-        h,
-        12
-      );
-
-      ctx.clip();
-
-
-      ctx.drawImage(
-        img,
-        offsetX,
-        offsetY,
-        drawW,
-        drawH
-      );
-
-
-      ctx.restore();
-
-    };
-
-
-  img.src =
-    src;
-
-}
-
-
-/* =====================================================
-   DRAW DECORATION
-===================================================== */
-
-function drawDecoration(
-  ctx,
-  object,
-  W,
-  H
-){
-
-  const x =
-    object.x *
-    W;
-
-  const y =
-    object.y *
-    H;
+  }
 
 
   ctx.save();
 
-  ctx.textAlign =
-    "center";
 
-  ctx.textBaseline =
-    "middle";
+  ctx.beginPath();
 
+  ctx.roundRect(
+    x,
+    y,
+    width,
+    height,
+    18
+  );
 
-  if(object.type === "sticker"){
-
-    ctx.font =
-      object.size +
-      "px Arial";
-
-    ctx.fillText(
-      object.text,
-      x,
-      y
-    );
-
-  }
+  ctx.clip();
 
 
-  if(object.type === "text"){
+  ctx.drawImage(
+    image,
 
-    ctx.font =
-      "bold " +
-      object.size +
-      "px Arial";
+    sourceX,
+    sourceY,
+    sourceWidth,
+    sourceHeight,
 
-    ctx.fillStyle =
-      frameColors[
-        selectedFrame
-      ].text;
-
-    ctx.fillText(
-      object.text,
-      x,
-      y
-    );
-
-  }
+    x,
+    y,
+    width,
+    height
+  );
 
 
   ctx.restore();
@@ -3499,513 +3426,119 @@ function drawDecoration(
 
 
 /* =====================================================
-   CANVAS ROUND RECT
+   BOTTOM TEXT
 ===================================================== */
 
-function roundRect(
+function drawBottomText(
   ctx,
-  x,
-  y,
   width,
-  height,
-  radius
+  height
 ){
 
-  ctx.beginPath();
+  ctx.textAlign =
+    "center";
 
-  ctx.moveTo(
-    x + radius,
-    y
+
+  ctx.fillStyle =
+    selectedFrame === "star"
+      ? "white"
+      : "#66515d";
+
+
+  ctx.font =
+    "bold 24px Arial";
+
+
+  ctx.fillText(
+    "YOUR PHOTOBOX",
+    width / 2,
+    height - 75
   );
-
-  ctx.lineTo(
-    x + width - radius,
-    y
-  );
-
-  ctx.quadraticCurveTo(
-    x + width,
-    y,
-    x + width,
-    y + radius
-  );
-
-  ctx.lineTo(
-    x + width,
-    y + height - radius
-  );
-
-  ctx.quadraticCurveTo(
-    x + width,
-    y + height,
-    x + width - radius,
-    y + height
-  );
-
-  ctx.lineTo(
-    x + radius,
-    y + height
-  );
-
-  ctx.quadraticCurveTo(
-    x,
-    y + height,
-    x,
-    y + height - radius
-  );
-
-  ctx.lineTo(
-    x,
-    y + radius
-  );
-
-  ctx.quadraticCurveTo(
-    x,
-    y,
-    x + radius,
-    y
-  );
-
-  ctx.closePath();
 
 }
 
 
 /* =====================================================
-   SELECT OBJECT FROM CANVAS
+   CUSTOM TEXT
 ===================================================== */
 
-function findDecorationAt(
-  canvasX,
-  canvasY
+function drawText(
+  ctx,
+  width,
+  height
 ){
 
-  const W =
-    previewCanvas.width;
-
-  const H =
-    previewCanvas.height;
+  if(!customText) return;
 
 
-  /*
-    Dari belakang supaya object
-    paling baru lebih mudah dipilih.
-  */
-
-  for(
-    let i =
-      decorations.length - 1;
-    i >= 0;
-    i--
-  ){
-
-    const object =
-      decorations[i];
+  ctx.textAlign =
+    "center";
 
 
-    const x =
-      object.x *
-      W;
-
-    const y =
-      object.y *
-      H;
+  ctx.fillStyle =
+    selectedFrame === "star"
+      ? "white"
+      : "#66515d";
 
 
-    const distance =
-      Math.sqrt(
-        Math.pow(
-          canvasX - x,
-          2
-        ) +
-        Math.pow(
-          canvasY - y,
-          2
-        )
-      );
+  ctx.font =
+    "28px Georgia";
 
 
-    const radius =
-      Math.max(
-        object.size,
-        45
-      );
-
-
-    if(
-      distance <=
-      radius
-    ){
-
-      return object;
-
-    }
-
-  }
-
-
-  return null;
+  ctx.fillText(
+    customText,
+    width / 2,
+    height - 110
+  );
 
 }
 
 
 /* =====================================================
-   MOUSE DOWN
+   DATE
 ===================================================== */
 
-previewCanvas.addEventListener(
-  "mousedown",
-  function(event){
+function drawDate(
+  ctx,
+  width,
+  height
+){
 
-    const rect =
-      previewCanvas.getBoundingClientRect();
+  if(!showDate) return;
 
 
-    const scaleX =
-      previewCanvas.width /
-      rect.width;
+  const date =
+    new Date().toLocaleDateString(
+      "id-ID",
+      {
+        day:"2-digit",
+        month:"2-digit",
+        year:"numeric"
+      }
+    );
 
-    const scaleY =
-      previewCanvas.height /
-      rect.height;
 
+  ctx.textAlign =
+    "center";
 
-    const x =
-      (event.clientX -
-      rect.left) *
-      scaleX;
 
-    const y =
-      (event.clientY -
-      rect.top) *
-      scaleY;
+  ctx.fillStyle =
+    selectedFrame === "star"
+      ? "rgba(255,255,255,.85)"
+      : "#806c76";
 
 
-    const object =
-      findDecorationAt(
-        x,
-        y
-      );
+  ctx.font =
+    "18px Arial";
 
 
-    selectedObject =
-      object;
+  ctx.fillText(
+    date,
+    width / 2,
+    height - 45
+  );
 
-
-    if(object){
-
-      isDragging =
-        true;
-
-
-      dragOffsetX =
-        x -
-        object.x *
-        previewCanvas.width;
-
-
-      dragOffsetY =
-        y -
-        object.y *
-        previewCanvas.height;
-
-    }
-
-
-    renderEditor();
-
-  }
-);
-
-
-/* =====================================================
-   MOUSE MOVE
-===================================================== */
-
-previewCanvas.addEventListener(
-  "mousemove",
-  function(event){
-
-    if(
-      !isDragging ||
-      !selectedObject
-    ){
-
-      return;
-
-    }
-
-
-    const rect =
-      previewCanvas.getBoundingClientRect();
-
-
-    const scaleX =
-      previewCanvas.width /
-      rect.width;
-
-    const scaleY =
-      previewCanvas.height /
-      rect.height;
-
-
-    const x =
-      (event.clientX -
-      rect.left) *
-      scaleX;
-
-    const y =
-      (event.clientY -
-      rect.top) *
-      scaleY;
-
-
-    selectedObject.x =
-      (
-        x -
-        dragOffsetX
-      ) /
-      previewCanvas.width;
-
-
-    selectedObject.y =
-      (
-        y -
-        dragOffsetY
-      ) /
-      previewCanvas.height;
-
-
-    /*
-      Jangan keluar canvas.
-    */
-
-    selectedObject.x =
-      Math.max(
-        .05,
-        Math.min(
-          .95,
-          selectedObject.x
-        )
-      );
-
-
-    selectedObject.y =
-      Math.max(
-        .03,
-        Math.min(
-          .97,
-          selectedObject.y
-        )
-      );
-
-
-    renderEditor();
-
-  }
-);
-
-
-/* =====================================================
-   MOUSE UP
-===================================================== */
-
-window.addEventListener(
-  "mouseup",
-  function(){
-
-    isDragging =
-      false;
-
-  }
-);
-
-
-/* =====================================================
-   TOUCH START
-===================================================== */
-
-previewCanvas.addEventListener(
-  "touchstart",
-  function(event){
-
-    event.preventDefault();
-
-
-    const touch =
-      event.touches[0];
-
-
-    const rect =
-      previewCanvas.getBoundingClientRect();
-
-
-    const scaleX =
-      previewCanvas.width /
-      rect.width;
-
-    const scaleY =
-      previewCanvas.height /
-      rect.height;
-
-
-    const x =
-      (touch.clientX -
-      rect.left) *
-      scaleX;
-
-    const y =
-      (touch.clientY -
-      rect.top) *
-      scaleY;
-
-
-    const object =
-      findDecorationAt(
-        x,
-        y
-      );
-
-
-    selectedObject =
-      object;
-
-
-    if(object){
-
-      isDragging =
-        true;
-
-
-      dragOffsetX =
-        x -
-        object.x *
-        previewCanvas.width;
-
-      dragOffsetY =
-        y -
-        object.y *
-        previewCanvas.height;
-
-    }
-
-
-    renderEditor();
-
-  },
-  {
-    passive:false
-  }
-);
-
-
-/* =====================================================
-   TOUCH MOVE
-===================================================== */
-
-previewCanvas.addEventListener(
-  "touchmove",
-  function(event){
-
-    event.preventDefault();
-
-
-    if(
-      !isDragging ||
-      !selectedObject
-    ){
-
-      return;
-
-    }
-
-
-    const touch =
-      event.touches[0];
-
-
-    const rect =
-      previewCanvas.getBoundingClientRect();
-
-
-    const scaleX =
-      previewCanvas.width /
-      rect.width;
-
-    const scaleY =
-      previewCanvas.height /
-      rect.height;
-
-
-    const x =
-      (touch.clientX -
-      rect.left) *
-      scaleX;
-
-    const y =
-      (touch.clientY -
-      rect.top) *
-      scaleY;
-
-
-    selectedObject.x =
-      (
-        x -
-        dragOffsetX
-      ) /
-      previewCanvas.width;
-
-
-    selectedObject.y =
-      (
-        y -
-        dragOffsetY
-      ) /
-      previewCanvas.height;
-
-
-    selectedObject.x =
-      Math.max(
-        .05,
-        Math.min(
-          .95,
-          selectedObject.x
-        )
-      );
-
-
-    selectedObject.y =
-      Math.max(
-        .03,
-        Math.min(
-          .97,
-          selectedObject.y
-        )
-      );
-
-
-    renderEditor();
-
-  },
-  {
-    passive:false
-  }
-);
-
-
-/* =====================================================
-   TOUCH END
-===================================================== */
-
-previewCanvas.addEventListener(
-  "touchend",
-  function(){
-
-    isDragging =
-      false;
-
-  }
-);
+}
 
 
 /* =====================================================
@@ -4014,24 +3547,24 @@ previewCanvas.addEventListener(
 
 function printPhotostrip(){
 
-  const image =
-    previewCanvas.toDataURL(
-      "image/png"
-    );
+  /*
+    Tunggu sedikit supaya canvas
+    sudah selesai dirender.
+  */
+
+  setTimeout(()=>{
+
+    printImage.src =
+      previewCanvas.toDataURL(
+        "image/jpeg",
+        .95
+      );
 
 
-  printImage.src =
-    image;
+    window.print();
 
 
-  setTimeout(
-    function(){
-
-      window.print();
-
-    },
-    300
-  );
+  },300);
 
 }
 
@@ -4042,68 +3575,90 @@ function printPhotostrip(){
 
 function finishSession(){
 
-  const ok =
-    confirm(
-      "Selesai dan kembali ke Home?"
+  if(stream){
+
+    stream.getTracks().forEach(
+      track =>
+        track.stop()
     );
 
-
-  if(!ok){
-    return;
   }
 
 
-  stopCamera();
+  stream = null;
+
+  sessionRunning = false;
+
+  sessionLocked = false;
+
+  photos = [];
+
+  stickers = [];
+
+  selectedSticker = null;
+
+  customText = "";
+
+  showDate = false;
 
   clearInterval(
     sessionInterval
   );
 
 
-  photos = [];
-
-  decorations = [];
-
-  selectedObject =
-    null;
-
-  currentPhoto = 0;
-
-  retakeIndex = -1;
-
-  sessionStarted = false;
+  sessionTimer.textContent =
+    "05:00";
 
 
   document.getElementById(
-    "editorScreen"
-  ).style.display = "none";
+    "customText"
+  ).value = "";
 
 
-  document.getElementById(
-    "homeScreen"
-  ).style.display = "flex";
-
-
-  resetTimerDisplay();
+  showScreen(homeScreen);
 
 }
 
 
 /* =====================================================
-   UTILITY WAIT
+   PREVENT ACCIDENTAL STICKER TEXT SELECTION
 ===================================================== */
 
-function wait(ms){
+document.addEventListener(
+  "click",
+  event => {
 
-  return new Promise(
-    resolve =>
-      setTimeout(
-        resolve,
-        ms
+    if(
+      !event.target.closest(
+        ".sticker-item"
       )
-  );
+    ){
 
-}
+      selectedSticker = null;
+
+
+      document
+        .querySelectorAll(
+          ".sticker-item"
+        )
+        .forEach(
+          el =>
+            el.classList.remove(
+              "selected"
+            )
+        );
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+showScreen(homeScreen);
 
 </script>
 

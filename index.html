@@ -15,7 +15,7 @@
 
 body{
   font-family:Arial,sans-serif;
-  background:#f8f2f5;
+  background:#faf5f7;
   color:#5d4c57;
 }
 
@@ -39,31 +39,33 @@ button{
   padding:30px;
 
   background:
-    radial-gradient(circle at 15% 20%,#f3d7e3,transparent 28%),
-    radial-gradient(circle at 85% 80%,#ded5ef,transparent 28%),
-    #faf6f7;
+    radial-gradient(circle at 10% 15%,#f5d6e4,transparent 30%),
+    radial-gradient(circle at 90% 85%,#ddd4f0,transparent 30%),
+    linear-gradient(135deg,#fff9fb,#f5eff7);
 }
 
 .home-card{
-  width:min(700px,100%);
-  padding:60px 30px;
+  width:min(720px,100%);
+  padding:65px 30px;
   background:rgba(255,255,255,.82);
-  border-radius:35px;
-  box-shadow:0 25px 70px rgba(90,65,80,.15);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:40px;
+  box-shadow:0 30px 80px rgba(90,65,80,.16);
 }
 
 .logo{
-  font-size:14px;
-  letter-spacing:5px;
-  color:#aa7d91;
+  font-size:13px;
+  letter-spacing:6px;
+  color:#ad7f95;
   margin-bottom:25px;
 }
 
 .home-title{
   font-family:Georgia,serif;
-  font-size:clamp(42px,8vw,72px);
+  font-size:clamp(45px,8vw,75px);
+  line-height:1.05;
   color:#66515d;
-  margin-bottom:15px;
+  margin-bottom:18px;
 }
 
 .home-subtitle{
@@ -77,16 +79,18 @@ button{
   color:white;
   font-size:18px;
   font-weight:bold;
-  background:linear-gradient(135deg,#bd88a1,#8f7aa5);
-  box-shadow:0 15px 30px rgba(150,110,140,.25);
+  background:linear-gradient(135deg,#c486a2,#8d79a6);
+  box-shadow:0 15px 35px rgba(150,110,140,.3);
 }
+
 
 /* ================= BOOTH ================= */
 
 #boothScreen{
   display:none;
   min-height:100vh;
-  background:#201c21;
+  background:
+    radial-gradient(circle at 50% 0%,#39303b,#171519 55%);
   color:white;
   padding:15px;
 }
@@ -101,19 +105,19 @@ button{
 }
 
 .booth-logo{
-  letter-spacing:4px;
+  letter-spacing:5px;
   font-size:13px;
 }
 
 .session{
-  background:#383139;
-  padding:8px 15px;
-  border-radius:20px;
+  background:#342d35;
+  padding:9px 16px;
+  border-radius:30px;
   font-size:13px;
 }
 
 #sessionTimer{
-  color:#f5c7d9;
+  color:#f5bdd3;
   font-weight:bold;
 }
 
@@ -123,19 +127,20 @@ button{
 }
 
 .video-frame{
-  background:#111;
-  border-radius:25px;
+  background:#0d0c0e;
+  border-radius:28px;
   padding:8px;
   position:relative;
   overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
 
 video{
   width:100%;
-  max-height:72vh;
+  max-height:70vh;
   object-fit:cover;
   display:block;
-  border-radius:20px;
+  border-radius:22px;
   transform:scaleX(-1);
 }
 
@@ -155,10 +160,10 @@ video{
   left:0;
   right:0;
   text-align:center;
-  font-size:clamp(25px,5vw,45px);
+  font-size:clamp(25px,5vw,48px);
   font-weight:bold;
   letter-spacing:3px;
-  text-shadow:0 4px 20px #000;
+  text-shadow:0 5px 25px #000;
 }
 
 .countdown{
@@ -174,8 +179,19 @@ video{
 
 .booth-bottom{
   text-align:center;
-  padding:18px;
-  color:#cbbac3;
+  padding:20px;
+  color:#d2c2cb;
+}
+
+.start-capture-btn{
+  margin-top:15px;
+  padding:18px 45px;
+  border-radius:50px;
+  color:white;
+  font-size:18px;
+  font-weight:bold;
+  background:linear-gradient(135deg,#c486a2,#8d79a6);
+  box-shadow:0 12px 30px rgba(150,110,140,.3);
 }
 
 
@@ -336,14 +352,14 @@ video{
 .editor-subtitle{
   text-align:center;
   color:#9b858f;
-  margin-bottom:25px;
+  margin-bottom:10px;
 }
 
 .locked{
   text-align:center;
   font-size:12px;
   color:#a58f99;
-  margin-bottom:20px;
+  margin-bottom:25px;
 }
 
 .editor-layout{
@@ -366,14 +382,12 @@ video{
 
 #previewCanvas{
   width:100%;
-  max-height:72vh;
-  object-fit:contain;
   display:block;
   border-radius:12px;
 }
 
 .controls-card{
-  background:rgba(255,255,255,.85);
+  background:rgba(255,255,255,.9);
   border-radius:25px;
   padding:22px;
   box-shadow:0 20px 50px rgba(90,65,80,.1);
@@ -558,8 +572,15 @@ video{
   <div class="booth-bottom">
 
     <div id="boothStatus">
-      Get ready... ♡
+      Camera ready ♡
     </div>
+
+    <button
+      id="startCaptureButton"
+      class="start-capture-btn"
+      onclick="startPhotoSequence()">
+      TAP TO START ✦
+    </button>
 
   </div>
 
@@ -744,34 +765,22 @@ video{
       <div class="editor-buttons">
 
         <button class="tool-btn"
-          onclick="addSticker('♡')">
-          ♡
-        </button>
+          onclick="addSticker('♡')">♡</button>
 
         <button class="tool-btn"
-          onclick="addSticker('☆')">
-          ☆
-        </button>
+          onclick="addSticker('☆')">☆</button>
 
         <button class="tool-btn"
-          onclick="addSticker('✦')">
-          ✦
-        </button>
+          onclick="addSticker('✦')">✦</button>
 
         <button class="tool-btn"
-          onclick="addSticker('🌸')">
-          🌸
-        </button>
+          onclick="addSticker('🌸')">🌸</button>
 
         <button class="tool-btn"
-          onclick="addSticker('🎀')">
-          🎀
-        </button>
+          onclick="addSticker('🎀')">🎀</button>
 
         <button class="tool-btn"
-          onclick="addSticker('✨')">
-          ✨
-        </button>
+          onclick="addSticker('✨')">✨</button>
 
       </div>
 
@@ -818,6 +827,9 @@ document.getElementById("boothStatus");
 const sessionTimer =
 document.getElementById("sessionTimer");
 
+const startCaptureButton =
+document.getElementById("startCaptureButton");
+
 let stream=null;
 
 let photos=[];
@@ -830,6 +842,8 @@ let sessionInterval=null;
 
 let sessionActive=false;
 
+let sequenceRunning=false;
+
 let photosLocked=false;
 
 let selectedFrame="pink";
@@ -841,23 +855,28 @@ let stickers=[];
 let showDate=false;
 
 
-/* ================= ENTER ================= */
+/* ================= ENTER BOOTH ================= */
 
 async function enterBooth(){
 
-  document.getElementById(
-    "homeScreen"
-  ).style.display="none";
+  document.getElementById("homeScreen").style.display="none";
 
-  document.getElementById(
-    "boothScreen"
-  ).style.display="block";
+  document.getElementById("boothScreen").style.display="block";
 
   try{
 
+    if(!navigator.mediaDevices ||
+       !navigator.mediaDevices.getUserMedia){
+
+      alert(
+        "Browser ini tidak mendukung kamera."
+      );
+
+      return;
+    }
+
     stream=
-      await navigator.mediaDevices
-      .getUserMedia({
+      await navigator.mediaDevices.getUserMedia({
         video:{
           facingMode:"user"
         },
@@ -871,11 +890,10 @@ async function enterBooth(){
     startSession();
 
     boothStatus.innerText=
-      "Get ready... ♡";
+      "Camera ready ♡ Tap the button when you're ready.";
 
-    setTimeout(()=>{
-      startPhotoSequence();
-    },1200);
+    startCaptureButton.style.display=
+      "inline-block";
 
   }
 
@@ -901,8 +919,12 @@ function startSession(){
 
   updateSessionTimer();
 
+  clearInterval(sessionInterval);
+
   sessionInterval=
     setInterval(()=>{
+
+      if(!sessionActive)return;
 
       sessionSeconds--;
 
@@ -914,24 +936,41 @@ function startSession(){
 
         sessionActive=false;
 
-        clearInterval(
-          sessionInterval
-        );
+        sequenceRunning=false;
+
+        clearInterval(sessionInterval);
 
         boothStatus.innerText=
-          "Waktu sesi habis.";
+          "SESSION TIME IS OVER ♡";
 
-        /*
-          Kalau timer habis ketika
-          masih proses foto,
-          sesi berhenti.
-        */
+        countdown.innerText="";
 
-        if(currentPhoto<4){
+        getReady.innerText="";
 
-          stopCamera();
+        startCaptureButton.style.display=
+          "none";
+
+        stopCamera();
+
+        if(photos.length===4){
 
           showReview();
+
+        }else{
+
+          alert(
+            "Waktu sesi habis. Foto yang berhasil diambil akan digunakan."
+          );
+
+          if(photos.length>0){
+
+            showReview();
+
+          }else{
+
+            location.reload();
+
+          }
 
         }
 
@@ -958,31 +997,61 @@ function updateSessionTimer(){
 }
 
 
-/* ================= PHOTO SEQUENCE ================= */
+/* ================= START PHOTO SEQUENCE ================= */
 
 function startPhotoSequence(){
 
-  if(!sessionActive)return;
+  if(!sessionActive){
+
+    alert("Sesi foto sudah habis.");
+
+    return;
+  }
+
+  if(sequenceRunning)return;
+
+  sequenceRunning=true;
 
   photos=[];
 
   currentPhoto=0;
 
-  nextPhoto();
+  startCaptureButton.style.display="none";
+
+  boothStatus.innerText=
+    "Get ready... ♡";
+
+  setTimeout(()=>{
+
+    if(sessionActive){
+
+      nextPhoto();
+
+    }
+
+  },800);
 
 }
 
 
+/* ================= NEXT PHOTO ================= */
+
 function nextPhoto(){
 
-  if(!sessionActive)return;
+  if(!sessionActive){
+
+    sequenceRunning=false;
+
+    return;
+  }
 
   if(currentPhoto>=4){
+
+    sequenceRunning=false;
 
     showReview();
 
     return;
-
   }
 
   currentPhoto++;
@@ -994,6 +1063,9 @@ function nextPhoto(){
     "GET READY!";
 
   countdown.innerText="";
+
+  boothStatus.innerText=
+    "Get ready for photo "+currentPhoto+" ♡";
 
   setTimeout(()=>{
 
@@ -1028,7 +1100,6 @@ function runCountdown(){
         countdown.innerText="";
 
         return;
-
       }
 
       number--;
@@ -1038,9 +1109,7 @@ function runCountdown(){
         countdown.innerText=
           number;
 
-      }
-
-      else{
+      }else{
 
         clearInterval(interval);
 
@@ -1064,9 +1133,20 @@ function takePhoto(){
   const canvas=
     document.createElement("canvas");
 
-  const width=video.videoWidth;
+  const width=
+    video.videoWidth;
 
-  const height=video.videoHeight;
+  const height=
+    video.videoHeight;
+
+  if(!width || !height){
+
+    alert("Kamera belum siap. Coba lagi.");
+
+    sequenceRunning=false;
+
+    return;
+  }
 
   canvas.width=width;
 
@@ -1091,30 +1171,34 @@ function takePhoto(){
 
   ctx.restore();
 
-  photos.push(
+  photos[currentPhoto-1]=
     canvas.toDataURL(
       "image/jpeg",
       .95
-    )
-  );
+    );
+
+  boothStatus.innerText=
+    "Photo "+currentPhoto+" captured ✦";
 
   setTimeout(()=>{
 
     countdown.innerText="";
 
+    if(!sessionActive)return;
+
     if(currentPhoto<4){
 
       nextPhoto();
 
-    }
+    }else{
 
-    else{
+      sequenceRunning=false;
 
       showReview();
 
     }
 
-  },1000);
+  },1200);
 
 }
 
@@ -1145,6 +1229,8 @@ function showReview(){
 
   sessionActive=false;
 
+  sequenceRunning=false;
+
   stopCamera();
 
   document.getElementById(
@@ -1152,132 +1238,3 @@ function showReview(){
   ).style.display="none";
 
   document.getElementById(
-    "reviewScreen"
-  ).style.display="block";
-
-  renderReview();
-
-}
-
-
-/* ================= REVIEW GRID ================= */
-
-function renderReview(){
-
-  const grid=
-    document.getElementById(
-      "reviewGrid"
-    );
-
-  grid.innerHTML="";
-
-  photos.forEach(
-    (image,index)=>{
-
-      const card=
-        document.createElement("div");
-
-      card.className=
-        "review-card";
-
-      card.innerHTML=`
-
-        <img src="${image}">
-
-        <h3>
-          PHOTO ${index+1}
-        </h3>
-
-        <button
-          class="retake-btn"
-          onclick="retakePhoto(${index})">
-          ↻ RETAKE
-        </button>
-
-      `;
-
-      grid.appendChild(card);
-
-    }
-  );
-
-}
-
-
-/* ================= RETAKE ================= */
-
-function retakePhoto(index){
-
-  if(photosLocked)return;
-
-  /*
-    Retake memakai kamera baru.
-    Timer sesi tetap 5 menit dari awal.
-  */
-
-  if(sessionSeconds<=0){
-
-    alert(
-      "Waktu sesi sudah habis."
-    );
-
-    return;
-
-  }
-
-  currentPhoto=index+1;
-
-  document.getElementById(
-    "reviewScreen"
-  ).style.display="none";
-
-  document.getElementById(
-    "boothScreen"
-  ).style.display="block";
-
-  openCameraForRetake(index);
-
-}
-
-
-/* ================= RETAKE CAMERA ================= */
-
-async function openCameraForRetake(index){
-
-  try{
-
-    stream=
-      await navigator.mediaDevices
-      .getUserMedia({
-        video:{
-          facingMode:"user"
-        },
-        audio:false
-      });
-
-    video.srcObject=stream;
-
-    await video.play();
-
-    sessionActive=true;
-
-    photoNumber.innerText=
-      "RETAKE PHOTO "+(index+1);
-
-    getReady.innerText=
-      "GET READY!";
-
-    setTimeout(()=>{
-
-      getReady.innerText="";
-
-      runRetakeCountdown(index);
-
-    },1200);
-
-  }
-
-  catch(error){
-
-    alert(
-      "Kamera tidak bisa digu

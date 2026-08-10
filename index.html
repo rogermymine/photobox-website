@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5dce8">
 
-<title>Your Photobox</title>
+<title>Your Photobox ♡</title>
 
 <style>
 *{
@@ -13,114 +14,143 @@
   padding:0;
 }
 
+html,body{
+  width:100%;
+  min-height:100%;
+}
+
 body{
   font-family:Arial,sans-serif;
   background:#faf6f8;
-  color:#5d4c57;
+  color:#66515d;
+}
+
+button,
+input{
+  font-family:inherit;
 }
 
 button{
   border:0;
   cursor:pointer;
-  font-family:inherit;
 }
 
 .screen{
   min-height:100vh;
 }
 
-/* ================= HOME ================= */
+/* =====================================================
+   HOME
+===================================================== */
 
 #homeScreen{
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:30px;
+  padding:25px;
 
   background:
-    radial-gradient(circle at 15% 20%,#f3d7e3,transparent 28%),
-    radial-gradient(circle at 85% 80%,#ded5ef,transparent 28%),
-    #faf6f7;
+    radial-gradient(circle at 10% 15%,#f5d5e4,transparent 28%),
+    radial-gradient(circle at 90% 80%,#ddd4f0,transparent 30%),
+    linear-gradient(135deg,#fffafa,#f7f1f5);
 }
 
 .home-card{
-  width:min(700px,100%);
+  width:min(760px,100%);
   padding:65px 30px;
-  background:rgba(255,255,255,.86);
-  border-radius:40px;
-  box-shadow:0 25px 70px rgba(90,65,80,.15);
+  border-radius:38px;
+
+  background:rgba(255,255,255,.82);
+
+  box-shadow:
+    0 30px 80px rgba(90,65,80,.16);
+
+  backdrop-filter:blur(15px);
 }
 
 .logo{
-  font-size:14px;
-  letter-spacing:5px;
+  font-size:13px;
+  letter-spacing:6px;
   color:#aa7d91;
   margin-bottom:25px;
 }
 
 .home-title{
   font-family:Georgia,serif;
-  font-size:clamp(45px,8vw,75px);
-  line-height:1.05;
+  font-size:clamp(45px,9vw,78px);
+  line-height:1.02;
   color:#66515d;
-  margin-bottom:18px;
+  margin-bottom:20px;
 }
 
 .home-subtitle{
   color:#9b858f;
+  font-size:16px;
   margin-bottom:40px;
 }
 
 .start-btn{
-  padding:20px 55px;
+  padding:20px 58px;
   border-radius:50px;
+
   color:white;
   font-size:18px;
   font-weight:bold;
 
   background:
-    linear-gradient(
-      135deg,
-      #bd88a1,
-      #8f7aa5
-    );
+    linear-gradient(135deg,#bd88a1,#8f7aa5);
 
   box-shadow:
-    0 15px 30px
-    rgba(150,110,140,.25);
+    0 15px 35px rgba(150,110,140,.28);
+
+  transition:.2s;
 }
 
-/* ================= BOOTH ================= */
+.start-btn:active{
+  transform:scale(.97);
+}
+
+
+/* =====================================================
+   BOOTH
+===================================================== */
 
 #boothScreen{
   display:none;
   min-height:100vh;
-  background:#201c21;
+
+  background:
+    radial-gradient(circle at 20% 10%,#382d37,transparent 30%),
+    radial-gradient(circle at 90% 90%,#2d2632,transparent 30%),
+    #1d191e;
+
   color:white;
   padding:15px;
 }
 
 .booth-top{
-  max-width:1100px;
+  max-width:1150px;
   margin:auto;
 
   display:flex;
   justify-content:space-between;
   align-items:center;
 
-  padding:10px 5px 15px;
+  padding:8px 5px 15px;
 }
 
 .booth-logo{
-  letter-spacing:4px;
+  letter-spacing:5px;
   font-size:13px;
 }
 
 .session{
+  padding:9px 17px;
+  border-radius:30px;
+
   background:#383139;
-  padding:9px 16px;
-  border-radius:20px;
+
   font-size:13px;
 }
 
@@ -130,41 +160,50 @@ button{
 }
 
 .camera-area{
-  max-width:1100px;
+  max-width:1150px;
   margin:auto;
 }
 
 .video-frame{
-  background:#111;
-  border-radius:25px;
+  position:relative;
+
+  background:#090909;
+
+  border-radius:28px;
   padding:8px;
 
-  position:relative;
   overflow:hidden;
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.35);
 }
 
 video{
   width:100%;
+
   max-height:72vh;
+
   object-fit:cover;
+
   display:block;
 
-  border-radius:20px;
+  border-radius:22px;
 
   transform:scaleX(-1);
+
+  background:#111;
 }
 
 .photo-number{
   position:absolute;
-
   top:25px;
   left:25px;
-
-  background:rgba(0,0,0,.55);
 
   padding:10px 17px;
 
   border-radius:30px;
+
+  background:rgba(0,0,0,.55);
 
   font-size:14px;
 }
@@ -172,30 +211,24 @@ video{
 .get-ready{
   position:absolute;
 
-  top:35%;
+  top:38%;
   left:0;
   right:0;
 
   text-align:center;
 
-  font-size:
-    clamp(
-      25px,
-      5vw,
-      45px
-    );
+  font-size:clamp(25px,5vw,48px);
 
   font-weight:bold;
-
   letter-spacing:3px;
 
-  text-shadow:
-    0 4px 20px #000;
+  text-shadow:0 5px 30px #000;
+
+  pointer-events:none;
 }
 
 .countdown{
   position:absolute;
-
   inset:0;
 
   display:flex;
@@ -203,49 +236,70 @@ video{
   align-items:center;
   justify-content:center;
 
-  font-size:
-    clamp(
-      90px,
-      18vw,
-      180px
-    );
+  font-size:clamp(100px,20vw,200px);
 
   font-weight:bold;
 
-  text-shadow:
-    0 5px 30px #000;
+  text-shadow:0 5px 35px #000;
+
+  pointer-events:none;
 }
 
 .booth-bottom{
+  max-width:1000px;
+  margin:auto;
+
   text-align:center;
 
   padding:18px;
 
-  color:#cbbac3;
+  color:#d0c0ca;
 }
 
-/* ================= REVIEW ================= */
+.permission-box{
+  max-width:500px;
+  margin:25px auto 0;
+
+  padding:20px;
+
+  border-radius:20px;
+
+  background:#332d33;
+
+  color:#d8cbd2;
+
+  line-height:1.6;
+}
+
+.retry-camera{
+  margin-top:15px;
+
+  padding:12px 25px;
+
+  border-radius:30px;
+
+  background:#f0d4e1;
+
+  color:#6e5662;
+
+  font-weight:bold;
+}
+
+
+/* =====================================================
+   REVIEW
+===================================================== */
 
 #reviewScreen{
   display:none;
 
   min-height:100vh;
 
-  padding:30px 20px;
+  padding:30px 20px 50px;
 
   background:
-    radial-gradient(
-      circle at 10% 10%,
-      #f0d8e4,
-      transparent 25%
-    ),
-
-    radial-gradient(
-      circle at 90% 90%,
-      #ddd5ed,
-      transparent 25%
-    ),
-
+    radial-gradient(circle at 10% 10%,#f0d8e4,transparent 25%),
+    radial-gradient(circle at 90% 90%,#ddd5ed,transparent 25%),
     #faf7f8;
 }
 
@@ -254,7 +308,7 @@ video{
 
   font-family:Georgia,serif;
 
-  font-size:42px;
+  font-size:clamp(35px,6vw,48px);
 
   color:#66515d;
 
@@ -269,8 +323,18 @@ video{
   margin-bottom:30px;
 }
 
+.review-time{
+  text-align:center;
+
+  margin-bottom:20px;
+
+  font-size:13px;
+
+  color:#a58f99;
+}
+
 .review-grid{
-  max-width:1000px;
+  max-width:1050px;
 
   margin:auto;
 
@@ -287,11 +351,10 @@ video{
 
   padding:10px;
 
-  border-radius:20px;
+  border-radius:22px;
 
   box-shadow:
-    0 10px 30px
-    rgba(80,60,70,.12);
+    0 12px 35px rgba(80,60,70,.12);
 
   text-align:center;
 }
@@ -299,11 +362,11 @@ video{
 .review-card img{
   width:100%;
 
-  aspect-ratio:3/4;
+  aspect-ratio:4/5;
 
   object-fit:cover;
 
-  border-radius:14px;
+  border-radius:15px;
 
   display:block;
 }
@@ -312,6 +375,8 @@ video{
   margin:12px 0;
 
   font-size:14px;
+
+  color:#725d68;
 }
 
 .retake-btn{
@@ -319,13 +384,19 @@ video{
 
   padding:11px;
 
-  border-radius:20px;
+  border-radius:22px;
 
   background:#f2e8ed;
 
   color:#725d68;
 
   font-weight:bold;
+}
+
+.retake-btn:disabled{
+  opacity:.4;
+
+  cursor:not-allowed;
 }
 
 .review-actions{
@@ -335,16 +406,12 @@ video{
 }
 
 .done-btn{
-  padding:17px 35px;
+  padding:17px 38px;
 
   border-radius:35px;
 
   background:
-    linear-gradient(
-      135deg,
-      #bd88a1,
-      #8f7aa5
-    );
+    linear-gradient(135deg,#bd88a1,#8f7aa5);
 
   color:white;
 
@@ -353,7 +420,10 @@ video{
   font-weight:bold;
 }
 
-/* ================= CONFIRM ================= */
+
+/* =====================================================
+   CONFIRM
+===================================================== */
 
 #confirmScreen{
   display:none;
@@ -367,11 +437,14 @@ video{
 
   padding:30px;
 
-  background:#faf6f8;
+  background:
+    radial-gradient(circle at 10% 10%,#f0d8e4,transparent 25%),
+    radial-gradient(circle at 90% 90%,#ddd5ed,transparent 25%),
+    #faf7f8;
 }
 
 .confirm-card{
-  max-width:500px;
+  width:min(520px,100%);
 
   background:white;
 
@@ -380,8 +453,7 @@ video{
   border-radius:30px;
 
   box-shadow:
-    0 20px 60px
-    rgba(80,60,70,.15);
+    0 20px 60px rgba(80,60,70,.15);
 }
 
 .confirm-card h1{
@@ -408,36 +480,32 @@ video{
   flex-wrap:wrap;
 }
 
-.back-btn{
-  padding:15px 25px;
-
-  border-radius:30px;
-
-  background:#eee7eb;
-
-  color:#705c67;
-
-  font-weight:bold;
-}
-
+.back-btn,
 .confirm-btn{
   padding:15px 25px;
 
   border-radius:30px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #bd88a1,
-      #8f7aa5
-    );
-
-  color:white;
-
   font-weight:bold;
 }
 
-/* ================= EDITOR ================= */
+.back-btn{
+  background:#eee7eb;
+
+  color:#705c67;
+}
+
+.confirm-btn{
+  background:
+    linear-gradient(135deg,#bd88a1,#8f7aa5);
+
+  color:white;
+}
+
+
+/* =====================================================
+   EDITOR
+===================================================== */
 
 #editorScreen{
   display:none;
@@ -447,18 +515,8 @@ video{
   padding:25px;
 
   background:
-    radial-gradient(
-      circle at 10% 10%,
-      #f0d8e4,
-      transparent 25%
-    ),
-
-    radial-gradient(
-      circle at 90% 90%,
-      #ddd5ed,
-      transparent 25%
-    ),
-
+    radial-gradient(circle at 10% 10%,#f0d8e4,transparent 25%),
+    radial-gradient(circle at 90% 90%,#ddd5ed,transparent 25%),
     #faf7f8;
 }
 
@@ -467,7 +525,7 @@ video{
 
   font-family:Georgia,serif;
 
-  font-size:38px;
+  font-size:clamp(35px,6vw,48px);
 
   color:#66515d;
 
@@ -479,7 +537,7 @@ video{
 
   color:#9b858f;
 
-  margin-bottom:25px;
+  margin-bottom:8px;
 }
 
 .locked{
@@ -489,7 +547,7 @@ video{
 
   color:#a58f99;
 
-  margin-bottom:20px;
+  margin-bottom:25px;
 }
 
 .editor-layout{
@@ -500,7 +558,7 @@ video{
   display:grid;
 
   grid-template-columns:
-    minmax(280px,400px)
+    minmax(280px,430px)
     1fr;
 
   gap:30px;
@@ -516,8 +574,7 @@ video{
   border-radius:25px;
 
   box-shadow:
-    0 20px 50px
-    rgba(90,65,80,.13);
+    0 20px 50px rgba(90,65,80,.13);
 
   position:sticky;
 
@@ -527,32 +584,36 @@ video{
 #previewCanvas{
   width:100%;
 
-  max-height:72vh;
+  height:auto;
+
+  max-height:75vh;
 
   object-fit:contain;
 
   display:block;
 
   border-radius:12px;
+
+  background:white;
 }
 
 .controls-card{
-  background:
-    rgba(255,255,255,.88);
+  background:rgba(255,255,255,.88);
 
   border-radius:25px;
 
   padding:22px;
 
   box-shadow:
-    0 20px 50px
-    rgba(90,65,80,.1);
+    0 20px 50px rgba(90,65,80,.1);
 }
 
 .control-title{
   font-weight:bold;
 
   margin-bottom:15px;
+
+  color:#66515d;
 }
 
 .frame-grid{
@@ -567,8 +628,7 @@ video{
 .frame-btn{
   background:white;
 
-  border:
-    2px solid #eee;
+  border:2px solid #eee;
 
   border-radius:15px;
 
@@ -577,12 +637,16 @@ video{
   color:#725d68;
 
   font-size:11px;
+
+  transition:.15s;
 }
 
 .frame-btn.selected{
   border-color:#b985a0;
 
   background:#f9e8ef;
+
+  transform:translateY(-2px);
 }
 
 .frame-color{
@@ -594,84 +658,54 @@ video{
 }
 
 .pink{
-  background:
-    linear-gradient(
-      135deg,
-      #ffd6e5,
-      #efa8c2
-    );
+  background:linear-gradient(135deg,#ffd6e5,#efa8c2);
 }
 
 .sakura{
   background:
-    linear-gradient(
-      135deg,
-      #ffe6ee,
-      #f6b8ce
-    );
+    radial-gradient(circle,#fff 3px,transparent 4px),
+    linear-gradient(135deg,#ffe6ee,#f6b8ce);
 }
 
 .lavender{
-  background:
-    linear-gradient(
-      135deg,
-      #e2d6f4,
-      #bba7dc
-    );
+  background:linear-gradient(135deg,#e2d6f4,#bba7dc);
 }
 
 .blue{
-  background:
-    linear-gradient(
-      135deg,
-      #d5efff,
-      #91c9e9
-    );
+  background:linear-gradient(135deg,#d5efff,#91c9e9);
 }
 
 .star{
   background:
-    linear-gradient(
-      135deg,
-      #302b49,
-      #8175a8
-    );
+    radial-gradient(circle at 25% 25%,#fff 1px,transparent 2px),
+    radial-gradient(circle at 70% 60%,#fff 1px,transparent 2px),
+    linear-gradient(135deg,#302b49,#8175a8);
 }
 
 .cloud{
   background:
-    linear-gradient(
-      135deg,
-      #eef8ff,
-      #c7e5f8
-    );
+    radial-gradient(circle at 30% 40%,white 15px,transparent 16px),
+    radial-gradient(circle at 55% 45%,white 20px,transparent 21px),
+    linear-gradient(135deg,#eef8ff,#c7e5f8);
 }
 
 .teddy{
   background:
-    linear-gradient(
-      135deg,
-      #ead0b6,
-      #c4976d
-    );
+    radial-gradient(circle at 30% 30%,#9b704e 10px,transparent 11px),
+    linear-gradient(135deg,#ead0b6,#c4976d);
 }
 
 .strawberry{
   background:
-    linear-gradient(
-      135deg,
-      #ffd1d9,
-      #ef8ca1
-    );
+    radial-gradient(circle,#fff 2px,transparent 3px),
+    linear-gradient(135deg,#ffd1d9,#ef8ca1);
 }
 
 .flower{
   background:
-    linear-gradient(
-      135deg,
-      #f7dff0,
-      #d5afd0
-    );
+    radial-gradient(circle at 30% 30%,#fff 7px,transparent 8px),
+    radial-gradient(circle at 70% 60%,#fff 8px,transparent 9px),
+    linear-gradient(135deg,#f7dff0,#d5afd0);
 }
 
 .minimal{
@@ -683,12 +717,17 @@ video{
 
   padding:14px;
 
-  border:
-    1px solid #ddd;
+  border:1px solid #ddd;
 
   border-radius:15px;
 
   margin-top:10px;
+
+  outline:none;
+}
+
+.text-input:focus{
+  border-color:#c28da5;
 }
 
 .editor-buttons{
@@ -713,8 +752,17 @@ video{
   font-weight:bold;
 }
 
-.download-btn{
+.tool-btn.active{
+  background:#bd88a1;
+
+  color:white;
+}
+
+.download-btn,
+.print-btn{
   display:block;
+
+  width:100%;
 
   text-align:center;
 
@@ -726,22 +774,28 @@ video{
 
   color:white;
 
-  background:
-    linear-gradient(
-      135deg,
-      #bd88a1,
-      #8f7aa5
-    );
-
   font-weight:bold;
 
   margin-top:15px;
 }
 
-.home-return-btn{
+.download-btn{
+  background:
+    linear-gradient(135deg,#bd88a1,#8f7aa5);
+}
+
+.print-btn{
+  background:#332c33;
+}
+
+.finish-btn{
+  display:block;
+
   width:100%;
 
-  padding:15px;
+  margin-top:10px;
+
+  padding:12px;
 
   border-radius:30px;
 
@@ -750,13 +804,72 @@ video{
   color:#705c67;
 
   font-weight:bold;
-
-  margin-top:10px;
 }
 
-/* ================= RESPONSIVE ================= */
 
-@media(max-width:800px){
+/* =====================================================
+   PRINT
+===================================================== */
+
+#printArea{
+  display:none;
+}
+
+@media print{
+
+  @page{
+    size:80mm auto;
+
+    margin:0;
+  }
+
+  html,
+  body{
+    width:80mm;
+
+    margin:0;
+
+    padding:0;
+
+    background:white;
+  }
+
+  body *{
+    visibility:hidden !important;
+  }
+
+  #printArea,
+  #printArea *{
+    visibility:visible !important;
+  }
+
+  #printArea{
+    display:block !important;
+
+    width:72mm;
+
+    margin:0 auto;
+
+    padding:3mm;
+  }
+
+  #printImage{
+    display:block;
+
+    width:66mm;
+
+    height:auto;
+
+    margin:0 auto;
+  }
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:850px){
 
   .review-grid{
     grid-template-columns:
@@ -772,32 +885,60 @@ video{
 
     top:0;
 
-    max-width:420px;
+    max-width:430px;
 
     margin:auto;
   }
 
 }
 
-@media(max-width:500px){
-
-  .review-grid{
-    gap:10px;
-  }
+@media(max-width:550px){
 
   .frame-grid{
     grid-template-columns:
       repeat(2,1fr);
   }
 
+  .review-grid{
+    gap:10px;
+  }
+
+  .home-card{
+    padding:50px 20px;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL ANIMATION
+===================================================== */
+
+@keyframes pop{
+  0%{
+    transform:scale(.7);
+    opacity:0;
+  }
+
+  100%{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+.pop{
+  animation:pop .25s ease;
 }
 </style>
 </head>
 
+
 <body>
 
 
-<!-- ================= HOME ================= -->
+<!-- ===================================================
+     HOME
+=================================================== -->
 
 <section id="homeScreen" class="screen">
 
@@ -808,8 +949,7 @@ video{
     </div>
 
     <h1 class="home-title">
-      Capture<br>
-      Your Moment
+      Capture<br>Your Moment
     </h1>
 
     <p class="home-subtitle">
@@ -829,7 +969,10 @@ video{
 </section>
 
 
-<!-- ================= BOOTH ================= -->
+
+<!-- ===================================================
+     BOOTH
+=================================================== -->
 
 <section id="boothScreen" class="screen">
 
@@ -888,12 +1031,39 @@ video{
       Get ready... ♡
     </div>
 
+    <div
+      id="permissionBox"
+      class="permission-box"
+      style="display:none;">
+
+      Kamera belum mendapatkan izin.
+
+      <br>
+
+      Tekan tombol di bawah dan pilih
+      <b>Allow / Izinkan</b> saat browser meminta akses kamera.
+
+      <br>
+
+      <button
+        class="retry-camera"
+        onclick="requestCamera()">
+
+        📸 IZINKAN KAMERA
+
+      </button>
+
+    </div>
+
   </div>
 
 </section>
 
 
-<!-- ================= REVIEW ================= -->
+
+<!-- ===================================================
+     REVIEW
+=================================================== -->
 
 <section id="reviewScreen">
 
@@ -902,8 +1072,13 @@ video{
   </h1>
 
   <p class="review-subtitle">
-    Make sure you're happy with all four photos.
+    Retake foto yang belum pas.
   </p>
+
+  <div
+    class="review-time"
+    id="reviewTime">
+  </div>
 
   <div
     class="review-grid"
@@ -925,7 +1100,10 @@ video{
 </section>
 
 
-<!-- ================= CONFIRM ================= -->
+
+<!-- ===================================================
+     CONFIRM
+=================================================== -->
 
 <section id="confirmScreen">
 
@@ -936,11 +1114,9 @@ video{
     </h1>
 
     <p>
-
-      Once you continue to the editor,
-      your four photos will be locked.
-      You won't be able to retake them anymore.
-
+      Setelah masuk ke editor,
+      keempat foto akan dikunci.
+      Foto tidak bisa di-retake lagi.
     </p>
 
     <div class="confirm-buttons">
@@ -968,7 +1144,10 @@ video{
 </section>
 
 
-<!-- ================= EDITOR ================= -->
+
+<!-- ===================================================
+     EDITOR
+=================================================== -->
 
 <section id="editorScreen">
 
@@ -988,11 +1167,11 @@ video{
   <div class="editor-layout">
 
 
+    <!-- PREVIEW -->
+
     <div class="preview-card">
 
-      <canvas
-        id="previewCanvas">
-      </canvas>
+      <canvas id="previewCanvas"></canvas>
 
       <a
         id="downloadButton"
@@ -1004,17 +1183,28 @@ video{
       </a>
 
       <button
-        class="home-return-btn"
-        onclick="returnHome()">
+        class="print-btn"
+        onclick="printPhotostrip()">
 
-        ↩ NEW SESSION
+        🖨️ PRINT PHOTO
+
+      </button>
+
+      <button
+        class="finish-btn"
+        onclick="finishSession()">
+
+        ✓ SELESAI / KEMBALI KE HOME
 
       </button>
 
     </div>
 
 
+    <!-- CONTROLS -->
+
     <div class="controls-card">
+
 
       <div class="control-title">
         CHOOSE YOUR FRAME
@@ -1028,9 +1218,7 @@ video{
           class="frame-btn selected"
           onclick="selectFrame('pink',this)">
 
-          <div
-            class="frame-color pink">
-          </div>
+          <div class="frame-color pink"></div>
 
           Pink
 
@@ -1041,9 +1229,7 @@ video{
           class="frame-btn"
           onclick="selectFrame('sakura',this)">
 
-          <div
-            class="frame-color sakura">
-          </div>
+          <div class="frame-color sakura"></div>
 
           Sakura
 
@@ -1054,9 +1240,7 @@ video{
           class="frame-btn"
           onclick="selectFrame('lavender',this)">
 
-          <div
-            class="frame-color lavender">
-          </div>
+          <div class="frame-color lavender"></div>
 
           Lavender
 
@@ -1067,9 +1251,7 @@ video{
           class="frame-btn"
           onclick="selectFrame('blue',this)">
 
-          <div
-            class="frame-color blue">
-          </div>
+          <div class="frame-color blue"></div>
 
           Baby Blue
 
@@ -1080,9 +1262,7 @@ video{
           class="frame-btn"
           onclick="selectFrame('star',this)">
 
-          <div
-            class="frame-color star">
-          </div>
+          <div class="frame-color star"></div>
 
           Starry
 
@@ -1093,9 +1273,7 @@ video{
           class="frame-btn"
           onclick="selectFrame('cloud',this)">
 
-          <div
-            class="frame-color cloud">
-          </div>
+          <div class="frame-color cloud"></div>
 
           Cloud
 
@@ -1106,9 +1284,7 @@ video{
           class="frame-btn"
           onclick="selectFrame('teddy',this)">
 
-          <div
-            class="frame-color teddy">
-          </div>
+          <div class="frame-color teddy"></div>
 
           Teddy
 
@@ -1119,9 +1295,7 @@ video{
           class="frame-btn"
           onclick="selectFrame('strawberry',this)">
 
-          <div
-            class="frame-color strawberry">
-          </div>
+          <div class="frame-color strawberry"></div>
 
           Strawberry
 
@@ -1132,9 +1306,7 @@ video{
           class="frame-btn"
           onclick="selectFrame('flower',this)">
 
-          <div
-            class="frame-color flower">
-          </div>
+          <div class="frame-color flower"></div>
 
           Flower
 
@@ -1145,9 +1317,7 @@ video{
           class="frame-btn"
           onclick="selectFrame('minimal',this)">
 
-          <div
-            class="frame-color minimal">
-          </div>
+          <div class="frame-color minimal"></div>
 
           Minimal
 
@@ -1156,6 +1326,9 @@ video{
 
       </div>
 
+
+
+      <!-- TEXT -->
 
       <div
         class="control-title"
@@ -1170,49 +1343,84 @@ video{
         id="customText"
         class="text-input"
         placeholder="Tulis sesuatu... ♡"
-        oninput="updateText()">
+        oninput="updateText()"
+      >
+
+
+
+      <!-- STICKERS -->
+
+      <div
+        class="control-title"
+        style="margin-top:25px;">
+
+        STICKERS
+
+      </div>
 
 
       <div class="editor-buttons">
 
+
         <button
           class="tool-btn"
           onclick="addSticker('♡')">
+
           ♡
+
         </button>
+
 
         <button
           class="tool-btn"
           onclick="addSticker('☆')">
+
           ☆
+
         </button>
+
 
         <button
           class="tool-btn"
           onclick="addSticker('✦')">
+
           ✦
+
         </button>
+
 
         <button
           class="tool-btn"
           onclick="addSticker('🌸')">
+
           🌸
+
         </button>
+
 
         <button
           class="tool-btn"
           onclick="addSticker('🎀')">
+
           🎀
+
         </button>
+
 
         <button
           class="tool-btn"
           onclick="addSticker('✨')">
+
           ✨
+
         </button>
+
 
       </div>
 
+
+
+      <!-- DATE -->
 
       <div
         class="control-title"
@@ -1226,6 +1434,7 @@ video{
       <div class="editor-buttons">
 
         <button
+          id="dateButton"
           class="tool-btn"
           onclick="toggleDate()">
 
@@ -1235,6 +1444,7 @@ video{
 
       </div>
 
+
     </div>
 
   </div>
@@ -1242,6 +1452,1224 @@ video{
 </section>
 
 
+
+<!-- ===================================================
+     PRINT AREA
+=================================================== -->
+
+<div id="printArea">
+
+  <img
+    id="printImage"
+    src=""
+    alt="Photostrip">
+
+</div>
+
+
+
 <script>
 
-/* =================
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const video = document.getElementById("camera");
+const countdown = document.getElementById("countdown");
+const getReady = document.getElementById("getReady");
+const photoNumber = document.getElementById("photoNumber");
+const boothStatus = document.getElementById("boothStatus");
+const sessionTimer = document.getElementById("sessionTimer");
+const permissionBox = document.getElementById("permissionBox");
+
+let stream = null;
+let photos = [];
+let currentPhoto = 0;
+
+let sessionSeconds = 300;
+let sessionInterval = null;
+let sessionActive = false;
+
+let photosLocked = false;
+
+let selectedFrame = "pink";
+let customText = "";
+let stickers = [];
+let showDate = false;
+
+
+/* =====================================================
+   START PHOTOBOOTH
+===================================================== */
+
+async function enterBooth(){
+
+  document.getElementById("homeScreen").style.display = "none";
+  document.getElementById("boothScreen").style.display = "block";
+
+  photos = [];
+  currentPhoto = 0;
+  photosLocked = false;
+
+  boothStatus.innerText = "Meminta izin kamera... ♡";
+
+  await requestCamera();
+
+}
+
+
+/* =====================================================
+   CAMERA PERMISSION
+===================================================== */
+
+async function requestCamera(){
+
+  permissionBox.style.display = "none";
+
+  try{
+
+    if(!navigator.mediaDevices ||
+       !navigator.mediaDevices.getUserMedia){
+
+      throw new Error(
+        "Browser tidak mendukung kamera."
+      );
+
+    }
+
+    stream =
+      await navigator.mediaDevices.getUserMedia({
+        video:{
+          facingMode:"user",
+          width:{
+            ideal:1280
+          },
+          height:{
+            ideal:720
+          }
+        },
+        audio:false
+      });
+
+    video.srcObject = stream;
+
+    await video.play();
+
+    boothStatus.innerText =
+      "Kamera siap! Bersiap... ♡";
+
+    startSession();
+
+    setTimeout(function(){
+
+      startPhotoSequence();
+
+    },1200);
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    boothStatus.innerText =
+      "Kamera belum diizinkan.";
+
+    permissionBox.style.display = "block";
+
+  }
+
+}
+
+
+/* =====================================================
+   SESSION TIMER
+===================================================== */
+
+function startSession(){
+
+  clearInterval(sessionInterval);
+
+  sessionSeconds = 300;
+  sessionActive = true;
+
+  updateSessionTimer();
+
+  sessionInterval =
+    setInterval(function(){
+
+      sessionSeconds--;
+
+      updateSessionTimer();
+
+      if(sessionSeconds <= 0){
+
+        sessionSeconds = 0;
+
+        sessionActive = false;
+
+        clearInterval(sessionInterval);
+
+        boothStatus.innerText =
+          "Waktu sesi habis.";
+
+        stopCamera();
+
+        if(photos.length >= 4){
+
+          showReview();
+
+        }
+
+      }
+
+    },1000);
+
+}
+
+
+function updateSessionTimer(){
+
+  const min =
+    Math.floor(sessionSeconds / 60);
+
+  const sec =
+    sessionSeconds % 60;
+
+  sessionTimer.innerText =
+    String(min).padStart(2,"0") +
+    ":" +
+    String(sec).padStart(2,"0");
+
+}
+
+
+/* =====================================================
+   PHOTO SEQUENCE
+===================================================== */
+
+function startPhotoSequence(){
+
+  if(!sessionActive) return;
+
+  currentPhoto = 0;
+
+  nextPhoto();
+
+}
+
+
+function nextPhoto(){
+
+  if(!sessionActive) return;
+
+  if(currentPhoto >= 4){
+
+    showReview();
+
+    return;
+
+  }
+
+  currentPhoto++;
+
+  photoNumber.innerText =
+    "PHOTO " + currentPhoto + " / 4";
+
+  getReady.innerText =
+    "GET READY!";
+
+  countdown.innerText = "";
+
+  boothStatus.innerText =
+    "Siap-siap foto... ♡";
+
+  setTimeout(function(){
+
+    if(!sessionActive) return;
+
+    getReady.innerText = "";
+
+    runCountdown();
+
+  },1200);
+
+}
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+function runCountdown(){
+
+  if(!sessionActive) return;
+
+  let number = 5;
+
+  countdown.innerText = number;
+
+  const interval =
+    setInterval(function(){
+
+      if(!sessionActive){
+
+        clearInterval(interval);
+
+        countdown.innerText = "";
+
+        return;
+
+      }
+
+      number--;
+
+      if(number > 0){
+
+        countdown.innerText = number;
+
+      }
+
+      else{
+
+        clearInterval(interval);
+
+        countdown.innerText = "📸";
+
+        takePhoto();
+
+      }
+
+    },1000);
+
+}
+
+
+/* =====================================================
+   TAKE PHOTO
+===================================================== */
+
+function takePhoto(){
+
+  if(!sessionActive) return;
+
+  if(!video.videoWidth || !video.videoHeight){
+
+    boothStatus.innerText =
+      "Kamera belum siap...";
+
+    setTimeout(function(){
+
+      takePhoto();
+
+    },500);
+
+    return;
+
+  }
+
+  const canvas =
+    document.createElement("canvas");
+
+  const width = video.videoWidth;
+  const height = video.videoHeight;
+
+  canvas.width = width;
+  canvas.height = height;
+
+  const ctx =
+    canvas.getContext("2d");
+
+  /* MIRROR FOTO */
+
+  ctx.save();
+
+  ctx.translate(width,0);
+
+  ctx.scale(-1,1);
+
+  ctx.drawImage(
+    video,
+    0,
+    0,
+    width,
+    height
+  );
+
+  ctx.restore();
+
+  const image =
+    canvas.toDataURL(
+      "image/jpeg",
+      0.95
+    );
+
+  photos.push(image);
+
+  boothStatus.innerText =
+    "Foto " + currentPhoto + " berhasil! ♡";
+
+  setTimeout(function(){
+
+    countdown.innerText = "";
+
+    if(currentPhoto < 4){
+
+      nextPhoto();
+
+    }
+
+    else{
+
+      showReview();
+
+    }
+
+  },1000);
+
+}
+
+
+/* =====================================================
+   STOP CAMERA
+===================================================== */
+
+function stopCamera(){
+
+  if(stream){
+
+    stream.getTracks().forEach(function(track){
+
+      track.stop();
+
+    });
+
+    stream = null;
+
+  }
+
+}
+
+
+/* =====================================================
+   REVIEW
+===================================================== */
+
+function showReview(){
+
+  clearInterval(sessionInterval);
+
+  sessionActive = false;
+
+  stopCamera();
+
+  document.getElementById("boothScreen").style.display = "none";
+
+  document.getElementById("reviewScreen").style.display = "block";
+
+  renderReview();
+
+}
+
+
+function renderReview(){
+
+  const grid =
+    document.getElementById("reviewGrid");
+
+  grid.innerHTML = "";
+
+  photos.forEach(function(image,index){
+
+    const card =
+      document.createElement("div");
+
+    card.className = "review-card";
+
+    card.innerHTML = `
+
+      <img src="${image}" alt="Photo ${index+1}">
+
+      <h3>
+        PHOTO ${index+1}
+      </h3>
+
+      <button
+        class="retake-btn"
+        onclick="retakePhoto(${index})">
+
+        ↻ RETAKE
+
+      </button>
+
+    `;
+
+    grid.appendChild(card);
+
+  });
+
+  const reviewTime =
+    document.getElementById("reviewTime");
+
+  if(reviewTime){
+
+    reviewTime.innerText =
+      "Kamu masih punya waktu sesi.";
+
+  }
+
+}
+
+
+/* =====================================================
+   RETAKE
+===================================================== */
+
+function retakePhoto(index){
+
+  if(photosLocked) return;
+
+  if(sessionSeconds <= 0){
+
+    alert("Waktu sesi sudah habis.");
+
+    return;
+
+  }
+
+  currentPhoto = index + 1;
+
+  document.getElementById("reviewScreen").style.display = "none";
+
+  document.getElementById("boothScreen").style.display = "block";
+
+  openCameraForRetake(index);
+
+}
+
+
+/* =====================================================
+   RETAKE CAMERA
+===================================================== */
+
+async function openCameraForRetake(index){
+
+  try{
+
+    permissionBox.style.display = "none";
+
+    stream =
+      await navigator.mediaDevices.getUserMedia({
+        video:{
+          facingMode:"user",
+          width:{
+            ideal:1280
+          },
+          height:{
+            ideal:720
+          }
+        },
+        audio:false
+      });
+
+    video.srcObject = stream;
+
+    await video.play();
+
+    sessionActive = true;
+
+    photoNumber.innerText =
+      "RETAKE PHOTO " + (index + 1);
+
+    getReady.innerText =
+      "GET READY!";
+
+    boothStatus.innerText =
+      "Siap retake... ♡";
+
+    setTimeout(function(){
+
+      getReady.innerText = "";
+
+      runRetakeCountdown(index);
+
+    },1200);
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    alert(
+      "Kamera tidak bisa digunakan. Pastikan izin kamera sudah diberikan."
+    );
+
+    showReview();
+
+  }
+
+}
+
+
+/* =====================================================
+   RETAKE COUNTDOWN
+===================================================== */
+
+function runRetakeCountdown(index){
+
+  let number = 5;
+
+  countdown.innerText = number;
+
+  const interval =
+    setInterval(function(){
+
+      if(sessionSeconds <= 0){
+
+        clearInterval(interval);
+
+        countdown.innerText = "";
+
+        showReview();
+
+        return;
+
+      }
+
+      number--;
+
+      if(number > 0){
+
+        countdown.innerText = number;
+
+      }
+
+      else{
+
+        clearInterval(interval);
+
+        countdown.innerText = "📸";
+
+        captureRetake(index);
+
+      }
+
+    },1000);
+
+}
+
+
+/* =====================================================
+   CAPTURE RETAKE
+===================================================== */
+
+function captureRetake(index){
+
+  if(sessionSeconds <= 0){
+
+    showReview();
+
+    return;
+
+  }
+
+  if(!video.videoWidth){
+
+    setTimeout(function(){
+
+      captureRetake(index);
+
+    },300);
+
+    return;
+
+  }
+
+  const canvas =
+    document.createElement("canvas");
+
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+
+  const ctx =
+    canvas.getContext("2d");
+
+  ctx.save();
+
+  ctx.translate(canvas.width,0);
+
+  ctx.scale(-1,1);
+
+  ctx.drawImage(
+    video,
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  ctx.restore();
+
+  photos[index] =
+    canvas.toDataURL(
+      "image/jpeg",
+      0.95
+    );
+
+  stopCamera();
+
+  setTimeout(function(){
+
+    countdown.innerText = "";
+
+    showReview();
+
+  },700);
+
+}
+
+
+/* =====================================================
+   CONFIRM
+===================================================== */
+
+function openConfirm(){
+
+  if(photos.length < 4){
+
+    alert(
+      "Pastikan 4 foto sudah selesai."
+    );
+
+    return;
+
+  }
+
+  document.getElementById("reviewScreen").style.display = "none";
+
+  document.getElementById("confirmScreen").style.display = "flex";
+
+}
+
+
+function backToReview(){
+
+  document.getElementById("confirmScreen").style.display = "none";
+
+  document.getElementById("reviewScreen").style.display = "block";
+
+}
+
+
+/* =====================================================
+   LOCK PHOTOS + EDITOR
+===================================================== */
+
+function lockPhotosAndEdit(){
+
+  if(photos.length < 4){
+
+    alert("Harus ada 4 foto.");
+
+    return;
+
+  }
+
+  photosLocked = true;
+
+  document.getElementById("confirmScreen").style.display = "none";
+
+  document.getElementById("editorScreen").style.display = "block";
+
+  drawPreview();
+
+}
+
+
+/* =====================================================
+   FRAME
+===================================================== */
+
+function selectFrame(frame,button){
+
+  if(!photosLocked) return;
+
+  selectedFrame = frame;
+
+  document
+    .querySelectorAll(".frame-btn")
+    .forEach(function(btn){
+
+      btn.classList.remove("selected");
+
+    });
+
+  button.classList.add("selected");
+
+  drawPreview();
+
+}
+
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+function updateText(){
+
+  customText =
+    document.getElementById("customText").value;
+
+  drawPreview();
+
+}
+
+
+/* =====================================================
+   STICKER
+===================================================== */
+
+function addSticker(sticker){
+
+  stickers.push(sticker);
+
+  drawPreview();
+
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+function toggleDate(){
+
+  showDate = !showDate;
+
+  const button =
+    document.getElementById("dateButton");
+
+  if(button){
+
+    button.classList.toggle(
+      "active",
+      showDate
+    );
+
+  }
+
+  drawPreview();
+
+}
+
+
+/* =====================================================
+   PREVIEW
+===================================================== */
+
+function drawPreview(){
+
+  if(photos.length < 4) return;
+
+  const canvas =
+    document.getElementById("previewCanvas");
+
+  const ctx =
+    canvas.getContext("2d");
+
+  const width = 700;
+
+  const photoWidth = 640;
+  const photoHeight = 420;
+
+  const gap = 18;
+  const padding = 30;
+  const header = 80;
+  const footer = 120;
+
+  canvas.width = width;
+
+  canvas.height =
+    padding +
+    header +
+    (photoHeight * 4) +
+    (gap * 3) +
+    footer +
+    padding;
+
+  let background = "#fff4f7";
+  let textColor = "#735967";
+
+  if(selectedFrame === "pink")
+    background = "#ffe4ed";
+
+  if(selectedFrame === "sakura")
+    background = "#ffeaf1";
+
+  if(selectedFrame === "lavender")
+    background = "#eee5f8";
+
+  if(selectedFrame === "blue")
+    background = "#e2f3fc";
+
+  if(selectedFrame === "star"){
+
+    background = "#332d4c";
+    textColor = "#fff";
+
+  }
+
+  if(selectedFrame === "cloud")
+    background = "#edf8ff";
+
+  if(selectedFrame === "teddy")
+    background = "#ecd6c0";
+
+  if(selectedFrame === "strawberry")
+    background = "#ffdce4";
+
+  if(selectedFrame === "flower")
+    background = "#f4e1f0";
+
+  if(selectedFrame === "minimal")
+    background = "#eeeae7";
+
+
+  /* BACKGROUND */
+
+  ctx.fillStyle = background;
+
+  ctx.fillRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+
+  /* TITLE */
+
+  ctx.fillStyle = textColor;
+
+  ctx.textAlign = "center";
+
+  ctx.font = "bold 28px Georgia";
+
+  ctx.fillText(
+    "YOUR PHOTOBOX",
+    width / 2,
+    52
+  );
+
+
+  let loaded = 0;
+
+
+  photos.forEach(function(photo,index){
+
+    const img = new Image();
+
+    img.onload = function(){
+
+      const x = padding;
+
+      const y =
+        padding +
+        header +
+        index * (photoHeight + gap);
+
+      const sourceRatio =
+        img.width / img.height;
+
+      const targetRatio =
+        photoWidth / photoHeight;
+
+      let sx = 0;
+      let sy = 0;
+      let sw = img.width;
+      let sh = img.height;
+
+      if(sourceRatio > targetRatio){
+
+        sw =
+          img.height * targetRatio;
+
+        sx =
+          (img.width - sw) / 2;
+
+      }
+
+      else{
+
+        sh =
+          img.width / targetRatio;
+
+        sy =
+          (img.height - sh) / 2;
+
+      }
+
+
+      ctx.drawImage(
+        img,
+        sx,
+        sy,
+        sw,
+        sh,
+        x,
+        y,
+        photoWidth,
+        photoHeight
+      );
+
+
+      ctx.lineWidth = 7;
+
+      ctx.strokeStyle =
+        "rgba(255,255,255,.95)";
+
+      ctx.strokeRect(
+        x,
+        y,
+        photoWidth,
+        photoHeight
+      );
+
+
+      loaded++;
+
+      if(loaded === 4){
+
+        drawDecorations(
+          ctx,
+          width,
+          canvas.height,
+          textColor
+        );
+
+        updateDownload();
+
+      }
+
+    };
+
+    img.src = photo;
+
+  });
+
+}
+
+
+/* =====================================================
+   DECORATIONS
+===================================================== */
+
+function drawDecorations(
+  ctx,
+  width,
+  height,
+  textColor
+){
+
+  ctx.textAlign = "center";
+
+  if(showDate){
+
+    const date = new Date();
+
+    const formatted =
+      String(date.getDate()).padStart(2,"0") +
+      " • " +
+      String(date.getMonth()+1).padStart(2,"0") +
+      " • " +
+      date.getFullYear();
+
+    ctx.font = "18px Arial";
+
+    ctx.fillStyle = textColor;
+
+    ctx.fillText(
+      formatted,
+      width / 2,
+      height - 78
+    );
+
+  }
+
+
+  if(customText.trim() !== ""){
+
+    ctx.font = "bold 24px Arial";
+
+    ctx.fillStyle = textColor;
+
+    ctx.fillText(
+      customText,
+      width / 2,
+      height - 45
+    );
+
+  }
+
+
+  if(stickers.length){
+
+    ctx.font = "32px Arial";
+
+    let x = 55;
+
+    stickers.forEach(function(sticker){
+
+      ctx.fillText(
+        sticker,
+        x,
+        height - 42
+      );
+
+      x += 45;
+
+      if(x > width - 50){
+
+        x = 55;
+
+      }
+
+    });
+
+  }
+
+}
+
+
+/* =====================================================
+   DOWNLOAD
+===================================================== */
+
+function updateDownload(){
+
+  const canvas =
+    document.getElementById("previewCanvas");
+
+  const finalImage =
+    canvas.toDataURL(
+      "image/jpeg",
+      0.95
+    );
+
+  document.getElementById(
+    "downloadButton"
+  ).href = finalImage;
+
+  /* UNTUK PRINT */
+
+  document.getElementById(
+    "printImage"
+  ).src = finalImage;
+
+}
+
+
+/* =====================================================
+   PRINT
+===================================================== */
+
+function printPhotostrip(){
+
+  updateDownload();
+
+  setTimeout(function(){
+
+    window.print();
+
+  },300);
+
+}
+
+
+/* =====================================================
+   FINISH SESSION
+===================================================== */
+
+function finishSession(){
+
+  /* stop kamera kalau masih aktif */
+
+  stopCamera();
+
+  clearInterval(sessionInterval);
+
+  sessionActive = false;
+
+  /* reset semua */
+
+  photos = [];
+
+  currentPhoto = 0;
+
+  photosLocked = false;
+
+  selectedFrame = "pink";
+
+  customText = "";
+
+  stickers = [];
+
+  showDate = false;
+
+
+  /* reset input */
+
+  const textInput =
+    document.getElementById("customText");
+
+  if(textInput){
+
+    textInput.value = "";
+
+  }
+
+
+  /* balik ke HOME */
+
+  document.getElementById(
+    "editorScreen"
+  ).style.display = "none";
+
+  document.getElementById(
+    "reviewScreen"
+  ).style.display = "none";
+
+  document.getElementById(
+    "confirmScreen"
+  ).style.display = "none";
+
+  document.getElementById(
+    "boothScreen"
+  ).style.display = "none";
+
+  document.getElementById(
+    "homeScreen"
+  ).style.display = "flex";
+
+
+  /* reset timer */
+
+  sessionSeconds = 300;
+
+  updateSessionTimer();
+
+}
+
+
+/* =====================================================
+   PAGE LOAD
+===================================================== */
+
+window.addEventListener("load",function(){
+
+  updateSessionTimer();
+
+});
+
+</script>

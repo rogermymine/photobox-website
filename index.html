@@ -1,330 +1,417 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Your Photobox</title>
+<title>Your Photobox ✦</title>
 
-  <style>
+<style>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f8f5f2;
-      color: #222;
-      text-align: center;
-    }
+body {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%, #f8dce7 0, transparent 25%),
+    radial-gradient(circle at 90% 20%, #e5def8 0, transparent 25%),
+    linear-gradient(135deg, #fffaf7, #f8f1f5);
+  color: #4d4148;
+  text-align: center;
+  min-height: 100vh;
+}
 
-    header {
-      padding: 25px;
-      background: white;
-      font-size: 24px;
-      font-weight: bold;
-    }
+/* DECORATION */
 
-    .camera-section {
-      padding: 40px 20px;
-    }
+body::before {
+  content: "✦  ˚  ✧  ♡  ˚  ✦  ˚  ✧";
+  position: fixed;
+  top: 90px;
+  left: 0;
+  width: 100%;
+  color: rgba(190,145,170,0.25);
+  font-size: 22px;
+  letter-spacing: 25px;
+  pointer-events: none;
+}
 
-    h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
+/* HEADER */
 
-    .subtitle {
-      margin-bottom: 30px;
-      color: #666;
-    }
+header {
+  padding: 24px 20px;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(190,150,170,0.15);
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  color: #806274;
+}
 
-    .camera-box {
-      max-width: 700px;
-      margin: auto;
-      background: #111;
-      border-radius: 20px;
-      padding: 15px;
-    }
+header span {
+  color: #c58ba5;
+}
 
-    video {
-      width: 100%;
-      display: block;
-      border-radius: 15px;
-      transform: scaleX(-1);
-    }
+/* MAIN */
 
-    .controls {
-      margin-top: 25px;
-    }
+.camera-section {
+  padding: 45px 18px 60px;
+  max-width: 900px;
+  margin: auto;
+}
 
-    button {
-      border: none;
-      padding: 16px 35px;
-      border-radius: 30px;
-      background: #222;
-      color: white;
-      font-size: 17px;
-      cursor: pointer;
-      margin: 5px;
-    }
+h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(34px, 7vw, 56px);
+  color: #6e5864;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+}
 
-    button:hover {
-      opacity: 0.8;
-    }
+.subtitle {
+  color: #9a858f;
+  margin-bottom: 30px;
+  font-size: 15px;
+}
 
-    button:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-    }
+/* CAMERA CARD */
 
-    /* FOTO COUNTDOWN */
+.camera-box {
+  max-width: 720px;
+  margin: auto;
+  padding: 10px;
+  background: linear-gradient(135deg, #dca9bd, #bca9d8);
+  border-radius: 28px;
+  box-shadow:
+    0 20px 50px rgba(120,90,110,0.18),
+    0 0 0 7px rgba(255,255,255,0.7);
+}
 
-    #timer {
-      font-size: 60px;
-      font-weight: bold;
-      margin: 20px;
-      min-height: 70px;
-    }
+.camera-box::before {
+  content: "♡  PHOTO TIME  ♡";
+  display: block;
+  color: white;
+  font-size: 12px;
+  letter-spacing: 3px;
+  padding: 10px;
+  font-weight: bold;
+}
 
-    /* SESSION TIMER */
+video {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+  transform: scaleX(-1);
+  background: #eee;
+}
 
-    .session-box {
-      width: 220px;
-      margin: 20px auto;
-      padding: 15px 20px;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-    }
+/* PHOTO COUNTDOWN */
 
-    .session-label {
-      font-size: 13px;
-      letter-spacing: 2px;
-      font-weight: bold;
-      color: #888;
-      margin-bottom: 5px;
-    }
+#timer {
+  font-size: 64px;
+  font-weight: bold;
+  color: #a56f89;
+  margin: 20px;
+  min-height: 75px;
+  text-shadow: 0 4px 15px rgba(180,120,150,0.2);
+}
 
-    #sessionTimer {
-      font-size: 38px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      color: #222;
-    }
+/* SESSION TIMER */
 
-    /* RESULT */
+.session-box {
+  width: 230px;
+  margin: 15px auto 25px;
+  padding: 15px 20px;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(190,150,170,0.25);
+  border-radius: 22px;
+  box-shadow: 0 10px 30px rgba(120,90,110,0.1);
+}
 
-    #result {
-      margin-top: 40px;
-    }
+.session-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  color: #a58b98;
+  margin-bottom: 5px;
+}
 
-    #photoGrid {
-      margin-top: 20px;
-    }
+#sessionTimer {
+  font-size: 38px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: #765b69;
+}
 
-    .photo-box {
-      margin: 20px;
-      display: inline-block;
-      vertical-align: top;
-    }
+/* BUTTONS */
 
-    .photo-box img {
-      width: 220px;
-      border-radius: 15px;
-      display: block;
-      margin: 10px auto;
-    }
+.controls {
+  margin-top: 20px;
+}
 
-    /* PHOTO STRIP */
+button {
+  border: none;
+  padding: 14px 25px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #b985a0, #927da9);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 5px;
+  box-shadow: 0 8px 20px rgba(140,100,140,0.18);
+  transition: 0.2s;
+}
 
-    #photostrip {
-      margin-top: 30px;
-    }
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(140,100,140,0.25);
+}
 
-    #photostrip img {
-      width: 100%;
-      max-width: 380px;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
+button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
 
-    .download {
-      display: none;
-      text-decoration: none;
-      background: #222;
-      color: white;
-      padding: 14px 30px;
-      border-radius: 30px;
-      margin: 20px 0;
-    }
+/* RESULT */
 
-    footer {
-      margin-top: 60px;
-      padding: 25px;
-      background: #222;
-      color: white;
-    }
+#result {
+  margin-top: 50px;
+}
 
-  </style>
+#result h2 {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  color: #765d69;
+  margin-bottom: 20px;
+}
 
+/* PHOTO GRID */
+
+#photoGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+
+.photo-box {
+  width: 240px;
+  padding: 15px;
+  background: rgba(255,255,255,0.82);
+  border-radius: 22px;
+  box-shadow: 0 12px 30px rgba(110,80,100,0.12);
+  border: 1px solid rgba(190,150,170,0.18);
+}
+
+.photo-box h3 {
+  color: #967487;
+  font-size: 15px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.photo-box img {
+  width: 100%;
+  border-radius: 15px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* PHOTO STRIP */
+
+#photostrip {
+  margin-top: 40px;
+}
+
+#photostrip h2 {
+  font-family: Georgia, serif;
+  color: #765d69;
+  margin-bottom: 20px;
+}
+
+#photostrip img {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 16px;
+  box-shadow:
+    0 20px 45px rgba(100,70,90,0.2);
+  border: 8px solid white;
+}
+
+/* DOWNLOAD */
+
+.download {
+  display: none;
+  text-decoration: none;
+  background: linear-gradient(135deg, #b985a0, #927da9);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 50px;
+  margin: 20px 0;
+  font-weight: bold;
+  box-shadow: 0 8px 20px rgba(140,100,140,0.18);
+}
+
+/* FOOTER */
+
+footer {
+  margin-top: 60px;
+  padding: 30px 20px;
+  background: rgba(110,85,100,0.95);
+  color: #f9edf3;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+footer::before {
+  content: "✦  ";
+}
+
+footer::after {
+  content: "  ✦";
+}
+
+</style>
 </head>
 
 
 <body>
 
-  <header>
-    YOUR PHOTOBOX
-  </header>
+<header>
+  YOUR <span>PHOTOBOX</span> ♡
+</header>
 
 
-  <section class="camera-section">
+<section class="camera-section">
 
-    <h1>
-      Capture Your Moment ✦
-    </h1>
+  <h1>
+    Capture Your Moment ✦
+  </h1>
 
-    <p class="subtitle">
-      Take your photo directly from our photobox.
-    </p>
+  <p class="subtitle">
+    little moments, pretty memories ♡
+  </p>
 
 
-    <!-- CAMERA -->
+  <div class="camera-box">
 
-    <div class="camera-box">
+    <video
+      id="camera"
+      autoplay
+      playsinline>
+    </video>
 
-      <video
-        id="camera"
-        autoplay
-        playsinline>
-      </video>
+  </div>
 
+
+  <div id="timer"></div>
+
+
+  <div class="session-box">
+
+    <div class="session-label">
+      ⏱ TIME LEFT
     </div>
 
-
-    <!-- FOTO COUNTDOWN -->
-
-    <div id="timer"></div>
-
-
-    <!-- SESSION TIMER -->
-
-    <div class="session-box">
-
-      <div class="session-label">
-        ⏱️ TIME LEFT
-      </div>
-
-      <div id="sessionTimer">
-        05:00
-      </div>
-
+    <div id="sessionTimer">
+      05:00
     </div>
 
-
-    <!-- BUTTONS -->
-
-    <div class="controls">
-
-      <button
-        onclick="startCamera()"
-        id="cameraButton">
-
-        📸 Start Camera
-
-      </button>
+  </div>
 
 
-      <button
-        onclick="startPhotobooth()"
-        id="boothButton">
+  <div class="controls">
 
-        Start Photobooth
+    <button
+      onclick="startCamera()"
+      id="cameraButton">
 
-      </button>
+      📸 Start Camera
 
-    </div>
+    </button>
 
 
-    <canvas
-      id="canvas"
+    <button
+      onclick="startPhotobooth()"
+      id="boothButton">
+
+      ✨ Start Photobooth
+
+    </button>
+
+  </div>
+
+
+  <canvas
+    id="canvas"
+    style="display:none;">
+  </canvas>
+
+
+  <div id="result">
+
+    <h2>
+      Your Photos ♡
+    </h2>
+
+    <div id="photoGrid"></div>
+
+
+    <div id="photostrip"></div>
+
+
+    <button
+      onclick="createPhotostrip()"
+      id="createStripButton"
       style="display:none;">
-    </canvas>
+
+      ✨ Create Photostrip
+
+    </button>
 
 
-    <!-- RESULT -->
-
-    <div id="result">
-
-      <h2>
-        Your Photos
-      </h2>
+    <br>
 
 
-      <div id="photoGrid"></div>
+    <a
+      id="downloadStrip"
+      class="download"
+      download="photostrip.jpg">
+
+      ♡ Download Photostrip
+
+    </a>
 
 
-      <!-- PHOTO STRIP -->
-
-      <div id="photostrip"></div>
+    <br>
 
 
-      <button
-        onclick="createPhotostrip()"
-        id="createStripButton"
-        style="display:none;">
+    <button
+      onclick="retakeAll()"
+      id="retakeAllButton"
+      style="display:none;">
 
-        ✨ Create Photostrip
+      ↻ Retake All
 
-      </button>
+    </button>
 
+  </div>
 
-      <br>
-
-
-      <a
-        id="downloadStrip"
-        class="download"
-        download="photostrip.jpg">
-
-        💾 Download Photostrip
-
-      </a>
+</section>
 
 
-      <br>
-
-
-      <button
-        onclick="retakeAll()"
-        id="retakeAllButton"
-        style="display:none;">
-
-        🔄 Retake All
-
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <footer>
-
-    © 2026 Your Photobox
-
-  </footer>
+<footer>
+  2026 YOUR PHOTOBOX
+</footer>
 
 
 <script>
-
-
-/* =========================
-   ELEMENTS
-========================= */
 
 const video =
   document.getElementById("camera");
@@ -335,11 +422,6 @@ const canvas =
 const timer =
   document.getElementById("timer");
 
-
-/* =========================
-   VARIABLES
-========================= */
-
 let stream = null;
 
 let photos = [];
@@ -347,7 +429,7 @@ let photos = [];
 let currentPhoto = 0;
 
 
-/* SESSION 5 MENIT */
+/* SESSION */
 
 let sessionTime = 300;
 
@@ -356,9 +438,7 @@ let sessionInterval = null;
 let sessionActive = false;
 
 
-/* =========================
-   START CAMERA
-========================= */
+/* CAMERA */
 
 async function startCamera() {
 
@@ -398,7 +478,7 @@ async function startCamera() {
 
 
     alert(
-      "Kamera berhasil terhubung!"
+      "Kamera berhasil terhubung! ♡"
     );
 
   }
@@ -419,9 +499,7 @@ async function startCamera() {
 }
 
 
-/* =========================
-   START PHOTO SESSION
-========================= */
+/* START PHOTO SESSION */
 
 function startPhotobooth() {
 
@@ -460,17 +538,20 @@ function startPhotobooth() {
 
   document.getElementById(
     "downloadStrip"
-  ).style.display = "none";
+  ).style.display =
+    "none";
 
 
   document.getElementById(
     "createStripButton"
-  ).style.display = "none";
+  ).style.display =
+    "none";
 
 
   document.getElementById(
     "retakeAllButton"
-  ).style.display = "none";
+  ).style.display =
+    "none";
 
 
   takeBoothPhoto();
@@ -478,9 +559,7 @@ function startPhotobooth() {
 }
 
 
-/* =========================
-   TAKE 4 PHOTOS
-========================= */
+/* TAKE PHOTO */
 
 function takeBoothPhoto() {
 
@@ -496,7 +575,6 @@ function takeBoothPhoto() {
 
 
   currentPhoto++;
-
 
   let count = 5;
 
@@ -518,40 +596,30 @@ function takeBoothPhoto() {
 
       else {
 
-        clearInterval(
-          countdown
-        );
+        clearInterval(countdown);
 
-
-        timer.innerText =
-          "📸";
+        timer.innerText = "📸";
 
 
         setTimeout(() => {
 
-
           canvas.width =
             video.videoWidth;
-
 
           canvas.height =
             video.videoHeight;
 
 
           const context =
-            canvas.getContext(
-              "2d"
-            );
+            canvas.getContext("2d");
 
 
           context.save();
-
 
           context.translate(
             canvas.width,
             0
           );
-
 
           context.scale(
             -1,
@@ -589,8 +657,7 @@ function takeBoothPhoto() {
           );
 
 
-          timer.innerText =
-            "";
+          timer.innerText = "";
 
 
           if (
@@ -621,25 +688,18 @@ function takeBoothPhoto() {
 
           }
 
-
         }, 500);
 
       }
-
 
     }, 1000);
 
 }
 
 
-/* =========================
-   SHOW PHOTO
-========================= */
+/* SHOW PHOTO */
 
-function showPhoto(
-  index,
-  image
-) {
+function showPhoto(index, image) {
 
   const grid =
     document.getElementById(
@@ -654,16 +714,12 @@ function showPhoto(
 
 
   if (oldPhoto) {
-
     oldPhoto.remove();
-
   }
 
 
   const box =
-    document.createElement(
-      "div"
-    );
+    document.createElement("div");
 
 
   box.id =
@@ -677,7 +733,7 @@ function showPhoto(
   box.innerHTML = `
 
     <h3>
-      Foto ${index + 1}
+      ✦ Foto ${index + 1} ✦
     </h3>
 
     <img
@@ -687,27 +743,21 @@ function showPhoto(
     <button
       onclick="retakePhoto(${index})">
 
-      ↻ Retake Foto ${index + 1}
+      ↻ Retake Foto
 
     </button>
 
   `;
 
 
-  grid.appendChild(
-    box
-  );
+  grid.appendChild(box);
 
 }
 
 
-/* =========================
-   RETAKE ONE PHOTO
-========================= */
+/* RETAKE ONE */
 
-function retakePhoto(
-  index
-) {
+function retakePhoto(index) {
 
   if (!sessionActive) {
 
@@ -756,40 +806,30 @@ function retakePhoto(
 
       else {
 
-        clearInterval(
-          countdown
-        );
+        clearInterval(countdown);
 
-
-        timer.innerText =
-          "📸";
+        timer.innerText = "📸";
 
 
         setTimeout(() => {
 
-
           canvas.width =
             video.videoWidth;
-
 
           canvas.height =
             video.videoHeight;
 
 
           const context =
-            canvas.getContext(
-              "2d"
-            );
+            canvas.getContext("2d");
 
 
           context.save();
-
 
           context.translate(
             canvas.width,
             0
           );
-
 
           context.scale(
             -1,
@@ -826,9 +866,7 @@ function retakePhoto(
           );
 
 
-          timer.innerText =
-            "";
-
+          timer.innerText = "";
 
         }, 500);
 
@@ -839,9 +877,7 @@ function retakePhoto(
 }
 
 
-/* =========================
-   RETAKE ALL
-========================= */
+/* RETAKE ALL */
 
 function retakeAll() {
 
@@ -894,9 +930,7 @@ function retakeAll() {
 }
 
 
-/* =========================
-   CREATE PHOTO STRIP
-========================= */
+/* PHOTO STRIP */
 
 function createPhotostrip() {
 
@@ -912,15 +946,11 @@ function createPhotostrip() {
 
 
   const stripCanvas =
-    document.createElement(
-      "canvas"
-    );
+    document.createElement("canvas");
 
 
   const ctx =
-    stripCanvas.getContext(
-      "2d"
-    );
+    stripCanvas.getContext("2d");
 
 
   const width = 700;
@@ -947,7 +977,7 @@ function createPhotostrip() {
 
 
   ctx.fillStyle =
-    "#ffffff";
+    "#fffaf8";
 
 
   ctx.fillRect(
@@ -964,14 +994,12 @@ function createPhotostrip() {
   photos.forEach(
     (image, index) => {
 
-
       const img =
         new Image();
 
 
       img.onload =
         function() {
-
 
           const y =
             padding +
@@ -999,7 +1027,6 @@ function createPhotostrip() {
 
           if (loaded === 4) {
 
-
             const footerY =
               padding +
               (photoHeight * 4) +
@@ -1007,7 +1034,7 @@ function createPhotostrip() {
 
 
             ctx.fillStyle =
-              "#ffffff";
+              "#fffaf8";
 
 
             ctx.fillRect(
@@ -1019,7 +1046,7 @@ function createPhotostrip() {
 
 
             ctx.fillStyle =
-              "#222222";
+              "#765d69";
 
 
             ctx.font =
@@ -1052,11 +1079,7 @@ function createPhotostrip() {
 
             strip.innerHTML = `
 
-              <h2
-                style="
-                  margin:30px 0 15px;
-                "
-              >
+              <h2>
                 Your Photostrip ✨
               </h2>
 
@@ -1080,7 +1103,6 @@ function createPhotostrip() {
             downloadStrip.style.display =
               "inline-block";
 
-
           }
 
         };
@@ -1089,7 +1111,6 @@ function createPhotostrip() {
       img.src =
         image;
 
-
     }
 
   );
@@ -1097,20 +1118,13 @@ function createPhotostrip() {
 }
 
 
-/* =========================
-   SESSION TIMER
-   5 MINUTES
-========================= */
+/* 5 MINUTE SESSION */
 
 function startSessionTimer() {
 
+  sessionTime = 300;
 
-  sessionTime =
-    300;
-
-
-  sessionActive =
-    true;
+  sessionActive = true;
 
 
   updateSessionTimer();
@@ -1119,29 +1133,21 @@ function startSessionTimer() {
   sessionInterval =
     setInterval(() => {
 
-
       sessionTime--;
-
 
       updateSessionTimer();
 
 
-      if (
-        sessionTime <= 0
-      ) {
-
+      if (sessionTime <= 0) {
 
         clearInterval(
           sessionInterval
         );
 
 
-        sessionActive =
-          false;
+        sessionActive = false;
 
-
-        sessionTime =
-          0;
+        sessionTime = 0;
 
 
         updateSessionTimer();
@@ -1149,41 +1155,28 @@ function startSessionTimer() {
 
         document.getElementById(
           "boothButton"
-        ).disabled =
-          true;
+        ).disabled = true;
 
 
         document.getElementById(
           "retakeAllButton"
-        ).disabled =
-          true;
-
-
-        document.getElementById(
-          "sessionTimer"
-        ).innerText =
-          "00:00";
+        ).disabled = true;
 
 
         alert(
-          "⏰ Waktu photobox sudah habis. Foto dan retake sudah dikunci. Kamu masih bisa memilih frame dan download hasil foto."
+          "⏰ Waktu photobox sudah habis! Kamu masih bisa memilih frame dan download hasil foto ♡"
         );
 
-
       }
-
 
     }, 1000);
 
 }
 
 
-/* =========================
-   UPDATE SESSION TIMER
-========================= */
+/* UPDATE TIMER */
 
 function updateSessionTimer() {
-
 
   const minutes =
     Math.floor(
@@ -1208,7 +1201,6 @@ function updateSessionTimer() {
       .padStart(2, "0");
 
 }
-
 
 </script>
 

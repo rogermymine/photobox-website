@@ -3,1998 +3,3031 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f5dce8">
-<title>Your Photobox ♡</title>
+<title>YOUR PHOTOBOX ♡</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html,body{
-  width:100%;
-  min-height:100%;
-}
-
-body{
-  font-family:Arial,sans-serif;
-  background:#faf6f8;
-  color:#66515d;
-}
-
-button,input{
-  font-family:inherit;
-}
-
-button{
-  border:0;
-  cursor:pointer;
-}
-
-.screen{
-  min-height:100vh;
-}
-
-/* ================= HOME ================= */
-
-#homeScreen{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:25px;
-
-  background:
-    radial-gradient(circle at 10% 15%,#f5d5e4,transparent 28%),
-    radial-gradient(circle at 90% 80%,#ddd4f0,transparent 30%),
-    linear-gradient(135deg,#fffafa,#f7f1f5);
-}
-
-.home-card{
-  width:min(760px,100%);
-  padding:65px 30px;
-  border-radius:38px;
-  background:rgba(255,255,255,.85);
-  box-shadow:0 30px 80px rgba(90,65,80,.16);
-  backdrop-filter:blur(15px);
-}
-
-.logo{
-  font-size:13px;
-  letter-spacing:6px;
-  color:#aa7d91;
-  margin-bottom:25px;
-}
-
-.home-title{
-  font-family:Georgia,serif;
-  font-size:clamp(45px,9vw,78px);
-  line-height:1.02;
-  color:#66515d;
-  margin-bottom:20px;
-}
-
-.home-subtitle{
-  color:#9b858f;
-  font-size:16px;
-  margin-bottom:40px;
-}
-
-.start-btn{
-  padding:20px 58px;
-  border-radius:50px;
-  color:white;
-  font-size:18px;
-  font-weight:bold;
-
-  background:linear-gradient(135deg,#bd88a1,#8f7aa5);
-
-  box-shadow:0 15px 35px rgba(150,110,140,.28);
-}
-
-/* ================= BOOTH ================= */
-
-#boothScreen{
-  display:none;
-  min-height:100vh;
-
-  background:
-    radial-gradient(circle at 20% 10%,#382d37,transparent 30%),
-    radial-gradient(circle at 90% 90%,#2d2632,transparent 30%),
-    #1d191e;
-
-  color:white;
-  padding:15px;
-}
-
-.booth-top{
-  max-width:1150px;
-  margin:auto;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  padding:8px 5px 15px;
-}
-
-.booth-logo{
-  letter-spacing:5px;
-  font-size:13px;
-}
-
-.session{
-  padding:9px 17px;
-  border-radius:30px;
-  background:#383139;
-  font-size:13px;
-}
-
-#sessionTimer{
-  color:#f5c7d9;
-  font-weight:bold;
-}
-
-.camera-area{
-  max-width:1150px;
-  margin:auto;
-}
-
-.video-frame{
-  position:relative;
-  background:#090909;
-  border-radius:28px;
-  padding:8px;
-  overflow:hidden;
-
-  box-shadow:0 25px 70px rgba(0,0,0,.35);
-}
-
-video{
-  width:100%;
-  max-height:72vh;
-  object-fit:cover;
-  display:block;
-  border-radius:22px;
-  transform:scaleX(-1);
-  background:#111;
-}
-
-.photo-number{
-  position:absolute;
-  top:25px;
-  left:25px;
-
-  padding:10px 17px;
-  border-radius:30px;
-
-  background:rgba(0,0,0,.55);
-  font-size:14px;
-}
-
-.get-ready{
-  position:absolute;
-  top:38%;
-  left:0;
-  right:0;
-
-  text-align:center;
-
-  font-size:clamp(25px,5vw,48px);
-  font-weight:bold;
-  letter-spacing:3px;
-
-  text-shadow:0 5px 30px #000;
-  pointer-events:none;
-}
-
-.countdown{
-  position:absolute;
-  inset:0;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:clamp(100px,20vw,200px);
-  font-weight:bold;
-
-  text-shadow:0 5px 35px #000;
-  pointer-events:none;
-}
-
-.booth-bottom{
-  max-width:1000px;
-  margin:auto;
-  text-align:center;
-  padding:18px;
-  color:#d0c0ca;
-}
-
-.permission-box{
-  max-width:500px;
-  margin:25px auto 0;
-  padding:20px;
-  border-radius:20px;
-
-  background:#332d33;
-  color:#d8cbd2;
-
-  line-height:1.6;
-}
-
-.retry-camera{
-  margin-top:15px;
-  padding:12px 25px;
-  border-radius:30px;
-
-  background:#f0d4e1;
-  color:#6e5662;
-
-  font-weight:bold;
-}
-
-/* ================= REVIEW ================= */
-
-#reviewScreen{
-  display:none;
-  min-height:100vh;
-
-  padding:30px 20px 50px;
-
-  background:
-    radial-gradient(circle at 10% 10%,#f0d8e4,transparent 25%),
-    radial-gradient(circle at 90% 90%,#ddd5ed,transparent 25%),
-    #faf7f8;
-}
-
-.review-title{
-  text-align:center;
-  font-family:Georgia,serif;
-
-  font-size:clamp(35px,6vw,48px);
-
-  color:#66515d;
-  margin:20px 0 8px;
-}
-
-.review-subtitle{
-  text-align:center;
-  color:#9b858f;
-  margin-bottom:30px;
-}
-
-.review-time{
-  text-align:center;
-  margin-bottom:20px;
-
-  font-size:13px;
-  color:#a58f99;
-}
-
-.review-grid{
-  max-width:1050px;
-  margin:auto;
-
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-
-.review-card{
-  background:white;
-  padding:10px;
-  border-radius:22px;
-
-  box-shadow:0 12px 35px rgba(80,60,70,.12);
-
-  text-align:center;
-}
-
-.review-card img{
-  width:100%;
-  aspect-ratio:4/5;
-  object-fit:cover;
-
-  border-radius:15px;
-  display:block;
-}
-
-.review-card h3{
-  margin:12px 0;
-  font-size:14px;
-  color:#725d68;
-}
-
-.retake-btn{
-  width:100%;
-  padding:11px;
-  border-radius:22px;
-
-  background:#f2e8ed;
-  color:#725d68;
-
-  font-weight:bold;
-}
-
-.retake-btn:disabled{
-  opacity:.4;
-  cursor:not-allowed;
-}
-
-.review-actions{
-  text-align:center;
-  margin-top:35px;
-}
-
-.done-btn{
-  padding:17px 38px;
-  border-radius:35px;
-
-  background:linear-gradient(135deg,#bd88a1,#8f7aa5);
-
-  color:white;
-  font-size:17px;
-  font-weight:bold;
-}
-
-/* ================= CONFIRM ================= */
-
-#confirmScreen{
-  display:none;
-
-  min-height:100vh;
-
-  align-items:center;
-  justify-content:center;
-
-  text-align:center;
-
-  padding:30px;
-
-  background:
-    radial-gradient(circle at 10% 10%,#f0d8e4,transparent 25%),
-    radial-gradient(circle at 90% 90%,#ddd5ed,transparent 25%),
-    #faf7f8;
-}
-
-.confirm-card{
-  width:min(520px,100%);
-
-  background:white;
-
-  padding:45px 30px;
-
-  border-radius:30px;
-
-  box-shadow:0 20px 60px rgba(80,60,70,.15);
-}
-
-.confirm-card h1{
-  font-family:Georgia,serif;
-  margin-bottom:15px;
-}
-
-.confirm-card p{
-  color:#927e88;
-  line-height:1.6;
-  margin-bottom:30px;
-}
-
-.confirm-buttons{
-  display:flex;
-  gap:12px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.back-btn,
-.confirm-btn{
-  padding:15px 25px;
-  border-radius:30px;
-  font-weight:bold;
-}
-
-.back-btn{
-  background:#eee7eb;
-  color:#705c67;
-}
-
-.confirm-btn{
-  background:linear-gradient(135deg,#bd88a1,#8f7aa5);
-  color:white;
-}
-
-/* ================= EDITOR ================= */
-
-#editorScreen{
-  display:none;
-
-  min-height:100vh;
-  padding:25px;
-
-  background:
-    radial-gradient(circle at 10% 10%,#f0d8e4,transparent 25%),
-    radial-gradient(circle at 90% 90%,#ddd5ed,transparent 25%),
-    #faf7f8;
-}
-
-.editor-title{
-  text-align:center;
-  font-family:Georgia,serif;
-
-  font-size:clamp(35px,6vw,48px);
-
-  color:#66515d;
-  margin:15px 0 8px;
-}
-
-.editor-subtitle{
-  text-align:center;
-  color:#9b858f;
-  margin-bottom:8px;
-}
-
-.locked{
-  text-align:center;
-  font-size:12px;
-  color:#a58f99;
-  margin-bottom:25px;
-}
-
-.editor-layout{
-  max-width:1150px;
-  margin:auto;
-
-  display:grid;
-
-  grid-template-columns:minmax(280px,430px) 1fr;
-
-  gap:30px;
-  align-items:start;
-}
-
-.preview-card{
-  background:white;
-  padding:18px;
-  border-radius:25px;
-
-  box-shadow:0 20px 50px rgba(90,65,80,.13);
-
-  position:sticky;
-  top:20px;
-}
-
-#previewCanvas{
-  width:100%;
-  height:auto;
-  max-height:75vh;
-
-  object-fit:contain;
-  display:block;
-
-  border-radius:12px;
-  background:white;
-}
-
-.controls-card{
-  background:rgba(255,255,255,.88);
-
-  border-radius:25px;
-  padding:22px;
-
-  box-shadow:0 20px 50px rgba(90,65,80,.1);
-}
-
-.control-title{
-  font-weight:bold;
-  margin-bottom:15px;
-  color:#66515d;
-}
-
-.frame-grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px;
-}
-
-.frame-btn{
-  background:white;
-
-  border:2px solid #eee;
-  border-radius:15px;
-
-  padding:7px;
-
-  color:#725d68;
-  font-size:11px;
-
-  transition:.15s;
-}
-
-.frame-btn.selected{
-  border-color:#b985a0;
-  background:#f9e8ef;
-  transform:translateY(-2px);
-}
-
-.frame-color{
-  height:70px;
-  border-radius:10px;
-  margin-bottom:6px;
-}
-
-.pink{
-  background:linear-gradient(135deg,#ffd6e5,#efa8c2);
-}
-
-.sakura{
-  background:
-    radial-gradient(circle,#fff 3px,transparent 4px),
-    linear-gradient(135deg,#ffe6ee,#f6b8ce);
-}
-
-.lavender{
-  background:linear-gradient(135deg,#e2d6f4,#bba7dc);
-}
-
-.blue{
-  background:linear-gradient(135deg,#d5efff,#91c9e9);
-}
-
-.star{
-  background:
-    radial-gradient(circle at 25% 25%,#fff 1px,transparent 2px),
-    radial-gradient(circle at 70% 60%,#fff 1px,transparent 2px),
-    linear-gradient(135deg,#302b49,#8175a8);
-}
-
-.cloud{
-  background:
-    radial-gradient(circle at 30% 40%,white 15px,transparent 16px),
-    radial-gradient(circle at 55% 45%,white 20px,transparent 21px),
-    linear-gradient(135deg,#eef8ff,#c7e5f8);
-}
-
-.teddy{
-  background:
-    radial-gradient(circle at 30% 30%,#9b704e 10px,transparent 11px),
-    linear-gradient(135deg,#ead0b6,#c4976d);
-}
-
-.strawberry{
-  background:
-    radial-gradient(circle,#fff 2px,transparent 3px),
-    linear-gradient(135deg,#ffd1d9,#ef8ca1);
-}
-
-.flower{
-  background:
-    radial-gradient(circle at 30% 30%,#fff 7px,transparent 8px),
-    radial-gradient(circle at 70% 60%,#fff 8px,transparent 9px),
-    linear-gradient(135deg,#f7dff0,#d5afd0);
-}
-
-.minimal{
-  background:#eeeae7;
-}
-
-.text-input{
-  width:100%;
-
-  padding:14px;
-
-  border:1px solid #ddd;
-  border-radius:15px;
-
-  margin-top:10px;
-
-  outline:none;
-}
-
-.text-input:focus{
-  border-color:#c28da5;
-}
-
-.editor-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:20px;
-}
-
-.tool-btn{
-  padding:13px 18px;
-  border-radius:30px;
-
-  background:#f1e9ed;
-  color:#715c67;
-
-  font-weight:bold;
-}
-
-.tool-btn.active{
-  background:#bd88a1;
-  color:white;
-}
-
-.download-btn,
-.print-btn{
-  display:block;
-  width:100%;
-
-  text-align:center;
-  text-decoration:none;
-
-  padding:15px;
-  border-radius:30px;
-
-  color:white;
-  font-weight:bold;
-
-  margin-top:15px;
-}
-
-.download-btn{
-  background:linear-gradient(135deg,#bd88a1,#8f7aa5);
-}
-
-.print-btn{
-  background:#332c33;
-}
-
-.finish-btn{
-  display:block;
-  width:100%;
-
-  margin-top:10px;
-
-  padding:12px;
-  border-radius:30px;
-
-  background:#eee7eb;
-  color:#705c67;
-
-  font-weight:bold;
-}
-
-/* ================= PRINT ================= */
-
-#printArea{
-  display:none;
-}
-
-@media print{
-
-  @page{
-    size:80mm auto;
-    margin:0;
-  }
-
-  html,
-  body{
-    width:80mm;
-    margin:0;
-    padding:0;
-    background:white;
-  }
-
-  body *{
-    visibility:hidden !important;
-  }
-
-  #printArea,
-  #printArea *{
-    visibility:visible !important;
-  }
-
-  #printArea{
-    display:block !important;
-
-    width:72mm;
-    margin:0 auto;
-    padding:3mm;
-  }
-
-  #printImage{
-    display:block;
-    width:66mm;
-    height:auto;
-    margin:0 auto;
-  }
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:850px){
-
-  .review-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .editor-layout{
-    grid-template-columns:1fr;
-  }
-
-  .preview-card{
-    position:relative;
-    top:0;
-
-    max-width:430px;
-    margin:auto;
-  }
-}
-
-@media(max-width:550px){
-
-  .frame-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .review-grid{
-    gap:10px;
-  }
-
-  .home-card{
-    padding:50px 20px;
-  }
-}
-
-@keyframes pop{
-  0%{
-    transform:scale(.7);
-    opacity:0;
-  }
-
-  100%{
-    transform:scale(1);
-    opacity:1;
-  }
-}
-
-.pop{
-  animation:pop .25s ease;
-}
+    * {
+        box-sizing: border-box;
+    }
+
+    :root {
+        --pink: #f5b9cc;
+        --pink-dark: #d989a8;
+        --lavender: #cfc5eb;
+        --cream: #fffaf5;
+        --white: #ffffff;
+        --text: #4e4350;
+        --muted: #8d7f8c;
+        --shadow: 0 20px 60px rgba(100, 74, 100, 0.14);
+        --soft-shadow: 0 10px 30px rgba(100, 74, 100, 0.1);
+        --radius: 28px;
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--text);
+        background:
+            radial-gradient(circle at 10% 10%, rgba(245, 185, 204, 0.45), transparent 28%),
+            radial-gradient(circle at 90% 15%, rgba(207, 197, 235, 0.5), transparent 30%),
+            linear-gradient(135deg, #fffaf8 0%, #fdf7fc 50%, #f8f4ff 100%);
+        overflow-x: hidden;
+    }
+
+    button,
+    input {
+        font: inherit;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    .screen {
+        min-height: 100vh;
+        width: 100%;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    /* =========================
+       HOME
+    ========================= */
+
+    #homeScreen {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: 30px;
+        overflow: hidden;
+    }
+
+    .home-decoration {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(2px);
+        pointer-events: none;
+    }
+
+    .home-decoration.one {
+        width: 240px;
+        height: 240px;
+        left: -80px;
+        top: 10%;
+        background: rgba(245, 185, 204, 0.32);
+    }
+
+    .home-decoration.two {
+        width: 300px;
+        height: 300px;
+        right: -100px;
+        bottom: -60px;
+        background: rgba(207, 197, 235, 0.38);
+    }
+
+    .home-card {
+        position: relative;
+        z-index: 2;
+        width: min(900px, 100%);
+        min-height: 620px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 70px 35px;
+        border: 1px solid rgba(255, 255, 255, 0.75);
+        background: rgba(255, 255, 255, 0.58);
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+        border-radius: 40px;
+        box-shadow: var(--shadow);
+    }
+
+    .home-content {
+        max-width: 650px;
+    }
+
+    .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 4px;
+        color: #806f7d;
+        margin-bottom: 34px;
+    }
+
+    .logo::before,
+    .logo::after {
+        content: "♡";
+        color: var(--pink-dark);
+        font-size: 14px;
+    }
+
+    .home-title {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(58px, 9vw, 105px);
+        line-height: 0.88;
+        font-weight: 400;
+        letter-spacing: -4px;
+        margin: 0;
+        color: #4e4050;
+    }
+
+    .home-subtitle {
+        margin: 30px auto 38px;
+        color: var(--muted);
+        font-size: 16px;
+        letter-spacing: 0.3px;
+    }
+
+    .primary-button {
+        border: none;
+        border-radius: 999px;
+        padding: 17px 30px;
+        min-width: 230px;
+        color: white;
+        background: linear-gradient(135deg, #e7a8bf, #b9acd9);
+        box-shadow: 0 12px 25px rgba(187, 145, 177, 0.25);
+        font-weight: 700;
+        letter-spacing: 1.4px;
+        transition: 0.25s ease;
+    }
+
+    .primary-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 17px 30px rgba(187, 145, 177, 0.3);
+    }
+
+    .primary-button:active {
+        transform: translateY(0);
+    }
+
+    /* =========================
+       BOOTH
+    ========================= */
+
+    #boothScreen {
+        background:
+            radial-gradient(circle at 50% -10%, rgba(246, 205, 221, 0.13), transparent 35%),
+            linear-gradient(145deg, #211d28, #302938 45%, #17151c);
+        color: white;
+        padding: 22px;
+    }
+
+    .booth-shell {
+        width: min(1150px, 100%);
+        margin: 0 auto;
+        min-height: calc(100vh - 44px);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .booth-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 6px 4px 20px;
+    }
+
+    .booth-brand {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        color: #e8dce7;
+    }
+
+    .session-timer {
+        padding: 9px 15px;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.06);
+        font-size: 12px;
+        letter-spacing: 1.5px;
+        color: #f6edf6;
+    }
+
+    .camera-panel {
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .camera-title {
+        text-align: center;
+        margin-bottom: 16px;
+    }
+
+    .camera-title h2 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(30px, 5vw, 48px);
+        font-weight: 400;
+        margin: 0 0 8px;
+    }
+
+    .camera-title p {
+        margin: 0;
+        color: #bdb2c0;
+        font-size: 14px;
+    }
+
+    .camera-stage {
+        position: relative;
+        width: min(780px, 100%);
+        aspect-ratio: 4 / 3;
+        border-radius: 30px;
+        overflow: hidden;
+        background: #0d0c11;
+        border: 1px solid rgba(255,255,255,0.13);
+        box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+    }
+
+    #video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transform: scaleX(-1);
+        background: #0c0b10;
+    }
+
+    .camera-overlay {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 30px;
+    }
+
+    .photo-progress {
+        position: absolute;
+        top: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 9px 16px;
+        border-radius: 999px;
+        background: rgba(20, 17, 24, 0.64);
+        backdrop-filter: blur(10px);
+        font-size: 12px;
+        letter-spacing: 1.5px;
+        z-index: 5;
+    }
+
+    .countdown {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(80px, 16vw, 170px);
+        color: white;
+        text-shadow: 0 8px 35px rgba(0,0,0,0.4);
+        z-index: 4;
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    .countdown.show {
+        animation: countdownPop 0.8s ease both;
+    }
+
+    @keyframes countdownPop {
+        0% {
+            opacity: 0;
+            transform: scale(1.4);
+        }
+        35% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        80% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+    }
+
+    .camera-message {
+        width: min(560px, 100%);
+        margin-top: 18px;
+        padding: 18px 22px;
+        border-radius: 20px;
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.1);
+        text-align: center;
+        color: #d9ced9;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .camera-message.error {
+        color: #ffd8df;
+        border-color: rgba(255, 180, 195, 0.25);
+    }
+
+    .camera-permission-button {
+        margin-top: 12px;
+        border: none;
+        border-radius: 999px;
+        padding: 12px 20px;
+        color: #332b35;
+        background: #fff6fa;
+        font-weight: 700;
+    }
+
+    /* =========================
+       REVIEW
+    ========================= */
+
+    #reviewScreen,
+    #confirmScreen,
+    #editorScreen {
+        padding: 30px;
+    }
+
+    .page-container {
+        width: min(1200px, 100%);
+        margin: 0 auto;
+    }
+
+    .section-heading {
+        text-align: center;
+        margin: 15px auto 35px;
+    }
+
+    .section-heading .eyebrow {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        color: #a07f95;
+        margin-bottom: 12px;
+    }
+
+    .section-heading h1 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: 400;
+        font-size: clamp(42px, 6vw, 64px);
+        line-height: 1;
+        margin: 0;
+        color: #4d4050;
+    }
+
+    .section-heading p {
+        color: var(--muted);
+        margin: 15px auto 0;
+        font-size: 15px;
+    }
+
+    .review-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .review-card {
+        background: rgba(255,255,255,0.7);
+        border: 1px solid rgba(255,255,255,0.8);
+        border-radius: 24px;
+        padding: 12px;
+        box-shadow: var(--soft-shadow);
+        transition: 0.25s ease;
+    }
+
+    .review-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .review-image-wrap {
+        position: relative;
+        overflow: hidden;
+        border-radius: 18px;
+        background: #eee8ee;
+        aspect-ratio: 3 / 4;
+    }
+
+    .review-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .review-number {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.88);
+        color: #645666;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .retake-button {
+        width: 100%;
+        border: none;
+        margin-top: 10px;
+        border-radius: 14px;
+        padding: 11px;
+        background: #f5edf4;
+        color: #715c6e;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        transition: 0.2s ease;
+    }
+
+    .retake-button:hover {
+        background: #ead8e5;
+    }
+
+    .review-actions {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 32px;
+        flex-wrap: wrap;
+    }
+
+    .secondary-button,
+    .danger-soft-button {
+        border: 1px solid rgba(140, 116, 137, 0.18);
+        border-radius: 999px;
+        padding: 14px 24px;
+        background: rgba(255,255,255,0.72);
+        color: #665767;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        transition: 0.2s ease;
+    }
+
+    .secondary-button:hover,
+    .danger-soft-button:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--soft-shadow);
+    }
+
+    /* =========================
+       CONFIRM
+    ========================= */
+
+    #confirmScreen {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .confirm-card {
+        width: min(650px, 100%);
+        text-align: center;
+        padding: 55px 35px;
+        background: rgba(255,255,255,0.72);
+        border: 1px solid rgba(255,255,255,0.85);
+        backdrop-filter: blur(20px);
+        border-radius: 35px;
+        box-shadow: var(--shadow);
+    }
+
+    .confirm-icon {
+        width: 75px;
+        height: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #f5cad9, #d9d0ed);
+        font-size: 32px;
+    }
+
+    .confirm-card h1 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(38px, 7vw, 58px);
+        font-weight: 400;
+        margin: 0;
+    }
+
+    .confirm-card p {
+        color: var(--muted);
+        line-height: 1.7;
+        margin: 18px auto 30px;
+        max-width: 480px;
+    }
+
+    .confirm-actions {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    /* =========================
+       EDITOR
+    ========================= */
+
+    .editor-layout {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1.1fr);
+        gap: 35px;
+        align-items: start;
+    }
+
+    .editor-preview-card {
+        position: sticky;
+        top: 20px;
+        display: flex;
+        justify-content: center;
+        padding: 25px;
+        border-radius: 30px;
+        background: rgba(255,255,255,0.58);
+        border: 1px solid rgba(255,255,255,0.8);
+        box-shadow: var(--soft-shadow);
+    }
+
+    #photostripCanvas {
+        width: min(100%, 370px);
+        height: auto;
+        display: block;
+        border-radius: 7px;
+        box-shadow: 0 18px 45px rgba(75, 55, 70, 0.2);
+        background: white;
+    }
+
+    .lock-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 9px 14px;
+        border-radius: 999px;
+        background: #eee9f4;
+        color: #716379;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.7px;
+        margin-bottom: 20px;
+    }
+
+    .editor-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .control-card {
+        background: rgba(255,255,255,0.7);
+        border: 1px solid rgba(255,255,255,0.8);
+        border-radius: 24px;
+        padding: 20px;
+        box-shadow: var(--soft-shadow);
+    }
+
+    .control-card h3 {
+        margin: 0 0 14px;
+        font-size: 13px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #69576a;
+    }
+
+    .frame-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+    }
+
+    .frame-button {
+        border: 1px solid rgba(120,100,120,0.12);
+        border-radius: 12px;
+        padding: 10px 5px;
+        min-height: 62px;
+        color: #655667;
+        background: #fff;
+        font-size: 10px;
+        line-height: 1.2;
+        transition: 0.2s ease;
+    }
+
+    .frame-button:hover {
+        transform: translateY(-2px);
+    }
+
+    .frame-button.active {
+        border: 2px solid #bf91ab;
+        box-shadow: 0 0 0 3px rgba(191,145,171,0.12);
+    }
+
+    .frame-swatch {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        margin: 0 auto 5px;
+    }
+
+    .swatch-pink {
+        background: linear-gradient(135deg, #ffd8e5, #f4aac7);
+    }
+
+    .swatch-sakura {
+        background: linear-gradient(135deg, #fff0f4, #f2c6d9);
+    }
+
+    .swatch-lavender {
+        background: linear-gradient(135deg, #e8def8, #c8b9e6);
+    }
+
+    .swatch-blue {
+        background: linear-gradient(135deg, #e1f3ff, #b8dcf2);
+    }
+
+    .swatch-starry {
+        background: linear-gradient(135deg, #302b48, #61577d);
+    }
+
+    .swatch-cloud {
+        background: linear-gradient(135deg, #ffffff, #e7eef5);
+    }
+
+    .swatch-teddy {
+        background: linear-gradient(135deg, #e8c7a6, #c89970);
+    }
+
+    .swatch-strawberry {
+        background: linear-gradient(135deg, #ffb8c8, #ec6686);
+    }
+
+    .swatch-flower {
+        background: linear-gradient(135deg, #ffe6a9, #f3b7d3);
+    }
+
+    .swatch-minimal {
+        background: #ffffff;
+        border: 1px solid #ddd;
+    }
+
+    .text-input-wrap {
+        display: flex;
+        gap: 8px;
+    }
+
+    .text-input {
+        flex: 1;
+        min-width: 0;
+        border: 1px solid rgba(120,100,120,0.15);
+        background: rgba(255,255,255,0.85);
+        border-radius: 14px;
+        padding: 13px 15px;
+        color: #5a4d5b;
+        outline: none;
+    }
+
+    .text-input:focus {
+        border-color: #d4a9c1;
+        box-shadow: 0 0 0 3px rgba(212,169,193,0.12);
+    }
+
+    .small-action {
+        border: none;
+        border-radius: 14px;
+        padding: 12px 15px;
+        background: #f1e4ee;
+        color: #715c6e;
+        font-weight: 700;
+        font-size: 12px;
+    }
+
+    .sticker-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 8px;
+    }
+
+    .sticker-button {
+        border: 1px solid rgba(120,100,120,0.12);
+        background: #fff;
+        border-radius: 14px;
+        height: 48px;
+        font-size: 22px;
+        transition: 0.2s ease;
+    }
+
+    .sticker-button:hover {
+        transform: scale(1.06);
+        background: #fff7fb;
+    }
+
+    .date-button {
+        width: 100%;
+        border: 1px solid rgba(120,100,120,0.12);
+        border-radius: 14px;
+        padding: 13px;
+        background: #fff;
+        color: #68586a;
+        font-weight: 700;
+    }
+
+    .editor-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .editor-action-button {
+        border: none;
+        border-radius: 16px;
+        padding: 14px 10px;
+        background: linear-gradient(135deg, #eab2c9, #c6b8e2);
+        color: white;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+
+    .editor-action-button.secondary {
+        background: #f1e9f1;
+        color: #67586a;
+    }
+
+    .finish-button {
+        width: 100%;
+        border: none;
+        border-radius: 18px;
+        padding: 16px;
+        background: #4d414f;
+        color: white;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    /* =========================
+       PRINT
+    ========================= */
+
+    .print-area {
+        display: none;
+    }
+
+    @media print {
+        @page {
+            size: 80mm auto;
+            margin: 0;
+        }
+
+        html,
+        body {
+            width: 80mm;
+            min-height: 0;
+            margin: 0;
+            padding: 0;
+            background: white !important;
+        }
+
+        body * {
+            visibility: hidden !important;
+        }
+
+        .print-area,
+        .print-area * {
+            visibility: visible !important;
+        }
+
+        .print-area {
+            display: block !important;
+            width: 80mm;
+            margin: 0;
+            padding: 0;
+        }
+
+        .print-area img {
+            display: block;
+            width: 80mm;
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 950px) {
+        .review-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .editor-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .editor-preview-card {
+            position: static;
+        }
+
+        #photostripCanvas {
+            width: min(100%, 360px);
+        }
+    }
+
+    @media (max-width: 650px) {
+        #homeScreen {
+            padding: 16px;
+        }
+
+        .home-card {
+            min-height: 570px;
+            padding: 50px 22px;
+            border-radius: 30px;
+        }
+
+        .home-title {
+            font-size: clamp(52px, 18vw, 80px);
+        }
+
+        #boothScreen,
+        #reviewScreen,
+        #confirmScreen,
+        #editorScreen {
+            padding: 16px;
+        }
+
+        .booth-shell {
+            min-height: calc(100vh - 32px);
+        }
+
+        .booth-header {
+            padding-bottom: 15px;
+        }
+
+        .camera-stage {
+            aspect-ratio: 3 / 4;
+            max-height: 68vh;
+        }
+
+        .review-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .review-card {
+            padding: 8px;
+            border-radius: 18px;
+        }
+
+        .review-image-wrap {
+            border-radius: 13px;
+        }
+
+        .retake-button {
+            font-size: 10px;
+            padding: 9px 5px;
+        }
+
+        .section-heading {
+            margin-top: 8px;
+            margin-bottom: 25px;
+        }
+
+        .frame-grid {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .frame-button {
+            font-size: 8px;
+            padding: 7px 2px;
+        }
+
+        .sticker-grid {
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+        .editor-preview-card {
+            padding: 16px;
+        }
+    }
+
+    @media (max-width: 430px) {
+        .review-grid {
+            gap: 9px;
+        }
+
+        .review-card {
+            padding: 6px;
+        }
+
+        .review-number {
+            font-size: 8px;
+            padding: 5px 7px;
+        }
+
+        .retake-button {
+            margin-top: 7px;
+            padding: 8px 3px;
+        }
+
+        .editor-actions {
+            grid-template-columns: 1fr;
+        }
+    }
 </style>
 </head>
 
 <body>
 
-<!-- ================= HOME ================= -->
-
+<!-- =========================
+     HOME
+========================= -->
 <section id="homeScreen" class="screen">
+    <div class="home-decoration one"></div>
+    <div class="home-decoration two"></div>
 
-  <div class="home-card">
+    <div class="home-card">
+        <div class="home-content">
+            <div class="logo">YOUR PHOTOBOX</div>
 
-    <div class="logo">
-      YOUR PHOTOBOX
+            <h1 class="home-title">
+                Capture<br>
+                Your Moment
+            </h1>
+
+            <p class="home-subtitle">
+                Four photos. One beautiful memory. ♡
+            </p>
+
+            <button class="primary-button" onclick="enterBooth()">
+                START PHOTOBOOTH
+            </button>
+        </div>
     </div>
-
-    <h1 class="home-title">
-      Capture<br>Your Moment
-    </h1>
-
-    <p class="home-subtitle">
-      Four photos. One beautiful memory. ♡
-    </p>
-
-    <button
-      class="start-btn"
-      onclick="enterBooth()">
-
-      START PHOTOBOOTH
-
-    </button>
-
-  </div>
-
 </section>
 
 
-<!-- ================= BOOTH ================= -->
+<!-- =========================
+     BOOTH
+========================= -->
+<section id="boothScreen" class="screen hidden">
+    <div class="booth-shell">
 
-<section id="boothScreen" class="screen">
+        <header class="booth-header">
+            <div class="booth-brand">YOUR PHOTOBOX ♡</div>
 
-  <div class="booth-top">
+            <div class="session-timer" id="sessionTimer">
+                SESSION 05:00
+            </div>
+        </header>
 
-    <div class="booth-logo">
-      YOUR PHOTOBOX
+        <main class="camera-panel">
+
+            <div class="camera-title">
+                <h2 id="boothTitle">Get Ready ✦</h2>
+                <p id="boothSubtitle">Your camera is getting ready...</p>
+            </div>
+
+            <div class="camera-stage">
+
+                <video
+                    id="video"
+                    autoplay
+                    playsinline
+                    muted
+                ></video>
+
+                <div class="camera-overlay"></div>
+
+                <div class="photo-progress" id="photoProgress">
+                    PHOTO 1 / 4
+                </div>
+
+                <div class="countdown" id="countdown"></div>
+
+            </div>
+
+            <div id="cameraMessage" class="camera-message hidden"></div>
+
+            <button
+                id="permissionButton"
+                class="camera-permission-button hidden"
+                onclick="requestCamera()"
+            >
+                📸 IZINKAN KAMERA
+            </button>
+
+        </main>
     </div>
-
-    <div class="session">
-      SESSION
-      <span id="sessionTimer">05:00</span>
-    </div>
-
-  </div>
-
-  <div class="camera-area">
-
-    <div class="video-frame">
-
-      <video
-        id="camera"
-        autoplay
-        playsinline>
-      </video>
-
-      <div
-        class="photo-number"
-        id="photoNumber">
-
-        READY
-
-      </div>
-
-      <div
-        class="get-ready"
-        id="getReady">
-      </div>
-
-      <div
-        class="countdown"
-        id="countdown">
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="booth-bottom">
-
-    <div id="boothStatus">
-      Get ready... ♡
-    </div>
-
-    <div
-      id="permissionBox"
-      class="permission-box"
-      style="display:none;">
-
-      Kamera belum mendapatkan izin.
-
-      <br>
-
-      Tekan tombol di bawah dan pilih
-      <b>Allow / Izinkan</b> saat browser meminta akses kamera.
-
-      <br>
-
-      <button
-        class="retry-camera"
-        onclick="requestCamera()">
-
-        📸 IZINKAN KAMERA
-
-      </button>
-
-    </div>
-
-  </div>
-
 </section>
 
 
-<!-- ================= REVIEW ================= -->
+<!-- =========================
+     REVIEW
+========================= -->
+<section id="reviewScreen" class="screen hidden">
 
-<section id="reviewScreen">
+    <div class="page-container">
 
-  <h1 class="review-title">
-    Check Your Photos ✦
-  </h1>
+        <div class="section-heading">
+            <div class="eyebrow">YOUR MEMORIES</div>
 
-  <p class="review-subtitle">
-    Retake foto yang belum pas.
-  </p>
+            <h1>Check Your Photos ✦</h1>
 
-  <div
-    class="review-time"
-    id="reviewTime">
-  </div>
+            <p>
+                Retake foto yang belum pas.
+            </p>
+        </div>
 
-  <div
-    class="review-grid"
-    id="reviewGrid">
-  </div>
+        <div id="reviewGrid" class="review-grid"></div>
 
-  <div class="review-actions">
+        <div class="review-actions">
+            <button class="primary-button" onclick="openConfirm()">
+                I'M DONE ♡
+            </button>
+        </div>
 
-    <button
-      class="done-btn"
-      onclick="openConfirm()">
-
-      I'M DONE ♡
-
-    </button>
-
-  </div>
-
+    </div>
 </section>
 
 
-<!-- ================= CONFIRM ================= -->
+<!-- =========================
+     CONFIRM
+========================= -->
+<section id="confirmScreen" class="screen hidden">
 
-<section id="confirmScreen">
+    <div class="confirm-card">
 
-  <div class="confirm-card">
+        <div class="confirm-icon">
+            ✨
+        </div>
 
-    <h1>
-      Ready to create? ✨
-    </h1>
+        <h1>Ready to create? ✨</h1>
 
-    <p>
-      Setelah masuk ke editor,
-      keempat foto akan dikunci.
-      Foto tidak bisa di-retake lagi.
-    </p>
+        <p>
+            Setelah masuk ke editor, keempat foto akan dikunci.
+            Foto tidak bisa di-retake lagi.
+        </p>
 
-    <div class="confirm-buttons">
+        <div class="confirm-actions">
 
-      <button
-        class="back-btn"
-        onclick="backToReview()">
+            <button
+                class="secondary-button"
+                onclick="backToReview()"
+            >
+                ← CHECK AGAIN
+            </button>
 
-        ← CHECK AGAIN
+            <button
+                class="primary-button"
+                onclick="lockPhotosAndEdit()"
+            >
+                YES, I'M DONE ✦
+            </button>
 
-      </button>
-
-      <button
-        class="confirm-btn"
-        onclick="lockPhotosAndEdit()">
-
-        YES, I'M DONE ✦
-
-      </button>
+        </div>
 
     </div>
-
-  </div>
-
 </section>
 
 
-<!-- ================= EDITOR ================= -->
+<!-- =========================
+     EDITOR
+========================= -->
+<section id="editorScreen" class="screen hidden">
 
-<section id="editorScreen">
+    <div class="page-container">
 
-  <h1 class="editor-title">
-    Make It Yours ✦
-  </h1>
+        <div class="section-heading">
+            <div class="eyebrow">FINAL TOUCHES</div>
 
-  <p class="editor-subtitle">
-    Decorate your memories.
-  </p>
+            <h1>Make It Yours ✦</h1>
 
-  <div class="locked">
-    🔒 Photos locked — editing mode
-  </div>
+            <p>
+                Decorate your memories.
+            </p>
+        </div>
 
-  <div class="editor-layout">
+        <div class="editor-layout">
 
-    <div class="preview-card">
+            <!-- PREVIEW -->
+            <div class="editor-preview-card">
 
-      <canvas id="previewCanvas"></canvas>
+                <canvas
+                    id="photostripCanvas"
+                    width="900"
+                    height="1900"
+                ></canvas>
 
-      <a
-        id="downloadButton"
-        class="download-btn"
-        download="your-photobox.jpg">
+            </div>
 
-        💾 DOWNLOAD
 
-      </a>
+            <!-- CONTROLS -->
+            <div class="editor-controls">
 
-      <button
-        class="print-btn"
-        onclick="printPhotostrip()">
+                <div class="lock-badge">
+                    🔒 Photos locked — editing mode
+                </div>
 
-        🖨️ PRINT PHOTO
 
-      </button>
+                <!-- FRAME -->
+                <div class="control-card">
 
-      <button
-        class="finish-btn"
-        onclick="finishSession()">
+                    <h3>Choose Your Frame</h3>
 
-        ✓ SELESAI / KEMBALI KE HOME
+                    <div class="frame-grid">
 
-      </button>
+                        <button
+                            class="frame-button active"
+                            onclick="selectFrame('pink', this)"
+                        >
+                            <div class="frame-swatch swatch-pink"></div>
+                            Pink
+                        </button>
+
+                        <button
+                            class="frame-button"
+                            onclick="selectFrame('sakura', this)"
+                        >
+                            <div class="frame-swatch swatch-sakura"></div>
+                            Sakura
+                        </button>
+
+                        <button
+                            class="frame-button"
+                            onclick="selectFrame('lavender', this)"
+                        >
+                            <div class="frame-swatch swatch-lavender"></div>
+                            Lavender
+                        </button>
+
+                        <button
+                            class="frame-button"
+                            onclick="selectFrame('blue', this)"
+                        >
+                            <div class="frame-swatch swatch-blue"></div>
+                            Baby Blue
+                        </button>
+
+                        <button
+                            class="frame-button"
+                            onclick="selectFrame('starry', this)"
+                        >
+                            <div class="frame-swatch swatch-starry"></div>
+                            Starry
+                        </button>
+
+                        <button
+                            class="frame-button"
+                            onclick="selectFrame('cloud', this)"
+                        >
+                            <div class="frame-swatch swatch-cloud"></div>
+                            Cloud
+                        </button>
+
+                        <button
+                            class="frame-button"
+                            onclick="selectFrame('teddy', this)"
+                        >
+                            <div class="frame-swatch swatch-teddy"></div>
+                            Teddy
+                        </button>
+
+                        <button
+                            class="frame-button"
+                            onclick="selectFrame('strawberry', this)"
+                        >
+                            <div class="frame-swatch swatch-strawberry"></div>
+                            Strawberry
+                        </button>
+
+                        <button
+                            class="frame-button"
+                            onclick="selectFrame('flower', this)"
+                        >
+                            <div class="frame-swatch swatch-flower"></div>
+                            Flower
+                        </button>
+
+                        <button
+                            class="frame-button"
+                            onclick="selectFrame('minimal', this)"
+                        >
+                            <div class="frame-swatch swatch-minimal"></div>
+                            Minimal
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TEXT -->
+                <div class="control-card">
+
+                    <h3>Add Text</h3>
+
+                    <div class="text-input-wrap">
+
+                        <input
+                            id="textInput"
+                            class="text-input"
+                            type="text"
+                            maxlength="60"
+                            placeholder="Tulis sesuatu... ♡"
+                            oninput="updateText()"
+                        >
+
+                        <button
+                            class="small-action"
+                            onclick="updateText()"
+                        >
+                            ADD
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STICKERS -->
+                <div class="control-card">
+
+                    <h3>Add Sticker</h3>
+
+                    <div class="sticker-grid">
+
+                        <button
+                            class="sticker-button"
+                            onclick="addSticker('♡')"
+                        >♡</button>
+
+                        <button
+                            class="sticker-button"
+                            onclick="addSticker('☆')"
+                        >☆</button>
+
+                        <button
+                            class="sticker-button"
+                            onclick="addSticker('✦')"
+                        >✦</button>
+
+                        <button
+                            class="sticker-button"
+                            onclick="addSticker('🌸')"
+                        >🌸</button>
+
+                        <button
+                            class="sticker-button"
+                            onclick="addSticker('🎀')"
+                        >🎀</button>
+
+                        <button
+                            class="sticker-button"
+                            onclick="addSticker('✨')"
+                        >✨</button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DATE -->
+                <div class="control-card">
+
+                    <h3>Date</h3>
+
+                    <button
+                        id="dateButton"
+                        class="date-button"
+                        onclick="toggleDate()"
+                    >
+                        📅 ADD DATE
+                    </button>
+
+                </div>
+
+
+                <!-- ACTIONS -->
+                <div class="control-card">
+
+                    <h3>Save Your Memory</h3>
+
+                    <div class="editor-actions">
+
+                        <button
+                            class="editor-action-button"
+                            onclick="downloadPhotostrip()"
+                        >
+                            💾 DOWNLOAD
+                        </button>
+
+                        <button
+                            class="editor-action-button secondary"
+                            onclick="printPhotostrip()"
+                        >
+                            🖨️ PRINT PHOTO
+                        </button>
+
+                    </div>
+
+                    <div style="height:10px;"></div>
+
+                    <button
+                        class="finish-button"
+                        onclick="finishSession()"
+                    >
+                        ✓ SELESAI / KEMBALI KE HOME
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
-
-    <div class="controls-card">
-
-      <div class="control-title">
-        CHOOSE YOUR FRAME
-      </div>
-
-      <div class="frame-grid">
-
-        <button
-          class="frame-btn selected"
-          onclick="selectFrame('pink',this)">
-
-          <div class="frame-color pink"></div>
-          Pink
-
-        </button>
-
-        <button
-          class="frame-btn"
-          onclick="selectFrame('sakura',this)">
-
-          <div class="frame-color sakura"></div>
-          Sakura
-
-        </button>
-
-        <button
-          class="frame-btn"
-          onclick="selectFrame('lavender',this)">
-
-          <div class="frame-color lavender"></div>
-          Lavender
-
-        </button>
-
-        <button
-          class="frame-btn"
-          onclick="selectFrame('blue',this)">
-
-          <div class="frame-color blue"></div>
-          Baby Blue
-
-        </button>
-
-        <button
-          class="frame-btn"
-          onclick="selectFrame('star',this)">
-
-          <div class="frame-color star"></div>
-          Starry
-
-        </button>
-
-        <button
-          class="frame-btn"
-          onclick="selectFrame('cloud',this)">
-
-          <div class="frame-color cloud"></div>
-          Cloud
-
-        </button>
-
-        <button
-          class="frame-btn"
-          onclick="selectFrame('teddy',this)">
-
-          <div class="frame-color teddy"></div>
-          Teddy
-
-        </button>
-
-        <button
-          class="frame-btn"
-          onclick="selectFrame('strawberry',this)">
-
-          <div class="frame-color strawberry"></div>
-          Strawberry
-
-        </button>
-
-        <button
-          class="frame-btn"
-          onclick="selectFrame('flower',this)">
-
-          <div class="frame-color flower"></div>
-          Flower
-
-        </button>
-
-        <button
-          class="frame-btn"
-          onclick="selectFrame('minimal',this)">
-
-          <div class="frame-color minimal"></div>
-          Minimal
-
-        </button>
-
-      </div>
-
-      <div
-        class="control-title"
-        style="margin-top:25px;">
-
-        ADD TEXT
-
-      </div>
-
-      <input
-        id="customText"
-        class="text-input"
-        placeholder="Tulis sesuatu... ♡"
-        oninput="updateText()"
-      >
-
-      <div
-        class="control-title"
-        style="margin-top:25px;">
-
-        STICKERS
-
-      </div>
-
-      <div class="editor-buttons">
-
-        <button class="tool-btn" onclick="addSticker('♡')">♡</button>
-        <button class="tool-btn" onclick="addSticker('☆')">☆</button>
-        <button class="tool-btn" onclick="addSticker('✦')">✦</button>
-        <button class="tool-btn" onclick="addSticker('🌸')">🌸</button>
-        <button class="tool-btn" onclick="addSticker('🎀')">🎀</button>
-        <button class="tool-btn" onclick="addSticker('✨')">✨</button>
-
-      </div>
-
-      <div
-        class="control-title"
-        style="margin-top:25px;">
-
-        DATE
-
-      </div>
-
-      <div class="editor-buttons">
-
-        <button
-          id="dateButton"
-          class="tool-btn"
-          onclick="toggleDate()">
-
-          📅 ADD DATE
-
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
 </section>
 
 
-<!-- ================= PRINT ================= -->
-
-<div id="printArea">
-
-  <img
-    id="printImage"
-    src=""
-    alt="Photostrip">
-
+<!-- Hidden print container -->
+<div id="printArea" class="print-area">
+    <img id="printImage" alt="YOUR PHOTOBOX photostrip">
 </div>
 
 
-<!--
-  =====================================================
-  /* =====================================================
-   CAMERA + PHOTOBOOTH
-===================================================== */
+<script>
+/* =========================================================
+   GLOBAL STATE
+========================================================= */
+
+let photos = [];
+let stickers = [];
 
 let stream = null;
-let photos = [];
-let currentPhoto = 0;
-let retakeIndex = -1;
 
+let sessionTimer = null;
 let sessionSeconds = 300;
-let sessionInterval = null;
+
+let currentPhotoIndex = 0;
+let retakeIndex = null;
 
 let locked = false;
 
-/* =====================================================
+let selectedFrame = "pink";
+let customText = "";
+let showDate = false;
+
+let sequenceRunning = false;
+let sessionActive = false;
+
+let countdownTimeout = null;
+
+
+/* =========================================================
+   DOM REFERENCES
+========================================================= */
+
+const homeScreen = document.getElementById("homeScreen");
+const boothScreen = document.getElementById("boothScreen");
+const reviewScreen = document.getElementById("reviewScreen");
+const confirmScreen = document.getElementById("confirmScreen");
+const editorScreen = document.getElementById("editorScreen");
+
+const video = document.getElementById("video");
+
+const countdownElement = document.getElementById("countdown");
+
+const photoProgress = document.getElementById("photoProgress");
+
+const boothTitle = document.getElementById("boothTitle");
+const boothSubtitle = document.getElementById("boothSubtitle");
+
+const cameraMessage = document.getElementById("cameraMessage");
+const permissionButton = document.getElementById("permissionButton");
+
+const sessionTimerElement = document.getElementById("sessionTimer");
+
+const reviewGrid = document.getElementById("reviewGrid");
+
+const photostripCanvas =
+    document.getElementById("photostripCanvas");
+
+const ctx = photostripCanvas.getContext("2d");
+
+const textInput = document.getElementById("textInput");
+
+const dateButton = document.getElementById("dateButton");
+
+const printImage = document.getElementById("printImage");
+
+
+/* =========================================================
    ENTER BOOTH
-===================================================== */
+========================================================= */
 
-async function enterBooth(){
+function enterBooth() {
 
-  document.getElementById("homeScreen").style.display = "none";
-  document.getElementById("boothScreen").style.display = "block";
+    homeScreen.classList.add("hidden");
+    reviewScreen.classList.add("hidden");
+    confirmScreen.classList.add("hidden");
+    editorScreen.classList.add("hidden");
 
-  currentPhoto = 0;
-  retakeIndex = -1;
+    boothScreen.classList.remove("hidden");
 
-  document.getElementById("photoNumber").textContent = "PHOTO 1 / 4";
-  document.getElementById("boothStatus").textContent =
-    "Meminta izin kamera... ♡";
+    photos = [];
+    stickers = [];
 
-  startSessionTimer();
+    currentPhotoIndex = 0;
+    retakeIndex = null;
 
-  await requestCamera();
+    locked = false;
+
+    selectedFrame = "pink";
+    customText = "";
+    showDate = false;
+
+    sessionActive = true;
+    sequenceRunning = false;
+
+    sessionSeconds = 300;
+
+    textInput.value = "";
+
+    updateTimerDisplay();
+
+    startSessionTimer();
+
+    showCameraMessage(
+        "Memulai kamera... Izinkan akses kamera jika diminta browser.",
+        false
+    );
+
+    requestCamera();
 }
 
 
-/* =====================================================
-   CAMERA PERMISSION
-===================================================== */
+/* =========================================================
+   CAMERA MESSAGE
+========================================================= */
 
-async function requestCamera(){
+function showCameraMessage(message, isError) {
 
-  const permissionBox =
-    document.getElementById("permissionBox");
+    cameraMessage.textContent = message;
 
-  try{
+    cameraMessage.classList.remove("hidden");
 
-    if(stream){
+    if (isError) {
+        cameraMessage.classList.add("error");
+    } else {
+        cameraMessage.classList.remove("error");
+    }
+}
 
-      stream.getTracks().forEach(track => track.stop());
 
+function hideCameraMessage() {
+
+    cameraMessage.classList.add("hidden");
+    cameraMessage.classList.remove("error");
+}
+
+
+/* =========================================================
+   REQUEST CAMERA
+========================================================= */
+
+async function requestCamera() {
+
+    if (!sessionActive) {
+        return;
     }
 
-    stream = await navigator.mediaDevices.getUserMedia({
+    if (!navigator.mediaDevices ||
+        !navigator.mediaDevices.getUserMedia) {
 
-      video:{
-        facingMode:"user",
+        showCameraMessage(
+            "Browser ini tidak mendukung akses kamera. Coba gunakan Chrome, Edge, Safari, atau browser modern lainnya.",
+            true
+        );
 
-        width:{
-          ideal:1280
-        },
+        permissionButton.classList.remove("hidden");
 
-        height:{
-          ideal:720
+        return;
+    }
+
+    permissionButton.classList.add("hidden");
+
+    try {
+
+        if (stream) {
+            stream.getTracks().forEach(track => track.stop());
+            stream = null;
         }
-      },
 
-      audio:false
+        stream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: false
+        });
 
-    });
+        video.srcObject = stream;
 
-    video.srcObject = stream;
+        await video.play();
 
-    permissionBox.style.display = "none";
+        hideCameraMessage();
 
-    document.getElementById("boothStatus").textContent =
-      "Kamera siap ♡";
-
-    setTimeout(() => {
-
-      if(currentPhoto < 4){
+        if (!sessionActive) {
+            return;
+        }
 
         startPhotoSequence();
 
-      }
+    } catch (error) {
 
-    },800);
+        console.error("Camera error:", error);
 
-  }
+        let message =
+            "Kamera tidak bisa diakses. Pastikan browser memiliki izin kamera.";
 
-  catch(error){
+        if (error && error.name === "NotAllowedError") {
+            message =
+                "Kamera belum mendapatkan izin. Klik tombol di bawah untuk mencoba lagi.";
+        } else if (error && error.name === "NotFoundError") {
+            message =
+                "Tidak ada kamera yang ditemukan. Pastikan kamera terhubung dan tersedia.";
+        } else if (error && error.name === "NotReadableError") {
+            message =
+                "Kamera sedang digunakan aplikasi lain. Tutup aplikasi tersebut lalu coba lagi.";
+        }
 
-    console.error(error);
+        showCameraMessage(message, true);
 
-    permissionBox.style.display = "block";
+        permissionButton.classList.remove("hidden");
 
-    document.getElementById("boothStatus").textContent =
-      "Kamera belum mendapatkan izin.";
+        boothTitle.textContent = "Camera unavailable";
+        boothSubtitle.textContent = "Jangan khawatir, coba izinkan kamera lagi.";
 
-  }
-
-}
-
-
-/* =====================================================
-   PHOTO SEQUENCE
-===================================================== */
-
-function startPhotoSequence(){
-
-  if(currentPhoto >= 4){
-
-    finishTakingPhotos();
-
-    return;
-
-  }
-
-  document.getElementById("photoNumber").textContent =
-    "PHOTO " + (currentPhoto + 1) + " / 4";
-
-  getReady.textContent =
-    "GET READY ♡";
-
-  setTimeout(() => {
-
-    getReady.textContent = "";
-
-    countdownPhoto();
-
-  },1200);
-
-}
-
-
-/* =====================================================
-   COUNTDOWN
-===================================================== */
-
-function countdownPhoto(){
-
-  let number = 3;
-
-  countdown.textContent = number;
-
-  const timer = setInterval(() => {
-
-    number--;
-
-    if(number > 0){
-
-      countdown.textContent = number;
-
+        sequenceRunning = false;
     }
-
-    else{
-
-      clearInterval(timer);
-
-      countdown.textContent = "♡";
-
-      takePhoto();
-
-    }
-
-  },1000);
-
 }
 
 
-/* =====================================================
-   TAKE PHOTO
-===================================================== */
-
-function takePhoto(){
-
-  if(!stream){
-
-    requestCamera();
-
-    return;
-
-  }
-
-  const canvas =
-    document.createElement("canvas");
-
-  const width = video.videoWidth || 1280;
-  const height = video.videoHeight || 720;
-
-  canvas.width = width;
-  canvas.height = height;
-
-  const ctx = canvas.getContext("2d");
-
-  /*
-    Mirror supaya hasil foto sama
-    seperti tampilan kamera.
-  */
-
-  ctx.save();
-
-  ctx.translate(width,0);
-
-  ctx.scale(-1,1);
-
-  ctx.drawImage(
-    video,
-    0,
-    0,
-    width,
-    height
-  );
-
-  ctx.restore();
-
-  const image =
-    canvas.toDataURL(
-      "image/jpeg",
-      0.95
-    );
-
-  if(retakeIndex >= 0){
-
-    photos[retakeIndex] = image;
-
-    retakeIndex = -1;
-
-    countdown.textContent = "";
-
-    showReview();
-
-    return;
-
-  }
-
-  photos.push(image);
-
-  currentPhoto++;
-
-  countdown.textContent = "";
-
-  if(currentPhoto < 4){
-
-    setTimeout(() => {
-
-      startPhotoSequence();
-
-    },1000);
-
-  }
-
-  else{
-
-    setTimeout(() => {
-
-      finishTakingPhotos();
-
-    },700);
-
-  }
-
-}
-
-
-/* =====================================================
-   FINISH CAMERA
-===================================================== */
-
-function finishTakingPhotos(){
-
-  if(stream){
-
-    stream.getTracks().forEach(track => {
-
-      track.stop();
-
-    });
-
-    video.srcObject = null;
-
-    stream = null;
-
-  }
-
-  document.getElementById("boothStatus").textContent =
-    "Semua foto sudah diambil ♡";
-
-  setTimeout(() => {
-
-    showReview();
-
-  },500);
-
-}
-
-
-/* =====================================================
-   REVIEW
-===================================================== */
-
-function showReview(){
-
-  document.getElementById("boothScreen").style.display =
-    "none";
-
-  document.getElementById("reviewScreen").style.display =
-    "block";
-
-  document.getElementById("reviewTime").textContent =
-    "4 foto berhasil diambil ♡";
-
-  renderReview();
-
-}
-
-
-/* =====================================================
-   RENDER REVIEW
-===================================================== */
-
-function renderReview(){
-
-  const grid =
-    document.getElementById("reviewGrid");
-
-  grid.innerHTML = "";
-
-  photos.forEach((photo,index) => {
-
-    const card =
-      document.createElement("div");
-
-    card.className = "review-card";
-
-    card.innerHTML = `
-
-      <img
-        src="${photo}"
-        alt="Photo ${index + 1}"
-      >
-
-      <h3>
-        PHOTO ${index + 1}
-      </h3>
-
-      <button
-        class="retake-btn"
-        onclick="retakePhoto(${index})"
-        ${locked ? "disabled" : ""}>
-
-        ↻ RETAKE
-
-      </button>
-
-    `;
-
-    grid.appendChild(card);
-
-  });
-
-}
-
-
-/* =====================================================
-   RETAKE PHOTO
-===================================================== */
-
-async function retakePhoto(index){
-
-  if(locked){
-
-    return;
-
-  }
-
-  retakeIndex = index;
-
-  document.getElementById("reviewScreen").style.display =
-    "none";
-
-  document.getElementById("boothScreen").style.display =
-    "block";
-
-  document.getElementById("photoNumber").textContent =
-    "RETAKE PHOTO " + (index + 1);
-
-  document.getElementById("boothStatus").textContent =
-    "Siap untuk retake ♡";
-
-  await requestCamera();
-
-}
-
-
-/* =====================================================
-   CONFIRM
-===================================================== */
-
-function openConfirm(){
-
-  if(photos.length !== 4){
-
-    alert("Pastikan semua 4 foto sudah diambil.");
-
-    return;
-
-  }
-
-  document.getElementById("reviewScreen").style.display =
-    "none";
-
-  document.getElementById("confirmScreen").style.display =
-    "flex";
-
-}
-
-
-function backToReview(){
-
-  document.getElementById("confirmScreen").style.display =
-    "none";
-
-  document.getElementById("reviewScreen").style.display =
-    "block";
-
-}
-
-
-/* =====================================================
-   LOCK PHOTOS
-===================================================== */
-
-function lockPhotosAndEdit(){
-
-  locked = true;
-
-  document.getElementById("confirmScreen").style.display =
-    "none";
-
-  document.getElementById("editorScreen").style.display =
-    "block";
-
-  initEditor();
-
-}
-
-
-/* =====================================================
+/* =========================================================
    SESSION TIMER
-===================================================== */
+========================================================= */
 
-function startSessionTimer(){
+function startSessionTimer() {
 
-  clearInterval(sessionInterval);
+    clearInterval(sessionTimer);
 
-  sessionSeconds = 300;
+    sessionSeconds = 300;
 
-  updateSessionTimer();
+    updateTimerDisplay();
 
-  sessionInterval = setInterval(() => {
+    sessionTimer = setInterval(() => {
 
-    sessionSeconds--;
+        if (!sessionActive) {
+            clearInterval(sessionTimer);
+            return;
+        }
 
-    updateSessionTimer();
+        sessionSeconds--;
 
-    if(sessionSeconds <= 0){
+        updateTimerDisplay();
 
-      clearInterval(sessionInterval);
+        if (sessionSeconds <= 0) {
 
-      alert(
-        "Waktu sesi habis. Silakan mulai lagi."
-      );
+            clearInterval(sessionTimer);
 
-      finishSession();
+            sessionTimer = null;
 
+            sessionActive = false;
+
+            sequenceRunning = false;
+
+            if (countdownTimeout) {
+                clearTimeout(countdownTimeout);
+            }
+
+            stopCamera();
+
+            if (photos.length > 0) {
+                showReview();
+            } else {
+                homeScreen.classList.remove("hidden");
+                boothScreen.classList.add("hidden");
+
+                resetAllState();
+            }
+        }
+
+    }, 1000);
+}
+
+
+function updateTimerDisplay() {
+
+    const minutes = Math.floor(sessionSeconds / 60);
+    const seconds = sessionSeconds % 60;
+
+    const formatted =
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0");
+
+    sessionTimerElement.textContent =
+        "SESSION " + formatted;
+}
+
+
+/* =========================================================
+   PHOTO SEQUENCE
+========================================================= */
+
+function startPhotoSequence() {
+
+    if (!sessionActive) {
+        return;
     }
 
-  },1000);
+    if (!stream) {
+        return;
+    }
 
+    if (sequenceRunning) {
+        return;
+    }
+
+    if (retakeIndex !== null) {
+
+        currentPhotoIndex = retakeIndex;
+
+        retakeIndex = null;
+
+    } else {
+
+        if (photos.length >= 4) {
+            showReview();
+            return;
+        }
+
+        currentPhotoIndex = photos.length;
+    }
+
+    sequenceRunning = true;
+
+    updatePhotoUI();
+
+    setTimeout(() => {
+
+        if (!sessionActive) {
+            sequenceRunning = false;
+            return;
+        }
+
+        runCountdown();
+
+    }, 500);
 }
 
 
-function updateSessionTimer(){
+function updatePhotoUI() {
 
-  const minutes =
-    Math.floor(sessionSeconds / 60);
+    const number = currentPhotoIndex + 1;
 
-  const seconds =
-    sessionSeconds % 60;
+    photoProgress.textContent =
+        "PHOTO " + number + " / 4";
 
-  document.getElementById("sessionTimer")
-    .textContent =
-      String(minutes).padStart(2,"0")
-      + ":"
-      + String(seconds).padStart(2,"0");
+    boothTitle.textContent =
+        "Get Ready... ✦";
 
+    boothSubtitle.textContent =
+        "Pose for photo " + number + "!";
 }
 
 
-/* =====================================================
-   EDITOR VARIABLES
-===================================================== */
+/* =========================================================
+   COUNTDOWN
+========================================================= */
 
-let selectedFrame = "pink";
+function runCountdown() {
 
-let customText = "";
+    if (!sessionActive || !stream) {
+        sequenceRunning = false;
+        return;
+    }
 
-let stickers = [];
+    const steps = [
+        "GET READY...",
+        "3",
+        "2",
+        "1"
+    ];
 
-let showDate = false;
+    let stepIndex = 0;
 
+    function nextStep() {
 
-/* =====================================================
-   EDITOR CANVAS
-===================================================== */
+        if (!sessionActive || !stream) {
+            sequenceRunning = false;
+            return;
+        }
 
-const previewCanvas =
-  document.getElementById("previewCanvas");
+        if (stepIndex >= steps.length) {
 
-const previewCtx =
-  previewCanvas.getContext("2d");
+            countdownElement.classList.remove("show");
 
+            capturePhoto();
 
-/* =====================================================
-   FRAME COLORS
-===================================================== */
+            return;
+        }
 
-const frameColors = {
+        const value = steps[stepIndex];
 
-  pink:"#ffd6e5",
+        countdownElement.textContent = value;
 
-  sakura:"#ffe1eb",
+        countdownElement.classList.remove("show");
 
-  lavender:"#ded4f1",
+        void countdownElement.offsetWidth;
 
-  blue:"#d7efff",
+        countdownElement.classList.add("show");
 
-  star:"#36304f",
+        stepIndex++;
 
-  cloud:"#e8f6ff",
+        countdownTimeout = setTimeout(
+            nextStep,
+            value === "GET READY..." ? 900 : 900
+        );
+    }
 
-  teddy:"#e6c7aa",
-
-  strawberry:"#ffd2dc",
-
-  flower:"#f0d9ec",
-
-  minimal:"#eeeae7"
-
-};
-
-
-/* =====================================================
-   INIT EDITOR
-===================================================== */
-
-function initEditor(){
-
-  selectedFrame = "pink";
-
-  customText = "";
-
-  stickers = [];
-
-  showDate = false;
-
-  document.getElementById("customText").value = "";
-
-  document.getElementById("dateButton").classList.remove("active");
-
-  drawPhotostrip();
-
+    nextStep();
 }
 
 
-/* =====================================================
-   SELECT FRAME
-===================================================== */
+/* =========================================================
+   CAPTURE PHOTO
+========================================================= */
 
-function selectFrame(frame,button){
+function capturePhoto() {
 
-  if(!locked){
+    if (!sessionActive || !stream) {
+        sequenceRunning = false;
+        return;
+    }
 
-    return;
+    if (!video.videoWidth || !video.videoHeight) {
 
-  }
+        sequenceRunning = false;
 
-  selectedFrame = frame;
-
-  document
-    .querySelectorAll(".frame-btn")
-    .forEach(btn => {
-
-      btn.classList.remove("selected");
-
-    });
-
-  button.classList.add("selected");
-
-  drawPhotostrip();
-
-}
-
-
-/* =====================================================
-   TEXT
-===================================================== */
-
-function updateText(){
-
-  customText =
-    document.getElementById("customText").value;
-
-  drawPhotostrip();
-
-}
-
-
-/* =====================================================
-   STICKERS
-===================================================== */
-
-function addSticker(sticker){
-
-  stickers.push(sticker);
-
-  drawPhotostrip();
-
-}
-
-
-/* =====================================================
-   DATE
-===================================================== */
-
-function toggleDate(){
-
-  showDate = !showDate;
-
-  const button =
-    document.getElementById("dateButton");
-
-  if(showDate){
-
-    button.classList.add("active");
-
-  }
-
-  else{
-
-    button.classList.remove("active");
-
-  }
-
-  drawPhotostrip();
-
-}
-
-
-/* =====================================================
-   DRAW PHOTOSTRIP
-===================================================== */
-
-function drawPhotostrip(){
-
-  if(photos.length !== 4){
-
-    return;
-
-  }
-
-  const W = 800;
-
-  const PHOTO_W = 720;
-
-  const PHOTO_H = 540;
-
-  const GAP = 20;
-
-  const TOP = 70;
-
-  const BOTTOM = 140;
-
-  const H =
-    TOP +
-    (PHOTO_H * 4) +
-    (GAP * 3) +
-    BOTTOM;
-
-  previewCanvas.width = W;
-
-  previewCanvas.height = H;
-
-  const ctx = previewCtx;
-
-  /* Background */
-
-  ctx.fillStyle =
-    frameColors[selectedFrame] || "#ffd6e5";
-
-  ctx.fillRect(
-    0,
-    0,
-    W,
-    H
-  );
-
-
-  /* Header */
-
-  ctx.fillStyle =
-    "#66515d";
-
-  ctx.textAlign =
-    "center";
-
-  ctx.font =
-    "bold 30px Arial";
-
-  ctx.fillText(
-    "YOUR PHOTOBOX ♡",
-    W / 2,
-    45
-  );
-
-
-  /* Photos */
-
-  let loaded = 0;
-
-  photos.forEach((photo,index) => {
-
-    const img =
-      new Image();
-
-    img.onload = () => {
-
-      const x =
-        (W - PHOTO_W) / 2;
-
-      const y =
-        TOP +
-        index * (PHOTO_H + GAP);
-
-      /*
-        Foto dibuat cover supaya
-        semua frame ukurannya sama.
-      */
-
-      const scale =
-        Math.max(
-          PHOTO_W / img.width,
-          PHOTO_H / img.height
+        showCameraMessage(
+            "Kamera belum siap. Silakan coba lagi.",
+            true
         );
 
-      const sw =
-        img.width * scale;
+        permissionButton.classList.remove("hidden");
 
-      const sh =
-        img.height * scale;
+        return;
+    }
 
-      const sx =
-        x - (sw - PHOTO_W) / 2;
+    const canvas = document.createElement("canvas");
 
-      const sy =
-        y - (sh - PHOTO_H) / 2;
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
 
-      ctx.save();
+    const captureContext = canvas.getContext("2d");
 
-      ctx.beginPath();
+    /*
+       Video tampil mirror menggunakan CSS.
+       Karena hasil foto juga harus mirror,
+       canvas dibalik secara horizontal sebelum drawImage.
+    */
 
-      ctx.roundRect(
-        x,
-        y,
-        PHOTO_W,
-        PHOTO_H,
-        18
-      );
+    captureContext.save();
 
-      ctx.clip();
+    captureContext.translate(canvas.width, 0);
 
-      ctx.drawImage(
-        img,
-        sx,
-        sy,
-        sw,
-        sh
-      );
+    captureContext.scale(-1, 1);
 
-      ctx.restore();
+    captureContext.drawImage(
+        video,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
 
-      loaded++;
+    captureContext.restore();
 
-      if(loaded === photos.length){
+    const dataURL = canvas.toDataURL(
+        "image/jpeg",
+        0.92
+    );
 
-        drawEditorDecorations();
+    if (retakeIndex !== null) {
 
-      }
+        photos[retakeIndex] = dataURL;
 
-    };
+        retakeIndex = null;
 
-    img.src = photo;
+    } else if (photos.length < 4) {
 
-  });
+        photos.push(dataURL);
 
+    } else {
+
+        photos[currentPhotoIndex] = dataURL;
+    }
+
+    sequenceRunning = false;
+
+    boothTitle.textContent = "Beautiful! ♡";
+
+    boothSubtitle.textContent = "Photo captured.";
+
+    if (photos.length >= 4) {
+
+        setTimeout(() => {
+
+            if (!sessionActive) {
+                return;
+            }
+
+            stopCamera();
+
+            showReview();
+
+        }, 900);
+
+    } else {
+
+        setTimeout(() => {
+
+            if (!sessionActive) {
+                return;
+            }
+
+            startPhotoSequence();
+
+        }, 900);
+    }
 }
 
 
-/* =====================================================
-   DECORATIONS
-===================================================== */
+/* =========================================================
+   STOP CAMERA
+========================================================= */
 
-function drawEditorDecorations(){
+function stopCamera() {
 
-  const ctx = previewCtx;
+    if (stream) {
 
-  const W =
+        stream.getTracks().forEach(track => {
+            track.stop();
+        });
+
+        stream = null;
+    }
+
+    video.srcObject = null;
+}
+
+
+/* =========================================================
+   REVIEW
+========================================================= */
+
+function showReview() {
+
+    if (photos.length === 0) {
+
+        homeScreen.classList.remove("hidden");
+        boothScreen.classList.add("hidden");
+
+        resetAllState();
+
+        return;
+    }
+
+    stopCamera();
+
+    clearInterval(sessionTimer);
+
+    sessionTimer = null;
+
+    boothScreen.classList.add("hidden");
+    confirmScreen.classList.add("hidden");
+    editorScreen.classList.add("hidden");
+
+    reviewScreen.classList.remove("hidden");
+
+    renderReview();
+}
+
+
+function renderReview() {
+
+    reviewGrid.innerHTML = "";
+
+    photos.forEach((photo, index) => {
+
+        const card = document.createElement("div");
+
+        card.className = "review-card";
+
+        const imageWrap =
+            document.createElement("div");
+
+        imageWrap.className =
+            "review-image-wrap";
+
+        const image =
+            document.createElement("img");
+
+        image.className = "review-image";
+
+        image.src = photo;
+
+        image.alt =
+            "Photo " + (index + 1);
+
+        const number =
+            document.createElement("div");
+
+        number.className =
+            "review-number";
+
+        number.textContent =
+            "PHOTO " + (index + 1);
+
+        imageWrap.appendChild(image);
+
+        imageWrap.appendChild(number);
+
+        const retakeButton =
+            document.createElement("button");
+
+        retakeButton.className =
+            "retake-button";
+
+        retakeButton.textContent =
+            "RETAKE";
+
+        retakeButton.onclick = function() {
+            retakePhoto(index);
+        };
+
+        card.appendChild(imageWrap);
+
+        card.appendChild(retakeButton);
+
+        reviewGrid.appendChild(card);
+    });
+}
+
+
+/* =========================================================
+   RETAKE
+========================================================= */
+
+function retakePhoto(index) {
+
+    if (locked) {
+        return;
+    }
+
+    if (index < 0 || index >= photos.length) {
+        return;
+    }
+
+    retakeIndex = index;
+
+    currentPhotoIndex = index;
+
+    sessionActive = true;
+
+    sessionSeconds = 300;
+
+    reviewScreen.classList.add("hidden");
+
+    boothScreen.classList.remove("hidden");
+
+    clearInterval(sessionTimer);
+
+    startSessionTimer();
+
+    sequenceRunning = false;
+
+    showCameraMessage(
+        "Retaking PHOTO " + (index + 1) + "...",
+        false
+    );
+
+    requestCamera();
+}
+
+
+/* =========================================================
+   CONFIRMATION
+========================================================= */
+
+function openConfirm() {
+
+    if (photos.length !== 4) {
+        return;
+    }
+
+    reviewScreen.classList.add("hidden");
+
+    confirmScreen.classList.remove("hidden");
+}
+
+
+function backToReview() {
+
+    confirmScreen.classList.add("hidden");
+
+    reviewScreen.classList.remove("hidden");
+
+    renderReview();
+}
+
+
+/* =========================================================
+   LOCK PHOTOS + EDITOR
+========================================================= */
+
+function lockPhotosAndEdit() {
+
+    if (photos.length !== 4) {
+        return;
+    }
+
+    locked = true;
+
+    stopCamera();
+
+    clearInterval(sessionTimer);
+
+    sessionTimer = null;
+
+    sessionActive = false;
+
+    confirmScreen.classList.add("hidden");
+
+    editorScreen.classList.remove("hidden");
+
+    renderEditor();
+}
+
+
+/* =========================================================
+   EDITOR
+========================================================= */
+
+function renderEditor() {
+
+    if (!locked || photos.length !== 4) {
+        return;
+    }
+
+    drawPhotostrip();
+}
+
+
+/* =========================================================
+   FRAME SELECTION
+========================================================= */
+
+function selectFrame(frame, button) {
+
+    if (!locked) {
+        return;
+    }
+
+    selectedFrame = frame;
+
+    document
+        .querySelectorAll(".frame-button")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+    drawPhotostrip();
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+function updateText() {
+
+    customText = textInput.value.trim();
+
+    drawPhotostrip();
+}
+
+
+/* =========================================================
+   STICKERS
+========================================================= */
+
+function addSticker(sticker) {
+
+    if (!locked) {
+        return;
+    }
+
+    stickers.push({
+        character: sticker,
+        x: 450,
+        y: 0,
+        size: 48 + Math.floor(Math.random() * 20),
+        rotation: (Math.random() - 0.5) * 0.25
+    });
+
+    drawPhotostrip();
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+function toggleDate() {
+
+    if (!locked) {
+        return;
+    }
+
+    showDate = !showDate;
+
+    if (showDate) {
+        dateButton.textContent =
+            "📅 DATE ADDED — REMOVE DATE";
+    } else {
+        dateButton.textContent =
+            "📅 ADD DATE";
+    }
+
+    drawPhotostrip();
+}
+
+
+/* =========================================================
+   FRAME BACKGROUND
+========================================================= */
+
+function drawFrameBackground(context, width, height) {
+
+    const gradient = context.createLinearGradient(
+        0,
+        0,
+        width,
+        height
+    );
+
+    if (selectedFrame === "pink") {
+
+        gradient.addColorStop(0, "#fff1f5");
+        gradient.addColorStop(0.5, "#ffd9e6");
+        gradient.addColorStop(1, "#f3b7cd");
+
+    } else if (selectedFrame === "sakura") {
+
+        gradient.addColorStop(0, "#fffafc");
+        gradient.addColorStop(0.5, "#ffe5ee");
+        gradient.addColorStop(1, "#f5cad9");
+
+    } else if (selectedFrame === "lavender") {
+
+        gradient.addColorStop(0, "#f7f3ff");
+        gradient.addColorStop(0.5, "#e8def9");
+        gradient.addColorStop(1, "#c9b9e6");
+
+    } else if (selectedFrame === "blue") {
+
+        gradient.addColorStop(0, "#f3fbff");
+        gradient.addColorStop(0.5, "#d9effd");
+        gradient.addColorStop(1, "#b8d9ee");
+
+    } else if (selectedFrame === "starry") {
+
+        gradient.addColorStop(0, "#211d39");
+        gradient.addColorStop(0.5, "#443b64");
+        gradient.addColorStop(1, "#171526");
+
+    } else if (selectedFrame === "cloud") {
+
+        gradient.addColorStop(0, "#ffffff");
+        gradient.addColorStop(0.5, "#f3f7fb");
+        gradient.addColorStop(1, "#e4edf4");
+
+    } else if (selectedFrame === "teddy") {
+
+        gradient.addColorStop(0, "#f4dfc7");
+        gradient.addColorStop(0.5, "#dfb990");
+        gradient.addColorStop(1, "#c79369");
+
+    } else if (selectedFrame === "strawberry") {
+
+        gradient.addColorStop(0, "#ffe2ea");
+        gradient.addColorStop(0.5, "#ffb8c8");
+        gradient.addColorStop(1, "#e96988");
+
+    } else if (selectedFrame === "flower") {
+
+        gradient.addColorStop(0, "#fff9df");
+        gradient.addColorStop(0.5, "#ffe4a9");
+        gradient.addColorStop(1, "#f1bad3");
+
+    } else {
+
+        gradient.addColorStop(0, "#ffffff");
+        gradient.addColorStop(1, "#ffffff");
+    }
+
+    context.fillStyle = gradient;
+
+    context.fillRect(
+        0,
+        0,
+        width,
+        height
+    );
+}
+
+
+/* =========================================================
+   FRAME DECORATIONS
+========================================================= */
+
+function drawFrameDecorations(
+    context,
+    width,
+    height
+) {
+
+    context.save();
+
+    if (selectedFrame === "starry") {
+
+        const stars = [
+            [55, 70, 16],
+            [width - 65, 90, 12],
+            [45, height - 110, 13],
+            [width - 55, height - 100, 17],
+            [width / 2, 55, 10]
+        ];
+
+        context.fillStyle = "#fff8b8";
+
+        stars.forEach(star => {
+
+            drawStar(
+                context,
+                star[0],
+                star[1],
+                star[2]
+            );
+        });
+
+    } else if (selectedFrame === "sakura") {
+
+        context.font = "44px Arial";
+
+        context.fillStyle = "rgba(218, 126, 164, 0.55)";
+
+        context.fillText("🌸", 35, 65);
+        context.fillText("🌸", width - 75, 72);
+        context.fillText("🌸", 35, height - 55);
+        context.fillText("🌸", width - 75, height - 50);
+
+    } else if (selectedFrame === "teddy") {
+
+        context.font = "44px Arial";
+
+        context.fillText("🧸", 32, 70);
+        context.fillText("🧸", width - 77, height - 35);
+
+    } else if (selectedFrame === "strawberry") {
+
+        context.font = "42px Arial";
+
+        context.fillText("🍓", 30, 65);
+        context.fillText("🍓", width - 78, height - 35);
+
+    } else if (selectedFrame === "flower") {
+
+        context.font = "42px Arial";
+
+        context.fillText("🌼", 28, 66);
+        context.fillText("🌷", width - 75, 70);
+        context.fillText("🌸", 30, height - 35);
+        context.fillText("🌼", width - 75, height - 35);
+
+    } else if (selectedFrame === "cloud") {
+
+        context.font = "45px Arial";
+
+        context.fillStyle = "rgba(255,255,255,0.8)";
+
+        context.fillText("☁", 28, 65);
+        context.fillText("☁", width - 75, 70);
+
+    } else if (selectedFrame === "pink") {
+
+        context.font = "34px Georgia";
+
+        context.fillStyle = "rgba(185,105,139,0.55)";
+
+        context.fillText("♡", 38, 65);
+        context.fillText("♡", width - 65, height - 40);
+
+    } else if (selectedFrame === "lavender") {
+
+        context.font = "34px Georgia";
+
+        context.fillStyle = "rgba(115,91,155,0.45)";
+
+        context.fillText("✦", 38, 65);
+        context.fillText("✦", width - 65, height - 40);
+
+    } else if (selectedFrame === "blue") {
+
+        context.font = "34px Georgia";
+
+        context.fillStyle = "rgba(75,130,160,0.42)";
+
+        context.fillText("☆", 38, 65);
+        context.fillText("☆", width - 65, height - 40);
+
+    }
+
+    context.restore();
+}
+
+
+function drawStar(
+    context,
+    cx,
+    cy,
+    radius
+) {
+
+    context.save();
+
+    context.beginPath();
+
+    for (let i = 0; i < 10; i++) {
+
+        const angle =
+            -Math.PI / 2 +
+            i * Math.PI / 5;
+
+        const r =
+            i % 2 === 0
+                ? radius
+                : radius * 0.42;
+
+        const x =
+            cx + Math.cos(angle) * r;
+
+        const y =
+            cy + Math.sin(angle) * r;
+
+        if (i === 0) {
+            context.moveTo(x, y);
+        } else {
+            context.lineTo(x, y);
+        }
+    }
+
+    context.closePath();
+
+    context.fill();
+
+    context.restore();
+}
+
+
+/* =========================================================
+   COVER IMAGE DRAWING
+========================================================= */
+
+function drawImageCover(
+    context,
+    image,
+    x,
+    y,
+    width,
+    height
+) {
+
+    const imageRatio =
+        image.width / image.height;
+
+    const targetRatio =
+        width / height;
+
+    let sourceWidth;
+    let sourceHeight;
+    let sourceX;
+    let sourceY;
+
+    if (imageRatio > targetRatio) {
+
+        sourceHeight = image.height;
+
+        sourceWidth =
+            image.height * targetRatio;
+
+        sourceX =
+            (image.width - sourceWidth) / 2;
+
+        sourceY = 0;
+
+    } else {
+
+        sourceWidth = image.width;
+
+        sourceHeight =
+            image.width / targetRatio;
+
+        sourceX = 0;
+
+        sourceY =
+            (image.height - sourceHeight) / 2;
+    }
+
+    context.drawImage(
+        image,
+        sourceX,
+        sourceY,
+        sourceWidth,
+        sourceHeight,
+        x,
+        y,
+        width,
+        height
+    );
+}
+
+
+/* =========================================================
+   DRAW PHOTO CARD
+========================================================= */
+
+function drawPhotoCard(
+    context,
+    image,
+    index,
+    x,
+    y,
+    width,
+    height
+) {
+
+    context.save();
+
+    context.shadowColor =
+        "rgba(60,45,60,0.18)";
+
+    context.shadowBlur = 18;
+
+    context.shadowOffsetY = 8;
+
+    context.fillStyle = "#ffffff";
+
+    context.fillRect(
+        x,
+        y,
+        width,
+        height
+    );
+
+    context.shadowColor = "transparent";
+
+    const padding = 12;
+
+    context.save();
+
+    context.beginPath();
+
+    context.rect(
+        x + padding,
+        y + padding,
+        width - padding * 2,
+        height - padding * 2
+    );
+
+    context.clip();
+
+    drawImageCover(
+        context,
+        image,
+        x + padding,
+        y + padding,
+        width - padding * 2,
+        height - padding * 2
+    );
+
+    context.restore();
+
+    context.restore();
+}
+
+
+/* =========================================================
+   DRAW PHOTOSTRIP
+========================================================= */
+
+function drawPhotostrip() {
+
+    if (!locked || photos.length !== 4) {
+        return;
+    }
+
+    const width = photostripCanvas.width;
+    const height = photostripCanvas.height;
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+    drawFrameBackground(
+        ctx,
+        width,
+        height
+    );
+
+    const outerMargin = 70;
+    const photoWidth = width - outerMargin * 2;
+
+    const topSpace = 110;
+
+    const bottomSpace = 180;
+
+    const gap = 20;
+
+    const availableHeight =
+        height -
+        topSpace -
+        bottomSpace -
+        gap * 3;
+
+    const photoHeight =
+        availableHeight / 4;
+
+    for (let i = 0; i < 4; i++) {
+
+        const image =
+            new Image();
+
+        image.onload = function() {
+
+            const y =
+                topSpace +
+                i * (photoHeight + gap);
+
+            drawPhotoCard(
+                ctx,
+                image,
+                i,
+                outerMargin,
+                y,
+                photoWidth,
+                photoHeight
+            );
+
+            drawFrameDecorations(
+                ctx,
+                width,
+                height
+            );
+
+            drawEditorText(
+                ctx,
+                width,
+                height
+            );
+
+            drawEditorStickers(
+                ctx,
+                width,
+                height
+            );
+
+        };
+
+        image.src = photos[i];
+    }
+
+    /*
+       Background decorations are drawn immediately.
+       Photo image loading will redraw them after each image.
+    */
+
+    drawFrameDecorations(
+        ctx,
+        width,
+        height
+    );
+
+    drawEditorText(
+        ctx,
+        width,
+        height
+    );
+
+    drawEditorStickers(
+        ctx,
+        width,
+        height
+    );
+}
+
+
+/* =========================================================
+   EDITOR TEXT
+========================================================= */
+
+function drawEditorText(
+    context,
+    width,
+    height
+) {
+
+    context.save();
+
+    context.textAlign = "center";
+
+    if (customText) {
+
+        if (selectedFrame === "starry") {
+            context.fillStyle = "#ffffff";
+        } else {
+            context.fillStyle = "#554452";
+        }
+
+        context.font =
+            'bold 38px Georgia, "Times New Roman", serif';
+
+        context.fillText(
+            customText,
+            width / 2,
+            height - 92
+        );
+    }
+
+    if (showDate) {
+
+        const date =
+            new Date();
+
+        const day =
+            String(date.getDate()).padStart(2, "0");
+
+        const month =
+            String(date.getMonth() + 1).padStart(2, "0");
+
+        const year =
+            date.getFullYear();
+
+        const formattedDate =
+            day + "." + month + "." + year;
+
+        context.font =
+            '20px Arial, sans-serif';
+
+        if (selectedFrame === "starry") {
+            context.fillStyle =
+                "rgba(255,255,255,0.85)";
+        } else {
+            context.fillStyle =
+                "rgba(82,68,82,0.72)";
+        }
+
+        const dateY =
+            customText
+                ? height - 55
+                : height - 62;
+
+        context.fillText(
+            formattedDate,
+            width / 2,
+            dateY
+        );
+    }
+
+    context.restore();
+}
+
+
+/* =========================================================
+   EDITOR STICKERS
+========================================================= */
+
+function drawEditorStickers(
+    context,
+    width,
+    height
+) {
+
+    if (!stickers.length) {
+        return;
+    }
+
+    context.save();
+
+    stickers.forEach((sticker, index) => {
+
+        /*
+           Sticker positions are deterministic based on index
+           so the result stays clean and doesn't overlap too much.
+        */
+
+        const positions = [
+            { x: 105, y: 92 },
+            { x: width - 105, y: 105 },
+            { x: 110, y: height - 130 },
+            { x: width - 105, y: height - 125 },
+            { x: 75, y: height / 2 },
+            { x: width - 75, y: height / 2 },
+            { x: width / 2, y: 70 },
+            { x: width / 2, y: height - 125 }
+        ];
+
+        const position =
+            positions[index % positions.length];
+
+        const x = position.x;
+        const y = position.y;
+
+        context.translate(
+            x,
+            y
+        );
+
+        context.rotate(
+            sticker.rotation
+        );
+
+        context.font =
+            sticker.size + "px Arial";
+
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+
+        context.shadowColor =
+            "rgba(70,50,70,0.14)";
+
+        context.shadowBlur = 6;
+
+        context.fillText(
+            sticker.character,
+            0,
+            0
+        );
+
+        context.setTransform(1, 0, 0, 1, 0, 0);
+    });
+
+    context.restore();
+}
+
+
+/* =========================================================
+   DOWNLOAD
+========================================================= */
+
+function downloadPhotostrip() {
+
+    if (!locked || photos.length !== 4) {
+        return;
+    }
+
+    drawPhotostrip();
+
+    setTimeout(() => {
+
+        const dataURL =
+            photostripCanvas.toDataURL(
+                "image/jpeg",
+                0.95
+            );
+
+        const link =
+            document.createElement("a");
+
+        link.href = dataURL;
+
+        link.download =
+            "your-photobox.jpg";
+
+        document.body.appendChild(link);
+
+        link.click();
+
+        document.body.removeChild(link);
+
+    }, 300);
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+function printPhotostrip() {
+
+    if (!locked || photos.length !== 4) {
+        return;
+    }
+
+    drawPhotostrip();
+
+    setTimeout(() => {
+
+        const dataURL =
+            photostripCanvas.toDataURL(
+                "image/jpeg",
+                0.95
+            );
+
+        printImage.src = dataURL;
+
+        window.print();
+
+    }, 300);
+}
+
+
+/* =========================================================
+   FINISH SESSION
+========================================================= */
+
+function finishSession() {
+
+    stopCamera();
+
+    clearInterval(sessionTimer);
+
+    sessionTimer = null;
+
+    if (countdownTimeout) {
+        clearTimeout(countdownTimeout);
+        countdownTimeout = null;
+    }
+
+    resetAllState();
+
+    editorScreen.classList.add("hidden");
+    confirmScreen.classList.add("hidden");
+    reviewScreen.classList.add("hidden");
+    boothScreen.classList.add("hidden");
+
+    homeScreen.classList.remove("hidden");
+}
+
+
+/* =========================================================
+   RESET ALL STATE
+========================================================= */
+
+function resetAllState() {
+
+    stopCamera();
+
+    clearInterval(sessionTimer);
+
+    sessionTimer = null;
+
+    if (countdownTimeout) {
+        clearTimeout(countdownTimeout);
+        countdownTimeout = null;
+    }
+
+    photos = [];
+    stickers = [];
+
+    currentPhotoIndex = 0;
+    retakeIndex = null;
+
+    locked = false;
+
+    selectedFrame = "pink";
+
+    customText = "";
+
+    showDate = false;
+
+    sequenceRunning = false;
+
+    sessionActive = false;
+
+    sessionSeconds = 300;
+
+    textInput.value = "";
+
+    dateButton.textContent =
+        "📅 ADD DATE";
+
+    photoProgress.textContent =
+        "PHOTO 1 / 4";
+
+    boothTitle.textContent =
+        "Get Ready ✦";
+
+    boothSubtitle.textContent =
+        "Your camera is getting ready...";
+
+    countdownElement.textContent = "";
+
+    countdownElement.classList.remove("show");
+
+    cameraMessage.classList.add("hidden");
+
+    permissionButton.classList.add("hidden");
+
+    reviewGrid.innerHTML = "";
+
+    ctx.clearRect(
+        0,
+        0,
+        photostripCanvas.width,
+        photostripCanvas.height
+    );
+
+    updateTimerDisplay();
+
+    document
+        .querySelectorAll(".frame-button")
+        .forEach((button, index) => {
+
+            button.classList.toggle(
+                "active",
+                index === 0
+            );
+        });
+}
+
+
+/* =========================================================
+   SAFETY: STOP CAMERA WHEN LEAVING PAGE
+========================================================= */
+
+window.addEventListener(
+    "beforeunload",
+    function() {
+
+        stopCamera();
+
+        clearInterval(sessionTimer);
+
+    }
+);
+
+
+/* =========================================================
+   INITIAL STATE
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        homeScreen.classList.remove("hidden");
+
+        boothScreen.classList.add("hidden");
+        reviewScreen.classList.add("hidden");
+        confirmScreen.classList.add("hidden");
+        editorScreen.classList.add("hidden");
+
+        updateTimerDisplay();
+
+    }
+);
+</script>
+
+</body>
+</html>

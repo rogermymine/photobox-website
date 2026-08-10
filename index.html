@@ -1,3613 +1,4109 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YOUR PHOTOBOX ♡</title>
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+  name="theme-color"
+  content="#f5dce8"
+>
+
+<title>Your Photobox ♡</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
-:root {
-    --pink: #e8b8c8;
-    --pink-dark: #bd829a;
-    --lavender: #cbc3df;
-    --cream: #fffaf7;
-    --text: #4a3d43;
-    --muted: #8d7d84;
-    --white: #ffffff;
-    --line: rgba(80,60,70,.12);
-    --shadow: 0 24px 70px rgba(72,52,64,.14);
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html,
-body {
-    min-height: 100%;
+body{
+  width:100%;
+  min-height:100%;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--text);
-    background:
-        radial-gradient(circle at 10% 10%, rgba(232,184,200,.42), transparent 31%),
-        radial-gradient(circle at 90% 20%, rgba(203,195,223,.42), transparent 30%),
-        linear-gradient(135deg, #fff8f8, #f8f4fb 55%, #fffaf5);
-    overflow-x: hidden;
+body{
+  font-family:Arial,sans-serif;
+  background:#faf6f8;
+  color:#66515d;
 }
 
 button,
-input {
-    font: inherit;
+input{
+  font-family:inherit;
 }
 
-button {
-    cursor: pointer;
+button{
+  border:0;
+  cursor:pointer;
 }
 
-.screen {
-    display: none;
-    min-height: 100vh;
-    padding: 28px;
+.screen{
+  min-height:100vh;
 }
 
-.screen.active {
-    display: flex;
-}
 
-/* =========================================================
+/* =====================================================
    HOME
-========================================================= */
+===================================================== */
 
-#homeScreen {
-    align-items: center;
-    justify-content: center;
+#homeScreen{
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  padding:25px;
+
+  background:
+    radial-gradient(
+      circle at 10% 15%,
+      #f5d5e4,
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      #ddd4f0,
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #fffafa,
+      #f7f1f5
+    );
 }
 
-.home-card {
-    width: min(900px, 100%);
-    min-height: 620px;
-    border-radius: 40px;
-    padding: 60px 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    background: rgba(255,255,255,.62);
-    border: 1px solid rgba(255,255,255,.82);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    box-shadow: var(--shadow);
+.home-card{
+
+  width:min(760px,100%);
+
+  padding:65px 30px;
+
+  border-radius:38px;
+
+  background:rgba(255,255,255,.84);
+
+  box-shadow:
+    0 30px 80px rgba(90,65,80,.16);
+
+  backdrop-filter:blur(15px);
 }
 
-.home-card::before,
-.home-card::after {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
+.logo{
+
+  font-size:13px;
+
+  letter-spacing:6px;
+
+  color:#aa7d91;
+
+  margin-bottom:25px;
 }
 
-.home-card::before {
-    width: 250px;
-    height: 250px;
-    left: -90px;
-    top: -80px;
-    background: rgba(232,184,200,.2);
+.home-title{
+
+  font-family:Georgia,serif;
+
+  font-size:clamp(
+    45px,
+    9vw,
+    78px
+  );
+
+  line-height:1.02;
+
+  color:#66515d;
+
+  margin-bottom:20px;
 }
 
-.home-card::after {
-    width: 300px;
-    height: 300px;
-    right: -110px;
-    bottom: -130px;
-    background: rgba(203,195,223,.22);
+.home-subtitle{
+
+  color:#9b858f;
+
+  font-size:16px;
+
+  margin-bottom:40px;
 }
 
-.logo {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    color: var(--muted);
-    margin-bottom: 28px;
+.start-btn{
+
+  padding:20px 58px;
+
+  border-radius:50px;
+
+  color:white;
+
+  font-size:18px;
+
+  font-weight:bold;
+
+  background:
+    linear-gradient(
+      135deg,
+      #bd88a1,
+      #8f7aa5
+    );
+
+  box-shadow:
+    0 15px 35px rgba(
+      150,
+      110,
+      140,
+      .28
+    );
+
+  transition:.2s;
 }
 
-.home-title {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(58px, 9vw, 104px);
-    line-height: .9;
-    letter-spacing: -5px;
-    font-weight: 400;
-    color: #43363d;
-    margin-bottom: 28px;
+.start-btn:active{
+  transform:scale(.97);
 }
 
-.home-subtitle {
-    color: var(--muted);
-    font-size: 14px;
-    margin-bottom: 40px;
-}
 
-.primary-btn {
-    border: 0;
-    border-radius: 999px;
-    padding: 17px 34px;
-    color: white;
-    background: linear-gradient(135deg, #d49aad, #b49bc5);
-    box-shadow: 0 13px 30px rgba(183,131,154,.26);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    transition: .25s ease;
-}
-
-.primary-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 18px 36px rgba(183,131,154,.32);
-}
-
-.secondary-btn {
-    border: 1px solid var(--line);
-    background: rgba(255,255,255,.8);
-    color: var(--text);
-    border-radius: 999px;
-    padding: 13px 22px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.3px;
-    transition: .2s;
-}
-
-.secondary-btn:hover {
-    background: white;
-    transform: translateY(-1px);
-}
-
-/* =========================================================
+/* =====================================================
    BOOTH
-========================================================= */
+===================================================== */
 
-#boothScreen {
-    align-items: center;
-    justify-content: center;
-    background: #151316;
-    color: white;
+#boothScreen{
+
+  display:none;
+
+  min-height:100vh;
+
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      #382d37,
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      #2d2632,
+      transparent 30%
+    ),
+    #1d191e;
+
+  color:white;
+
+  padding:15px;
 }
 
-.booth-shell {
-    width: min(1180px, 100%);
-    min-height: calc(100vh - 56px);
-    display: grid;
-    grid-template-columns: minmax(0,1fr) 270px;
-    gap: 22px;
+.booth-top{
+
+  max-width:1150px;
+
+  margin:auto;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  padding:8px 5px 15px;
 }
 
-.camera-panel {
-    position: relative;
-    min-height: 680px;
-    overflow: hidden;
-    border-radius: 28px;
-    background: #0d0c0e;
-    border: 1px solid rgba(255,255,255,.08);
-    box-shadow: 0 30px 80px rgba(0,0,0,.4);
+.booth-logo{
+
+  letter-spacing:5px;
+
+  font-size:13px;
 }
 
-#cameraVideo {
-    width: 100%;
-    height: 100%;
-    min-height: 680px;
-    display: block;
-    object-fit: cover;
-    transform: scaleX(-1);
-    background: #171519;
+.session{
+
+  padding:9px 17px;
+
+  border-radius:30px;
+
+  background:#383139;
+
+  font-size:13px;
 }
 
-.camera-overlay {
-    position: absolute;
-    inset: 0;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    pointer-events: none;
+#sessionTimer{
+
+  color:#f5c7d9;
+
+  font-weight:bold;
 }
 
-.camera-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.camera-area{
+
+  max-width:1150px;
+
+  margin:auto;
 }
 
-.camera-label,
-.session-timer {
-    padding: 9px 12px;
-    border-radius: 999px;
-    background: rgba(0,0,0,.22);
-    backdrop-filter: blur(10px);
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: rgba(255,255,255,.82);
+.video-frame{
+
+  position:relative;
+
+  background:#090909;
+
+  border-radius:28px;
+
+  padding:8px;
+
+  overflow:hidden;
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.35);
 }
 
-.camera-center {
-    min-height: 280px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
+video{
+
+  width:100%;
+
+  max-height:72vh;
+
+  object-fit:cover;
+
+  display:block;
+
+  border-radius:22px;
+
+  transform:scaleX(-1);
+
+  background:#111;
 }
 
-.camera-message {
-    display: none;
-    width: min(390px, 90%);
-    padding: 30px;
-    border-radius: 25px;
-    background: rgba(20,18,21,.82);
-    backdrop-filter: blur(18px);
-    pointer-events: auto;
+.photo-number{
+
+  position:absolute;
+
+  top:25px;
+
+  left:25px;
+
+  padding:10px 17px;
+
+  border-radius:30px;
+
+  background:rgba(0,0,0,.55);
+
+  font-size:14px;
 }
 
-.camera-message.show {
-    display: block;
+.get-ready{
+
+  position:absolute;
+
+  top:38%;
+
+  left:0;
+
+  right:0;
+
+  text-align:center;
+
+  font-size:clamp(
+    25px,
+    5vw,
+    48px
+  );
+
+  font-weight:bold;
+
+  letter-spacing:3px;
+
+  text-shadow:
+    0 5px 30px #000;
+
+  pointer-events:none;
 }
 
-.camera-message h3 {
-    font-family: Georgia, serif;
-    font-weight: 400;
-    font-size: 27px;
-    margin-bottom: 10px;
+.countdown{
+
+  position:absolute;
+
+  inset:0;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  font-size:clamp(
+    100px,
+    20vw,
+    200px
+  );
+
+  font-weight:bold;
+
+  text-shadow:
+    0 5px 35px #000;
+
+  pointer-events:none;
 }
 
-.camera-message p {
-    color: rgba(255,255,255,.65);
-    font-size: 12px;
-    line-height: 1.7;
-    margin-bottom: 20px;
+.booth-bottom{
+
+  max-width:1000px;
+
+  margin:auto;
+
+  text-align:center;
+
+  padding:18px;
+
+  color:#d0c0ca;
 }
 
-.permission-btn {
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: 999px;
-    padding: 13px 20px;
-    background: rgba(255,255,255,.1);
-    color: white;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
+.start-session-btn{
+
+  margin-top:18px;
+
+  padding:17px 40px;
+
+  border-radius:40px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #bd88a1,
+      #8f7aa5
+    );
+
+  color:white;
+
+  font-size:17px;
+
+  font-weight:bold;
+
+  box-shadow:
+    0 12px 30px rgba(
+      170,
+      120,
+      150,
+      .25
+    );
 }
 
-.booth-start-wrap {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    pointer-events: auto;
+.permission-box{
+
+  max-width:500px;
+
+  margin:25px auto 0;
+
+  padding:20px;
+
+  border-radius:20px;
+
+  background:#332d33;
+
+  color:#d8cbd2;
+
+  line-height:1.6;
 }
 
-.booth-start-wrap.show {
-    display: flex;
+.retry-camera{
+
+  margin-top:15px;
+
+  padding:12px 25px;
+
+  border-radius:30px;
+
+  background:#f0d4e1;
+
+  color:#6e5662;
+
+  font-weight:bold;
 }
 
-.booth-start-title {
-    font-family: Georgia, serif;
-    font-size: clamp(42px, 6vw, 68px);
-    font-weight: 400;
-    letter-spacing: -2px;
-    margin-bottom: 10px;
-}
 
-.booth-start-subtitle {
-    color: rgba(255,255,255,.62);
-    font-size: 12px;
-    margin-bottom: 22px;
-}
-
-.start-session-btn {
-    border: 1px solid rgba(255,255,255,.16);
-    background: rgba(255,255,255,.94);
-    color: #2b2529;
-    border-radius: 999px;
-    padding: 15px 30px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    transition: .25s;
-}
-
-.start-session-btn:hover {
-    transform: translateY(-2px);
-    background: white;
-}
-
-.sequence-message {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-}
-
-.sequence-message.show {
-    display: flex;
-}
-
-.photo-number {
-    color: rgba(255,255,255,.6);
-    font-size: 9px;
-    letter-spacing: 3px;
-    margin-bottom: 16px;
-}
-
-.get-ready {
-    font-family: Georgia, serif;
-    font-size: clamp(36px, 5vw, 65px);
-    font-weight: 400;
-    letter-spacing: -.5px;
-    opacity: 0;
-    transition: opacity .45s ease;
-}
-
-.get-ready.visible {
-    opacity: 1;
-}
-
-.countdown {
-    font-family: Georgia, serif;
-    font-size: clamp(100px, 16vw, 190px);
-    line-height: .85;
-    font-weight: 400;
-    opacity: 0;
-    transform: scale(.96);
-    transition: opacity .3s ease, transform .35s ease;
-}
-
-.countdown.visible {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.take-photo-label {
-    margin-top: 18px;
-    opacity: 0;
-    font-size: 9px;
-    letter-spacing: 3px;
-    transition: opacity .3s ease;
-}
-
-.take-photo-label.visible {
-    opacity: .78;
-}
-
-.camera-bottom {
-    display: flex;
-    justify-content: center;
-    min-height: 28px;
-}
-
-.close-booth {
-    border: 0;
-    background: transparent;
-    color: rgba(255,255,255,.48);
-    font-size: 10px;
-    letter-spacing: 1px;
-    pointer-events: auto;
-}
-
-.booth-side {
-    padding: 24px;
-    border-radius: 28px;
-    background: rgba(255,255,255,.07);
-    border: 1px solid rgba(255,255,255,.08);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.booth-side h2 {
-    font-family: Georgia, serif;
-    font-size: 28px;
-    font-weight: 400;
-    margin-bottom: 8px;
-}
-
-.booth-side p {
-    color: rgba(255,255,255,.52);
-    font-size: 11px;
-    line-height: 1.7;
-}
-
-.photo-progress {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 30px;
-}
-
-.progress-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: rgba(255,255,255,.4);
-    font-size: 9px;
-    letter-spacing: 1px;
-}
-
-.progress-row.active,
-.progress-row.done {
-    color: white;
-}
-
-.progress-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.15);
-}
-
-.progress-row.active .progress-dot,
-.progress-row.done .progress-dot {
-    background: white;
-}
-
-/* =========================================================
-   GENERAL CONTENT
-========================================================= */
-
-#reviewScreen,
-#confirmScreen,
-#editorScreen {
-    align-items: center;
-    justify-content: center;
-}
-
-.content-card {
-    width: min(1100px, 100%);
-    padding: 42px;
-    border-radius: 34px;
-    background: rgba(255,255,255,.68);
-    border: 1px solid rgba(255,255,255,.84);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    box-shadow: var(--shadow);
-}
-
-.section-heading {
-    text-align: center;
-    margin-bottom: 32px;
-}
-
-.eyebrow {
-    color: var(--muted);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-}
-
-.section-heading h1 {
-    font-family: Georgia, serif;
-    font-size: clamp(40px, 6vw, 65px);
-    font-weight: 400;
-    letter-spacing: -2px;
-    margin-bottom: 10px;
-}
-
-.section-heading p {
-    color: var(--muted);
-    font-size: 12px;
-}
-
-/* =========================================================
+/* =====================================================
    REVIEW
-========================================================= */
+===================================================== */
 
-.review-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+#reviewScreen{
+
+  display:none;
+
+  min-height:100vh;
+
+  padding:30px 20px 50px;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      #f0d8e4,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      #ddd5ed,
+      transparent 25%
+    ),
+    #faf7f8;
 }
 
-.review-item {
-    padding: 10px;
-    border-radius: 22px;
-    background: rgba(255,255,255,.75);
-    border: 1px solid var(--line);
+.review-title{
+
+  text-align:center;
+
+  font-family:Georgia,serif;
+
+  font-size:clamp(
+    35px,
+    6vw,
+    48px
+  );
+
+  color:#66515d;
+
+  margin:20px 0 8px;
 }
 
-.review-item img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 15px;
+.review-subtitle{
+
+  text-align:center;
+
+  color:#9b858f;
+
+  margin-bottom:30px;
 }
 
-.review-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 4px 2px;
+.review-time{
+
+  text-align:center;
+
+  margin-bottom:20px;
+
+  font-size:13px;
+
+  color:#a58f99;
 }
 
-.review-meta span {
-    color: var(--muted);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 1px;
+.review-grid{
+
+  max-width:1050px;
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:18px;
 }
 
-.retake-btn {
-    border: 0;
-    border-radius: 999px;
-    padding: 8px 12px;
-    background: #f3e5eb;
-    color: #9d687e;
-    font-size: 8px;
-    font-weight: 700;
-    letter-spacing: 1px;
+.review-card{
+
+  background:white;
+
+  padding:10px;
+
+  border-radius:22px;
+
+  box-shadow:
+    0 12px 35px rgba(
+      80,
+      60,
+      70,
+      .12
+    );
+
+  text-align:center;
 }
 
-.review-actions {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
+.review-card img{
+
+  width:100%;
+
+  aspect-ratio:4/5;
+
+  object-fit:cover;
+
+  border-radius:15px;
+
+  display:block;
 }
 
-/* =========================================================
+.review-card h3{
+
+  margin:12px 0;
+
+  font-size:14px;
+
+  color:#725d68;
+}
+
+.retake-btn{
+
+  width:100%;
+
+  padding:11px;
+
+  border-radius:22px;
+
+  background:#f2e8ed;
+
+  color:#725d68;
+
+  font-weight:bold;
+}
+
+.retake-btn:disabled{
+
+  opacity:.4;
+
+  cursor:not-allowed;
+}
+
+.review-actions{
+
+  text-align:center;
+
+  margin-top:35px;
+}
+
+.done-btn{
+
+  padding:17px 38px;
+
+  border-radius:35px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #bd88a1,
+      #8f7aa5
+    );
+
+  color:white;
+
+  font-size:17px;
+
+  font-weight:bold;
+}
+
+
+/* =====================================================
    CONFIRM
-========================================================= */
+===================================================== */
 
-.confirm-card {
-    width: min(650px, 100%);
-    padding: 62px 42px;
-    text-align: center;
-    border-radius: 34px;
-    background: rgba(255,255,255,.72);
-    border: 1px solid rgba(255,255,255,.85);
-    backdrop-filter: blur(24px);
-    box-shadow: var(--shadow);
+#confirmScreen{
+
+  display:none;
+
+  min-height:100vh;
+
+  align-items:center;
+
+  justify-content:center;
+
+  text-align:center;
+
+  padding:30px;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      #f0d8e4,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      #ddd5ed,
+      transparent 25%
+    ),
+    #faf7f8;
 }
 
-.lock-symbol {
-    width: 58px;
-    height: 58px;
-    margin: 0 auto 23px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f2e5ea;
+.confirm-card{
+
+  width:min(520px,100%);
+
+  background:white;
+
+  padding:45px 30px;
+
+  border-radius:30px;
+
+  box-shadow:
+    0 20px 60px rgba(
+      80,
+      60,
+      70,
+      .15
+    );
 }
 
-.confirm-card h1 {
-    font-family: Georgia, serif;
-    font-size: clamp(40px, 6vw, 61px);
-    font-weight: 400;
-    letter-spacing: -2px;
-    margin-bottom: 18px;
+.confirm-card h1{
+
+  font-family:Georgia,serif;
+
+  margin-bottom:15px;
 }
 
-.confirm-card p {
-    max-width: 430px;
-    margin: 0 auto 30px;
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.8;
+.confirm-card p{
+
+  color:#927e88;
+
+  line-height:1.6;
+
+  margin-bottom:30px;
 }
 
-.confirm-actions {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
+.confirm-buttons{
+
+  display:flex;
+
+  gap:12px;
+
+  justify-content:center;
+
+  flex-wrap:wrap;
 }
 
-/* =========================================================
+.back-btn,
+.confirm-btn{
+
+  padding:15px 25px;
+
+  border-radius:30px;
+
+  font-weight:bold;
+}
+
+.back-btn{
+
+  background:#eee7eb;
+
+  color:#705c67;
+}
+
+.confirm-btn{
+
+  background:
+    linear-gradient(
+      135deg,
+      #bd88a1,
+      #8f7aa5
+    );
+
+  color:white;
+}
+
+
+/* =====================================================
    EDITOR
-========================================================= */
+===================================================== */
 
-.editor-layout {
-    display: grid;
-    grid-template-columns: minmax(330px, 1fr) 390px;
-    gap: 40px;
-    align-items: start;
+#editorScreen{
+
+  display:none;
+
+  min-height:100vh;
+
+  padding:25px;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      #f0d8e4,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      #ddd5ed,
+      transparent 25%
+    ),
+    #faf7f8;
 }
 
-.editor-preview {
-    min-height: 650px;
-    padding: 25px;
-    border-radius: 28px;
-    background: rgba(255,255,255,.48);
-    border: 1px solid var(--line);
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    overflow: auto;
+.editor-title{
+
+  text-align:center;
+
+  font-family:Georgia,serif;
+
+  font-size:clamp(
+    35px,
+    6vw,
+    48px
+  );
+
+  color:#66515d;
+
+  margin:15px 0 8px;
 }
 
-#finalCanvas {
-    width: min(100%, 470px);
-    height: auto;
-    display: block;
-    border-radius: 7px;
-    box-shadow: 0 20px 50px rgba(55,42,50,.18);
+.editor-subtitle{
+
+  text-align:center;
+
+  color:#9b858f;
+
+  margin-bottom:25px;
 }
 
-.editor-controls {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.editor-layout{
+
+  max-width:1150px;
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+    minmax(280px,430px)
+    1fr;
+
+  gap:30px;
+
+  align-items:start;
 }
 
-.control-section {
-    padding: 18px;
-    border-radius: 20px;
-    background: rgba(255,255,255,.72);
-    border: 1px solid var(--line);
+.preview-card{
+
+  background:white;
+
+  padding:18px;
+
+  border-radius:25px;
+
+  box-shadow:
+    0 20px 50px rgba(
+      90,
+      65,
+      80,
+      .13
+    );
+
+  position:sticky;
+
+  top:20px;
 }
 
-.control-title {
-    color: var(--muted);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 13px;
+#previewCanvas{
+
+  width:100%;
+
+  height:auto;
+
+  display:block;
+
+  border-radius:12px;
+
+  background:white;
+
+  cursor:default;
 }
 
-.frame-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 7px;
+.controls-card{
+
+  background:
+    rgba(255,255,255,.88);
+
+  border-radius:25px;
+
+  padding:22px;
+
+  box-shadow:
+    0 20px 50px rgba(
+      90,
+      65,
+      80,
+      .1
+    );
 }
 
-.frame-btn {
-    min-height: 42px;
-    border: 1px solid var(--line);
-    border-radius: 11px;
-    background: white;
-    color: var(--text);
-    font-size: 8px;
-    transition: .2s;
+.control-title{
+
+  font-weight:bold;
+
+  margin-bottom:15px;
+
+  color:#66515d;
 }
 
-.frame-btn.active {
-    border-color: #bd8da1;
-    box-shadow: inset 0 0 0 1px #bd8da1;
-    background: #fcf1f5;
+.frame-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(5,1fr);
+
+  gap:10px;
 }
 
-.text-input {
-    width: 100%;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    outline: none;
-    padding: 12px 13px;
-    background: white;
-    color: var(--text);
-    font-size: 12px;
+.frame-btn{
+
+  background:white;
+
+  border:2px solid #eee;
+
+  border-radius:15px;
+
+  padding:7px;
+
+  color:#725d68;
+
+  font-size:11px;
+
+  transition:.15s;
 }
 
-.text-input:focus {
-    border-color: #c994a9;
-    box-shadow: 0 0 0 3px rgba(201,148,169,.1);
+.frame-btn.selected{
+
+  border-color:#b985a0;
+
+  background:#f9e8ef;
+
+  transform:translateY(-2px);
 }
 
-.sticker-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 7px;
+.frame-color{
+
+  height:70px;
+
+  border-radius:10px;
+
+  margin-bottom:6px;
 }
 
-.sticker-btn {
-    min-height: 38px;
-    border: 1px solid var(--line);
-    border-radius: 11px;
-    background: white;
-    font-size: 17px;
+.pink{
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffd6e5,
+      #efa8c2
+    );
 }
 
-.date-btn {
-    width: 100%;
+.sakura{
+
+  background:
+    radial-gradient(
+      circle,
+      #fff 3px,
+      transparent 4px
+    ),
+    linear-gradient(
+      135deg,
+      #ffe6ee,
+      #f6b8ce
+    );
 }
 
-.editor-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 9px;
+.lavender{
+
+  background:
+    linear-gradient(
+      135deg,
+      #e2d6f4,
+      #bba7dc
+    );
 }
 
-.editor-action {
-    border: 0;
-    border-radius: 999px;
-    padding: 13px;
-    background: #f1e4e9;
-    color: #8d6070;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 1px;
+.blue{
+
+  background:
+    linear-gradient(
+      135deg,
+      #d5efff,
+      #91c9e9
+    );
 }
 
-.editor-action.dark {
-    background: #3d3439;
-    color: white;
+.star{
+
+  background:
+    radial-gradient(
+      circle at 25% 25%,
+      #fff 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 70% 60%,
+      #fff 1px,
+      transparent 2px
+    ),
+    linear-gradient(
+      135deg,
+      #302b49,
+      #8175a8
+    );
 }
 
-.locked-label {
-    text-align: center;
-    color: #8d7880;
-    font-size: 8px;
-    letter-spacing: 1.5px;
-    margin-bottom: 12px;
+.cloud{
+
+  background:
+    radial-gradient(
+      circle at 30% 40%,
+      white 15px,
+      transparent 16px
+    ),
+    radial-gradient(
+      circle at 55% 45%,
+      white 20px,
+      transparent 21px
+    ),
+    linear-gradient(
+      135deg,
+      #eef8ff,
+      #c7e5f8
+    );
 }
 
-/* =========================================================
+.teddy{
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      #9b704e 10px,
+      transparent 11px
+    ),
+    linear-gradient(
+      135deg,
+      #ead0b6,
+      #c4976d
+    );
+}
+
+.strawberry{
+
+  background:
+    radial-gradient(
+      circle,
+      #fff 2px,
+      transparent 3px
+    ),
+    linear-gradient(
+      135deg,
+      #ffd1d9,
+      #ef8ca1
+    );
+}
+
+.flower{
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      #fff 7px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle at 70% 60%,
+      #fff 8px,
+      transparent 9px
+    ),
+    linear-gradient(
+      135deg,
+      #f7dff0,
+      #d5afd0
+    );
+}
+
+.minimal{
+
+  background:#eeeae7;
+}
+
+.text-input{
+
+  width:100%;
+
+  padding:14px;
+
+  border:1px solid #ddd;
+
+  border-radius:15px;
+
+  margin-top:10px;
+
+  outline:none;
+}
+
+.text-input:focus{
+
+  border-color:#c28da5;
+}
+
+.editor-buttons{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:10px;
+
+  margin-top:20px;
+}
+
+.tool-btn{
+
+  padding:13px 18px;
+
+  border-radius:30px;
+
+  background:#f1e9ed;
+
+  color:#715c67;
+
+  font-weight:bold;
+
+  transition:.15s;
+}
+
+.tool-btn:hover{
+
+  transform:translateY(-2px);
+}
+
+.tool-btn.active{
+
+  background:#bd88a1;
+
+  color:white;
+}
+
+.delete-btn{
+
+  background:#f4d8df;
+
+  color:#9b5268;
+}
+
+.clear-btn{
+
+  background:#eee7eb;
+
+  color:#705c67;
+}
+
+.download-btn,
+.print-btn{
+
+  display:block;
+
+  width:100%;
+
+  text-align:center;
+
+  text-decoration:none;
+
+  padding:15px;
+
+  border-radius:30px;
+
+  color:white;
+
+  font-weight:bold;
+
+  margin-top:15px;
+}
+
+.download-btn{
+
+  background:
+    linear-gradient(
+      135deg,
+      #bd88a1,
+      #8f7aa5
+    );
+}
+
+.print-btn{
+
+  background:#332c33;
+}
+
+.finish-btn{
+
+  display:block;
+
+  width:100%;
+
+  margin-top:10px;
+
+  padding:12px;
+
+  border-radius:30px;
+
+  background:#eee7eb;
+
+  color:#705c67;
+
+  font-weight:bold;
+}
+
+.editor-hint{
+
+  margin-top:18px;
+
+  padding:14px;
+
+  border-radius:15px;
+
+  background:#f8edf2;
+
+  color:#8b737e;
+
+  font-size:12px;
+
+  line-height:1.5;
+}
+
+
+/* =====================================================
    PRINT
-========================================================= */
+===================================================== */
 
-#printArea {
-    display: none;
+#printArea{
+
+  display:none;
 }
 
-@media print {
+@media print{
 
-    @page {
-        size: 72mm auto;
-        margin: 0;
-    }
+  @page{
 
-    html,
-    body {
-        width: 72mm;
-        margin: 0;
-        padding: 0;
-        background: white !important;
-    }
+    size:80mm auto;
 
-    body * {
-        visibility: hidden !important;
-    }
+    margin:0;
+  }
 
-    #printArea,
-    #printArea * {
-        visibility: visible !important;
-    }
+  html,
+  body{
 
-    #printArea {
-        display: block !important;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 72mm;
-        padding: 0;
-        margin: 0;
-    }
+    width:80mm;
 
-    #printImage {
-        display: block;
-        width: 72mm;
-        height: auto;
-        margin: 0;
-        padding: 0;
-    }
+    margin:0;
+
+    padding:0;
+
+    background:white;
+  }
+
+  body *{
+
+    visibility:hidden !important;
+  }
+
+  #printArea,
+  #printArea *{
+
+    visibility:visible !important;
+  }
+
+  #printArea{
+
+    display:block !important;
+
+    width:80mm;
+
+    margin:0;
+
+    padding:3mm 4mm;
+  }
+
+  #printImage{
+
+    display:block;
+
+    width:72mm;
+
+    height:auto;
+
+    margin:0 auto;
+  }
 }
 
-/* =========================================================
+
+/* =====================================================
    RESPONSIVE
-========================================================= */
+===================================================== */
 
-@media (max-width: 900px) {
+@media(max-width:850px){
 
-    .booth-shell {
-        grid-template-columns: 1fr;
-    }
+  .review-grid{
 
-    .booth-side {
-        display: none;
-    }
+    grid-template-columns:
+      repeat(2,1fr);
+  }
 
-    .camera-panel,
-    #cameraVideo {
-        min-height: calc(100vh - 56px);
-    }
+  .editor-layout{
 
-    .editor-layout {
-        grid-template-columns: 1fr;
-    }
+    grid-template-columns:1fr;
+  }
 
-    .editor-preview {
-        min-height: auto;
-        max-height: 800px;
-    }
+  .preview-card{
+
+    position:relative;
+
+    top:0;
+
+    max-width:430px;
+
+    margin:auto;
+  }
 }
 
-@media (max-width: 650px) {
+@media(max-width:550px){
 
-    .screen {
-        padding: 14px;
-    }
+  .frame-grid{
 
-    .home-card {
-        min-height: calc(100vh - 28px);
-        border-radius: 28px;
-        padding: 40px 20px;
-    }
+    grid-template-columns:
+      repeat(2,1fr);
+  }
 
-    .home-title {
-        font-size: 63px;
-    }
+  .review-grid{
 
-    .content-card {
-        padding: 24px 15px;
-        border-radius: 25px;
-    }
+    gap:10px;
+  }
 
-    .review-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
+  .home-card{
 
-    .camera-panel,
-    #cameraVideo {
-        min-height: calc(100vh - 28px);
-        border-radius: 22px;
-    }
-
-    .camera-overlay {
-        padding: 16px;
-    }
-
-    .confirm-card {
-        padding: 48px 22px;
-    }
-
-    .editor-preview {
-        padding: 12px;
-    }
+    padding:50px 20px;
+  }
 }
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+@keyframes pop{
+
+  0%{
+
+    transform:scale(.7);
+
+    opacity:0;
+  }
+
+  100%{
+
+    transform:scale(1);
+
+    opacity:1;
+  }
+}
+
+.pop{
+
+  animation:
+    pop .25s ease;
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- =========================================================
+
+<!-- =====================================================
      HOME
-========================================================= -->
+===================================================== -->
 
-<section id="homeScreen" class="screen active">
+<section
+  id="homeScreen"
+  class="screen"
+>
 
-    <div class="home-card">
+  <div class="home-card">
 
-        <div class="logo">
-            YOUR PHOTOBOX ♡
-        </div>
+    <div class="logo">
+      YOUR PHOTOBOX
+    </div>
 
-        <h1 class="home-title">
-            Capture<br>
-            Your Moment
-        </h1>
+    <h1 class="home-title">
+      Capture<br>
+      Your Moment
+    </h1>
 
-        <p class="home-subtitle">
-            Three photos. One beautiful memory. ♡
-        </p>
+    <p class="home-subtitle">
+      Four photos. One beautiful memory. ♡
+    </p>
+
+    <button
+      class="start-btn"
+      onclick="enterBooth()"
+    >
+      START PHOTOBOOTH
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BOOTH
+===================================================== -->
+
+<section
+  id="boothScreen"
+  class="screen"
+>
+
+  <div class="booth-top">
+
+    <div class="booth-logo">
+      YOUR PHOTOBOX
+    </div>
+
+    <div class="session">
+
+      SESSION
+
+      <span id="sessionTimer">
+        05:00
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <div class="camera-area">
+
+    <div class="video-frame">
+
+      <video
+        id="camera"
+        autoplay
+        playsinline
+      ></video>
+
+      <div
+        class="photo-number"
+        id="photoNumber"
+      >
+        CAMERA READY
+      </div>
+
+      <div
+        class="get-ready"
+        id="getReady"
+      ></div>
+
+      <div
+        class="countdown"
+        id="countdown"
+      ></div>
+
+    </div>
+
+  </div>
+
+
+  <div class="booth-bottom">
+
+    <div id="boothStatus">
+      Kamera siap ♡
+    </div>
+
+
+    <button
+      id="startSessionButton"
+      class="start-session-btn"
+      onclick="startPhotoSession()"
+    >
+      START SESSION ✦
+    </button>
+
+
+    <div
+      id="permissionBox"
+      class="permission-box"
+      style="display:none;"
+    >
+
+      Kamera belum mendapatkan izin.
+
+      <br>
+
+      Tekan tombol di bawah dan pilih
+      <b>Allow / Izinkan</b>.
+
+      <br>
+
+      <button
+        class="retry-camera"
+        onclick="requestCamera()"
+      >
+        📸 IZINKAN KAMERA
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     REVIEW
+===================================================== -->
+
+<section id="reviewScreen">
+
+  <h1 class="review-title">
+    Check Your Photos ✦
+  </h1>
+
+  <p class="review-subtitle">
+    Kalau ada yang kurang pas, retake aja.
+  </p>
+
+  <div
+    class="review-time"
+    id="reviewTime"
+  ></div>
+
+  <div
+    class="review-grid"
+    id="reviewGrid"
+  ></div>
+
+  <div class="review-actions">
+
+    <button
+      class="done-btn"
+      onclick="openConfirm()"
+    >
+      I'M DONE ♡
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONFIRM
+===================================================== -->
+
+<section id="confirmScreen">
+
+  <div class="confirm-card">
+
+    <h1>
+      Ready to create? ✨
+    </h1>
+
+    <p>
+      Kamu akan masuk ke editor photostrip.
+      Foto masih bisa dihias, sticker dan text
+      masih bisa dipindahkan atau dihapus.
+    </p>
+
+    <div class="confirm-buttons">
+
+      <button
+        class="back-btn"
+        onclick="backToReview()"
+      >
+        ← CHECK AGAIN
+      </button>
+
+      <button
+        class="confirm-btn"
+        onclick="lockPhotosAndEdit()"
+      >
+        YES, I'M DONE ✦
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EDITOR
+===================================================== -->
+
+<section id="editorScreen">
+
+  <h1 class="editor-title">
+    Make It Yours ✦
+  </h1>
+
+  <p class="editor-subtitle">
+    Decorate your memories.
+  </p>
+
+
+  <div class="editor-layout">
+
+
+    <!-- PREVIEW -->
+
+    <div class="preview-card">
+
+      <canvas
+        id="previewCanvas"
+      ></canvas>
+
+
+      <a
+        id="downloadButton"
+        class="download-btn"
+        download="your-photobox.jpg"
+      >
+        💾 DOWNLOAD
+      </a>
+
+
+      <button
+        class="print-btn"
+        onclick="printPhotostrip()"
+      >
+        🖨️ PRINT PHOTO
+      </button>
+
+
+      <button
+        class="finish-btn"
+        onclick="finishSession()"
+      >
+        ✓ SELESAI / KEMBALI KE HOME
+      </button>
+
+    </div>
+
+
+
+    <!-- CONTROLS -->
+
+    <div class="controls-card">
+
+
+      <div class="control-title">
+        CHOOSE YOUR FRAME
+      </div>
+
+
+      <div class="frame-grid">
+
 
         <button
-            class="primary-btn"
-            onclick="enterBooth()">
-            START PHOTOBOOTH
+          class="frame-btn selected"
+          onclick="selectFrame('pink',this)"
+        >
+          <div class="frame-color pink"></div>
+          Pink
         </button>
 
+
+        <button
+          class="frame-btn"
+          onclick="selectFrame('sakura',this)"
+        >
+          <div class="frame-color sakura"></div>
+          Sakura
+        </button>
+
+
+        <button
+          class="frame-btn"
+          onclick="selectFrame('lavender',this)"
+        >
+          <div class="frame-color lavender"></div>
+          Lavender
+        </button>
+
+
+        <button
+          class="frame-btn"
+          onclick="selectFrame('blue',this)"
+        >
+          <div class="frame-color blue"></div>
+          Baby Blue
+        </button>
+
+
+        <button
+          class="frame-btn"
+          onclick="selectFrame('star',this)"
+        >
+          <div class="frame-color star"></div>
+          Starry
+        </button>
+
+
+        <button
+          class="frame-btn"
+          onclick="selectFrame('cloud',this)"
+        >
+          <div class="frame-color cloud"></div>
+          Cloud
+        </button>
+
+
+        <button
+          class="frame-btn"
+          onclick="selectFrame('teddy',this)"
+        >
+          <div class="frame-color teddy"></div>
+          Teddy
+        </button>
+
+
+        <button
+          class="frame-btn"
+          onclick="selectFrame('strawberry',this)"
+        >
+          <div class="frame-color strawberry"></div>
+          Strawberry
+        </button>
+
+
+        <button
+          class="frame-btn"
+          onclick="selectFrame('flower',this)"
+        >
+          <div class="frame-color flower"></div>
+          Flower
+        </button>
+
+
+        <button
+          class="frame-btn"
+          onclick="selectFrame('minimal',this)"
+        >
+          <div class="frame-color minimal"></div>
+          Minimal
+        </button>
+
+
+      </div>
+
+
+
+      <!-- TEXT -->
+
+      <div
+        class="control-title"
+        style="margin-top:25px;"
+      >
+        ADD TEXT
+      </div>
+
+
+      <input
+        id="customText"
+        class="text-input"
+        placeholder="Tulis sesuatu... ♡"
+      >
+
+
+      <div class="editor-buttons">
+
+        <button
+          class="tool-btn"
+          onclick="addText()"
+        >
+          + ADD TEXT
+        </button>
+
+        <button
+          class="tool-btn delete-btn"
+          onclick="deleteSelected()"
+        >
+          🗑 DELETE SELECTED
+        </button>
+
+      </div>
+
+
+
+      <!-- STICKERS -->
+
+      <div
+        class="control-title"
+        style="margin-top:25px;"
+      >
+        STICKERS
+      </div>
+
+
+      <div class="editor-buttons">
+
+        <button
+          class="tool-btn"
+          onclick="addSticker('♡')"
+        >
+          ♡
+        </button>
+
+        <button
+          class="tool-btn"
+          onclick="addSticker('☆')"
+        >
+          ☆
+        </button>
+
+        <button
+          class="tool-btn"
+          onclick="addSticker('✦')"
+        >
+          ✦
+        </button>
+
+        <button
+          class="tool-btn"
+          onclick="addSticker('🌸')"
+        >
+          🌸
+        </button>
+
+        <button
+          class="tool-btn"
+          onclick="addSticker('🎀')"
+        >
+          🎀
+        </button>
+
+        <button
+          class="tool-btn"
+          onclick="addSticker('✨')"
+        >
+          ✨
+        </button>
+
+      </div>
+
+
+      <div class="editor-buttons">
+
+        <button
+          class="tool-btn clear-btn"
+          onclick="clearDecorations()"
+        >
+          CLEAR DECORATIONS
+        </button>
+
+      </div>
+
+
+
+      <!-- DATE -->
+
+      <div
+        class="control-title"
+        style="margin-top:25px;"
+      >
+        DATE
+      </div>
+
+
+      <div class="editor-buttons">
+
+        <button
+          id="dateButton"
+          class="tool-btn"
+          onclick="toggleDate()"
+        >
+          📅 ADD DATE
+        </button>
+
+      </div>
+
+
+      <div class="editor-hint">
+
+        💡 <b>Cara edit:</b><br>
+        Klik sticker/text untuk memilih.
+        Setelah terpilih, drag langsung di preview
+        untuk memindahkannya.
+        Klik <b>DELETE SELECTED</b> untuk menghapusnya.
+
+      </div>
+
+
     </div>
+
+  </div>
 
 </section>
 
 
-<!-- =========================================================
-     BOOTH
-========================================================= -->
 
-<section id="boothScreen" class="screen">
-
-    <div class="booth-shell">
-
-        <div class="camera-panel">
-
-            <video
-                id="cameraVideo"
-                autoplay
-                playsinline
-                muted>
-            </video>
-
-            <div class="camera-overlay">
-
-                <div class="camera-top">
-
-                    <div class="camera-label">
-                        YOUR PHOTOBOX ♡
-                    </div>
-
-                    <div
-                        class="session-timer"
-                        id="sessionTimer">
-                        SESSION 05:00
-                    </div>
-
-                </div>
-
-
-                <div class="camera-center">
-
-                    <!-- CAMERA ERROR -->
-
-                    <div
-                        id="cameraMessage"
-                        class="camera-message">
-
-                        <h3>
-                            Camera unavailable
-                        </h3>
-
-                        <p id="cameraErrorText">
-                            Kamera belum mendapatkan izin.
-                        </p>
-
-                        <button
-                            class="permission-btn"
-                            onclick="requestCamera()">
-                            📸 IZINKAN KAMERA
-                        </button>
-
-                    </div>
-
-
-                    <!-- MANUAL SESSION START -->
-
-                    <div
-                        id="boothStartWrap"
-                        class="booth-start-wrap">
-
-                        <div class="booth-start-title">
-                            Ready?
-                        </div>
-
-                        <div class="booth-start-subtitle">
-                            Kamera sudah siap. Tekan tombol untuk mulai.
-                        </div>
-
-                        <button
-                            class="start-session-btn"
-                            onclick="startPhotoSequence()">
-                            START SESSION
-                        </button>
-
-                    </div>
-
-
-                    <!-- COUNTDOWN -->
-
-                    <div
-                        id="sequenceMessage"
-                        class="sequence-message">
-
-                        <div
-                            id="photoNumber"
-                            class="photo-number">
-                            PHOTO 1 / 3
-                        </div>
-
-                        <div
-                            id="getReady"
-                            class="get-ready">
-                            Get ready.
-                        </div>
-
-                        <div
-                            id="countdown"
-                            class="countdown">
-                            3
-                        </div>
-
-                        <div
-                            id="takePhotoLabel"
-                            class="take-photo-label">
-                            TAKE PHOTO
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="camera-bottom">
-
-                    <button
-                        class="close-booth"
-                        onclick="finishSession()">
-                        ← EXIT
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <aside class="booth-side">
-
-            <div>
-
-                <h2>
-                    Photo Booth
-                </h2>
-
-                <p>
-                    Three little moments,
-                    one beautiful photostrip.
-                </p>
-
-                <div class="photo-progress">
-
-                    <div
-                        id="progress1"
-                        class="progress-row active">
-                        <span>PHOTO 1 / 3</span>
-                        <span class="progress-dot"></span>
-                    </div>
-
-                    <div
-                        id="progress2"
-                        class="progress-row">
-                        <span>PHOTO 2 / 3</span>
-                        <span class="progress-dot"></span>
-                    </div>
-
-                    <div
-                        id="progress3"
-                        class="progress-row">
-                        <span>PHOTO 3 / 3</span>
-                        <span class="progress-dot"></span>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <p>
-                Camera stays on during the session.
-            </p>
-
-        </aside>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     REVIEW
-========================================================= -->
-
-<section id="reviewScreen" class="screen">
-
-    <div class="content-card">
-
-        <div class="section-heading">
-
-            <div class="eyebrow">
-                Review your moments
-            </div>
-
-            <h1>
-                Check Your Photos ✦
-            </h1>
-
-            <p>
-                Retake foto yang belum pas.
-            </p>
-
-        </div>
-
-        <div
-            id="reviewGrid"
-            class="review-grid">
-        </div>
-
-        <div class="review-actions">
-
-            <button
-                class="primary-btn"
-                onclick="openConfirm()">
-                I'M DONE ♡
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     CONFIRM
-========================================================= -->
-
-<section id="confirmScreen" class="screen">
-
-    <div class="confirm-card">
-
-        <div class="lock-symbol">
-            🔒
-        </div>
-
-        <h1>
-            Ready to create? ✨
-        </h1>
-
-        <p>
-            Setelah lanjut ke editor,
-            ketiga foto akan dikunci.
-            Foto tidak bisa di-retake lagi.
-        </p>
-
-        <div class="confirm-actions">
-
-            <button
-                class="secondary-btn"
-                onclick="backToReview()">
-                ← CHECK AGAIN
-            </button>
-
-            <button
-                class="primary-btn"
-                onclick="lockPhotosAndEdit()">
-                YES, I'M DONE ✦
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     EDITOR
-========================================================= -->
-
-<section id="editorScreen" class="screen">
-
-    <div class="content-card">
-
-        <div class="section-heading">
-
-            <div class="eyebrow">
-                Photos locked
-            </div>
-
-            <h1>
-                Make It Yours ✦
-            </h1>
-
-            <p>
-                Your photobooth strip — ready to print.
-            </p>
-
-        </div>
-
-
-        <div class="locked-label">
-            🔒 PHOTOS LOCKED — EDITING MODE
-        </div>
-
-
-        <div class="editor-layout">
-
-            <!-- LONG PHOTOSTRIP PREVIEW -->
-
-            <div class="editor-preview">
-
-                <canvas id="finalCanvas"></canvas>
-
-            </div>
-
-
-            <div class="editor-controls">
-
-                <!-- FRAME -->
-
-                <div class="control-section">
-
-                    <div class="control-title">
-                        Choose a frame
-                    </div>
-
-                    <div class="frame-grid">
-
-                        <button
-                            class="frame-btn active"
-                            onclick="selectFrame('pink', this)">
-                            Pink
-                        </button>
-
-                        <button
-                            class="frame-btn"
-                            onclick="selectFrame('sakura', this)">
-                            Sakura
-                        </button>
-
-                        <button
-                            class="frame-btn"
-                            onclick="selectFrame('lavender', this)">
-                            Lavender
-                        </button>
-
-                        <button
-                            class="frame-btn"
-                            onclick="selectFrame('blue', this)">
-                            Baby Blue
-                        </button>
-
-                        <button
-                            class="frame-btn"
-                            onclick="selectFrame('starry', this)">
-                            Starry
-                        </button>
-
-                        <button
-                            class="frame-btn"
-                            onclick="selectFrame('cloud', this)">
-                            Cloud
-                        </button>
-
-                        <button
-                            class="frame-btn"
-                            onclick="selectFrame('teddy', this)">
-                            Teddy
-                        </button>
-
-                        <button
-                            class="frame-btn"
-                            onclick="selectFrame('strawberry', this)">
-                            Strawberry
-                        </button>
-
-                        <button
-                            class="frame-btn"
-                            onclick="selectFrame('flower', this)">
-                            Flower
-                        </button>
-
-                        <button
-                            class="frame-btn"
-                            onclick="selectFrame('minimal', this)">
-                            Minimal
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- TEXT -->
-
-                <div class="control-section">
-
-                    <div class="control-title">
-                        Add / edit text
-                    </div>
-
-                    <input
-                        id="textInput"
-                        class="text-input"
-                        type="text"
-                        maxlength="45"
-                        placeholder="Tulis sesuatu... ♡"
-                        oninput="updateText()">
-
-                </div>
-
-
-                <!-- STICKERS -->
-
-                <div class="control-section">
-
-                    <div class="control-title">
-                        Stickers
-                    </div>
-
-                    <div class="sticker-grid">
-
-                        <button
-                            class="sticker-btn"
-                            onclick="addSticker('♡')">
-                            ♡
-                        </button>
-
-                        <button
-                            class="sticker-btn"
-                            onclick="addSticker('☆')">
-                            ☆
-                        </button>
-
-                        <button
-                            class="sticker-btn"
-                            onclick="addSticker('✦')">
-                            ✦
-                        </button>
-
-                        <button
-                            class="sticker-btn"
-                            onclick="addSticker('🌸')">
-                            🌸
-                        </button>
-
-                        <button
-                            class="sticker-btn"
-                            onclick="addSticker('🎀')">
-                            🎀
-                        </button>
-
-                        <button
-                            class="sticker-btn"
-                            onclick="addSticker('✨')">
-                            ✨
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- DATE -->
-
-                <div class="control-section">
-
-                    <div class="control-title">
-                        Date
-                    </div>
-
-                    <button
-                        id="dateButton"
-                        class="secondary-btn date-btn"
-                        onclick="toggleDate()">
-                        📅 ADD DATE
-                    </button>
-
-                </div>
-
-
-                <!-- ACTIONS -->
-
-                <div class="editor-actions">
-
-                    <button
-                        class="editor-action dark"
-                        onclick="downloadPhotostrip()">
-                        💾 DOWNLOAD
-                    </button>
-
-                    <button
-                        class="editor-action"
-                        onclick="printPhotostrip()">
-                        🖨️ PRINT PHOTO
-                    </button>
-
-                    <button
-                        class="editor-action"
-                        style="grid-column:1/-1"
-                        onclick="finishSession()">
-                        ✓ SELESAI / KEMBALI KE HOME
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
+<!-- =====================================================
      PRINT AREA
-========================================================= -->
+===================================================== -->
 
 <div id="printArea">
-    <img
-        id="printImage"
-        alt="Your Photobox">
+
+  <img
+    id="printImage"
+    src=""
+    alt="Photostrip"
+  >
+
 </div>
 
 
+
 <script>
-/* =========================================================
-   CONFIG
-========================================================= */
 
-const TOTAL_PHOTOS = 3;
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
-/*
- * Thermal paper:
- *
- * Physical roll:
- * approximately 80mm
- *
- * Safe artwork width:
- * approximately 72mm
- *
- * High-resolution canvas:
- * 850px x 2700px
- *
- * Each photo:
- * square / 1:1
- */
-const CANVAS_WIDTH = 850;
-const CANVAS_HEIGHT = 2700;
+const video =
+  document.getElementById("camera");
 
-const SESSION_DURATION = 300;
+const countdown =
+  document.getElementById("countdown");
+
+const getReady =
+  document.getElementById("getReady");
+
+const photoNumber =
+  document.getElementById("photoNumber");
+
+const boothStatus =
+  document.getElementById("boothStatus");
+
+const permissionBox =
+  document.getElementById("permissionBox");
+
+const sessionTimer =
+  document.getElementById("sessionTimer");
+
+const startSessionButton =
+  document.getElementById(
+    "startSessionButton"
+  );
+
+const reviewGrid =
+  document.getElementById(
+    "reviewGrid"
+  );
+
+const reviewTime =
+  document.getElementById(
+    "reviewTime"
+  );
+
+const previewCanvas =
+  document.getElementById(
+    "previewCanvas"
+  );
+
+const customText =
+  document.getElementById(
+    "customText"
+  );
+
+const downloadButton =
+  document.getElementById(
+    "downloadButton"
+  );
+
+const dateButton =
+  document.getElementById(
+    "dateButton"
+  );
+
+const printImage =
+  document.getElementById(
+    "printImage"
+  );
 
 
-/* =========================================================
-   STATE
-========================================================= */
-
-let photos = [];
+/* =====================================================
+   VARIABLES
+===================================================== */
 
 let stream = null;
 
-let sessionTimerInterval = null;
-let sessionSeconds = SESSION_DURATION;
+let photos = [];
 
-let currentPhotoIndex = 0;
-let retakeIndex = null;
+let currentPhoto = 0;
 
-let sequenceRunning = false;
+let retakeIndex = -1;
+
 let sessionStarted = false;
-let locked = false;
+
+let sessionSeconds = 300;
+
+let sessionInterval = null;
 
 let selectedFrame = "pink";
 
-let stickers = [];
-
-let customText = "";
-
 let showDate = false;
 
+let selectedObject = null;
 
-/* =========================================================
-   ELEMENTS
-========================================================= */
+let isDragging = false;
 
-const homeScreen =
-    document.getElementById("homeScreen");
+let dragOffsetX = 0;
 
-const boothScreen =
-    document.getElementById("boothScreen");
-
-const reviewScreen =
-    document.getElementById("reviewScreen");
-
-const confirmScreen =
-    document.getElementById("confirmScreen");
-
-const editorScreen =
-    document.getElementById("editorScreen");
-
-const cameraVideo =
-    document.getElementById("cameraVideo");
-
-const cameraMessage =
-    document.getElementById("cameraMessage");
-
-const cameraErrorText =
-    document.getElementById("cameraErrorText");
-
-const boothStartWrap =
-    document.getElementById("boothStartWrap");
-
-const sequenceMessage =
-    document.getElementById("sequenceMessage");
-
-const photoNumber =
-    document.getElementById("photoNumber");
-
-const getReady =
-    document.getElementById("getReady");
-
-const countdown =
-    document.getElementById("countdown");
-
-const takePhotoLabel =
-    document.getElementById("takePhotoLabel");
-
-const sessionTimer =
-    document.getElementById("sessionTimer");
-
-const reviewGrid =
-    document.getElementById("reviewGrid");
-
-const finalCanvas =
-    document.getElementById("finalCanvas");
-
-const finalCtx =
-    finalCanvas.getContext("2d");
-
-const textInput =
-    document.getElementById("textInput");
-
-const dateButton =
-    document.getElementById("dateButton");
+let dragOffsetY = 0;
 
 
-/* =========================================================
-   SCREEN
-========================================================= */
+/*
+  Semua dekorasi disimpan sebagai object.
+*/
 
-function showScreen(screen) {
-
-    [
-        homeScreen,
-        boothScreen,
-        reviewScreen,
-        confirmScreen,
-        editorScreen
-    ].forEach(item => {
-        item.classList.remove("active");
-    });
-
-    screen.classList.add("active");
-}
+let decorations = [];
 
 
-/* =========================================================
+/* =====================================================
+   FRAME COLORS
+===================================================== */
+
+const frameColors = {
+
+  pink: {
+    top:"#ffd6e5",
+    bottom:"#efa8c2",
+    text:"#7b5264"
+  },
+
+  sakura: {
+    top:"#ffe6ee",
+    bottom:"#f6b8ce",
+    text:"#7b5264"
+  },
+
+  lavender: {
+    top:"#e2d6f4",
+    bottom:"#bba7dc",
+    text:"#665476"
+  },
+
+  blue: {
+    top:"#d5efff",
+    bottom:"#91c9e9",
+    text:"#526d7b"
+  },
+
+  star: {
+    top:"#302b49",
+    bottom:"#8175a8",
+    text:"#ffffff"
+  },
+
+  cloud: {
+    top:"#eef8ff",
+    bottom:"#c7e5f8",
+    text:"#607889"
+  },
+
+  teddy: {
+    top:"#ead0b6",
+    bottom:"#c4976d",
+    text:"#604536"
+  },
+
+  strawberry: {
+    top:"#ffd1d9",
+    bottom:"#ef8ca1",
+    text:"#7b4050"
+  },
+
+  flower: {
+    top:"#f7dff0",
+    bottom:"#d5afd0",
+    text:"#73556d"
+  },
+
+  minimal: {
+    top:"#f5f1ee",
+    bottom:"#ded8d3",
+    text:"#665f59"
+  }
+
+};
+
+
+/* =====================================================
    ENTER BOOTH
-========================================================= */
+===================================================== */
 
-async function enterBooth() {
+async function enterBooth(){
 
-    showScreen(boothScreen);
+  document.getElementById(
+    "homeScreen"
+  ).style.display = "none";
 
-    resetBoothUI();
+  document.getElementById(
+    "boothScreen"
+  ).style.display = "block";
 
-    await requestCamera();
+  document.getElementById(
+    "reviewScreen"
+  ).style.display = "none";
+
+  document.getElementById(
+    "confirmScreen"
+  ).style.display = "none";
+
+  document.getElementById(
+    "editorScreen"
+  ).style.display = "none";
+
+
+  photos = [];
+
+  currentPhoto = 0;
+
+  retakeIndex = -1;
+
+  sessionStarted = false;
+
+  startSessionButton.disabled = false;
+
+  startSessionButton.style.display =
+    "inline-block";
+
+  startSessionButton.textContent =
+    "START SESSION ✦";
+
+  boothStatus.textContent =
+    "Kamera siap. Kalau sudah siap foto, tekan START SESSION ♡";
+
+  photoNumber.textContent =
+    "CAMERA READY";
+
+  countdown.textContent = "";
+
+  getReady.textContent = "";
+
+  resetTimerDisplay();
+
+
+  /*
+    Kamera langsung diminta ketika masuk booth.
+  */
+
+  await requestCamera();
+
 }
 
 
-/* =========================================================
+/* =====================================================
    CAMERA
-========================================================= */
+===================================================== */
 
-async function requestCamera() {
+async function requestCamera(){
 
-    cameraMessage.classList.remove("show");
-    boothStartWrap.classList.remove("show");
-    sequenceMessage.classList.remove("show");
+  permissionBox.style.display =
+    "none";
 
-    if (
-        !navigator.mediaDevices ||
-        !navigator.mediaDevices.getUserMedia
-    ) {
+  boothStatus.textContent =
+    "Meminta izin kamera...";
 
-        cameraErrorText.textContent =
-            "Browser ini tidak mendukung akses kamera.";
 
-        cameraMessage.classList.add("show");
+  try{
 
-        return;
+    if(stream){
+
+      stream.getTracks().forEach(
+        track => track.stop()
+      );
+
     }
 
-    try {
 
-        if (stream) {
+    stream =
+      await navigator.mediaDevices.getUserMedia({
 
-            stream.getTracks().forEach(track => {
-                track.stop();
-            });
-        }
+        video:{
+          facingMode:"user",
+          width:{
+            ideal:1280
+          },
+          height:{
+            ideal:720
+          }
+        },
 
-        stream =
-            await navigator.mediaDevices.getUserMedia({
-                video: true,
-                audio: false
-            });
+        audio:false
 
-        cameraVideo.srcObject = stream;
+      });
 
-        await cameraVideo.play();
 
-        /*
-         * IMPORTANT:
-         *
-         * Kamera ON.
-         * Foto BELUM mulai.
-         *
-         * User harus menekan START SESSION.
-         */
-        boothStartWrap.classList.add("show");
+    video.srcObject = stream;
 
-        sessionStarted = false;
-        sequenceRunning = false;
+    await video.play();
 
-    } catch (error) {
 
-        console.error(error);
-
-        let message =
-            "Kamera tidak bisa diakses. Pastikan browser memiliki izin kamera.";
-
-        if (error.name === "NotAllowedError") {
-            message =
-                "Kamera belum mendapatkan izin. Silakan izinkan akses kamera.";
-        }
-
-        if (error.name === "NotFoundError") {
-            message =
-                "Tidak ada kamera yang ditemukan pada perangkat ini.";
-        }
-
-        if (error.name === "NotReadableError") {
-            message =
-                "Kamera sedang digunakan aplikasi lain.";
-        }
-
-        cameraErrorText.textContent = message;
-
-        cameraMessage.classList.add("show");
-    }
-}
-
-
-/* =========================================================
-   TIMER
-========================================================= */
-
-function startSessionTimer() {
-
-    clearInterval(sessionTimerInterval);
-
-    sessionSeconds = SESSION_DURATION;
-
-    updateSessionTimer();
-
-    sessionTimerInterval =
-        setInterval(() => {
-
-            sessionSeconds--;
-
-            updateSessionTimer();
-
-            if (sessionSeconds <= 0) {
-
-                clearInterval(
-                    sessionTimerInterval
-                );
-
-                sessionTimerInterval = null;
-
-                handleSessionTimeout();
-            }
-
-        }, 1000);
-}
-
-
-function updateSessionTimer() {
-
-    const minutes =
-        Math.floor(sessionSeconds / 60)
-            .toString()
-            .padStart(2, "0");
-
-    const seconds =
-        (sessionSeconds % 60)
-            .toString()
-            .padStart(2, "0");
-
-    sessionTimer.textContent =
-        `SESSION ${minutes}:${seconds}`;
-}
-
-
-/* =========================================================
-   TIMEOUT
-========================================================= */
-
-function handleSessionTimeout() {
-
-    sequenceRunning = false;
-
-    clearInterval(sessionTimerInterval);
-
-    sessionTimerInterval = null;
-
-    stopCamera();
-
-    if (photos.length > 0) {
-
-        alert(
-            "Waktu sesi sudah habis. Foto yang sudah diambil akan ditampilkan."
-        );
-
-        showReview();
-
-    } else {
-
-        alert(
-            "Waktu sesi sudah habis."
-        );
-
-        finishSession();
-    }
-}
-
-
-/* =========================================================
-   START SESSION
-========================================================= */
-
-async function startPhotoSequence() {
-
-    if (sequenceRunning) {
-        return;
-    }
-
-    if (!stream) {
-
-        await requestCamera();
-
-        return;
-    }
-
-    if (sessionSeconds <= 0) {
-        return;
-    }
-
-    sessionStarted = true;
-    sequenceRunning = true;
-
-    boothStartWrap.classList.remove("show");
-    sequenceMessage.classList.add("show");
-
-    startSessionTimer();
-
-    /*
-     * RETAKE MODE
-     */
-
-    if (retakeIndex !== null) {
-
-        currentPhotoIndex =
-            retakeIndex;
-
-        await runCountdownAndCapture();
-
-        retakeIndex = null;
-
-        sequenceRunning = false;
-
-        showReview();
-
-        return;
-    }
-
-    /*
-     * NORMAL SESSION
-     */
-
-    currentPhotoIndex = photos.length;
-
-    while (
-        currentPhotoIndex < TOTAL_PHOTOS &&
-        sessionSeconds > 0
-    ) {
-
-        await runCountdownAndCapture();
-
-        if (sessionSeconds <= 0) {
-            break;
-        }
-
-        currentPhotoIndex++;
-
-        if (
-            currentPhotoIndex < TOTAL_PHOTOS
-        ) {
-
-            await sleep(1500);
-        }
-    }
-
-    sequenceRunning = false;
-
-    if (photos.length >= TOTAL_PHOTOS) {
-
-        showReview();
-    }
-}
-
-
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-async function runCountdownAndCapture() {
-
-    const number =
-        currentPhotoIndex + 1;
+    boothStatus.textContent =
+      "Kamera siap ♡ Tekan START SESSION.";
 
     photoNumber.textContent =
-        `PHOTO ${number} / ${TOTAL_PHOTOS}`;
+      "CAMERA READY";
 
-    updateProgress();
 
-    /*
-     * Elegant pause before countdown.
-     */
+  }catch(error){
+
+    console.error(error);
+
+    permissionBox.style.display =
+      "block";
+
+    boothStatus.textContent =
+      "Kamera belum mendapatkan izin.";
+
+  }
+
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+function resetTimerDisplay(){
+
+  sessionSeconds = 300;
+
+  updateTimerText();
+
+}
+
+
+function updateTimerText(){
+
+  const minutes =
+    Math.floor(
+      sessionSeconds / 60
+    );
+
+  const seconds =
+    sessionSeconds % 60;
+
+  sessionTimer.textContent =
+    String(minutes).padStart(2,"0")
+    + ":"
+    +
+    String(seconds).padStart(2,"0");
+
+}
+
+
+function startSessionTimer(){
+
+  clearInterval(
+    sessionInterval
+  );
+
+  sessionSeconds = 300;
+
+  updateTimerText();
+
+
+  sessionInterval =
+    setInterval(() => {
+
+      sessionSeconds--;
+
+      updateTimerText();
+
+
+      if(sessionSeconds <= 0){
+
+        clearInterval(
+          sessionInterval
+        );
+
+        boothStatus.textContent =
+          "Session selesai.";
+
+        startSessionButton.style.display =
+          "none";
+
+      }
+
+    },1000);
+
+}
+
+
+/* =====================================================
+   START PHOTO SESSION
+===================================================== */
+
+async function startPhotoSession(){
+
+  if(sessionStarted){
+    return;
+  }
+
+
+  if(!stream){
+
+    await requestCamera();
+
+    if(!stream){
+      return;
+    }
+
+  }
+
+
+  sessionStarted = true;
+
+  startSessionButton.disabled =
+    true;
+
+  startSessionButton.style.display =
+    "none";
+
+
+  startSessionTimer();
+
+
+  photos = [];
+
+  currentPhoto = 0;
+
+  retakeIndex = -1;
+
+
+  boothStatus.textContent =
+    "Get ready... ♡";
+
+
+  await wait(800);
+
+
+  await takeAllPhotos();
+
+}
+
+
+/* =====================================================
+   TAKE FOUR PHOTOS
+===================================================== */
+
+async function takeAllPhotos(){
+
+  for(let i = 0; i < 4; i++){
+
+    currentPhoto = i;
+
+    photoNumber.textContent =
+      "PHOTO " +
+      (i + 1) +
+      " / 4";
+
+
     getReady.textContent =
-        "Get ready.";
+      "GET READY ♡";
 
-    getReady.classList.add("visible");
 
-    countdown.classList.remove("visible");
-    takePhotoLabel.classList.remove("visible");
+    await wait(1000);
 
-    await sleep(1300);
 
-    getReady.classList.remove("visible");
+    await countdownPhoto();
 
-    await sleep(450);
 
-    /*
-     * 3
-     */
-    await showCountdownNumber("3");
+    const image =
+      capturePhoto();
 
-    /*
-     * 2
-     */
-    await showCountdownNumber("2");
+    photos[i] = image;
 
-    /*
-     * 1
-     */
-    await showCountdownNumber("1");
 
-    countdown.classList.remove("visible");
+    getReady.textContent =
+      "✓ PHOTO TAKEN";
 
-    await sleep(500);
 
-    takePhotoLabel.classList.add("visible");
+    await wait(800);
 
-    await sleep(250);
+  }
 
-    capturePhoto();
 
-    takePhotoLabel.classList.remove("visible");
+  getReady.textContent = "";
 
-    await sleep(750);
+  countdown.textContent = "";
+
+  stopCamera();
+
+  showReview();
+
 }
 
 
-async function showCountdownNumber(number) {
+/* =====================================================
+   COUNTDOWN
+===================================================== */
 
-    countdown.textContent = number;
+function countdownPhoto(){
 
-    countdown.classList.remove("visible");
+  return new Promise(
+    resolve => {
 
-    void countdown.offsetWidth;
+      let number = 3;
 
-    countdown.classList.add("visible");
+      countdown.textContent =
+        number;
 
-    /*
-     * One full second per number.
-     */
-    await sleep(1000);
 
-    countdown.classList.remove("visible");
+      const timer =
+        setInterval(() => {
 
-    await sleep(300);
-}
+          number--;
 
+          if(number <= 0){
 
-/* =========================================================
-   CAPTURE
-========================================================= */
+            clearInterval(timer);
 
-function capturePhoto() {
+            countdown.textContent =
+              "📸";
 
-    if (
-        !cameraVideo.videoWidth ||
-        !cameraVideo.videoHeight
-    ) {
-        return;
-    }
+            setTimeout(
+              () => {
 
-    const canvas =
-        document.createElement("canvas");
-
-    canvas.width =
-        cameraVideo.videoWidth;
-
-    canvas.height =
-        cameraVideo.videoHeight;
-
-    const ctx =
-        canvas.getContext("2d");
-
-    /*
-     * Mirror the captured image
-     * exactly like the camera preview.
-     */
-    ctx.save();
-
-    ctx.translate(
-        canvas.width,
-        0
-    );
-
-    ctx.scale(-1, 1);
-
-    ctx.drawImage(
-        cameraVideo,
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-    ctx.restore();
-
-    const dataURL =
-        canvas.toDataURL(
-            "image/jpeg",
-            0.94
-        );
-
-    if (retakeIndex !== null) {
-
-        photos[retakeIndex] =
-            dataURL;
-
-    } else if (
-        photos.length < TOTAL_PHOTOS
-    ) {
-
-        photos.push(dataURL);
-    }
-
-    renderReview();
-}
-
-
-/* =========================================================
-   REVIEW
-========================================================= */
-
-function showReview() {
-
-    sequenceRunning = false;
-
-    clearInterval(
-        sessionTimerInterval
-    );
-
-    sessionTimerInterval = null;
-
-    stopCamera();
-
-    renderReview();
-
-    showScreen(reviewScreen);
-}
-
-
-function renderReview() {
-
-    reviewGrid.innerHTML = "";
-
-    photos.forEach((photo, index) => {
-
-        const item =
-            document.createElement("div");
-
-        item.className =
-            "review-item";
-
-        item.innerHTML = `
-            <img
-                src="${photo}"
-                alt="Photo ${index + 1}"
-            >
-
-            <div class="review-meta">
-
-                <span>
-                    PHOTO ${index + 1}
-                </span>
-
-                ${
-                    locked
-                    ? ""
-                    : `
-                        <button
-                            class="retake-btn"
-                            onclick="retakePhoto(${index})">
-                            RETAKE
-                        </button>
-                    `
-                }
-
-            </div>
-        `;
-
-        reviewGrid.appendChild(item);
-    });
-}
-
-
-/* =========================================================
-   RETAKE
-========================================================= */
-
-function retakePhoto(index) {
-
-    if (locked) {
-        return;
-    }
-
-    if (
-        index < 0 ||
-        index >= photos.length
-    ) {
-        return;
-    }
-
-    retakeIndex = index;
-
-    showScreen(boothScreen);
-
-    sequenceRunning = false;
-
-    /*
-     * Camera must be active again.
-     */
-    if (stream) {
-
-        boothStartWrap.classList.add("show");
-
-    } else {
-
-        requestCamera();
-    }
-}
-
-
-/* =========================================================
-   CONFIRM
-========================================================= */
-
-function openConfirm() {
-
-    if (
-        photos.length !== TOTAL_PHOTOS
-    ) {
-
-        alert(
-            `Pastikan semua ${TOTAL_PHOTOS} foto sudah diambil.`
-        );
-
-        return;
-    }
-
-    showScreen(confirmScreen);
-}
-
-
-function backToReview() {
-
-    renderReview();
-
-    showScreen(reviewScreen);
-}
-
-
-/* =========================================================
-   LOCK + EDIT
-========================================================= */
-
-function lockPhotosAndEdit() {
-
-    if (
-        photos.length !== TOTAL_PHOTOS
-    ) {
-
-        alert(
-            "Semua foto harus tersedia sebelum lanjut."
-        );
-
-        return;
-    }
-
-    locked = true;
-
-    stopCamera();
-
-    renderEditor();
-
-    showScreen(editorScreen);
-}
-
-
-/* =========================================================
-   EDITOR
-========================================================= */
-
-function renderEditor() {
-
-    /*
-     * Text remains editable.
-     */
-    textInput.value =
-        customText;
-
-    dateButton.textContent =
-        showDate
-        ? "📅 REMOVE DATE"
-        : "📅 ADD DATE";
-
-    drawPhotostrip();
-}
-
-
-/* =========================================================
-   FRAME
-========================================================= */
-
-function selectFrame(
-    frame,
-    button
-) {
-
-    selectedFrame = frame;
-
-    document
-        .querySelectorAll(".frame-btn")
-        .forEach(btn => {
-            btn.classList.remove("active");
-        });
-
-    if (button) {
-        button.classList.add("active");
-    }
-
-    drawPhotostrip();
-}
-
-
-/* =========================================================
-   TEXT
-========================================================= */
-
-function updateText() {
-
-    customText =
-        textInput.value;
-
-    /*
-     * Can be changed again and again.
-     */
-    drawPhotostrip();
-}
-
-
-/* =========================================================
-   STICKERS
-========================================================= */
-
-function addSticker(sticker) {
-
-    stickers.push(sticker);
-
-    drawPhotostrip();
-}
-
-
-/* =========================================================
-   DATE
-========================================================= */
-
-function toggleDate() {
-
-    showDate =
-        !showDate;
-
-    dateButton.textContent =
-        showDate
-        ? "📅 REMOVE DATE"
-        : "📅 ADD DATE";
-
-    drawPhotostrip();
-}
-
-
-/* =========================================================
-   DRAW FINAL STRIP
-========================================================= */
-
-async function drawPhotostrip() {
-
-    finalCanvas.width =
-        CANVAS_WIDTH;
-
-    finalCanvas.height =
-        CANVAS_HEIGHT;
-
-    const ctx =
-        finalCtx;
-
-    const W =
-        CANVAS_WIDTH;
-
-    const H =
-        CANVAS_HEIGHT;
-
-    /*
-     * Background.
-     */
-    drawFrameBackground(
-        ctx,
-        W,
-        H
-    );
-
-    /*
-     * =====================================
-     * PHOTO LAYOUT
-     * =====================================
-     *
-     * Each photo is SQUARE.
-     *
-     * Three squares stacked vertically.
-     *
-     * Final canvas itself is LONG.
-     */
-
-    const sideMargin = 65;
-
-    const photoSize = 720;
-
-    const photoX =
-        (W - photoSize) / 2;
-
-    const top = 250;
-
-    const gap = 32;
-
-    for (
-        let i = 0;
-        i < photos.length;
-        i++
-    ) {
-
-        const photoY =
-            top +
-            i * (photoSize + gap);
-
-        await drawImageCover(
-            ctx,
-            photos[i],
-            photoX,
-            photoY,
-            photoSize,
-            photoSize
-        );
-
-        /*
-         * Thin photo border.
-         */
-        ctx.save();
-
-        ctx.strokeStyle =
-            getFrameAccent(
-                selectedFrame
-            );
-
-        ctx.lineWidth = 5;
-
-        ctx.strokeRect(
-            photoX,
-            photoY,
-            photoSize,
-            photoSize
-        );
-
-        ctx.restore();
-
-        /*
-         * Tiny photo number.
-         */
-        ctx.save();
-
-        ctx.fillStyle =
-            getFrameTextColor(
-                selectedFrame
-            );
-
-        ctx.font =
-            "500 16px Arial";
-
-        ctx.textAlign =
-            "right";
-
-        ctx.fillText(
-            `0${i + 1}`,
-            photoX + photoSize - 10,
-            photoY + photoSize - 12
-        );
-
-        ctx.restore();
-    }
-
-    /*
-     * TOP BRANDING
-     */
-
-    ctx.save();
-
-    ctx.textAlign =
-        "center";
-
-    ctx.fillStyle =
-        getFrameTextColor(
-            selectedFrame
-        );
-
-    ctx.font =
-        "700 19px Arial";
-
-    ctx.fillText(
-        "YOUR PHOTOBOX",
-        W / 2,
-        85
-    );
-
-    ctx.font =
-        "400 17px Georgia";
-
-    ctx.fillText(
-        "three little moments ♡",
-        W / 2,
-        125
-    );
-
-    ctx.restore();
-
-
-    /*
-     * BOTTOM SECTION
-     */
-
-    const bottomY =
-        top +
-        3 * photoSize +
-        2 * gap;
-
-    ctx.save();
-
-    ctx.textAlign =
-        "center";
-
-    ctx.fillStyle =
-        getFrameTextColor(
-            selectedFrame
-        );
-
-    /*
-     * USER TEXT
-     */
-
-    if (
-        customText.trim() !== ""
-    ) {
-
-        ctx.font =
-            "400 29px Georgia, serif";
-
-        ctx.fillText(
-            customText.trim(),
-            W / 2,
-            bottomY + 85
-        );
-
-    } else {
-
-        ctx.font =
-            "400 24px Georgia, serif";
-
-        ctx.fillText(
-            "♡",
-            W / 2,
-            bottomY + 85
-        );
-    }
-
-
-    /*
-     * DATE
-     */
-
-    if (showDate) {
-
-        const today =
-            new Date();
-
-        const date =
-            String(
-                today.getDate()
-            ).padStart(2,"0")
-            + "."
-            +
-            String(
-                today.getMonth() + 1
-            ).padStart(2,"0")
-            + "."
-            +
-            today.getFullYear();
-
-        ctx.font =
-            "400 15px Arial";
-
-        ctx.fillText(
-            date,
-            W / 2,
-            bottomY + 120
-        );
-    }
-
-
-    /*
-     * FOOTER
-     */
-
-    ctx.font =
-        "700 12px Arial";
-
-    ctx.letterSpacing =
-        "2px";
-
-    ctx.fillText(
-        "YOUR PHOTOBOX ♡",
-        W / 2,
-        H - 45
-    );
-
-    ctx.restore();
-
-
-    /*
-     * STICKERS
-     */
-
-    drawStickers(
-        ctx,
-        W,
-        H
-    );
-}
-
-
-/* =========================================================
-   FRAME BACKGROUND
-========================================================= */
-
-function drawFrameBackground(
-    ctx,
-    W,
-    H
-) {
-
-    let gradient;
-
-    switch (selectedFrame) {
-
-        case "pink":
-
-            gradient =
-                ctx.createLinearGradient(
-                    0,
-                    0,
-                    W,
-                    H
-                );
-
-            gradient.addColorStop(
-                0,
-                "#fff8f9"
-            );
-
-            gradient.addColorStop(
-                1,
-                "#f1d5df"
-            );
-
-            break;
-
-
-        case "sakura":
-
-            gradient =
-                ctx.createLinearGradient(
-                    0,
-                    0,
-                    W,
-                    H
-                );
-
-            gradient.addColorStop(
-                0,
-                "#fffafa"
-            );
-
-            gradient.addColorStop(
-                1,
-                "#efd5df"
-            );
-
-            break;
-
-
-        case "lavender":
-
-            gradient =
-                ctx.createLinearGradient(
-                    0,
-                    0,
-                    W,
-                    H
-                );
-
-            gradient.addColorStop(
-                0,
-                "#fbfaff"
-            );
-
-            gradient.addColorStop(
-                1,
-                "#ddd6ed"
-            );
-
-            break;
-
-
-        case "blue":
-
-            gradient =
-                ctx.createLinearGradient(
-                    0,
-                    0,
-                    W,
-                    H
-                );
-
-            gradient.addColorStop(
-                0,
-                "#f7fcff"
-            );
-
-            gradient.addColorStop(
-                1,
-                "#d9eaf1"
-            );
-
-            break;
-
-
-        case "starry":
-
-            gradient =
-                ctx.createLinearGradient(
-                    0,
-                    0,
-                    W,
-                    H
-                );
-
-            gradient.addColorStop(
-                0,
-                "#282530"
-            );
-
-            gradient.addColorStop(
-                1,
-                "#51445b"
-            );
-
-            break;
-
-
-        case "cloud":
-
-            gradient =
-                ctx.createLinearGradient(
-                    0,
-                    0,
-                    W,
-                    H
-                );
-
-            gradient.addColorStop(
-                0,
-                "#ffffff"
-            );
-
-            gradient.addColorStop(
-                1,
-                "#e9edf2"
-            );
-
-            break;
-
-
-        case "teddy":
-
-            gradient =
-                ctx.createLinearGradient(
-                    0,
-                    0,
-                    W,
-                    H
-                );
-
-            gradient.addColorStop(
-                0,
-                "#fff9ef"
-            );
-
-            gradient.addColorStop(
-                1,
-                "#ead8bd"
-            );
-
-            break;
-
-
-        case "strawberry":
-
-            gradient =
-                ctx.createLinearGradient(
-                    0,
-                    0,
-                    W,
-                    H
-                );
-
-            gradient.addColorStop(
-                0,
-                "#fff8f9"
-            );
-
-            gradient.addColorStop(
-                1,
-                "#f2c7d0"
-            );
-
-            break;
-
-
-        case "flower":
-
-            gradient =
-                ctx.createLinearGradient(
-                    0,
-                    0,
-                    W,
-                    H
-                );
-
-            gradient.addColorStop(
-                0,
-                "#fffafd"
-            );
-
-            gradient.addColorStop(
-                1,
-                "#eadceb"
-            );
-
-            break;
-
-
-        case "minimal":
-        default:
-
-            gradient =
-                ctx.createLinearGradient(
-                    0,
-                    0,
-                    W,
-                    H
-                );
-
-            gradient.addColorStop(
-                0,
-                "#ffffff"
-            );
-
-            gradient.addColorStop(
-                1,
-                "#f2efec"
-            );
-
-            break;
-    }
-
-    ctx.fillStyle =
-        gradient;
-
-    ctx.fillRect(
-        0,
-        0,
-        W,
-        H
-    );
-
-
-    /*
-     * Outer border.
-     */
-
-    ctx.save();
-
-    ctx.strokeStyle =
-        getFrameAccent(
-            selectedFrame
-        );
-
-    ctx.lineWidth = 8;
-
-    ctx.strokeRect(
-        30,
-        30,
-        W - 60,
-        H - 60
-    );
-
-    ctx.restore();
-
-
-    /*
-     * Decoration.
-     */
-
-    if (
-        selectedFrame === "starry"
-    ) {
-        drawStars(ctx,W,H);
-    }
-
-    if (
-        selectedFrame === "cloud"
-    ) {
-        drawClouds(ctx,W,H);
-    }
-
-    if (
-        selectedFrame === "flower"
-    ) {
-        drawFlowers(ctx,W,H);
-    }
-
-    if (
-        selectedFrame === "teddy"
-    ) {
-        drawTeddyDetails(ctx,W,H);
-    }
-
-    if (
-        selectedFrame === "strawberry"
-    ) {
-        drawStrawberries(ctx,W,H);
-    }
-}
-
-
-/* =========================================================
-   IMAGE COVER
-========================================================= */
-
-function drawImageCover(
-    ctx,
-    src,
-    x,
-    y,
-    width,
-    height
-) {
-
-    return new Promise(resolve => {
-
-        const img =
-            new Image();
-
-        img.onload =
-            () => {
-
-                const sourceRatio =
-                    img.width /
-                    img.height;
-
-                const targetRatio =
-                    width /
-                    height;
-
-                let sx = 0;
-                let sy = 0;
-
-                let sw =
-                    img.width;
-
-                let sh =
-                    img.height;
-
-                if (
-                    sourceRatio >
-                    targetRatio
-                ) {
-
-                    sw =
-                        img.height *
-                        targetRatio;
-
-                    sx =
-                        (
-                            img.width -
-                            sw
-                        ) / 2;
-
-                } else {
-
-                    sh =
-                        img.width /
-                        targetRatio;
-
-                    sy =
-                        (
-                            img.height -
-                            sh
-                        ) / 2;
-                }
-
-                ctx.save();
-
-                roundRectPath(
-                    ctx,
-                    x,
-                    y,
-                    width,
-                    height,
-                    12
-                );
-
-                ctx.clip();
-
-                ctx.drawImage(
-                    img,
-                    sx,
-                    sy,
-                    sw,
-                    sh,
-                    x,
-                    y,
-                    width,
-                    height
-                );
-
-                ctx.restore();
+                countdown.textContent =
+                  "";
 
                 resolve();
-            };
 
-        img.onerror =
-            () => resolve();
+              },
+              450
+            );
 
-        img.src = src;
-    });
+          }else{
+
+            countdown.textContent =
+              number;
+
+          }
+
+        },1000);
+
+    }
+  );
+
 }
 
 
-/* =========================================================
-   STICKERS
-========================================================= */
+/* =====================================================
+   CAPTURE PHOTO
+===================================================== */
 
-function drawStickers(
-    ctx,
-    W,
-    H
-) {
+function capturePhoto(){
 
-    if (!stickers.length) {
-        return;
+  if(!video.videoWidth){
+    return null;
+  }
+
+
+  const canvas =
+    document.createElement(
+      "canvas"
+    );
+
+
+  canvas.width =
+    video.videoWidth;
+
+  canvas.height =
+    video.videoHeight;
+
+
+  const ctx =
+    canvas.getContext("2d");
+
+
+  /*
+    Mirror supaya hasil foto
+    sama seperti tampilan kamera.
+  */
+
+  ctx.save();
+
+  ctx.translate(
+    canvas.width,
+    0
+  );
+
+  ctx.scale(
+    -1,
+    1
+  );
+
+  ctx.drawImage(
+    video,
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  ctx.restore();
+
+
+  return canvas.toDataURL(
+    "image/jpeg",
+    .92
+  );
+
+}
+
+
+/* =====================================================
+   STOP CAMERA
+===================================================== */
+
+function stopCamera(){
+
+  if(!stream){
+    return;
+  }
+
+
+  stream.getTracks().forEach(
+    track => track.stop()
+  );
+
+  stream = null;
+
+}
+
+
+/* =====================================================
+   REVIEW
+===================================================== */
+
+function showReview(){
+
+  clearInterval(
+    sessionInterval
+  );
+
+
+  document.getElementById(
+    "boothScreen"
+  ).style.display = "none";
+
+
+  document.getElementById(
+    "reviewScreen"
+  ).style.display = "block";
+
+
+  reviewTime.textContent =
+    "Review foto kamu sebelum masuk editor ♡";
+
+
+  renderReview();
+
+}
+
+
+function renderReview(){
+
+  reviewGrid.innerHTML = "";
+
+
+  photos.forEach(
+    (photo,index) => {
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+      card.className =
+        "review-card pop";
+
+
+      const img =
+        document.createElement(
+          "img"
+        );
+
+      img.src = photo;
+
+
+      const title =
+        document.createElement(
+          "h3"
+        );
+
+      title.textContent =
+        "PHOTO " +
+        (index + 1);
+
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+      button.className =
+        "retake-btn";
+
+      button.textContent =
+        "↻ RETAKE";
+
+
+      button.onclick =
+        () => retakePhoto(index);
+
+
+      card.appendChild(img);
+
+      card.appendChild(title);
+
+      card.appendChild(button);
+
+      reviewGrid.appendChild(card);
+
     }
+  );
 
-    const positions = [
-        [65, 180],
-        [W - 65, 180],
-        [65, H - 170],
-        [W - 65, H - 170],
-        [90, 110],
-        [W - 90, 110]
+}
+
+
+/* =====================================================
+   RETAKE
+===================================================== */
+
+async function retakePhoto(index){
+
+  retakeIndex = index;
+
+
+  document.getElementById(
+    "reviewScreen"
+  ).style.display = "none";
+
+
+  document.getElementById(
+    "boothScreen"
+  ).style.display = "block";
+
+
+  sessionStarted = true;
+
+
+  startSessionButton.style.display =
+    "none";
+
+
+  photoNumber.textContent =
+    "RETAKE PHOTO " +
+    (index + 1);
+
+
+  boothStatus.textContent =
+    "Kamera dinyalakan lagi...";
+
+
+  await requestCamera();
+
+
+  if(!stream){
+
+    document.getElementById(
+      "boothScreen"
+    ).style.display = "none";
+
+    document.getElementById(
+      "reviewScreen"
+    ).style.display = "block";
+
+    return;
+
+  }
+
+
+  await wait(1000);
+
+  getReady.textContent =
+    "RETAKE ♡";
+
+
+  await wait(800);
+
+  await countdownPhoto();
+
+
+  const newPhoto =
+    capturePhoto();
+
+
+  if(newPhoto){
+
+    photos[index] =
+      newPhoto;
+
+  }
+
+
+  getReady.textContent =
+    "✓ UPDATED";
+
+
+  await wait(700);
+
+
+  getReady.textContent = "";
+
+  stopCamera();
+
+  showReview();
+
+}
+
+
+/* =====================================================
+   CONFIRM
+===================================================== */
+
+function openConfirm(){
+
+  document.getElementById(
+    "reviewScreen"
+  ).style.display = "none";
+
+
+  document.getElementById(
+    "confirmScreen"
+  ).style.display = "flex";
+
+}
+
+
+function backToReview(){
+
+  document.getElementById(
+    "confirmScreen"
+  ).style.display = "none";
+
+
+  document.getElementById(
+    "reviewScreen"
+  ).style.display = "block";
+
+}
+
+
+/* =====================================================
+   OPEN EDITOR
+===================================================== */
+
+function lockPhotosAndEdit(){
+
+  document.getElementById(
+    "confirmScreen"
+  ).style.display = "none";
+
+
+  document.getElementById(
+    "editorScreen"
+  ).style.display = "block";
+
+
+  /*
+    Penting:
+    foto tidak benar-benar dikunci dari dekorasi.
+    Yang "dikunci" hanya foto hasil capture.
+  */
+
+  decorations = [];
+
+  selectedObject = null;
+
+  selectedFrame = "pink";
+
+  showDate = false;
+
+  customText.value = "";
+
+
+  renderEditor();
+
+}
+
+
+/* =====================================================
+   SELECT FRAME
+===================================================== */
+
+function selectFrame(
+  frame,
+  button
+){
+
+  selectedFrame =
+    frame;
+
+
+  document
+    .querySelectorAll(
+      ".frame-btn"
+    )
+    .forEach(
+      btn => {
+
+        btn.classList.remove(
+          "selected"
+        );
+
+      }
+    );
+
+
+  if(button){
+
+    button.classList.add(
+      "selected"
+    );
+
+  }
+
+
+  renderEditor();
+
+}
+
+
+/* =====================================================
+   ADD TEXT
+===================================================== */
+
+function addText(){
+
+  const value =
+    customText.value.trim();
+
+
+  if(!value){
+
+    alert(
+      "Tulis text dulu ya ♡"
+    );
+
+    return;
+
+  }
+
+
+  const object = {
+
+    id:
+      Date.now(),
+
+    type:
+      "text",
+
+    text:
+      value,
+
+    x:
+      0.5,
+
+    y:
+      0.94,
+
+    size:
+      34
+
+  };
+
+
+  decorations.push(
+    object
+  );
+
+
+  selectedObject =
+    object;
+
+
+  customText.value =
+    "";
+
+
+  renderEditor();
+
+}
+
+
+/* =====================================================
+   UPDATE TEXT
+===================================================== */
+
+function updateText(){
+
+  /*
+    Tidak langsung membuat object.
+    Text baru dibuat ketika tombol ADD TEXT ditekan.
+  */
+
+}
+
+
+/* =====================================================
+   ADD STICKER
+===================================================== */
+
+function addSticker(
+  sticker
+){
+
+  const object = {
+
+    id:
+      Date.now(),
+
+    type:
+      "sticker",
+
+    text:
+      sticker,
+
+    x:
+      0.5,
+
+    y:
+      0.5,
+
+    size:
+      55
+
+  };
+
+
+  decorations.push(
+    object
+  );
+
+
+  selectedObject =
+    object;
+
+
+  renderEditor();
+
+}
+
+
+/* =====================================================
+   DELETE SELECTED
+===================================================== */
+
+function deleteSelected(){
+
+  if(!selectedObject){
+
+    alert(
+      "Pilih sticker atau text dulu ♡"
+    );
+
+    return;
+
+  }
+
+
+  decorations =
+    decorations.filter(
+      object =>
+        object.id !==
+        selectedObject.id
+    );
+
+
+  selectedObject =
+    null;
+
+
+  renderEditor();
+
+}
+
+
+/* =====================================================
+   CLEAR DECORATIONS
+===================================================== */
+
+function clearDecorations(){
+
+  const ok =
+    confirm(
+      "Hapus semua sticker dan text?"
+    );
+
+
+  if(!ok){
+    return;
+  }
+
+
+  decorations = [];
+
+  selectedObject =
+    null;
+
+  renderEditor();
+
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+function toggleDate(){
+
+  showDate =
+    !showDate;
+
+
+  dateButton.classList.toggle(
+    "active",
+    showDate
+  );
+
+
+  renderEditor();
+
+}
+
+
+/* =====================================================
+   EDITOR CANVAS
+===================================================== */
+
+function renderEditor(){
+
+  const canvas =
+    previewCanvas;
+
+  const ctx =
+    canvas.getContext("2d");
+
+
+  /*
+    Photostrip:
+    72mm-ish printable width
+    4 photo boxes vertically.
+  */
+
+  const W = 900;
+
+  const H = 1900;
+
+
+  canvas.width =
+    W;
+
+  canvas.height =
+    H;
+
+
+  /*
+    Background
+  */
+
+  const colors =
+    frameColors[
+      selectedFrame
     ];
 
-    stickers.forEach(
-        (sticker, index) => {
 
-            const position =
-                positions[
-                    index %
-                    positions.length
-                ];
+  const gradient =
+    ctx.createLinearGradient(
+      0,
+      0,
+      W,
+      H
+    );
 
-            ctx.save();
 
-            ctx.textAlign =
-                "center";
+  gradient.addColorStop(
+    0,
+    colors.top
+  );
 
-            ctx.textBaseline =
-                "middle";
+  gradient.addColorStop(
+    1,
+    colors.bottom
+  );
 
-            ctx.font =
-                "40px Arial";
 
-            ctx.fillStyle =
-                getFrameTextColor(
-                    selectedFrame
-                );
+  ctx.fillStyle =
+    gradient;
 
-            ctx.fillText(
-                sticker,
-                position[0],
-                position[1]
-            );
+  ctx.fillRect(
+    0,
+    0,
+    W,
+    H
+  );
 
-            ctx.restore();
+
+  /*
+    Header
+  */
+
+  ctx.fillStyle =
+    colors.text;
+
+  ctx.textAlign =
+    "center";
+
+  ctx.font =
+    "bold 38px Georgia";
+
+  ctx.fillText(
+    "YOUR PHOTOBOX ♡",
+    W / 2,
+    58
+  );
+
+
+  /*
+    Photo geometry
+  */
+
+  const marginX =
+    65;
+
+  const photoW =
+    W - marginX * 2;
+
+  const photoH =
+    330;
+
+  const gap =
+    18;
+
+  const startY =
+    85;
+
+
+  for(
+    let i = 0;
+    i < 4;
+    i++
+  ){
+
+    const x =
+      marginX;
+
+    const y =
+      startY +
+      i *
+      (photoH + gap);
+
+
+    /*
+      White photo border
+    */
+
+    ctx.fillStyle =
+      "#ffffff";
+
+    roundRect(
+      ctx,
+      x - 7,
+      y - 7,
+      photoW + 14,
+      photoH + 14,
+      18
+    );
+
+    ctx.fill();
+
+
+    /*
+      Photo
+    */
+
+    if(photos[i]){
+
+      drawCoverImage(
+        ctx,
+        photos[i],
+        x,
+        y,
+        photoW,
+        photoH
+      );
+
+    }else{
+
+      ctx.fillStyle =
+        "#eeeeee";
+
+      ctx.fillRect(
+        x,
+        y,
+        photoW,
+        photoH
+      );
+
+    }
+
+
+    /*
+      Photo number
+    */
+
+    ctx.fillStyle =
+      "rgba(0,0,0,.35)";
+
+    ctx.font =
+      "bold 22px Arial";
+
+    ctx.textAlign =
+      "left";
+
+    ctx.fillText(
+      String(i + 1),
+      x + 15,
+      y + 30
+    );
+
+  }
+
+
+  /*
+    Footer
+  */
+
+  ctx.fillStyle =
+    colors.text;
+
+  ctx.textAlign =
+    "center";
+
+  ctx.font =
+    "bold 27px Arial";
+
+  ctx.fillText(
+    "♡ captured with love ♡",
+    W / 2,
+    H - 45
+  );
+
+
+  /*
+    Date
+  */
+
+  if(showDate){
+
+    const today =
+      new Date();
+
+
+    const dateText =
+      today.toLocaleDateString(
+        "id-ID",
+        {
+          day:"2-digit",
+          month:"2-digit",
+          year:"numeric"
         }
-    );
-}
+      );
 
-
-/* =========================================================
-   DECORATIONS
-========================================================= */
-
-function drawStars(
-    ctx,
-    W,
-    H
-) {
-
-    ctx.save();
-
-    ctx.fillStyle =
-        "rgba(255,255,255,.65)";
 
     ctx.font =
-        "22px Georgia";
-
-    [
-        [75,160],
-        [W-75,210],
-        [75,H-240],
-        [W-75,H-260]
-    ].forEach(
-        ([x,y]) => {
-            ctx.fillText(
-                "✦",
-                x,
-                y
-            );
-        }
-    );
-
-    ctx.restore();
-}
-
-
-function drawClouds(
-    ctx,
-    W,
-    H
-) {
-
-    ctx.save();
-
-    ctx.fillStyle =
-        "rgba(255,255,255,.72)";
-
-    ctx.font =
-        "25px Arial";
+      "22px Arial";
 
     ctx.fillText(
-        "☁",
-        60,
-        170
+      dateText,
+      W / 2,
+      H - 80
     );
 
-    ctx.fillText(
-        "☁",
-        W - 90,
-        210
-    );
-
-    ctx.fillText(
-        "☁",
-        60,
-        H - 190
-    );
-
-    ctx.fillText(
-        "☁",
-        W - 90,
-        H - 230
-    );
-
-    ctx.restore();
-}
+  }
 
 
-function drawFlowers(
-    ctx,
-    W,
-    H
-) {
+  /*
+    Decorations
+  */
 
-    ctx.save();
+  decorations.forEach(
+    object => {
 
-    ctx.fillStyle =
-        "rgba(192,147,178,.48)";
+      drawDecoration(
+        ctx,
+        object,
+        W,
+        H
+      );
 
-    ctx.font =
-        "28px Arial";
-
-    ctx.fillText(
-        "✿",
-        65,
-        175
-    );
-
-    ctx.fillText(
-        "✿",
-        W - 90,
-        200
-    );
-
-    ctx.fillText(
-        "✿",
-        65,
-        H - 200
-    );
-
-    ctx.fillText(
-        "✿",
-        W - 90,
-        H - 220
-    );
-
-    ctx.restore();
-}
-
-
-function drawTeddyDetails(
-    ctx,
-    W,
-    H
-) {
-
-    ctx.save();
-
-    ctx.fillStyle =
-        "rgba(115,86,63,.4)";
-
-    ctx.font =
-        "25px Arial";
-
-    ctx.fillText(
-        "•ᴥ•",
-        60,
-        175
-    );
-
-    ctx.fillText(
-        "•ᴥ•",
-        W - 105,
-        H - 210
-    );
-
-    ctx.restore();
-}
-
-
-function drawStrawberries(
-    ctx,
-    W,
-    H
-) {
-
-    ctx.save();
-
-    ctx.font =
-        "27px Arial";
-
-    ctx.fillStyle =
-        "rgba(174,92,110,.5)";
-
-    ctx.fillText(
-        "♡",
-        65,
-        170
-    );
-
-    ctx.fillText(
-        "♡",
-        W - 90,
-        205
-    );
-
-    ctx.fillText(
-        "♡",
-        65,
-        H - 200
-    );
-
-    ctx.fillText(
-        "♡",
-        W - 90,
-        H - 220
-    );
-
-    ctx.restore();
-}
-
-
-/* =========================================================
-   FRAME COLORS
-========================================================= */
-
-function getFrameTextColor(frame) {
-
-    if (
-        frame === "starry"
-    ) {
-        return "#ffffff";
     }
-
-    if (
-        frame === "blue"
-    ) {
-        return "#526d7a";
-    }
-
-    if (
-        frame === "lavender"
-    ) {
-        return "#665b78";
-    }
-
-    if (
-        frame === "teddy"
-    ) {
-        return "#765b46";
-    }
-
-    return "#69545d";
-}
+  );
 
 
-function getFrameAccent(frame) {
+  /*
+    Selected indicator
+  */
 
-    if (
-        frame === "starry"
-    ) {
-        return "rgba(255,255,255,.28)";
-    }
+  if(selectedObject){
 
-    if (
-        frame === "blue"
-    ) {
-        return "rgba(105,143,160,.25)";
-    }
+    const x =
+      selectedObject.x *
+      W;
 
-    if (
-        frame === "lavender"
-    ) {
-        return "rgba(125,109,151,.25)";
-    }
-
-    if (
-        frame === "teddy"
-    ) {
-        return "rgba(132,99,72,.25)";
-    }
-
-    return "rgba(160,112,132,.25)";
-}
+    const y =
+      selectedObject.y *
+      H;
 
 
-/* =========================================================
-   ROUNDED PATH
-========================================================= */
+    ctx.strokeStyle =
+      "#ffffff";
 
-function roundRectPath(
-    ctx,
-    x,
-    y,
-    width,
-    height,
-    radius
-) {
+    ctx.lineWidth =
+      3;
 
-    const r =
-        Math.min(
-            radius,
-            width / 2,
-            height / 2
-        );
+    ctx.setLineDash(
+      [8,8]
+    );
+
 
     ctx.beginPath();
 
-    ctx.moveTo(
-        x + r,
+    ctx.arc(
+      x,
+      y,
+      selectedObject.size * .75,
+      0,
+      Math.PI * 2
+    );
+
+    ctx.stroke();
+
+    ctx.setLineDash([]);
+
+  }
+
+
+  /*
+    Download
+  */
+
+  downloadButton.href =
+    canvas.toDataURL(
+      "image/jpeg",
+      .95
+    );
+
+
+}
+
+
+/* =====================================================
+   DRAW IMAGE COVER
+===================================================== */
+
+function drawCoverImage(
+  ctx,
+  src,
+  x,
+  y,
+  w,
+  h
+){
+
+  const img =
+    new Image();
+
+
+  img.onload =
+    function(){
+
+      const imageRatio =
+        img.width /
+        img.height;
+
+      const boxRatio =
+        w / h;
+
+
+      let drawW;
+      let drawH;
+      let offsetX;
+      let offsetY;
+
+
+      if(
+        imageRatio >
+        boxRatio
+      ){
+
+        drawH =
+          h;
+
+        drawW =
+          h *
+          imageRatio;
+
+        offsetX =
+          x -
+          (drawW - w) / 2;
+
+        offsetY =
+          y;
+
+      }else{
+
+        drawW =
+          w;
+
+        drawH =
+          w /
+          imageRatio;
+
+        offsetX =
+          x;
+
+        offsetY =
+          y -
+          (drawH - h) / 2;
+
+      }
+
+
+      ctx.save();
+
+      ctx.beginPath();
+
+      roundRect(
+        ctx,
+        x,
+        y,
+        w,
+        h,
+        12
+      );
+
+      ctx.clip();
+
+
+      ctx.drawImage(
+        img,
+        offsetX,
+        offsetY,
+        drawW,
+        drawH
+      );
+
+
+      ctx.restore();
+
+    };
+
+
+  img.src =
+    src;
+
+}
+
+
+/* =====================================================
+   DRAW DECORATION
+===================================================== */
+
+function drawDecoration(
+  ctx,
+  object,
+  W,
+  H
+){
+
+  const x =
+    object.x *
+    W;
+
+  const y =
+    object.y *
+    H;
+
+
+  ctx.save();
+
+  ctx.textAlign =
+    "center";
+
+  ctx.textBaseline =
+    "middle";
+
+
+  if(object.type === "sticker"){
+
+    ctx.font =
+      object.size +
+      "px Arial";
+
+    ctx.fillText(
+      object.text,
+      x,
+      y
+    );
+
+  }
+
+
+  if(object.type === "text"){
+
+    ctx.font =
+      "bold " +
+      object.size +
+      "px Arial";
+
+    ctx.fillStyle =
+      frameColors[
+        selectedFrame
+      ].text;
+
+    ctx.fillText(
+      object.text,
+      x,
+      y
+    );
+
+  }
+
+
+  ctx.restore();
+
+}
+
+
+/* =====================================================
+   CANVAS ROUND RECT
+===================================================== */
+
+function roundRect(
+  ctx,
+  x,
+  y,
+  width,
+  height,
+  radius
+){
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    x + radius,
+    y
+  );
+
+  ctx.lineTo(
+    x + width - radius,
+    y
+  );
+
+  ctx.quadraticCurveTo(
+    x + width,
+    y,
+    x + width,
+    y + radius
+  );
+
+  ctx.lineTo(
+    x + width,
+    y + height - radius
+  );
+
+  ctx.quadraticCurveTo(
+    x + width,
+    y + height,
+    x + width - radius,
+    y + height
+  );
+
+  ctx.lineTo(
+    x + radius,
+    y + height
+  );
+
+  ctx.quadraticCurveTo(
+    x,
+    y + height,
+    x,
+    y + height - radius
+  );
+
+  ctx.lineTo(
+    x,
+    y + radius
+  );
+
+  ctx.quadraticCurveTo(
+    x,
+    y,
+    x + radius,
+    y
+  );
+
+  ctx.closePath();
+
+}
+
+
+/* =====================================================
+   SELECT OBJECT FROM CANVAS
+===================================================== */
+
+function findDecorationAt(
+  canvasX,
+  canvasY
+){
+
+  const W =
+    previewCanvas.width;
+
+  const H =
+    previewCanvas.height;
+
+
+  /*
+    Dari belakang supaya object
+    paling baru lebih mudah dipilih.
+  */
+
+  for(
+    let i =
+      decorations.length - 1;
+    i >= 0;
+    i--
+  ){
+
+    const object =
+      decorations[i];
+
+
+    const x =
+      object.x *
+      W;
+
+    const y =
+      object.y *
+      H;
+
+
+    const distance =
+      Math.sqrt(
+        Math.pow(
+          canvasX - x,
+          2
+        ) +
+        Math.pow(
+          canvasY - y,
+          2
+        )
+      );
+
+
+    const radius =
+      Math.max(
+        object.size,
+        45
+      );
+
+
+    if(
+      distance <=
+      radius
+    ){
+
+      return object;
+
+    }
+
+  }
+
+
+  return null;
+
+}
+
+
+/* =====================================================
+   MOUSE DOWN
+===================================================== */
+
+previewCanvas.addEventListener(
+  "mousedown",
+  function(event){
+
+    const rect =
+      previewCanvas.getBoundingClientRect();
+
+
+    const scaleX =
+      previewCanvas.width /
+      rect.width;
+
+    const scaleY =
+      previewCanvas.height /
+      rect.height;
+
+
+    const x =
+      (event.clientX -
+      rect.left) *
+      scaleX;
+
+    const y =
+      (event.clientY -
+      rect.top) *
+      scaleY;
+
+
+    const object =
+      findDecorationAt(
+        x,
         y
-    );
-
-    ctx.arcTo(
-        x + width,
-        y,
-        x + width,
-        y + height,
-        r
-    );
-
-    ctx.arcTo(
-        x + width,
-        y + height,
-        x,
-        y + height,
-        r
-    );
-
-    ctx.arcTo(
-        x,
-        y + height,
-        x,
-        y,
-        r
-    );
-
-    ctx.arcTo(
-        x,
-        y,
-        x + width,
-        y,
-        r
-    );
-
-    ctx.closePath();
-}
+      );
 
 
-/* =========================================================
-   DOWNLOAD
-========================================================= */
-
-function downloadPhotostrip() {
-
-    drawPhotostrip();
-
-    const link =
-        document.createElement("a");
-
-    link.download =
-        "your-photobox.jpg";
-
-    link.href =
-        finalCanvas.toDataURL(
-            "image/jpeg",
-            0.96
-        );
-
-    document.body.appendChild(link);
-
-    link.click();
-
-    document.body.removeChild(link);
-}
+    selectedObject =
+      object;
 
 
-/* =========================================================
-   PRINT
-========================================================= */
+    if(object){
 
-function printPhotostrip() {
-
-    drawPhotostrip();
-
-    const printImage =
-        document.getElementById(
-            "printImage"
-        );
-
-    printImage.src =
-        finalCanvas.toDataURL(
-            "image/png"
-        );
-
-    setTimeout(
-        () => {
-            window.print();
-        },
-        300
-    );
-}
+      isDragging =
+        true;
 
 
-/* =========================================================
-   CAMERA STOP
-========================================================= */
+      dragOffsetX =
+        x -
+        object.x *
+        previewCanvas.width;
 
-function stopCamera() {
 
-    if (stream) {
+      dragOffsetY =
+        y -
+        object.y *
+        previewCanvas.height;
 
-        stream
-            .getTracks()
-            .forEach(track => {
-                track.stop();
-            });
-
-        stream = null;
     }
 
-    cameraVideo.srcObject =
-        null;
-}
+
+    renderEditor();
+
+  }
+);
 
 
-/* =========================================================
-   RESET BOOTH
-========================================================= */
+/* =====================================================
+   MOUSE MOVE
+===================================================== */
 
-function resetBoothUI() {
+previewCanvas.addEventListener(
+  "mousemove",
+  function(event){
 
-    cameraMessage.classList.remove(
-        "show"
-    );
+    if(
+      !isDragging ||
+      !selectedObject
+    ){
 
-    boothStartWrap.classList.remove(
-        "show"
-    );
+      return;
 
-    sequenceMessage.classList.remove(
-        "show"
-    );
-
-    getReady.classList.remove(
-        "visible"
-    );
-
-    countdown.classList.remove(
-        "visible"
-    );
-
-    takePhotoLabel.classList.remove(
-        "visible"
-    );
-
-    photoNumber.textContent =
-        `PHOTO 1 / ${TOTAL_PHOTOS}`;
-
-    sessionSeconds =
-        SESSION_DURATION;
-
-    updateSessionTimer();
-
-    updateProgress();
-}
-
-
-/* =========================================================
-   PROGRESS
-========================================================= */
-
-function updateProgress() {
-
-    for (
-        let i = 1;
-        i <= TOTAL_PHOTOS;
-        i++
-    ) {
-
-        const row =
-            document.getElementById(
-                `progress${i}`
-            );
-
-        if (!row) {
-            continue;
-        }
-
-        row.classList.remove(
-            "active",
-            "done"
-        );
-
-        if (
-            i <= photos.length
-        ) {
-            row.classList.add(
-                "done"
-            );
-        }
-
-        if (
-            i ===
-            currentPhotoIndex + 1
-        ) {
-            row.classList.add(
-                "active"
-            );
-        }
-    }
-}
-
-
-/* =========================================================
-   FINISH SESSION
-========================================================= */
-
-function finishSession() {
-
-    stopCamera();
-
-    clearInterval(
-        sessionTimerInterval
-    );
-
-    sessionTimerInterval =
-        null;
-
-    photos = [];
-
-    currentPhotoIndex = 0;
-
-    retakeIndex = null;
-
-    sequenceRunning = false;
-
-    sessionStarted = false;
-
-    locked = false;
-
-    selectedFrame =
-        "pink";
-
-    stickers = [];
-
-    customText =
-        "";
-
-    showDate =
-        false;
-
-    textInput.value =
-        "";
-
-    dateButton.textContent =
-        "📅 ADD DATE";
-
-    document
-        .querySelectorAll(".frame-btn")
-        .forEach(btn => {
-            btn.classList.remove(
-                "active"
-            );
-        });
-
-    const firstFrame =
-        document.querySelector(
-            ".frame-btn"
-        );
-
-    if (firstFrame) {
-        firstFrame.classList.add(
-            "active"
-        );
     }
 
-    finalCtx.clearRect(
-        0,
-        0,
-        finalCanvas.width,
-        finalCanvas.height
-    );
 
-    sessionSeconds =
-        SESSION_DURATION;
-
-    updateSessionTimer();
-
-    resetBoothUI();
-
-    showScreen(homeScreen);
-}
+    const rect =
+      previewCanvas.getBoundingClientRect();
 
 
-/* =========================================================
-   SLEEP
-========================================================= */
+    const scaleX =
+      previewCanvas.width /
+      rect.width;
 
-function sleep(ms) {
-
-    return new Promise(
-        resolve => {
-            setTimeout(
-                resolve,
-                ms
-            );
-        }
-    );
-}
+    const scaleY =
+      previewCanvas.height /
+      rect.height;
 
 
-/* =========================================================
-   PAGE CLEANUP
-========================================================= */
+    const x =
+      (event.clientX -
+      rect.left) *
+      scaleX;
+
+    const y =
+      (event.clientY -
+      rect.top) *
+      scaleY;
+
+
+    selectedObject.x =
+      (
+        x -
+        dragOffsetX
+      ) /
+      previewCanvas.width;
+
+
+    selectedObject.y =
+      (
+        y -
+        dragOffsetY
+      ) /
+      previewCanvas.height;
+
+
+    /*
+      Jangan keluar canvas.
+    */
+
+    selectedObject.x =
+      Math.max(
+        .05,
+        Math.min(
+          .95,
+          selectedObject.x
+        )
+      );
+
+
+    selectedObject.y =
+      Math.max(
+        .03,
+        Math.min(
+          .97,
+          selectedObject.y
+        )
+      );
+
+
+    renderEditor();
+
+  }
+);
+
+
+/* =====================================================
+   MOUSE UP
+===================================================== */
 
 window.addEventListener(
-    "beforeunload",
-    () => {
+  "mouseup",
+  function(){
 
-        clearInterval(
-            sessionTimerInterval
-        );
+    isDragging =
+      false;
 
-        if (stream) {
+  }
+);
 
-            stream
-                .getTracks()
-                .forEach(track => {
-                    track.stop();
-                });
-        }
+
+/* =====================================================
+   TOUCH START
+===================================================== */
+
+previewCanvas.addEventListener(
+  "touchstart",
+  function(event){
+
+    event.preventDefault();
+
+
+    const touch =
+      event.touches[0];
+
+
+    const rect =
+      previewCanvas.getBoundingClientRect();
+
+
+    const scaleX =
+      previewCanvas.width /
+      rect.width;
+
+    const scaleY =
+      previewCanvas.height /
+      rect.height;
+
+
+    const x =
+      (touch.clientX -
+      rect.left) *
+      scaleX;
+
+    const y =
+      (touch.clientY -
+      rect.top) *
+      scaleY;
+
+
+    const object =
+      findDecorationAt(
+        x,
+        y
+      );
+
+
+    selectedObject =
+      object;
+
+
+    if(object){
+
+      isDragging =
+        true;
+
+
+      dragOffsetX =
+        x -
+        object.x *
+        previewCanvas.width;
+
+      dragOffsetY =
+        y -
+        object.y *
+        previewCanvas.height;
+
     }
+
+
+    renderEditor();
+
+  },
+  {
+    passive:false
+  }
 );
 
 
-/* =========================================================
-   INITIAL
-========================================================= */
+/* =====================================================
+   TOUCH MOVE
+===================================================== */
 
-showScreen(
-    homeScreen
+previewCanvas.addEventListener(
+  "touchmove",
+  function(event){
+
+    event.preventDefault();
+
+
+    if(
+      !isDragging ||
+      !selectedObject
+    ){
+
+      return;
+
+    }
+
+
+    const touch =
+      event.touches[0];
+
+
+    const rect =
+      previewCanvas.getBoundingClientRect();
+
+
+    const scaleX =
+      previewCanvas.width /
+      rect.width;
+
+    const scaleY =
+      previewCanvas.height /
+      rect.height;
+
+
+    const x =
+      (touch.clientX -
+      rect.left) *
+      scaleX;
+
+    const y =
+      (touch.clientY -
+      rect.top) *
+      scaleY;
+
+
+    selectedObject.x =
+      (
+        x -
+        dragOffsetX
+      ) /
+      previewCanvas.width;
+
+
+    selectedObject.y =
+      (
+        y -
+        dragOffsetY
+      ) /
+      previewCanvas.height;
+
+
+    selectedObject.x =
+      Math.max(
+        .05,
+        Math.min(
+          .95,
+          selectedObject.x
+        )
+      );
+
+
+    selectedObject.y =
+      Math.max(
+        .03,
+        Math.min(
+          .97,
+          selectedObject.y
+        )
+      );
+
+
+    renderEditor();
+
+  },
+  {
+    passive:false
+  }
 );
 
-finalCanvas.width =
-    CANVAS_WIDTH;
 
-finalCanvas.height =
-    CANVAS_HEIGHT;
+/* =====================================================
+   TOUCH END
+===================================================== */
 
-updateSessionTimer();
+previewCanvas.addEventListener(
+  "touchend",
+  function(){
+
+    isDragging =
+      false;
+
+  }
+);
+
+
+/* =====================================================
+   PRINT
+===================================================== */
+
+function printPhotostrip(){
+
+  const image =
+    previewCanvas.toDataURL(
+      "image/png"
+    );
+
+
+  printImage.src =
+    image;
+
+
+  setTimeout(
+    function(){
+
+      window.print();
+
+    },
+    300
+  );
+
+}
+
+
+/* =====================================================
+   FINISH
+===================================================== */
+
+function finishSession(){
+
+  const ok =
+    confirm(
+      "Selesai dan kembali ke Home?"
+    );
+
+
+  if(!ok){
+    return;
+  }
+
+
+  stopCamera();
+
+  clearInterval(
+    sessionInterval
+  );
+
+
+  photos = [];
+
+  decorations = [];
+
+  selectedObject =
+    null;
+
+  currentPhoto = 0;
+
+  retakeIndex = -1;
+
+  sessionStarted = false;
+
+
+  document.getElementById(
+    "editorScreen"
+  ).style.display = "none";
+
+
+  document.getElementById(
+    "homeScreen"
+  ).style.display = "flex";
+
+
+  resetTimerDisplay();
+
+}
+
+
+/* =====================================================
+   UTILITY WAIT
+===================================================== */
+
+function wait(ms){
+
+  return new Promise(
+    resolve =>
+      setTimeout(
+        resolve,
+        ms
+      )
+  );
+
+}
 
 </script>
 

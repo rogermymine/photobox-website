@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Your Photobox ✦</title>
+<title>Your Photobox ♡</title>
 
 <style>
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -25,27 +24,10 @@ body {
   min-height: 100vh;
 }
 
-/* DECORATION */
-
-body::before {
-  content: "✦  ˚  ✧  ♡  ˚  ✦  ˚  ✧";
-  position: fixed;
-  top: 90px;
-  left: 0;
-  width: 100%;
-  color: rgba(190,145,170,0.25);
-  font-size: 22px;
-  letter-spacing: 25px;
-  pointer-events: none;
-}
-
-/* HEADER */
-
 header {
   padding: 24px 20px;
-  background: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,.8);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(190,150,170,0.15);
   font-size: 22px;
   font-weight: bold;
   letter-spacing: 4px;
@@ -56,8 +38,6 @@ header span {
   color: #c58ba5;
 }
 
-/* MAIN */
-
 .camera-section {
   padding: 45px 18px 60px;
   max-width: 900px;
@@ -66,39 +46,32 @@ header span {
 
 h1 {
   font-family: Georgia, serif;
-  font-size: clamp(34px, 7vw, 56px);
+  font-size: clamp(34px,7vw,56px);
   color: #6e5864;
   margin-bottom: 10px;
-  letter-spacing: -1px;
 }
 
 .subtitle {
   color: #9a858f;
   margin-bottom: 30px;
-  font-size: 15px;
 }
-
-/* CAMERA CARD */
 
 .camera-box {
   max-width: 720px;
   margin: auto;
   padding: 10px;
-  background: linear-gradient(135deg, #dca9bd, #bca9d8);
+  background: linear-gradient(135deg,#dca9bd,#bca9d8);
   border-radius: 28px;
-  box-shadow:
-    0 20px 50px rgba(120,90,110,0.18),
-    0 0 0 7px rgba(255,255,255,0.7);
+  box-shadow: 0 20px 50px rgba(120,90,110,.18);
 }
 
 .camera-box::before {
-  content: "♡  PHOTO TIME  ♡";
+  content: "♡ PHOTO TIME ♡";
   display: block;
   color: white;
   font-size: 12px;
   letter-spacing: 3px;
   padding: 10px;
-  font-weight: bold;
 }
 
 video {
@@ -109,27 +82,21 @@ video {
   background: #eee;
 }
 
-/* PHOTO COUNTDOWN */
-
 #timer {
   font-size: 64px;
   font-weight: bold;
   color: #a56f89;
   margin: 20px;
   min-height: 75px;
-  text-shadow: 0 4px 15px rgba(180,120,150,0.2);
 }
-
-/* SESSION TIMER */
 
 .session-box {
   width: 230px;
   margin: 15px auto 25px;
   padding: 15px 20px;
-  background: rgba(255,255,255,0.8);
-  border: 1px solid rgba(190,150,170,0.25);
+  background: rgba(255,255,255,.8);
   border-radius: 22px;
-  box-shadow: 0 10px 30px rgba(120,90,110,0.1);
+  box-shadow: 0 10px 30px rgba(120,90,110,.1);
 }
 
 .session-label {
@@ -137,7 +104,6 @@ video {
   letter-spacing: 3px;
   font-weight: bold;
   color: #a58b98;
-  margin-bottom: 5px;
 }
 
 #sessionTimer {
@@ -147,51 +113,40 @@ video {
   color: #765b69;
 }
 
-/* BUTTONS */
-
-.controls {
-  margin-top: 20px;
-}
-
 button {
   border: none;
   padding: 14px 25px;
   border-radius: 50px;
-  background: linear-gradient(135deg, #b985a0, #927da9);
+  background: linear-gradient(135deg,#b985a0,#927da9);
   color: white;
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
   margin: 5px;
-  box-shadow: 0 8px 20px rgba(140,100,140,0.18);
-  transition: 0.2s;
+  box-shadow: 0 8px 20px rgba(140,100,140,.18);
+  transition: .2s;
 }
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 25px rgba(140,100,140,0.25);
 }
 
 button:disabled {
-  opacity: 0.35;
+  opacity: .35;
   cursor: not-allowed;
   transform: none;
 }
-
-/* RESULT */
 
 #result {
   margin-top: 50px;
 }
 
 #result h2 {
-  font-family: Georgia, serif;
+  font-family: Georgia,serif;
   font-size: 30px;
   color: #765d69;
   margin-bottom: 20px;
 }
-
-/* PHOTO GRID */
 
 #photoGrid {
   display: flex;
@@ -203,17 +158,15 @@ button:disabled {
 .photo-box {
   width: 240px;
   padding: 15px;
-  background: rgba(255,255,255,0.82);
+  background: rgba(255,255,255,.85);
   border-radius: 22px;
-  box-shadow: 0 12px 30px rgba(110,80,100,0.12);
-  border: 1px solid rgba(190,150,170,0.18);
+  box-shadow: 0 12px 30px rgba(110,80,100,.12);
 }
 
 .photo-box h3 {
   color: #967487;
   font-size: 15px;
   margin-bottom: 10px;
-  letter-spacing: 1px;
 }
 
 .photo-box img {
@@ -223,63 +176,137 @@ button:disabled {
   margin-bottom: 12px;
 }
 
-/* PHOTO STRIP */
+/* FRAME PICKER */
+
+#framePicker {
+  display: none;
+  margin: 45px auto 25px;
+  padding: 25px 15px;
+  max-width: 850px;
+  background: rgba(255,255,255,.7);
+  border-radius: 28px;
+  box-shadow: 0 15px 40px rgba(110,80,100,.1);
+}
+
+#framePicker h2 {
+  margin-bottom: 20px;
+  font-family: Georgia,serif;
+}
+
+.frames {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 12px;
+}
+
+.frame-option {
+  padding: 12px 5px;
+  border: 2px solid transparent;
+  border-radius: 18px;
+  background: #fff;
+  color: #765d69;
+  cursor: pointer;
+}
+
+.frame-option.selected {
+  border-color: #b985a0;
+  background: #f8e8ef;
+}
+
+.frame-preview {
+  width: 100%;
+  height: 95px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.pink {
+  background: linear-gradient(135deg,#ffdce9,#f3b8ce);
+}
+
+.sakura {
+  background:
+    radial-gradient(circle,#fff 0 5px,transparent 6px),
+    #f6cbdc;
+}
+
+.swan {
+  background: linear-gradient(135deg,#fff,#e6e0f2);
+}
+
+.cloud {
+  background: linear-gradient(135deg,#dceeff,#f7fbff);
+}
+
+.lavender {
+  background: linear-gradient(135deg,#ddd0f2,#bfa9dd);
+}
+
+.starry {
+  background: linear-gradient(135deg,#393252,#8375a9);
+  color: white;
+}
+
+.teddy {
+  background: linear-gradient(135deg,#e9c8aa,#c99c73);
+}
+
+.strawberry {
+  background: linear-gradient(135deg,#ffc4d0,#ed8099);
+}
+
+.blue {
+  background: linear-gradient(135deg,#ccecff,#91c9e8);
+}
+
+.minimal {
+  background: #eeeae7;
+}
+
+/* STRIP */
 
 #photostrip {
   margin-top: 40px;
-}
-
-#photostrip h2 {
-  font-family: Georgia, serif;
-  color: #765d69;
-  margin-bottom: 20px;
 }
 
 #photostrip img {
   width: 100%;
   max-width: 380px;
   border-radius: 16px;
-  box-shadow:
-    0 20px 45px rgba(100,70,90,0.2);
   border: 8px solid white;
+  box-shadow: 0 20px 45px rgba(100,70,90,.2);
 }
-
-/* DOWNLOAD */
 
 .download {
   display: none;
   text-decoration: none;
-  background: linear-gradient(135deg, #b985a0, #927da9);
+  background: linear-gradient(135deg,#b985a0,#927da9);
   color: white;
   padding: 14px 28px;
   border-radius: 50px;
   margin: 20px 0;
   font-weight: bold;
-  box-shadow: 0 8px 20px rgba(140,100,140,0.18);
 }
-
-/* FOOTER */
 
 footer {
   margin-top: 60px;
   padding: 30px 20px;
-  background: rgba(110,85,100,0.95);
+  background: rgba(110,85,100,.95);
   color: #f9edf3;
-  font-size: 13px;
   letter-spacing: 2px;
 }
 
-footer::before {
-  content: "✦  ";
+@media(max-width:650px) {
+  .frames {
+    grid-template-columns: repeat(2,1fr);
+  }
 }
-
-footer::after {
-  content: "  ✦";
-}
-
 </style>
 </head>
-
 
 <body>
 
@@ -287,274 +314,269 @@ footer::after {
   YOUR <span>PHOTOBOX</span> ♡
 </header>
 
-
 <section class="camera-section">
 
-  <h1>
-    Capture Your Moment ✦
-  </h1>
+<h1>Capture Your Moment ✦</h1>
 
-  <p class="subtitle">
-    little moments, pretty memories ♡
-  </p>
+<p class="subtitle">
+  little moments, pretty memories ♡
+</p>
 
+<div class="camera-box">
+  <video id="camera" autoplay playsinline></video>
+</div>
 
-  <div class="camera-box">
+<div id="timer"></div>
 
-    <video
-      id="camera"
-      autoplay
-      playsinline>
-    </video>
+<div class="session-box">
+  <div class="session-label">⏱ TIME LEFT</div>
+  <div id="sessionTimer">05:00</div>
+</div>
 
-  </div>
+<div>
+  <button onclick="startCamera()" id="cameraButton">
+    📸 Start Camera
+  </button>
 
+  <button onclick="startPhotobooth()" id="boothButton">
+    ✨ Start Photobooth
+  </button>
+</div>
 
-  <div id="timer"></div>
+<canvas id="canvas" style="display:none;"></canvas>
 
+<div id="result">
 
-  <div class="session-box">
+<h2>Your Photos ♡</h2>
 
-    <div class="session-label">
-      ⏱ TIME LEFT
-    </div>
+<div id="photoGrid"></div>
 
-    <div id="sessionTimer">
-      05:00
-    </div>
+<!-- FRAME PICKER -->
 
-  </div>
+<div id="framePicker">
 
+<h2>Choose Your Frame ✦</h2>
 
-  <div class="controls">
+<div class="frames">
 
-    <button
-      onclick="startCamera()"
-      id="cameraButton">
+<div class="frame-option selected" onclick="selectFrame('pink',this)">
+<div class="frame-preview pink">🎀</div>
+Pink Ribbon
+</div>
 
-      📸 Start Camera
+<div class="frame-option" onclick="selectFrame('sakura',this)">
+<div class="frame-preview sakura">🌸</div>
+Sakura
+</div>
 
-    </button>
+<div class="frame-option" onclick="selectFrame('swan',this)">
+<div class="frame-preview swan">🦢</div>
+Soft Swan
+</div>
 
+<div class="frame-option" onclick="selectFrame('cloud',this)">
+<div class="frame-preview cloud">☁️</div>
+Cloudy
+</div>
 
-    <button
-      onclick="startPhotobooth()"
-      id="boothButton">
+<div class="frame-option" onclick="selectFrame('lavender',this)">
+<div class="frame-preview lavender">💜</div>
+Lavender
+</div>
 
-      ✨ Start Photobooth
+<div class="frame-option" onclick="selectFrame('starry',this)">
+<div class="frame-preview starry">⭐</div>
+Starry
+</div>
 
-    </button>
+<div class="frame-option" onclick="selectFrame('teddy',this)">
+<div class="frame-preview teddy">🧸</div>
+Teddy
+</div>
 
-  </div>
+<div class="frame-option" onclick="selectFrame('strawberry',this)">
+<div class="frame-preview strawberry">🍓</div>
+Strawberry
+</div>
 
+<div class="frame-option" onclick="selectFrame('blue',this)">
+<div class="frame-preview blue">🫧</div>
+Baby Blue
+</div>
 
-  <canvas
-    id="canvas"
-    style="display:none;">
-  </canvas>
+<div class="frame-option" onclick="selectFrame('minimal',this)">
+<div class="frame-preview minimal">♡</div>
+Minimal
+</div>
 
+</div>
 
-  <div id="result">
+<br>
 
-    <h2>
-      Your Photos ♡
-    </h2>
+<button onclick="createPhotostrip()">
+✨ Create Photostrip
+</button>
 
-    <div id="photoGrid"></div>
+</div>
 
+<div id="photostrip"></div>
 
-    <div id="photostrip"></div>
+<a id="downloadStrip"
+class="download"
+download="photostrip.jpg">
+💾 Download Photostrip
+</a>
 
+<br>
 
-    <button
-      onclick="createPhotostrip()"
-      id="createStripButton"
-      style="display:none;">
+<button onclick="retakeAll()" id="retakeAllButton" style="display:none;">
+↻ Retake All
+</button>
 
-      ✨ Create Photostrip
-
-    </button>
-
-
-    <br>
-
-
-    <a
-      id="downloadStrip"
-      class="download"
-      download="photostrip.jpg">
-
-      ♡ Download Photostrip
-
-    </a>
-
-
-    <br>
-
-
-    <button
-      onclick="retakeAll()"
-      id="retakeAllButton"
-      style="display:none;">
-
-      ↻ Retake All
-
-    </button>
-
-  </div>
-
+</div>
 </section>
 
-
 <footer>
-  2026 YOUR PHOTOBOX
+2026 YOUR PHOTOBOX
 </footer>
 
 
 <script>
 
-const video =
-  document.getElementById("camera");
-
-const canvas =
-  document.getElementById("canvas");
-
-const timer =
-  document.getElementById("timer");
+const video = document.getElementById("camera");
+const canvas = document.getElementById("canvas");
+const timer = document.getElementById("timer");
 
 let stream = null;
-
 let photos = [];
-
 let currentPhoto = 0;
 
-
-/* SESSION */
-
 let sessionTime = 300;
-
 let sessionInterval = null;
-
 let sessionActive = false;
+
+let selectedFrame = "pink";
 
 
 /* CAMERA */
 
 async function startCamera() {
 
-  try {
+try {
 
-    if (
-      !navigator.mediaDevices ||
-      !navigator.mediaDevices.getUserMedia
-    ) {
+if (!navigator.mediaDevices ||
+!navigator.mediaDevices.getUserMedia) {
 
-      alert(
-        "Browser tidak mendukung akses kamera."
-      );
+alert("Browser tidak mendukung akses kamera.");
+return;
 
-      return;
+}
 
-    }
+stream = await navigator.mediaDevices.getUserMedia({
+video:{facingMode:"user"},
+audio:false
+});
 
+video.srcObject = stream;
+await video.play();
 
-    stream =
-      await navigator.mediaDevices.getUserMedia({
+alert("Kamera berhasil terhubung! ♡");
 
-        video: {
-          facingMode: "user"
-        },
+}
 
-        audio: false
+catch(error) {
 
-      });
+alert(
+"Kamera gagal dibuka: "+
+error.name+
+" - "+
+error.message
+);
 
-
-    video.srcObject =
-      stream;
-
-
-    await video.play();
-
-
-    alert(
-      "Kamera berhasil terhubung! ♡"
-    );
-
-  }
-
-  catch (error) {
-
-    alert(
-      "Kamera gagal dibuka: " +
-      error.name +
-      " - " +
-      error.message
-    );
-
-    console.error(error);
-
-  }
+}
 
 }
 
 
-/* START PHOTO SESSION */
+/* SESSION */
+
+function startSessionTimer() {
+
+sessionTime = 300;
+sessionActive = true;
+
+updateSessionTimer();
+
+sessionInterval = setInterval(() => {
+
+sessionTime--;
+
+updateSessionTimer();
+
+if(sessionTime <= 0) {
+
+clearInterval(sessionInterval);
+
+sessionActive = false;
+sessionTime = 0;
+
+updateSessionTimer();
+
+document.getElementById("boothButton").disabled = true;
+document.getElementById("retakeAllButton").disabled = true;
+
+alert(
+"⏰ Waktu photobox sudah habis! Kamu masih bisa memilih frame dan download hasil foto ♡"
+);
+
+}
+
+},1000);
+
+}
+
+
+function updateSessionTimer() {
+
+const minutes =
+Math.floor(sessionTime/60);
+
+const seconds =
+sessionTime%60;
+
+document.getElementById("sessionTimer").innerText =
+String(minutes).padStart(2,"0")+
+":"+
+String(seconds).padStart(2,"0");
+
+}
+
+
+/* START PHOTOBOX */
 
 function startPhotobooth() {
 
-  if (!stream) {
+if(!stream) {
 
-    alert(
-      "Nyalakan kamera dulu dengan tombol Start Camera."
-    );
+alert("Nyalakan kamera dulu dengan Start Camera.");
+return;
 
-    return;
+}
 
-  }
+if(!sessionActive) {
+startSessionTimer();
+}
 
+photos=[];
+currentPhoto=0;
 
-  if (!sessionActive) {
+document.getElementById("photoGrid").innerHTML="";
+document.getElementById("photostrip").innerHTML="";
+document.getElementById("framePicker").style.display="none";
+document.getElementById("downloadStrip").style.display="none";
+document.getElementById("retakeAllButton").style.display="none";
 
-    startSessionTimer();
-
-  }
-
-
-  photos = [];
-
-  currentPhoto = 0;
-
-
-  document.getElementById(
-    "photoGrid"
-  ).innerHTML = "";
-
-
-  document.getElementById(
-    "photostrip"
-  ).innerHTML = "";
-
-
-  document.getElementById(
-    "downloadStrip"
-  ).style.display =
-    "none";
-
-
-  document.getElementById(
-    "createStripButton"
-  ).style.display =
-    "none";
-
-
-  document.getElementById(
-    "retakeAllButton"
-  ).style.display =
-    "none";
-
-
-  takeBoothPhoto();
+takeBoothPhoto();
 
 }
 
@@ -563,194 +585,112 @@ function startPhotobooth() {
 
 function takeBoothPhoto() {
 
-  if (!sessionActive) {
+if(!sessionActive) return;
 
-    alert(
-      "Waktu photobox sudah habis."
-    );
+currentPhoto++;
 
-    return;
+let count=5;
 
-  }
+timer.innerText=count;
 
+const countdown=setInterval(()=>{
 
-  currentPhoto++;
+count--;
 
-  let count = 5;
+if(count>0) {
 
-  timer.innerText = count;
+timer.innerText=count;
 
+}
 
-  const countdown =
-    setInterval(() => {
+else {
 
-      count--;
+clearInterval(countdown);
 
+timer.innerText="📸";
 
-      if (count > 0) {
+setTimeout(()=>{
 
-        timer.innerText =
-          count;
+canvas.width=video.videoWidth;
+canvas.height=video.videoHeight;
 
-      }
+const ctx=canvas.getContext("2d");
 
-      else {
+ctx.save();
 
-        clearInterval(countdown);
+ctx.translate(canvas.width,0);
+ctx.scale(-1,1);
 
-        timer.innerText = "📸";
+ctx.drawImage(
+video,
+0,
+0,
+canvas.width,
+canvas.height
+);
 
+ctx.restore();
 
-        setTimeout(() => {
+const image=
+canvas.toDataURL("image/jpeg",.95);
 
-          canvas.width =
-            video.videoWidth;
+photos[currentPhoto-1]=image;
 
-          canvas.height =
-            video.videoHeight;
+showPhoto(currentPhoto-1,image);
 
+timer.innerText="";
 
-          const context =
-            canvas.getContext("2d");
+if(currentPhoto<4 && sessionActive) {
 
+setTimeout(()=>{
+takeBoothPhoto();
+},1000);
 
-          context.save();
+}
 
-          context.translate(
-            canvas.width,
-            0
-          );
+else {
 
-          context.scale(
-            -1,
-            1
-          );
+document.getElementById("retakeAllButton").style.display="inline-block";
 
+document.getElementById("framePicker").style.display="block";
 
-          context.drawImage(
-            video,
-            0,
-            0,
-            canvas.width,
-            canvas.height
-          );
+}
 
+},500);
 
-          context.restore();
+}
 
-
-          const image =
-            canvas.toDataURL(
-              "image/jpeg",
-              0.95
-            );
-
-
-          photos[
-            currentPhoto - 1
-          ] = image;
-
-
-          showPhoto(
-            currentPhoto - 1,
-            image
-          );
-
-
-          timer.innerText = "";
-
-
-          if (
-            currentPhoto < 4 &&
-            sessionActive
-          ) {
-
-            setTimeout(() => {
-
-              takeBoothPhoto();
-
-            }, 1000);
-
-          }
-
-          else {
-
-            document.getElementById(
-              "retakeAllButton"
-            ).style.display =
-              "inline-block";
-
-
-            document.getElementById(
-              "createStripButton"
-            ).style.display =
-              "inline-block";
-
-          }
-
-        }, 500);
-
-      }
-
-    }, 1000);
+},1000);
 
 }
 
 
 /* SHOW PHOTO */
 
-function showPhoto(index, image) {
+function showPhoto(index,image) {
 
-  const grid =
-    document.getElementById(
-      "photoGrid"
-    );
+let old=document.getElementById("photo-"+index);
 
+if(old) old.remove();
 
-  let oldPhoto =
-    document.getElementById(
-      "photo-" + index
-    );
+const box=document.createElement("div");
 
+box.id="photo-"+index;
+box.className="photo-box";
 
-  if (oldPhoto) {
-    oldPhoto.remove();
-  }
+box.innerHTML=`
 
+<h3>✦ Foto ${index+1} ✦</h3>
 
-  const box =
-    document.createElement("div");
+<img src="${image}">
 
+<button onclick="retakePhoto(${index})">
+↻ Retake Foto
+</button>
 
-  box.id =
-    "photo-" + index;
+`;
 
-
-  box.className =
-    "photo-box";
-
-
-  box.innerHTML = `
-
-    <h3>
-      ✦ Foto ${index + 1} ✦
-    </h3>
-
-    <img
-      src="${image}"
-    >
-
-    <button
-      onclick="retakePhoto(${index})">
-
-      ↻ Retake Foto
-
-    </button>
-
-  `;
-
-
-  grid.appendChild(box);
+document.getElementById("photoGrid").appendChild(box);
 
 }
 
@@ -759,120 +699,69 @@ function showPhoto(index, image) {
 
 function retakePhoto(index) {
 
-  if (!sessionActive) {
+if(!sessionActive) {
 
-    alert(
-      "Waktu photobox sudah habis."
-    );
+alert("⏰ Waktu photobox sudah habis.");
+return;
 
-    return;
+}
 
-  }
+let count=5;
 
+timer.innerText=count;
 
-  if (!stream) {
+const countdown=setInterval(()=>{
 
-    alert(
-      "Nyalakan kamera dulu."
-    );
+count--;
 
-    return;
+if(count>0) {
 
-  }
+timer.innerText=count;
 
+}
 
-  currentPhoto =
-    index + 1;
+else {
 
+clearInterval(countdown);
 
-  let count = 5;
+timer.innerText="📸";
 
-  timer.innerText =
-    count;
+setTimeout(()=>{
 
+canvas.width=video.videoWidth;
+canvas.height=video.videoHeight;
 
-  const countdown =
-    setInterval(() => {
+const ctx=canvas.getContext("2d");
 
-      count--;
+ctx.save();
 
+ctx.translate(canvas.width,0);
+ctx.scale(-1,1);
 
-      if (count > 0) {
+ctx.drawImage(
+video,
+0,
+0,
+canvas.width,
+canvas.height
+);
 
-        timer.innerText =
-          count;
+ctx.restore();
 
-      }
+const image=
+canvas.toDataURL("image/jpeg",.95);
 
-      else {
+photos[index]=image;
 
-        clearInterval(countdown);
+showPhoto(index,image);
 
-        timer.innerText = "📸";
+timer.innerText="";
 
+},500);
 
-        setTimeout(() => {
+}
 
-          canvas.width =
-            video.videoWidth;
-
-          canvas.height =
-            video.videoHeight;
-
-
-          const context =
-            canvas.getContext("2d");
-
-
-          context.save();
-
-          context.translate(
-            canvas.width,
-            0
-          );
-
-          context.scale(
-            -1,
-            1
-          );
-
-
-          context.drawImage(
-            video,
-            0,
-            0,
-            canvas.width,
-            canvas.height
-          );
-
-
-          context.restore();
-
-
-          const image =
-            canvas.toDataURL(
-              "image/jpeg",
-              0.95
-            );
-
-
-          photos[index] =
-            image;
-
-
-          showPhoto(
-            index,
-            image
-          );
-
-
-          timer.innerText = "";
-
-        }, 500);
-
-      }
-
-    }, 1000);
+},1000);
 
 }
 
@@ -881,324 +770,273 @@ function retakePhoto(index) {
 
 function retakeAll() {
 
-  if (!sessionActive) {
+if(!sessionActive) {
 
-    alert(
-      "Waktu photobox sudah habis."
-    );
+alert("⏰ Waktu photobox sudah habis.");
+return;
 
-    return;
+}
 
-  }
+photos=[];
+currentPhoto=0;
 
+document.getElementById("photoGrid").innerHTML="";
+document.getElementById("photostrip").innerHTML="";
+document.getElementById("framePicker").style.display="none";
+document.getElementById("downloadStrip").style.display="none";
 
-  photos = [];
-
-  currentPhoto = 0;
-
-
-  document.getElementById(
-    "photoGrid"
-  ).innerHTML = "";
-
-
-  document.getElementById(
-    "photostrip"
-  ).innerHTML = "";
-
-
-  document.getElementById(
-    "downloadStrip"
-  ).style.display =
-    "none";
-
-
-  document.getElementById(
-    "createStripButton"
-  ).style.display =
-    "none";
-
-
-  document.getElementById(
-    "retakeAllButton"
-  ).style.display =
-    "none";
-
-
-  startPhotobooth();
+startPhotobooth();
 
 }
 
 
-/* PHOTO STRIP */
+/* SELECT FRAME */
+
+function selectFrame(frame,element) {
+
+selectedFrame=frame;
+
+document.querySelectorAll(".frame-option")
+.forEach(el=>{
+el.classList.remove("selected");
+});
+
+element.classList.add("selected");
+
+}
+
+
+/* CREATE STRIP */
 
 function createPhotostrip() {
 
-  if (photos.length < 4) {
+if(photos.length<4) {
 
-    alert(
-      "Selesaikan 4 foto dulu."
-    );
-
-    return;
-
-  }
-
-
-  const stripCanvas =
-    document.createElement("canvas");
-
-
-  const ctx =
-    stripCanvas.getContext("2d");
-
-
-  const width = 700;
-
-  const photoHeight = 500;
-
-  const gap = 20;
-
-  const padding = 30;
-
-  const footerHeight = 100;
-
-
-  stripCanvas.width =
-    width;
-
-
-  stripCanvas.height =
-    padding +
-    (photoHeight * 4) +
-    (gap * 3) +
-    footerHeight +
-    padding;
-
-
-  ctx.fillStyle =
-    "#fffaf8";
-
-
-  ctx.fillRect(
-    0,
-    0,
-    stripCanvas.width,
-    stripCanvas.height
-  );
-
-
-  let loaded = 0;
-
-
-  photos.forEach(
-    (image, index) => {
-
-      const img =
-        new Image();
-
-
-      img.onload =
-        function() {
-
-          const y =
-            padding +
-            (
-              index *
-              (
-                photoHeight +
-                gap
-              )
-            );
-
-
-          ctx.drawImage(
-            img,
-            padding,
-            y,
-            width -
-              (padding * 2),
-            photoHeight
-          );
-
-
-          loaded++;
-
-
-          if (loaded === 4) {
-
-            const footerY =
-              padding +
-              (photoHeight * 4) +
-              (gap * 3);
-
-
-            ctx.fillStyle =
-              "#fffaf8";
-
-
-            ctx.fillRect(
-              0,
-              footerY,
-              width,
-              footerHeight
-            );
-
-
-            ctx.fillStyle =
-              "#765d69";
-
-
-            ctx.font =
-              "bold 28px Arial";
-
-
-            ctx.textAlign =
-              "center";
-
-
-            ctx.fillText(
-              "YOUR PHOTOBOX ✦",
-              width / 2,
-              footerY + 60
-            );
-
-
-            const finalImage =
-              stripCanvas.toDataURL(
-                "image/jpeg",
-                0.95
-              );
-
-
-            const strip =
-              document.getElementById(
-                "photostrip"
-              );
-
-
-            strip.innerHTML = `
-
-              <h2>
-                Your Photostrip ✨
-              </h2>
-
-              <img
-                src="${finalImage}"
-              >
-
-            `;
-
-
-            const downloadStrip =
-              document.getElementById(
-                "downloadStrip"
-              );
-
-
-            downloadStrip.href =
-              finalImage;
-
-
-            downloadStrip.style.display =
-              "inline-block";
-
-          }
-
-        };
-
-
-      img.src =
-        image;
-
-    }
-
-  );
+alert("Selesaikan 4 foto dulu.");
+return;
 
 }
 
+const stripCanvas=document.createElement("canvas");
+const ctx=stripCanvas.getContext("2d");
 
-/* 5 MINUTE SESSION */
+const width=700;
+const photoHeight=500;
+const gap=20;
+const padding=30;
+const footerHeight=120;
 
-function startSessionTimer() {
+stripCanvas.width=width;
 
-  sessionTime = 300;
-
-  sessionActive = true;
-
-
-  updateSessionTimer();
-
-
-  sessionInterval =
-    setInterval(() => {
-
-      sessionTime--;
-
-      updateSessionTimer();
+stripCanvas.height=
+padding+
+(photoHeight*4)+
+(gap*3)+
+footerHeight+
+padding;
 
 
-      if (sessionTime <= 0) {
+/* BACKGROUND */
 
-        clearInterval(
-          sessionInterval
-        );
+let bg="#fffaf8";
+
+if(selectedFrame==="pink")
+bg="#ffe8f0";
+
+if(selectedFrame==="sakura")
+bg="#ffe9f0";
+
+if(selectedFrame==="swan")
+bg="#f4f0fa";
+
+if(selectedFrame==="cloud")
+bg="#eaf6ff";
+
+if(selectedFrame==="lavender")
+bg="#eee5fa";
+
+if(selectedFrame==="starry")
+bg="#393252";
+
+if(selectedFrame==="teddy")
+bg="#ead1b7";
+
+if(selectedFrame==="strawberry")
+bg="#ffdce4";
+
+if(selectedFrame==="blue")
+bg="#dff4ff";
+
+if(selectedFrame==="minimal")
+bg="#f0ece9";
+
+ctx.fillStyle=bg;
+
+ctx.fillRect(
+0,
+0,
+stripCanvas.width,
+stripCanvas.height
+);
 
 
-        sessionActive = false;
+/* DECORATION */
 
-        sessionTime = 0;
+ctx.textAlign="center";
+
+let decoration="♡";
+
+if(selectedFrame==="pink")
+decoration="🎀";
+
+if(selectedFrame==="sakura")
+decoration="🌸";
+
+if(selectedFrame==="swan")
+decoration="🦢";
+
+if(selectedFrame==="cloud")
+decoration="☁";
+
+if(selectedFrame==="lavender")
+decoration="✦";
+
+if(selectedFrame==="starry")
+decoration="★";
+
+if(selectedFrame==="teddy")
+decoration="🧸";
+
+if(selectedFrame==="strawberry")
+decoration="🍓";
+
+if(selectedFrame==="blue")
+decoration="🫧";
+
+if(selectedFrame==="minimal")
+decoration="♡";
 
 
-        updateSessionTimer();
+ctx.font="35px Arial";
+
+ctx.fillText(
+decoration,
+width/2,
+25
+);
 
 
-        document.getElementById(
-          "boothButton"
-        ).disabled = true;
+let loaded=0;
+
+photos.forEach((image,index)=>{
+
+const img=new Image();
+
+img.onload=function(){
+
+const y=
+padding+
+(index*(photoHeight+gap));
+
+/* PHOTO */
+
+ctx.drawImage(
+img,
+padding,
+y,
+width-(padding*2),
+photoHeight
+);
 
 
-        document.getElementById(
-          "retakeAllButton"
-        ).disabled = true;
+/* FRAME DETAILS */
 
+ctx.lineWidth=8;
 
-        alert(
-          "⏰ Waktu photobox sudah habis! Kamu masih bisa memilih frame dan download hasil foto ♡"
-        );
+if(selectedFrame==="starry") {
 
-      }
+ctx.strokeStyle="#e8d9ff";
 
-    }, 1000);
+}
+else {
+
+ctx.strokeStyle="rgba(255,255,255,.9)";
 
 }
 
-
-/* UPDATE TIMER */
-
-function updateSessionTimer() {
-
-  const minutes =
-    Math.floor(
-      sessionTime / 60
-    );
+ctx.strokeRect(
+padding,
+y,
+width-(padding*2),
+photoHeight
+);
 
 
-  const seconds =
-    sessionTime % 60;
+loaded++;
 
 
-  document.getElementById(
-    "sessionTimer"
-  ).innerText =
+if(loaded===4) {
 
-    String(minutes)
-      .padStart(2, "0")
+const footerY=
+padding+
+(photoHeight*4)+
+(gap*3);
 
-    + ":" +
 
-    String(seconds)
-      .padStart(2, "0");
+/* FOOTER */
+
+ctx.font="bold 28px Arial";
+
+if(selectedFrame==="starry")
+ctx.fillStyle="#ffffff";
+else
+ctx.fillStyle="#765d69";
+
+ctx.fillText(
+decoration+"  YOUR PHOTOBOX  "+decoration,
+width/2,
+footerY+55
+);
+
+ctx.font="16px Arial";
+
+ctx.fillText(
+"little moments, pretty memories ♡",
+width/2,
+footerY+85
+);
+
+
+const finalImage=
+stripCanvas.toDataURL(
+"image/jpeg",
+.95
+);
+
+
+document.getElementById("photostrip").innerHTML=`
+
+<h2>Your Photostrip ✨</h2>
+
+<img src="${finalImage}">
+
+`;
+
+
+const download=
+document.getElementById("downloadStrip");
+
+download.href=finalImage;
+
+download.style.display="inline-block";
+
+}
+
+};
+
+img.src=image;
+
+});
 
 }
 
